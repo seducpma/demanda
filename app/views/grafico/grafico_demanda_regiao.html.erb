@@ -46,7 +46,7 @@
                     <% for reg1 in @regiaos1 %>
                        <tr bgcolor="#F5F5F5" >
                          <td  width="70%"><font size="2"><b><%= reg1.nome %></b></td>
-                         <td  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null AND recadastrada = 1",reg1]).count %></td>
+                         <td  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null AND recadastrada!=0",reg1]).count %></td>
                                                           <% totalregiao = totalregiao + regiao%>
                        </tr>
                      <%end%>
@@ -59,7 +59,7 @@
                        <tr bgcolor="#F5F5F5" >
                          <td width="1%" bgcolor="#DCDCDC" ></td>
                          <td  width="69%"><font size="2"><b><%= reg2.nome %></b></td>
-                         <td  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null AND recadastrada = 1 ",reg2]).count %></td>
+                         <td  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null AND recadastrada!=0 ",reg2]).count %></td>
                                                           <% totalregiao = totalregiao + regiao%>
                        </tr>
                      <%end%>
@@ -72,7 +72,7 @@
                        <tr bgcolor="#F5F5F5" >
                          <td width="1%" bgcolor="#DCDCDC" ></td>
                          <td  width="69%"><b><font size="2"><%= reg3.nome %></b></td>
-                         <td  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null AND recadastrada = 1",reg3]).count %></td>
+                         <td  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null AND recadastrada!=0",reg3]).count %></td>
                                                           <% totalregiao = totalregiao + regiao%>
                        </tr>
                      <%end%>

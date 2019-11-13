@@ -1,4 +1,4 @@
-<div id="interno4">
+<div id="interno6">
 <% title "MATRICULAS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -6,13 +6,24 @@
  </div>
 
       <div class="tabs">
-         <fieldset><legend><font size=4>Preencimento da vaga</font></legend>
+         <fieldset><legend><font size=4>MATRICULAR ALUNO</font></legend>
              <% @Vaga = Vaga.find_by_sql("SELECT v.id, CONCAT( g.nome, ' - ' , u.nome ) AS vaga FROM vagas v JOIN unidades u ON v.unidade_id = u.id JOIN grupos g ON v.grupo_id = g.id WHERE v.disponivel = 0 ")%>
              <%# @unidade = Unidade.find(:all, :conditions =>['ativo = 1 AND (tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8' ], :order => 'nome') %>
              <%  @unidade = Unidade.find(:all, :conditions=>['ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8) '], :order => 'nome') %>
              <% @crianca = Crianca.find(:all, :conditions =>['status  ="NA_DEMANDA" '], :order => 'nome') %>
              <% @grupo = Grupo.find(:all, :order => 'nome') %>
         <table>
+            <tr>
+                <td colspan="2"><font color =" red"><b><u> ATENÇÃO:</u><br/>
+                      1) Para matricular a vaga deve estar cadastrada no sistema.<br/>
+                      2) O cadastrato da criança deve estar com seu cadastro correto no sistema.<br/>
+                      3) Caso não apareça o nome da criança ou da vaga no sistema entrar em contato com o Planejamento da SEDUC.
+                      
+                       
+                    
+                </td>
+            </tr>
+
 
            <tr>
              <td><b>Unidade: </b></td>
@@ -48,7 +59,7 @@
               <td width="4%"><%= button_to 'Salvar', :action=> "salvar" %></td>
 
              <td  width="4%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
-             <td ><%= button_to 'Preencher Vaga', preenchimento_path, {:method => "get"}  %></td>
+             <td ><%= button_to 'Matricular', preenchimento_path, {:method => "get"}  %></td>
           </tr>
         </table>
 

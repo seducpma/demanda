@@ -1,0 +1,46 @@
+  <div class="tabs">
+    <table bgcolor="#DCDCDC" width="100%">
+
+        <tr bgcolor="#DCDCDC" >
+            <th width="1%">Nº</th>
+            <th width="8%">Data/Hora</th>
+            <th width="30%">Nome</th>
+            <th width="8%">Nasc/o</th>
+             <th width="20%">Mãe</th>
+            <th width="5%">Status</th>
+            <th width="5%"></th>
+
+
+          </tr>
+            
+
+        
+  
+           <%$t=0%>
+           <% @criancas.each do |crianca| %>
+           <%$t = $t+1%>
+        <tr bgcolor="#F5F5F5" style="font-size:12px">
+                <td align="center"><%=h crianca.id%></td>
+               <%  if crianca.created_at.nil? %>
+                     <td align="center"></td>
+                <%else%>
+                     <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y")%><br/></td>
+                <%end%>
+                <td align="left"><%=h crianca.nome%></td>
+                <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                <td align="left"><%=h crianca.mae%></td>
+                <td align="left"><%=h crianca.status%> </td>
+                <td> <%= button_to"Transferir",  {:action => "transferencia", :id =>crianca}, :target => '_blank', :title => "Editar" %></td>
+                 
+          </tr>
+          
+
+            <% end %>
+
+
+
+     </table>
+
+
+  </div>
+

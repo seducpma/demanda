@@ -140,15 +140,18 @@
            <tr bgcolor="#F5F5F5"  width="100%">
                <td align="left"  colspan="6"> <b>Dia/Hora Inscrição:</b>
              <%=h @crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%>(<%=h @crianca.unidade.nome%>)
-             &nbsp&nbsp - <b>Recadastramento:</b><%=h @crianca.data_rec.strftime("%e/%m/%Y - %H:%M horas")%>( <%=h @crianca.local_rec%>)
-             
-             &nbsp&nbsp - <b>Status:</b><%=h @crianca.status%>
+             <%if !@crianca.data_rec.nil?%>
+                 &nbsp&nbsp - <b>Recadastramento:</b><%=h @crianca.data_rec.strftime("%e/%m/%Y - %H:%M horas")%>( <%=h @crianca.local_rec%>)
+                 &nbsp&nbsp - <b>Status:</b><%=h @crianca.status%>
                  <%if @crianca.status == 'MATRICULADA'%>
                    - <%=h @crianca.matriculado%>
                  <%if @crianca.transferencia == true%>
                    &nbsp&nbsp - &nbsp&nbsp MATRICULADA (<%=h @crianca.unidade_t%>)
                  <%end%>
                  <%end%>
+             <%else%>
+                   &nbsp&nbsp - <b>NÃO Recadastrada</b>
+            <%end%>
              </td>
            </tr>
 <%session[:child]=@crianca.id %>

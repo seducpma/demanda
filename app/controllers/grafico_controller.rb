@@ -9,7 +9,7 @@ class GraficoController < ApplicationController
      @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
      @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
      @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
-     @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1" ], :order => 'nome')
+     @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
      @regiaos11= Regiao.find(:all,  :conditions=>['regiaos.id > 99 AND regiaos.id < 201 AND id !=120' ], :order => 'regiaos.nome')
 
 
@@ -49,14 +49,14 @@ class GraficoController < ApplicationController
 
 
   def grafico_prioridade_geral
-    @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1" ], :order => 'nome')
-     total=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1" ], :order => 'nome').count
-     session[:svp]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND servidor_publico= 1"]).count
-     session[:ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND trabalho= 1"]).count
-     session[:s_ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND declaracao= 1"]).count
-     session[:auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND autonomo= 1"]).count
-     session[:trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND transferencia= 1"]).count
-     session[:ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0)"]).count
+    @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
+     total=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome').count
+     session[:svp]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND servidor_publico= 1"]).count
+     session[:ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1"]).count
+     session[:s_ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1"]).count
+     session[:auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1"]).count
+     session[:trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1"]).count
+     session[:ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0)"]).count
 
 
        @graph = open_flash_chart_object(600,300,"/grafico/graph_code_demanda_geral")
@@ -82,13 +82,13 @@ end
         session[:input] = params[:contact][:grafico_id]
         regiao = session[:input]= params[:contact][:grafico_id]
 
-        session[:svp]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND servidor_publico= 1 AND regiao_id=?", regiao]).size
-        session[:ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND trabalho= 1 AND regiao_id=?", regiao]).size
-        session[:s_ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND declaracao= 1  AND regiao_id=?", regiao]).size
-        session[:auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND autonomo= 1 AND regiao_id=?", regiao]).size
-        session[:trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND transferencia= 1 AND regiao_id=?", regiao]).size
-        session[:ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=?", regiao]).size
-       total = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA'  and vaga_id is null AND recadastrada = 1   AND regiao_id=?", regiao]).size
+        session[:svp]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND servidor_publico= 1 AND regiao_id=?", regiao]).size
+        session[:ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=?", regiao]).size
+        session[:s_ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=?", regiao]).size
+        session[:auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=?", regiao]).size
+        session[:trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=?", regiao]).size
+        session[:ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=?", regiao]).size
+       total = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA'  and vaga_id is null AND recadastrada!=0   AND regiao_id=?", regiao]).size
     @graph = open_flash_chart_object(700,350,"/grafico/graph_por_unidade?unidade=#{session[:input]}",false,'/')
      @static_graph = Gchart.pie(
          :data =>[session[:svp], session[:ctps], session[:s_ctps], session[:auto], session[:trans], session[:ntrab]],
@@ -112,13 +112,13 @@ t=0
         t=0
         session[:input] = params[:contact][:grafico_id]
         nome_unidade = Unidade.find(session[:input]).nome
-        session[:svp]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND servidor_publico= 1 AND unidade_ref=?", nome_unidade]).size
-        session[:ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND trabalho= 1 AND unidade_ref=?", nome_unidade]).size
-        session[:s_ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND declaracao= 1  AND unidade_ref=?", nome_unidade]).size
-        session[:auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND autonomo= 1 AND unidade_ref=?", nome_unidade]).size
-        session[:trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND transferencia= 1 AND unidade_ref=?", nome_unidade]).size
-        session[:ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada =1 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND unidade_ref=?", nome_unidade]).size
-        total = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA'  and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
+        session[:svp]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND servidor_publico= 1 AND unidade_ref=?", nome_unidade]).size
+        session[:ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND unidade_ref=?", nome_unidade]).size
+        session[:s_ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND unidade_ref=?", nome_unidade]).size
+        session[:auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND unidade_ref=?", nome_unidade]).size
+        session[:trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND unidade_ref=?", nome_unidade]).size
+        session[:ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND unidade_ref=?", nome_unidade]).size
+        total = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA'  and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
 
        @graph = open_flash_chart_object(700,350,"/grafico/graph_por_unidade?unidade=#{session[:input]}",false,'/')
        @static_graph = Gchart.pie(
@@ -144,7 +144,7 @@ t=0
      @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
      @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
      @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
-     @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1" ], :order => 'nome')
+     @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
      @regiaos11= Regiao.find(:all,  :conditions=>['regiaos.id > 99 AND regiaos.id < 201 AND id !=120' ], :order => 'regiaos.nome')
 
     @graph = open_flash_chart_object(600,300,"/grafico/graph_code_demanda_geral")
@@ -207,14 +207,14 @@ end
     $menu=1
     session[:input] = params[:contact][:grafico_id]
     nome_unidade = Unidade.find(session[:input]).nome
-    session[:b1]=b1 = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 1 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    session[:b2]=b2 =Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 2 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    session[:m1a]=m1a= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 4 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    session[:m1b]=m1b=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 8 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    session[:m2]= m2= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 5 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    session[:n1]=n1=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    session[:n2]=n2=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 7 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
-    total = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA'  and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade]).size
+    session[:b1]=b1 = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 1 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    session[:b2]=b2 =Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 2 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    session[:m1a]=m1a= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 4 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    session[:m1b]=m1b=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 8 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    session[:m2]= m2= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 5 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    session[:n1]=n1=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    session[:n2]=n2=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 7 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
+    total = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA'  and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade]).size
     @graph = open_flash_chart_object(700,350,"/grafico/graph_por_unidade?unidade=#{session[:input]}",false,'/')
      @static_graph = Gchart.pie(
           #  :data => [(Crianca.por_unidade_b1(session[:input])).size, (Crianca.por_unidade_b2(session[:input])).size, (Crianca.por_unidade_m1a(session[:input])).size (Crianca.por_unidade_m1b(session[:input])).size(Crianca.por_unidade_m2(session[:input])).size(Crianca.por_unidade_n1(session[:input])).size, (Crianca.por_unidade_n2(session[:input])).size ],

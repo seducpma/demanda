@@ -1,7 +1,7 @@
 <div id="interno5">
 <% title "CRIANÇA" %>
 <div class ="tabs">
-<font size="5"><strong>RECADASTRAMENTO Inscrição nº<%=h "#{@crianca.id}" %> </strong></font></br>
+<font size="5"><strong>DEMANDA Inscrição nº<%=h "#{@crianca.id}" %> </strong></font></br>
  <hr/>
  <table bgcolor="#DCDCDC" width="100%">
    <tr bgcolor="#DCDCDC"  width="100%">
@@ -144,12 +144,13 @@
                   &nbsp&nbsp - <b>Recadastramento:</b><%=h @crianca.data_rec.strftime("%e/%m/%Y - %H:%M horas")%>( <%=h @crianca.local_rec%>)
              <%end%>
              &nbsp&nbsp - <b>Status:</b><%=h @crianca.status%>
-                 <%if @crianca.status == 'MATRICULADA'%>
+<!--                 <%#if @crianca.status == 'MATRICULADA'%>
                    - <%=h @crianca.matriculado%>
-                 <%end%>
-                 <%if @crianca.transferencia == true%>
+                 <#%end%>
+                 <%#if @crianca.transferencia == true%>
                    &nbsp&nbsp - &nbsp&nbsp MATRICULADA (<%=h @crianca.unidade_t%>)
-                 <%end%>
+                 <%#end%>
+-->
              </td>
            </tr>
 

@@ -27,7 +27,9 @@
                 <td align="left"><%=h crianca.nome%></td>
                 <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
                 <td align="left"><%=h crianca.mae%></td>
-                <td align="center"><%=h crianca.grupo.nome%></td>
+                <td align="center"><%if !crianca.grupo_id.nil?%>
+                                     <%=h crianca.grupo.nome%></td>
+                                   <%end%>
                 <td align="left"><%if !crianca.regiao_id.nil?%>
                                       <%=h crianca.regiao.nome%>
                                  <%end%>

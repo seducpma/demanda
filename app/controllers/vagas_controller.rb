@@ -197,11 +197,11 @@ def grupo_id
     session[:quant_vaga]= (Vaga.find(:all, :conditions => ['unidade_id =? AND grupo_id=?  AND crianca_id is null', session[:vaga_unidade_id], session[:vaga_grupo]])).count
     session[:regiao_id]= @unidade[0].regiao_id
 
-    @criancasP = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND ( servidor_publico = 1 OR trabalho = 1 OR declaracao=1 OR autonomo = 1  OR transferencia = 1)  AND unidade_ref = ?  AND grupo_id = ? AND recadastrada = 1",  session[:vaga_unidade_nome], session[:vaga_grupo] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, transferencia, autonomo DESC, created_at ASC")
+    @criancasP = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND ( servidor_publico = 1 OR trabalho = 1 OR declaracao=1 OR autonomo = 1  OR transferencia = 1)  AND unidade_ref = ?  AND grupo_id = ? AND recadastrada!=0",  session[:vaga_unidade_nome], session[:vaga_grupo] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, transferencia, autonomo DESC, created_at ASC")
 
-    @criancasR = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND regiao_id = ?  AND grupo_id = ? AND recadastrada = 1 AND unidade_ref != ? ", session[:regiao_id],  session[:vaga_grupo],  session[:vaga_unidade_nome] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
+    @criancasR = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND regiao_id = ?  AND grupo_id = ? AND recadastrada!=0 AND unidade_ref != ? ", session[:regiao_id],  session[:vaga_grupo],  session[:vaga_unidade_nome] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
 
-    @criancasU = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND unidade_ref = ?  AND grupo_id = ? AND recadastrada = 1",  session[:vaga_unidade_nome], session[:vaga_grupo] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
+    @criancasU = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND unidade_ref = ?  AND grupo_id = ? AND recadastrada!=0",  session[:vaga_unidade_nome], session[:vaga_grupo] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
 
     @criançastt= (@criancasR + @criancasU) - @criancasP
 

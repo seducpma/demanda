@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
   map.resources :unidades
-  map.resources :criancas, :collection => {:impressao => :get, :consultas => :get, :impressao_class_unidade => :get, :impressao_class_classe => :get, :status => :get, :impressao_geral => :get, :recadastrar => :get,  :update => :put, :impressao_recadastramento => :get}
+  map.resources :criancas, :collection => {:impressao => :get, :consultas => :get, :impressao_class_unidade => :get, :impressao_class_classe => :get, :status => :get, :impressao_geral => :get, :recadastrar => :get,  :update => :put, :impressao_recadastramento => :get, :transferencia_crianca => :get}
   map.resources :grupos
   map.resources :regiaos
   map.resources :regiaos
@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_mae '/mae', :controller => 'criancas', :action => 'relatorio_mae'
   map.consulta_unidade '/unidade', :controller => 'criancas', :action => 'consulta_unidade'
   map.transferencias '/transferencias', :controller => 'criancas', :action => 'transferencias'
+  map.transferenciacrianca '/transferenciacrianca', :controller => 'criancas', :action => 'transferenciacrianca'
   map.relatorio_geral_ant '/relatorio_geral_ant', :controller => 'criancas', :action => 'relatorio_geral_ant'
   map.teste '/teste', :controller => 'criancas', :action => 'teste'
   map.consulta_regiao '/regiao', :controller => 'criancas', :action => 'consulta_regiao'
@@ -53,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   map.aviso_senha'/aviso_senha', :controller => 'roles_users', :action => 'aviso_senha'
   map.altera_senha'/altera_senha', :controller => 'roles_users', :action => 'altera_senha'
   map.show_recadastramento'/show_recadastramento', :controller => 'criancas', :action => 'show_recadastramento'
+  map.show_transferencia'/show_transferencia', :controller => 'criancas', :action => 'show_transferencia'
 
   map.alterar '/alterar', :controller => 'alteracaos', :action => 'alterar'
   map.altera_status 'altera_status', :controller => 'alteracaos', :action => 'alterar_classe'

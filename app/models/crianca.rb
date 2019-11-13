@@ -7,7 +7,7 @@ class Crianca < ActiveRecord::Base
   has_many :vaga
 
   #validates_presence_of :unidade_id
-  validates_presence_of :regiao_id
+  #validates_presence_of :regiao_id
   validates_presence_of :nome
   validates_presence_of :nascimento
   #validates_presence_of :unidade_ref
@@ -69,142 +69,142 @@ def self.na_demanda
 #--------------
 
   def self.canceladaR
-    Crianca.find(:all, :conditions => ["status = 'CANCELADA' AND recadastrada = 1 "])
+    Crianca.find(:all, :conditions => ["status = 'CANCELADA' AND recadastrada !=0 "])
   end
 
 
   def self.matriculadaR
-    Crianca.find(:all, :conditions => ["status = 'MATRICULADA' AND recadastrada = 1 "])
+    Crianca.find(:all, :conditions => ["status = 'MATRICULADA' AND recadastrada !=0 "])
   end
 
   def self.na_demandaR
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1 AND vaga_id is null"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada !=0 AND vaga_id is null"])
 
   end
 
 # ===== REGIÃO
 
  def self.regiao_centro
-      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 101 and vaga_id is null  AND recadastrada = 1"])
+      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 101 and vaga_id is null  AND recadastrada !=0 "])
   end
 
  def self.regiao_jaguari
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 106 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 106 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_jbrasil
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 103 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 103 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_praia
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 104 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 104 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_smanoel
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 105 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 105 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_svito
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 107 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 107 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_zanaga
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 102 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 102 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_jpaz
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 110 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 110 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_pgramado
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 111 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 111 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_pnacoes
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 113 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 113 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_sdomingos
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 114 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 114 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_sgeronimo
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 109 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 109 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_sluiz
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 108 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 108 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_sroque
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 112 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 112 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_cjardim
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 118 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 118 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_frezarin
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 115 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 115 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_jalvorada
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 119 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 119 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_spaulo
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 117 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 117 and vaga_id is null AND recadastrada !=0 "])
   end
 
 
  def self.regiao_jipiranga
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 116 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and regiao_id = 116 and vaga_id is null AND recadastrada !=0 "])
   end
 
 #============ classe
 
  def self.b1
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 1 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 1 and vaga_id is null AND recadastrada !=0 "])
   end
 
  def self.b2
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 2 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 2 and vaga_id is null AND recadastrada !=0 "])
   end
 
   def self.m1a
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 4 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 4 and vaga_id is null AND recadastrada!=0"])
   end
 
   def self.m1b
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 8 and vaga_id is null AND recadastrada = 1"])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 8 and vaga_id is null AND recadastrada!=0"])
   end
 
   def self.m2
-      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 5 and vaga_id is null AND recadastrada = 1"])
+      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 5 and vaga_id is null AND recadastrada!=0"])
   end
 
   def self.n1
-      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada = 1"])
+      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada!=0"])
   end
 
   def self.n2
-      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada = 1"])
+      Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada!=0"])
   end
 
 
@@ -220,43 +220,43 @@ def self.na_demanda
 
 def self.por_unidade_b1(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    w=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 1 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    w=Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 1 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
     t=0
  end
 
 def self.por_unidade_b2(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 2 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 2 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
  end
 
 
 def self.por_unidade_m1a(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id =4 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id =4 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
  end
 
 
 def self.por_unidade_m1b(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 8 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 8 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
  end
 
 
 def self.por_unidade_m2(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 5 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 5 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
  end
 
 
 def self.por_unidade_n1(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 6 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
  end
 
 
 def self.por_unidade_n2(unidade)
     nome_unidade = Unidade.find(unidade).nome
-    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 7 and vaga_id is null AND recadastrada = 1  AND unidade_ref=?", nome_unidade])
+    Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id = 7 and vaga_id is null AND recadastrada!=0  AND unidade_ref=?", nome_unidade])
  end
 
 

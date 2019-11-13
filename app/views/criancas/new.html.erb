@@ -141,22 +141,34 @@
            <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"90"%> </td>
        </tr>
        <tr>
-         <td colspan="6"><b>Bairro/Região:</b>&nbsp&nbsp&nbsp&nbsp
-         <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
+         <td colspan="6"><b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"40"%>&nbsp&nbsp&nbsp&nbsp
 
-         <%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => '---Selecionar---' %>
+         <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
+          <b>Região:</b>&nbsp&nbsp
+         <%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'OBRIGATÓRIO SELECIONAR UMA OPÇÃO' %>
              <%= observe_field 'crianca_regiao_id',
                    :update => "listagem",
                    :url    => { :action => 'lista_bairros' },
                    :with   => 'crianca_regiao_id' %>
-             <font color="red"><b >&nbsp&nbsp<==&nbsp&nbsp <u>ATENÇÃO:</u></b><b id="pisca1" > Selecionar corretamente o bairro/região e<br/>
+             <font color="red"><b > &nbsp&nbsp<==&nbsp&nbsp <u>ATENÇÃO:</u></b><br/> <b id="pisca1" > 
               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-              AGUARDAR O SISTEMA RETORNAR AS UNIDADES DA REGIÃO.</b>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              Estas  regiões são definidas pela SEDUC. SELEÇÂO OBRIGATÓRIA. <br/>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS <br/>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              UNIDADES DA REGIÃO.</b>
               </font>
          </td>
        </tr>
@@ -168,6 +180,11 @@
         <td colspan="6">
           <fieldset> <legend><font size=4>Prioridades</font></legend>
               <table width="100%"  >
+                  <tr>
+                      <td colspan="2">
+                          <font color =" red"><b> <u>ATENÇÃO:</u></b> Selecionar <u>somente uma opção SIM</u>. - Após selecionar a opção SIM aguardar o sistema retornar informações referentes a opção selecinada.</font>
+                      </td>
+                  </tr>
                <tr>
                    <td width="90%"><b>1) Filho(a) de Servidora Pública da <u>Prefeitura Municipal de Americana?</u></b> ======================================> </td>
 
@@ -221,6 +238,7 @@
                <tr>
                    <td colspan="6"><div id="autonomo"> </div></td>
                </tr>
+<!--
                <tr>
                    <td width="90%"><% session[:sim]= 0 %><b> 5)Transferência de criança entre unidades educacionais do Municipio ?</b> &nbsp ====================================> </td>
                    <td>     <%= f.select :transferencia, (OPCAOSN).sort %>
@@ -230,6 +248,7 @@
                               :with   => 'crianca_transferencia' %>
                     </td>
                </tr>
+-->
                <tr>
                    <td colspan="6"><div id="transferencia"> </div></td>
                </tr>

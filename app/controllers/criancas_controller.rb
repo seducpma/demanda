@@ -57,23 +57,74 @@ end
     end
   end
 
+    def show_transferencia
+
+     @criancas=Crianca.find(session[:id_anterior])
+
+     @crianca = Crianca.find(session[:id_crinaca_trans])
+     @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8) ',@crianca.regiao_id])
+t=0
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @crianca }
+    end
+  end
+
+
+
   # GET /criancas/new
   # GET /criancas/new.xml
   def new
      @crianca = Crianca.new
-     
+     session[:show]=1
+     session[:show_transferencia]=0
+     session[:show_recadastramento]=0
+     session[:novo_cadastrar]=2  # cadastrar após recadstramento
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @crianca }
     end
   end
 
+
+  def transferencia
+     session[:id_anterior]=params[:id]
+     @criancas=Crianca.find(params[:id])
+          @unidade_regiao= Unidade.find(:all , :conditions=>['ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'], :order => 'nome ASC')
+     @crianca = Crianca.new
+
+     session[:tnome]=@criancas.nome
+     session[:tnascimento]=@criancas.nascimento.strftime("%d/%m/%Y")
+     session[:tmae]=@criancas.mae
+     session[:tpai]=@criancas.pai
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @crianca }
+    end
+  end
+
+
+def transferenciacrianca
+    data = (Time.now.year-6).to_s
+    data = data + ' 00:00:00'
+    
+    if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
+                 @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'MATRICULADA' and  nascimento > ? AND nome NOT IN (SELECT nome  FROM criancas WHERE nome LIKE ? AND status='NA_DEMANDA'  )" , "%" + params[:searchtrans].to_s + "%", data, "%" + params[:searchtrans].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
+              else
+                 @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'MATRICULADA'", "%" + params[:searchtrans].to_s + "%" ],:order => 'nome ASC')
+              end
+        render :update do |page|
+          page.replace_html 'criancas', :partial => "criancastrans"
+        end
+end
+
+
+
+
   # GET /criancas/1/edit
   def edit
-
-
-
-      @unidade_regiao= Unidade.find(:all , :conditions=>[' ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'])
+     @unidade_regiao= Unidade.find(:all , :conditions=>[' ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'])
 
     @crianca = Crianca.find(params[:id])
     data=@crianca.nascimento
@@ -82,11 +133,11 @@ end
     #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
     session[:id_crianca] = params[:id]
     session[:nome] = params[:nome]
+    session[:recadastrada]= 'edit'
   end
 
 def recadastrar_crianca
     s= params[:crianca_id]
-
    @criancas = Crianca.find( :all,:conditions => ["id =?" , params[:crianca_id]],:order => 'nome ASC')
                
        render:partial => "recadastrar_criancas"
@@ -102,7 +153,7 @@ end
     #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
     session[:id_crianca] = params[:id]
     session[:nome] = params[:nome]
-    session[:recadastrada]= 1
+    session[:recadastrada]= 'recadastrar'
 
   end
 
@@ -144,10 +195,19 @@ end
 
     @crianca = Crianca.new(params[:crianca])
     @crianca.unidade_id = current_user.unidade_id
-    data=@crianca.nascimento.strftime("%Y-%m-%d")
+    if session[:show_transferencia]==1
+        @crianca.nascimento = session[:dataN]
+        @crianca.save
+        data = @crianca.nascimento.strftime("%Y-%m-%d")
+    else
+        data=@crianca.nascimento.strftime("%Y-%m-%d")
+    end
+
+
+
     hoje = Date.today.to_s
     final = '2012-07-01'
-
+t=0
 
     if (hoje > data)  and (data >= final)
        if  (data <= Date.today.to_s and data >= DATAB1)
@@ -175,13 +235,28 @@ end
   $flag_imp = 0
   $flag_btimp = 0
   session[:sim]= 0
+   if session[:show_transferencia]==1
+          @crianca.transferencia = true
+   end
     respond_to do |format|
-
-
       if @crianca.save
         flash[:notice] = 'Criança cadastrada com sucesso.'
-        format.html { redirect_to(@crianca) }
-        format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
+          if session[:show]==1
+            format.html { redirect_to(@crianca) }
+            @crianca.recadastrada=session[:novo_cadastrar]
+            @crianca.save
+            @crianca.recadastrada=session[:novo_cadastrar]
+            format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
+              session[:show]=0
+         end
+         if session[:show_transferencia]==1
+               session[:id_crinaca_trans]= @crianca.id
+               @crianca.grupo_id=session[:trans_grupo_id]
+               @crianca.save
+              format.html { redirect_to(show_transferencia_path) }
+              format.xml  { head :ok }
+              session[:show_recadastramento]==0
+         end
 
       else
         format.html { render :action => "new" }
@@ -252,13 +327,13 @@ end
 
       end
 
-        if params[:recadastrarX].to_i == 1
+        #if params[:recadastrarX].to_i == 1
 
 
-        else
-           @crianca.data_rec= Time.now
-           @crianca.local_rec= current_user.unidade.nome
-         end
+        #else
+         #  @crianca.data_rec= Time.now
+         #  @crianca.local_rec= current_user.unidade.nome
+         #end
           # ^^  após recadastramento comentar estes comandos ^^
           
    
@@ -291,9 +366,21 @@ if  (data <= Date.today.to_s and data >= DATAB1)
 
 
         else
-          if session[:recadastrada]== 1
+          if session[:recadastrada]== 'recadastrar'
                    @crianca.recadastrada = 1
+                   @crianca.data_rec= Time.now
+                   @crianca.local_rec= current_user.unidade.nome
+                   session[:recadastrada]= 0
+                   @crianca.save
               session[:recadastrada]= 0
+          else  if (session[:recadastrada]== 'edit') and (@crianca.recadastrada != 2)
+                   @crianca.recadastrada = 1
+                   @crianca.data_rec= Time.now
+                   @crianca.local_rec= current_user.unidade.nome
+                   session[:recadastrada]= 0
+                   @crianca.save
+
+             end
           end
         end
 
@@ -408,33 +495,33 @@ end
    def consultacrianca
      if params[:type_of].to_i == 1
          if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
-                 @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada=1" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
+                 @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
               else
-                 @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada=1 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
+                 @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
               end
-              @canceladas = Crianca.find( :all,:conditions => [" nome like ? AND status =? AND recadastrada=1",  "%" + params[:search1].to_s + "%" , 'CANCELADA'],:order => 'nome ASC')
-              @demandas = Crianca.find( :all,:conditions => [" nome like ? and status =? AND recadastrada=1",  "%" + params[:search1].to_s + "%" , 'NA_DEMANDA'],:order => 'nome ASC')
-              @matriculadas = Crianca.find( :all,:conditions => [" nome like ? and status =?  AND recadastrada=1",  "%" + params[:search1].to_s + "%" , 'MATRICULADA'],:order => 'nome ASC')
+              @canceladas = Crianca.find( :all,:conditions => [" nome like ? AND status =? AND recadastrada!=0",  "%" + params[:search1].to_s + "%" , 'CANCELADA'],:order => 'nome ASC')
+              @demandas = Crianca.find( :all,:conditions => [" nome like ? and status =? AND recadastrada!=0",  "%" + params[:search1].to_s + "%" , 'NA_DEMANDA'],:order => 'nome ASC')
+              @matriculadas = Crianca.find( :all,:conditions => [" nome like ? and status =?  AND recadastrada!=0",  "%" + params[:search1].to_s + "%" , 'MATRICULADA'],:order => 'nome ASC')
         render :update do |page|
           page.replace_html 'criancas', :partial => "criancas"
         end
      else if params[:type_of].to_i == 2
               if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
-                 @criancas = Crianca.find( :all,:conditions => ['status = ? AND recadastrada = 1', params[:crianca][:status]],:order => 'nome ASC, unidade_id ASC')
+                 @criancas = Crianca.find( :all,:conditions => ['status = ? AND recadastrada!=0', params[:crianca][:status]],:order => 'nome ASC, unidade_id ASC')
               else
-                 @criancas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 1", current_user.unidade_id , params[:crianca][:status]],:order => 'nome ASC')
+                 @criancas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada!=0", current_user.unidade_id , params[:crianca][:status]],:order => 'nome ASC')
               end
-              @canceladas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 1", current_user.unidade_id , 'CANCELADA'],:order => 'nome ASC')
-              @demandas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 1", current_user.unidade_id , 'NA_DEMANDA'],:order => 'nome ASC')
-              @matriculadas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 1", current_user.unidade_id , 'MATRICULADA'],:order => 'nome ASC')
+              @canceladas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada!=0", current_user.unidade_id , 'CANCELADA'],:order => 'nome ASC')
+              @demandas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada!=0", current_user.unidade_id , 'NA_DEMANDA'],:order => 'nome ASC')
+              @matriculadas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada!=0", current_user.unidade_id , 'MATRICULADA'],:order => 'nome ASC')
              render :update do |page|
                 page.replace_html 'criancas', :partial => "criancas"
               end
          else if params[:type_of].to_i == 6
-                @criancas = Crianca.find( :all, :conditions=>[' recadastrada = 1'],:order => 'nome ASC')
-                @canceladas = Crianca.find( :all,:conditions => ["status =? AND recadastrada = 1", 'CANCELADA'],:order => 'nome ASC')
-                @demandas = Crianca.find( :all,:conditions => ["status =? AND recadastrada = 1", 'NA_DEMANDA'],:order => 'nome ASC')
-                @matriculadas = Crianca.find( :all,:conditions => ["status =? AND recadastrada = 1",'MATRICULADA'],:order => 'nome ASC')
+                @criancas = Crianca.find( :all, :conditions=>[' recadastrada!=0'],:order => 'nome ASC')
+                @canceladas = Crianca.find( :all,:conditions => ["status =? AND recadastrada!=0", 'CANCELADA'],:order => 'nome ASC')
+                @demandas = Crianca.find( :all,:conditions => ["status =? AND recadastrada!=0", 'NA_DEMANDA'],:order => 'nome ASC')
+                @matriculadas = Crianca.find( :all,:conditions => ["status =? AND recadastrada!=0",'MATRICULADA'],:order => 'nome ASC')
 
           render :update do |page|
                    page.replace_html 'criancas', :partial => "criancas"
@@ -463,15 +550,15 @@ end
 
   def consultatransferencias
      if params[:type_of].to_i == 1
-                @criancas = Crianca.find( :all,:conditions => ["recadastrada = 1 AND status = 'NA_DEMANDA' AND transferencia = 1" ],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
+                @criancas = Crianca.find( :all,:conditions => ["recadastrada!=0 AND status = 'NA_DEMANDA' AND transferencia = 1" ],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
              session[:transf]=1
         render :update do |page|
           page.replace_html 'criancas', :partial => "criancas_transf"
         end
      else if params[:type_of].to_i == 2
 
-              @criancasR = Crianca.find( :all,:conditions => ["unidade_ref = ? AND recadastrada = 1 AND status = 'NA_DEMANDA' AND transferencia = 1 AND recadastrada = 1 ", params[:crianca][:unidade_ref]],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
-              #@criancasNR = Crianca.find( :all,:conditions => ["unidade_ref = ? AND recadastrada = 0 AND status = 'NA_DEMANDA' AND transferencia = 1 AND recadastrada = 1 ", params[:crianca][:unidade_ref]],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
+              @criancasR = Crianca.find( :all,:conditions => ["unidade_ref = ? AND recadastrada!=0 AND status = 'NA_DEMANDA' AND transferencia = 1 AND recadastrada!=0 ", params[:crianca][:unidade_ref]],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
+              #@criancasNR = Crianca.find( :all,:conditions => ["unidade_ref = ? AND recadastrada = 0 AND status = 'NA_DEMANDA' AND transferencia = 1 AND recadastrada!=0 ", params[:crianca][:unidade_ref]],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
               session[:opcao]= params[:crianca][:unidade_ref]
              @criancas1 = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND trabalho = 1 and opcao1=?  AND transferencia=1",  session[:opcao] ],:order => "servidor_publico DESC, irmao DESC, transferencia DESC, created_at ASC")
              @criancas2 = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND trabalho = 1 and opcao2=?  AND transferencia=1",  session[:opcao] ],:order => "servidor_publico DESC, irmao DESC, transferencia DESC, created_at ASC")
@@ -500,7 +587,7 @@ end
                           end
                  else if params[:type_of].to_i == 6
                          t=0
-                       @criancas = Crianca.find( :all,:conditions => ["regiao_id= ? AND recadastrada = 1 AND status = 'NA_DEMANDA' AND transferencia = 1 AND recadastrada = 1 ", params[:crianca][:regiao_id]],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
+                       @criancas = Crianca.find( :all,:conditions => ["regiao_id= ? AND recadastrada!=0 AND status = 'NA_DEMANDA' AND transferencia = 1 AND recadastrada!=0 ", params[:crianca][:regiao_id]],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
                         render :update do |page|
                           page.replace_html 'criancas', :partial => "criancas_transf"
                         end
@@ -561,14 +648,14 @@ end
 
 def consulta_status
      if params[:type_of].to_i == 1
-           @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND recadastrada=1"],:order => 'nome ASC, unidade_id ASC')
+           @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0"],:order => 'nome ASC, unidade_id ASC')
      else if params[:type_of].to_i == 2
-              @criancas = Crianca.find( :all,:conditions => ["status = 'CANCELADA' AND recadastrada=1"],:order => 'nome ASC, unidade_id ASC')
+              @criancas = Crianca.find( :all,:conditions => ["status = 'CANCELADA' AND recadastrada!=0"],:order => 'nome ASC, unidade_id ASC')
              render :update do |page|
                 page.replace_html 'criancas', :partial => "criancas_unidade_status"
               end
          else if params[:type_of].to_i == 3
-                @criancas = Crianca.find( :all,:conditions => ["status = 'MATRICULADA' AND recadastrada=1"],:order => 'nome ASC, unidade_id ASC')
+                @criancas = Crianca.find( :all,:conditions => ["status = 'MATRICULADA' AND recadastrada!=0"],:order => 'nome ASC, unidade_id ASC')
                 render :update do |page|
                    page.replace_html 'criancas', :partial => "criancas_unidade_status"
                  end
@@ -585,7 +672,7 @@ def consulta_status_demanda
   #@criancas2 = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND opcao2 = ?", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   #@criancas3 = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND opcao3 = ?", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   #@criancas = @criancas1 + @criancas2 + @criancas3
-  @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND unidade_ref = ? AND recadastrada = 1", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
+  @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND unidade_ref = ? AND recadastrada!=0", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
     render :update do |page|
          page.replace_html 'criancas', :partial => "criancas_unidade_status"
      end
@@ -596,7 +683,7 @@ def consulta_status_regiao
   regiao =(params[:criancaR_regiao_idR])
 
   
-  @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND regiao_id = ? AND recadastrada = 1", regiao],:order => 'nome ASC, unidade_id ASC')
+  @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND regiao_id = ? AND recadastrada!=0", regiao],:order => 'nome ASC, unidade_id ASC')
     render :update do |page|
          page.replace_html 'criancas', :partial => "criancas_unidade_status"
      end
@@ -612,7 +699,7 @@ def consulta_status_cancelada
   #@criancas2 = Crianca.find( :all,:conditions => ["status = 'CANCELADA' AND opcao2 = ?", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   #@criancas3 = Crianca.find( :all,:conditions => ["status = 'CANCELADA' AND opcao3 = ?", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   #@criancas = @criancas1 + @criancas2 + @criancas3
-  @criancas = Crianca.find( :all,:conditions => ["status = 'CENCELADA' AND unidade_ref = ? AND recadastrada = 1", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
+  @criancas = Crianca.find( :all,:conditions => ["status = 'CENCELADA' AND unidade_ref = ? AND recadastrada!=0", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   render :update do |page|
          page.replace_html 'criancas', :partial => "criancas_unidade_status"
      end
@@ -625,7 +712,7 @@ def consulta_status_matriculada
   #@criancas2 = Crianca.find( :all,:conditions => ["status = 'MATRICULADA' AND opcao2 = ?", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   #@criancas3 = Crianca.find( :all,:conditions => ["status = 'MATRICULADA' AND opcao3 = ?", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
   #@criancas = @criancas1 + @criancas2 + @criancas3
-  @criancas = Crianca.find( :all,:conditions => ["status = 'MATRICULADA' AND unidade_ref = ? AND recadastrada = 1", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
+  @criancas = Crianca.find( :all,:conditions => ["status = 'MATRICULADA' AND unidade_ref = ? AND recadastrada!=0", session[:opcaos]],:order => 'nome ASC, unidade_id ASC')
 
      render :update do |page|
          page.replace_html 'criancas', :partial => "criancas_unidade_status"
@@ -768,18 +855,18 @@ end
 
 def relatorio_geral
 
-#   @regiaos1= Regiao.find(:all, :joins=> 'JOIN criancas on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 99 AND regiaos.id < 108 AND criancas.recadastrada = 1' ], :order => 'regiaos.nome')
-#   @regiaos2= Regiao.find(:all, :joins=> 'JOIN criancas on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 107 AND regiaos.id < 115 AND criancas.recadastrada = 1' ], :order => 'regiaos.nome')
-#   @regiaos3= Regiao.find(:all, :joins=> 'JOIN criancas on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND criancas.recadastrada = 1' ], :order => 'regiaos.nome')
+#   @regiaos1= Regiao.find(:all, :joins=> 'JOIN criancas on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 99 AND regiaos.id < 108 AND criancas.recadastrada!=0' ], :order => 'regiaos.nome')
+#   @regiaos2= Regiao.find(:all, :joins=> 'JOIN criancas on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 107 AND regiaos.id < 115 AND criancas.recadastrada!=0' ], :order => 'regiaos.nome')
+#   @regiaos3= Regiao.find(:all, :joins=> 'JOIN criancas on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND criancas.recadastrada!=0' ], :order => 'regiaos.nome')
 
    @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
    @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
    @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
    @regiaos11= @regiaos1+@regiaos2+@regiaos3
 
-   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1" ], :order => 'nome')
+   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
 
-   #@regiaos11= Regiao.find(:all, :joins=> 'INNER JOIN criancas  on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 99 AND regiaos.id < 108 AND criancas.recadastrada = 1' ], :order => 'regiaos.nome')
+   #@regiaos11= Regiao.find(:all, :joins=> 'INNER JOIN criancas  on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 99 AND regiaos.id < 108 AND criancas.recadastrada!=0' ], :order => 'regiaos.nome')
    #@regiaos11= Regiao.find(:all,  :conditions=>['regiaos.id > 99 AND regiaos.id < 201 AND id !=120' ], :order => 'regiaos.nome')
    #@nidades12 = Unidade.find(:all, :conditions=> ["nome like? AND ativo = 1  AND id > 99", "%"+"CR " +"%"], :order => 'nome')
    #@unidades13 = Unidade.find(:all, :conditions=> ["nome like? AND ativo = 1 AND id > 99", "%"+"FIL. " +"%"], :order => 'nome')
@@ -929,7 +1016,7 @@ def impressao_geral
    @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
    @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
    @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
-   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada = 1" ], :order => 'nome')
+   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
 
    @regiaos11= Regiao.find(:all,  :conditions=>['regiaos.id > 99 AND regiaos.id < 201 AND id !=120' ], :order => 'regiaos.nome')
 
@@ -1053,7 +1140,6 @@ end
 
 
  def lista_bairros
-     t=0
     @unidade_regiao = Unidade.find(:all, :conditions => ['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)', params[:crianca_regiao_id]])
     render :partial => 'lista_unidade_regiao'
   end

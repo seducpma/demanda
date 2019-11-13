@@ -1,0 +1,339 @@
+
+<div id="interno2">
+<% title "CRIANCAS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CADASTRO DE TRANSFERÊNCIA DE VAGA</strong></font><br/>
+ </div>
+      <div class="tabs">
+      <%#= render :partial => 'form' %>
+
+
+<div id="interno2">
+<% title "CRIANCAS".singularize %>
+<div class="tabs">
+
+  <div class="tabs">
+<% form_for(@crianca) do |f| %>
+ <%= f.error_messages %>
+      <font size ="3" color="RED"><b> &nbsp&nbsp&nbsp&nbsp
+                    <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        1) Havendo solicitação de transferência a criança entrará novamente na demanda.<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        2) A classificação da demanda será realizada por setorização regional, sendo as regiões definidas pela, <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          Secretaria Municipal de Educação de Americana. A criança ficará classificada obrigatoriamente  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         na região de abrangência do endereço residencial da família ou aquele indicado pelo responsável    <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         legal, mediante justificativa e comprovação. A criança ficará classificada em uma única região,  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         podendo ser atendida em qualquer uma uma das unidades da região, conforme disponibilidade.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        3) Todas as informações prestadas na inscrição deverão estar corretas e devidamente comprovadas  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         rcom osespectivos documentos. Informações não comprovadas serão desconsideradas podendo <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         implicar, no <u>CANCELAMENTO</u> da inscrição.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+                         4) Visando otimização no atendimento da demanda, a Secretaria de Educação de Americana poderá ,<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         rever e alterar a qualquer tempo, os grupos de escolas e bairros que integram a setorização regional.
+
+                     </b>
+            </font>
+
+
+
+
+  <fieldset>
+   <legend><font size=4>Dados da Criança</font></legend>
+   <table width="100%">
+       <font color ="red"  size="2"> Campos com <b><font size="5"> * </font></b> preenchimento obrigatório </font>
+       <tr>
+         <td><b><font color="red" size="5">*</font>Nome </b></td>
+         <td><%= f.text_field :nome, :size=>"38", :value => @criancas.nome %> <%session[:trans_grupo_id]= @criancas.grupo_id%></td>
+         <td><b><%= f.label :nascimento, 'Nascimento',:value => @criancas.nascimento %> </b></td>
+         <td><%= f.text_field :nascimento,:value => @criancas.nascimento.strftime("%d/%m/%Y") %> <% session[:dataN]=@criancas.nascimento %></td>
+       </tr>
+       <tr>
+         <td><b><font color="red" size="5">*</font>Mãe</b></td>
+         <td><%= f.text_field :mae, :size=>"38",:value => @criancas.mae%> </td>
+         <td><b>Pai </b></td>
+         <td><%= f.text_field :pai, :size=>"38",:value => @criancas.pai %></td>
+
+       </tr>
+       <tr>
+           <td colspan="2"> <b>Responsável Legal pela criança?</b>
+                <a  class="filtro_vagasS2"><%= f.radio_button :responsavel, true, :checked => true %></a>
+                <%= f.label :responsavel, "SIM", :value => "SIM" %>
+                <a  class="filtro_vagasN2"><%= f.radio_button :responsavel, false%></a>
+                <%= f.label :responsavel, "NÃO", :value => "NÃO" %>
+            </td>
+            <td colspan="3" class="botao2">
+                 <b>Nome:</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             <%= f.text_field :responsavel_n, :size => "15"%>&nbsp&nbsp
+                  <b>Parentesco</b><%= f.select :parentesco, GRAU, :include_blank => ''%>
+            </td>
+      </tr>
+
+      <tr>
+         <td><b>Endereço (residencial)  </b></td>
+         <td><%= f.text_field :endereco, :size=>"38",:value => @criancas.endereco %> <br/>&nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"3",:value => @criancas.numero %></td>
+         <td><b>Bairro</b></td>
+         <td><%= f.text_field :bairro, :size=>"38",:value => @criancas.bairro %></td>
+       </tr>
+       <tr>
+          <td><b>Complemento</b></td>
+          <td><%= f.text_field :complemento, :size=>"38",:value => @criancas.complemento %></td>
+          <td><b><font color="red" size="5">*</font>Fone</b></td>
+          <td><%= f.text_field :tel1,:size =>"13",:value => @criancas.tel1 %>&nbsp&nbsp
+              <b>Celular</b>&nbsp&nbsp<%= f.text_field :celular,:size =>"14",:value => @criancas.celular%>
+          </td>
+       </tr>
+       <tr>
+          <td><b>Fone(s) Recado</b></td>
+         <td><%= f.text_field :tel2, :size =>"36",:value => @criancas.tel2 %></td>
+         <td><b>Nome</b></td>
+         <td> <%= f.text_field :nomerecado, :size =>"38",:value => @criancas.nomerecado %>  </td>
+       </tr>
+        <tr>
+             <td colspan="2"> <b>Necessidade(s) Especial(s)?</b>
+                  <a  class="filtro_vagasS3"><%= f.radio_button :n_especial, true, :checked => false%></a>
+                  <%= f.label :n_especial, "SIM", :value => "SIM" %>
+                  <a  class="filtro_vagasN3"><%= f.radio_button :n_especial, false, :checked => true%></a>
+                  <%= f.label :n_especial, "NÃO", :value => "NÃO" %>
+              </td>
+              <td colspan="3" class="botao3">
+                   <b>Necessidade:</b>&nbsp&nbsp&nbsp
+                               <%= f.text_field :necessidade, :size =>"36",:value => @criancas.necessidade%>&nbsp&nbsp
+              </td>
+        </tr>
+
+               <tr>
+                    <td colspan="4" >
+                         &nbsp&nbsp&nbsp&nbsp<font size ="2" color="blue">
+                    <b id="pisca1"><u>ATENÇÃO:</u></b> Esta opção trata-se de transferência de criança entre as unidades educacionais do municipio de Americana<br/>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    NÃO SE APLICA QUANDO TRATAR-SE DE TRANSFERÊNCIA PROVINDA DE OUTROS LOCALIDADES .</font>
+         </td>
+       </tr>
+      <tr>
+         <td colspan="4">
+                    &nbsp&nbsp&nbsp   <b>Unidade que frequenta atualmente:</b> &nbsp <%= collection_select :crianca, :unidade_t, @unidade_regiao, :nome, :nome, :include_blank => 'É necessário selecionar uma opção' %>
+                    </td>
+              </tr>
+
+
+
+      </table>
+  </fieldset>
+
+ <fieldset>
+  <legend><font size=4>Dados da Inscrição</font></legend>
+  <table width="100%">
+      <tr>
+          <td colspan="6"><font size ="2" color="BLUE"><b><u>ATENÇÃO:</u></b> Indique um endereço para fins de classificação. É necessário comprovar e justificar o vínculo com este endereço.</font> </td>
+
+      </tr>
+       <tr>
+           <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"4" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <b>Vínculo:</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%>
+
+
+           </td>
+       </tr>
+       <tr>
+           <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"90"%> </td>
+       </tr>
+       <tr>
+         <td colspan="6"><b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"30"%>&nbsp&nbsp&nbsp&nbsp
+
+         <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
+          <b>Região:</b>&nbsp&nbsp
+         <%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'OBRIGATÓRIO SELECIONAR UMA OPÇÃO' %>
+             <%= observe_field 'crianca_regiao_id',
+                   :update => "listagem",
+                   :url    => { :action => 'lista_bairros' },
+                   :with   => 'crianca_regiao_id' %>
+             <font color="red"><b > &nbsp&nbsp<==&nbsp&nbsp <u>ATENÇÃO:</u></b><br/> <b id="pisca1" >
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+              Estas  regiões são definidas pela SEDUC. SELEÇÂO OBRIGATÓRIA. <br/>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+              APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS <br/>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              UNIDADES DA REGIÃO.</b>
+              </font>
+         </td>
+       </tr>
+       <tr> <td></td>
+           <td colspan="6"><div id="listagem"> </div></td>
+       </tr>
+
+      <tr>
+        <td colspan="6">
+          <fieldset> <legend><font size=4>Prioridades</font></legend>
+              <table width="100%"  >
+                  <tr>
+                      <td colspan="2">
+                          <font color =" red"><b> <u>ATENÇÃO:</u></b> Selecionar <u>somente uma opção SIM</u>. - Após selecionar a opção SIM aguardar o sistema retornar informações referentes a opção selecinada.</font>
+                      </td>
+                  </tr>
+               <tr>
+                   <td width="90%"><b>1) Filho(a) de Servidora Pública da <u>Prefeitura Municipal de Americana?</u></b> ======================================> </td>
+
+                   <td><% session[:sim]= 0 %><%= f.select :servidor_publico, (OPCAOSN).sort %>
+                           <%= observe_field 'crianca_servidor_publico',
+                              :update => "servidor",
+                              :url    => { :action => 'servidor_action' },
+                              :with   => 'crianca_servidor_publico' %>
+                    </td>
+               </tr>
+               <tr>
+                   <td colspan="6"><div id="servidor"> </div></td>
+               </tr>
+
+
+               <tr>
+                   <td width="90%"><b>2) Mãe apresentou carteira de trabalho devidamente assinada? &nbsp
+                          <b><u>OU </u></b> &nbsp documento/certidão que comprove ser  <br/>
+                          &nbsp&nbsp funcionária estatutária de órgão público (EXCETO Prefeitura Municipal de Americana) ========================> </td>
+                     <td><% session[:sim]= 0 %><%= f.select :trabalho, (OPCAOSN).sort %>
+                           <%= observe_field 'crianca_trabalho',
+                              :update => "trabalho",
+                              :url    => { :action => 'trabalho_action' },
+                              :with   => 'crianca_trabalho' %>
+                  </td>
+               </tr>
+               <tr>
+                   <td colspan="6"><div id="trabalho"> </div></td>
+               </tr>
+               <tr>
+                   <td width="90%"><% session[:sim]= 0 %><b>3) Mãe apresentou declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório?</b>  ====> </td>
+                    <td><%= f.select :declaracao, (OPCAOSN).sort %>
+                           <%= observe_field 'crianca_declaracao',
+                              :update => "declaracao",
+                              :url    => { :action => 'declaracao_action' },
+                              :with   => 'crianca_declaracao' %>
+                  </td>
+                </tr>
+               <tr>
+                   <td colspan="6"><div id="declaracao"> </div></td>
+               </tr>
+               <tr>
+                   <td width="90%"><% session[:sim]= 0 %><b>4) Mãe apresentou declaração do empregador PESSOA FÍSICA  com CPF e RG <br/>&nbsp&nbsp&nbsp <u>ou</u> declaração de trabalho AUTÔNOMO ?</b> &nbsp ===========================================================> </td>
+                   <td>      <%= f.select :autonomo, (OPCAOSN).sort %>
+                           <%= observe_field 'crianca_autonomo',
+                              :update => "autonomo",
+                              :url    => { :action => 'autonomo_action' },
+                              :with   => 'crianca_autonomo' %>
+                    </td>
+               </tr>
+               <tr>
+                   <td colspan="6"><div id="autonomo"> </div></td>
+               </tr>
+
+               <tr>
+                   <td colspan="6"><div id="transferencia"> </div></td>
+               </tr>
+
+            </table>
+          </fieldset>
+        </td>
+      </tr>
+     <tr>
+         <td width="2%" valign="top"><font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/observa.png", :size => "100x26"), "#inline_form_observacao", :class =>"inline" %></u></b></font></td>
+          <td colspan="3"><%=h @crianca.obs%><br/>
+            <div id="dados"> <%= render :partial => 'observacoes'  %></div></td>
+        </tr>
+
+     </table>
+
+  </fieldset>
+   <fieldset>
+  <legend><font size=4>IMPORTANTE</font></legend>
+    <table width="100%">
+      <tr>
+        <td colspan="2" ><font size ="3" color="RED"><b> &nbsp&nbsp&nbsp&nbsp
+                    <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp
+                        1)TODAS AS INFORMAÇÕES INVERÍDICAS E NÃO COMPROVADOS IMPLICARÃO NO <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           <u>CANCELAMENTO</u>  DA INSCRIÇÃO.</b>
+
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                    2) Assim que houver disponibilidade de vaga na região indicada, a Secretaria de Educação entrará   <br/>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp em contato com  o responsável pela criança.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                   3) É de responsabilidade dos pais e/ou responsável legal manter os dados atualizados no cadastro<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   junto à unidade escolar onde realizou a inscrição. Assim, deverá ser informada qualquer alteração<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   nos dados solicitados na inscrição, inclusive os telefones, pois será somente por meio de ligações<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   telefônicas que ocorrerá o contato no caso de surgimento de vaga. Deverá ser informada, também,<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   ainda qualquer alteração relativa ao trabalho&nbsp&nbsp da &nbsp&nbsp mãe,&nbsp&nbsp pois &nbsp&nbsp essa &nbsp&nbsp informação &nbsp&nbsp  é  &nbsp&nbsp critério de <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   classificação na lista de espera. Caso haja alteração no endereço indicado  na  inscrição  a criança  <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    será reclassificada de a cordo com a demanda na nova região
+        </td>
+      </tr>
+
+     <tr>
+         <td width="2%" valign="top"><b class="botao1" style="display:none">&nbsp&nbsp&nbsp&nbsp<font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/Vagas.png", :size => "100x26"), "#inline_form_vaga", :class =>"inline" %></u></b></font></td>
+         <td><div id="dados_vaga"> <%= render :partial => 'vagas'  %></div></td>
+        </tr>
+     </table>
+
+  </fieldset>
+
+ <br/>
+   <script>
+       $(document).ready(function()
+         {
+            $("#dropdownbutton5").click(function ()
+               {
+                  $("#menu5").slideToggle("high");
+               });
+         });
+   </script>
+
+ <br/>
+
+
+
+      <fieldset>
+       <table width="100%" >
+         <tr>
+           <td width="4%"align="left"><b><div id='Certeza'><%= f.submit 'Salvar' %></div></b></td>
+
+<%end%>
+            <td width="6%"align="left" ><%= button_to 'Consultar' ,consultas_criancas_path, :title => "Consultar" %></td>
+             <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+         </tr>
+       </table>
+      </fieldset>
+    
+  </font>
+
+</div>
+<br/>
+</div>
+
+    </div>
+    <%session[:transferencia]=1%>
+    <%session[:show]=0%>
+    <%session[:show_recadastramento]=0%>
+    <%session[:show_transferencia]=1%>
+</div>
+<br/>
+</div>
+
+    <%= render "form_observacao" %>
+    <%= render "form_vaga" %>

@@ -79,7 +79,7 @@
 
       <tr>
          <td><b>Endereço (residencial)  </b></td>
-         <td><%= f.text_field :endereco %> &nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"2" %></td>
+         <td><%= f.text_field :endereco %> &nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"3" %></td>
          <td><b>Bairro</b></td>
          <td><%= f.text_field :bairro, :size=>"38" %></td>
        </tr>
@@ -131,21 +131,39 @@
            <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"90"%> </td>
        </tr>
        <tr>
-         <td colspan="6"><b>Região:</b>&nbsp&nbsp&nbsp
+         <td colspan="6"><b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"30"%>&nbsp&nbsp&nbsp&nbsp
+
          <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
-             <%if !@crianca.regiao_id.nil?%>
-               <%=h @crianca.regiao.nome%>  &nbsp&nbsp&nbsp
-             <%end%>
-          <b>Bairro:</b>
-         <%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'Seleciona um bairro'%>
+          <b>Região:</b>&nbsp&nbsp
+         <%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'OBRIGATÓRIO SELECIONAR UMA OPÇÃO' %>
              <%= observe_field 'crianca_regiao_id',
                    :update => "listagem",
                    :url    => { :action => 'lista_bairros' },
                    :with   => 'crianca_regiao_id' %>
-             <font color="red"><b >&nbsp<==</b><b id="pisca1" >   Selecionar corretamente o bairro/região.</b>
+             <font color="red"><b > &nbsp&nbsp<==&nbsp&nbsp <u>ATENÇÃO:</u></b><br/> <b id="pisca1" >
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              
+              Estas  regiões são definidas pela SEDUC. SELEÇÂO OBRIGATÓRIA. <br/>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              
+              APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS <br/>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              UNIDADES DA REGIÃO.</b>
               </font>
          </td>
        </tr>
+
+
        <tr> <td></td>
            <td colspan="6"><div id="listagem"><% if !@crianca.unidade_ref.nil? %>
                                                  <b>Unidade mais próxima:</b> <%=  @crianca.unidade_ref %>
@@ -508,7 +526,6 @@
          </tr>
        </table>
       </fieldset>
-    </fieldset>
   </font>
 
 </div>

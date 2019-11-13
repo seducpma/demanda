@@ -1,0 +1,36 @@
+<div id="interno2">
+<% title "CRIANÇAS", :id =>"crianças" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>TRANSFERÊNCIA DE VAGA</strong></font><br/>
+   </div>
+  <div class="tabs">
+    <% form_remote_tag :url => transferenciacrianca_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>        <table width="100%" align="center" bgcolor="#DCDCDC" >
+        <table width="100%" align="center" >
+       <tr>
+         <td colspan="2"align="right"left"><font size="2"> <b>  Nome:</b></font>
+             <%= text_field_tag :searchtrans, params[:searchtrans]%>
+             <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
+         </td>
+       </tr>
+      </table>
+    <% end %>
+    <br/>
+    <hr/>
+    <div id="criancas"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+
+
+
+
+  <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <td align="left"><%= button_to 'Consultar', consulta_unidade_path, :title => "Consultar" %></td>
+    </tr>
+  </table>
+ </div>
+ </div>
+  <br/>
+</div>
+
