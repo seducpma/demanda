@@ -23,9 +23,9 @@
                      <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y %M:%M")%><br/></td>
                 <%end%>
                 <td align="left"><%=h crianca.nome%></td>
-                <td align="center"><%=h crianca.grupo.nome%></td>
-                <td align="center"><%=h crianca.regiao.nome%></td>
-                <td align="center"><%=h crianca.unidade_ref%></td>
+                <td align="center"><%if !crianca.grupo_id.nil?%><%=h crianca.grupo.nome%><%end%></td>
+                <td align="center"><%if !crianca.regiao_id.nil?%><%=h crianca.regiao.nome%><%end%></td>
+                <td align="center"> <%=h crianca.unidade_ref%></td>
                 <td align="left"><%=h crianca.status%></td>
                 <td align="left" ><%= link_to image_tag("/stylesheets/images/status.png"), {:action => "alteracao_status", :id =>crianca.id}, :target => '_blank', :title => "Status" %></td>
 

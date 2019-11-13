@@ -75,7 +75,7 @@
        <tr>
         <td> <font size ="3" color ="'blue"><b> Status da Inscrição:</b>  </font></td>
         <td> <font size ="3"><b><%= f.select :status, options_for_select(Crianca::Status) %></b> </font></td>
-        <td colspan="2"> <font size ="3"color ="'blue"><b>&nbsp Unidade Matricula:</b> <%= f.collection_select  :matriculado  , @unidades, :nome, :nome, :include_blank => 'Selecione opção se MATRICULADA'  %> </font></td>
+        <td colspan="2"><!-- <font size ="3"color ="'blue"> <b>&nbsp Unidade Matricula:</b> <%#= f.collection_select  :matriculado  , @unidades, :nome, :nome, :include_blank => 'Selecione opção se MATRICULADA'  %> </font>--></td>
       </tr>
               <tr >
                     <td align="left"><b>Trabalho Mãe : </b></td>
@@ -104,8 +104,8 @@
 
 
             <tr>
-              <td valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></td
-              <td valign="top" align="left" ><%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%> - <%=h @crianca.periodo%>
+              <td valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></td>
+              <td valign="top" align="left" ><%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%> 
                      </td>
               <td valign="top" align="left"><b>Unidades na região: </b></td>
               <td valign="top"align="left"><% for unidade in @unidade_regiao%>

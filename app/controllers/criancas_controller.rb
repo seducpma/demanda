@@ -723,13 +723,13 @@ end
 
 def consulta_altera_status
      if params[:type_of].to_i == 1
-        @criancas = Crianca.find(:all,:conditions => ["nome like ? ", "%" + params[:search1].to_s + "%"],:order => 'nome ASC')
+        @criancas = Crianca.find(:all,:conditions => ["nome like ? AND recadastrada != 0 ", "%" + params[:search1].to_s + "%"],:order => 'nome ASC')
         render :update do |page|
           page.replace_html 'criancas', :partial => "criancas_unidade_status"
         end
 
      else if params[:type_of].to_i == 2
-              @criancas = Crianca.find( :all,:order => 'nome ASC, unidade_id ASC')
+              @criancas = Crianca.find( :all,:conditions => ["recadastrada != 0 "],:order => 'nome ASC, unidade_id ASC')
              render :update do |page|
                 page.replace_html 'criancas', :partial => 'criancas_unidade_status'
 

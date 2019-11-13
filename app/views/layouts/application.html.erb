@@ -114,13 +114,13 @@ display: none;
               <li><a class="item-primary" href="#;">Inscrição</a>
                  <ul style="width:108px;">
                         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
-                           <!-- <li><a>Alterar</a>
+                            <li><a>Editar</a>
                                <ul>
                                   <li><%= link_to "Inscrição",consultas_criancas_path %></li>
                                   <li><%= link_to "Status",consulta_unidade_status_path %></li>
                                </ul>
                             </li>
--->
+
                         <%end%>
 <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC'))%>
                          <li><%= link_to "Cadastrar",new_crianca_path %></li> 
