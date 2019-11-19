@@ -775,7 +775,7 @@ def classifica_grupo
 
 end
 
-def classifica_regiao
+def classif_regiao
   w2=session[:regiao]=params[:crianca_regiao_id]
   t=0
 end

@@ -18,7 +18,7 @@
         <%= collection_select :crianca,:regiao_id, @regiao, :id, :nome, :include_blank => ' -- Selecionar -- ', :class=> "txt_busca2"  %>
          <%= observe_field 'crianca_regiao_id',
                :update => "criancas",
-               :url    => { :action => 'classifica_regiao' },
+               :url    => { :action => 'classif_regiao' },
                :with   => 'crianca_regiao_id' %>
  &nbsp&nbsp
 
