@@ -769,16 +769,16 @@ def classificao_unidade
  
 end
 
-def classifica_grupo
-  w1=session[:grupo]=params[:crianca_grupo_id]
-  t=0
+#def classifica_grupo
+#  w1=session[:grupo]=params[:crianca_grupo_id]
+#  t=0
 
-end
+#end
 
-def classif_regiao
-  w2=session[:regiao]=params[:crianca_regiao_id]
-  t=0
-end
+#def classif_regiao
+#  w2=session[:regiao]=params[:crianca_regiao_id]
+#  t=0
+#end
 
 
 #def consulta_classe
@@ -804,6 +804,9 @@ end
 def consulta_classe
 
     if params[:type_of].to_i == 1
+        w=session[:grupo]=params[:crianca][:grupo4_id]
+        w1=session[:regiao]=params[:crianca][:regiao4_id]
+        t=0
          @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA'  AND regiao_id=? AND grupo_id=? ",  session[:regiao], session[:grupo] ],:order => "servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
          render :update do |page|
            page.replace_html 'criancas', :partial => 'criancas_regiao'
