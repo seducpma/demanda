@@ -1,15 +1,13 @@
 <div id="interno2">
 <% title "GRAFICOS_por_unidade".singularize %>
+    <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>RELATÓRIO GERAL DE DEMANDA ESCOLAR</strong></font><br/>
+   </div>
 <div class="tabs">
- <table bgcolor="#DCDCDC" width="70%" align="center" >
-      <tr bgcolor="#DCDCDC" >
-      <td colspan="12">
-         <div id="caixa_titulo">
-             <font size="3"><strong>DEMANDA POR UNIDADE</strong></font><br/>
-         </div>
-
-      </td>
-    </tr>
+<fieldset>
+  <legend><font size=2><b>DEMANDA POR UNIDADE</b></font></legend>
+   <table bgcolor="#DCDCDC" width="100%" align="center" >
       <th colspan="12">
         <%= form_tag({ :method => 'post', :action => 'search_unidade' }, :id => 'graph-unit-form')%>
           <%= error_messages_for 'contact' %>
@@ -93,25 +91,16 @@
           <%else%>
               <%= @graph %>
           <%end%>
+         
       </td>
-    </tr>
-
-
-
-    <tr>
-
-        <td width="6%"align="left" ><a class="invisivel"><%= button_to '', home_path, {:method => "get"} %></a></td>
-
-        <td colspan="12"width="99%"align="right" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
-
-        
-
-
-  </tr>
-
-</table>
-<br/><br/>
-
+     </tr>
+   </table>
+ </fieldset>
+    <table>
+       <tr>
+         <td colspan="12"align="left"><b><%= link_to image_tag("/stylesheets/images/fechar.png"),home_path, :title => "Imprimir" %> </b></td>
+      </tr>
+   </table>
 <% session[:geral] = 1 %>
 
 </div>

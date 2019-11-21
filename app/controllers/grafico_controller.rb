@@ -43,7 +43,8 @@ class GraficoController < ApplicationController
                       "Frezarin: #{(Crianca.regiao_frezarin).length} - #{ (((Crianca.regiao_frezarin).length).to_f / (Crianca.na_demandaR.length).to_f * 100).round(2)} % ",
                       "Jd.Alvorada: #{(Crianca.regiao_jalvorada).length} - #{ (((Crianca.regiao_jalvorada).length).to_f / (Crianca.na_demandaR.length).to_f * 100).round(2)} % ",
                       "São Sâo Paulo: #{ (Crianca.regiao_spaulo).length} - #{ (((Crianca.regiao_spaulo).length).to_f / (Crianca.na_demandaR.length).to_f * 100).round(2)} % ",
-                      "Jd.Ipiranga: #{(Crianca.regiao_jipiranga).length} - #{ (((Crianca.regiao_jipiranga).length).to_f / (Crianca.na_demandaR.length).to_f * 100).round(2)} % ",])
+                      "Jd.Ipiranga: #{(Crianca.regiao_jipiranga).length} - #{ (((Crianca.regiao_jipiranga).length).to_f / (Crianca.na_demandaR.length).to_f * 100).round(2)} % "],
+       :bar_colors => '0A0EEA')
   end
 
 
@@ -71,7 +72,8 @@ class GraficoController < ApplicationController
                       "SEM CTPS : #{session[:s_ctps]} - #{ (session[:s_ctps].to_f / total.to_f * 100).round(2)} % ",
                       "Autonomo: #{session[:auto]} - #{ (session[:auto].to_f / total.to_f * 100).round(2)} % ",
                       "Transferência: #{session[:trans]} - #{ (session[:trans].to_f / total.to_f * 100).round(2)} % ",
-                      "NÃO Trabalha: #{session[:ntrab]} - #{ (session[:ntrab].to_f / total.to_f * 100).round(2)} % ",])
+                      "NÃO Trabalha: #{session[:ntrab]} - #{ (session[:ntrab].to_f / total.to_f * 100).round(2)} % "],
+       :bar_colors => '0A0EEA')
 
  end
 
@@ -92,7 +94,7 @@ end
     @graph = open_flash_chart_object(700,350,"/grafico/graph_por_unidade?unidade=#{session[:input]}",false,'/')
      @static_graph = Gchart.pie(
          :data =>[session[:svp], session[:ctps], session[:s_ctps], session[:auto], session[:trans], session[:ntrab]],
-          :title => "DEMANDA POR PRIORIDADE POR REGIÃOO - Crianças Cadastradas: #{total}",
+          :title => "DEMANDA POR PRIORIDADE POR REGIÃO - Crianças Cadastradas: #{total}",
           :size => '800x350',
           :format => 'image_tag',
           :labels => ["Servidor Municipal #{session[:svp]} - #{ (session[:svp].to_f / total.to_f * 100).round(2)} % ",
@@ -100,7 +102,8 @@ end
                       "SEM CTPS : #{session[:s_ctps]} - #{ (session[:s_ctps].to_f / total.to_f * 100).round(2)} % ",
                       "Autonomo: #{session[:auto]} - #{ (session[:auto].to_f / total.to_f * 100).round(2)} % ",
                       "Transferência: #{session[:trans]} - #{ (session[:trans].to_f / total.to_f * 100).round(2)} % ",
-                      "NÃO Trabalha: #{session[:ntrab]} - #{ (session[:ntrab].to_f / total.to_f * 100).round(2)} % ",])
+                      "NÃO Trabalha: #{session[:ntrab]} - #{ (session[:ntrab].to_f / total.to_f * 100).round(2)} % "],
+         :bar_colors => '0A0EEA')
 
       render :action => "grafico_prioridade_regiao"
   end
@@ -131,7 +134,8 @@ t=0
                       "SEM CTPS : #{session[:s_ctps]} - #{ (session[:s_ctps].to_f / total.to_f * 100).round(2)} % ",
                       "Autonomo: #{session[:auto]} - #{ (session[:auto].to_f / total.to_f * 100).round(2)} % ",
                       "Transferência: #{session[:trans]} - #{ (session[:trans].to_f / total.to_f * 100).round(2)} % ",
-                      "NÃO Trabalha: #{session[:ntrab]} - #{ (session[:ntrab].to_f / total.to_f * 100).round(2)} % ",])
+                      "NÃO Trabalha: #{session[:ntrab]} - #{ (session[:ntrab].to_f / total.to_f * 100).round(2)} % "],
+             :bar_colors => '0A0EEA')
 
 
 
@@ -161,7 +165,8 @@ t=0
                         "MaternalIB: #{(Crianca.m1b).length} -  #{(((Crianca.m1b).length.to_f / Crianca.na_demandaR.length.to_f)*100).round(2)} %",
                         "MaternalII: #{(Crianca.m2).length} -  #{(((Crianca.m2).length.to_f / Crianca.na_demandaR.length.to_f)*100).round(2)} %",
                         "NIVELI: #{(Crianca.n1).length} -  #{(((Crianca.n1).length.to_f / Crianca.na_demandaR.length.to_f)*100).round(2)} %",
-                        "NIVELII: #{(Crianca.n2).length} -  #{(((Crianca.n2).length.to_f / Crianca.na_demandaR.length.to_f)*100).round(2)} %",])
+                        "NIVELII: #{(Crianca.n2).length} -  #{(((Crianca.n2).length.to_f / Crianca.na_demandaR.length.to_f)*100).round(2)} %"],
+            :bar_colors => '0A0EEA')
 
   end
 
@@ -181,7 +186,8 @@ t=0
             :title => "Demanda Geral - Crianças Cadastradas: #{Crianca.total_demanda.length}",
             :size => '700x350',
             :format => 'image_tag',
-            :labels => ["Matriculadas: #{(Crianca.matriculada).length}", "Demanda: #{(Crianca.na_demanda).length}" , "Canceladas: #{(Crianca.cancelada).length}",])
+            :labels => ["Matriculadas: #{(Crianca.matriculada).length}", "Demanda: #{(Crianca.na_demanda).length}" , "Canceladas: #{(Crianca.cancelada).length}"],
+            :bar_colors => '0A0EEA')
     else
 
       @static_graph = Gchart.pie_3d(
@@ -189,7 +195,8 @@ t=0
             :title => "Demanda por Unidade: #{Crianca.nome_unidade(session[:input])} - #{(Crianca.todas_crianca_por_unidade(session[:input])).length}" ,
             :size => '700x350',
             :format => 'image_tag',
-            :labels => ["Matriculadas: #{(Crianca.matriculas_crianca_por_unidade(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_unidade(session[:input])).length}"])
+            :labels => ["Matriculadas: #{(Crianca.matriculas_crianca_por_unidade(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_unidade(session[:input])).length}"],
+            :bar_colors => '0A0EEA')
 
     end
       render :layout => "impressao"
@@ -230,7 +237,8 @@ end
                          "Maternal IB: #{m1b} -  #{((m1b.to_f / total.to_f)*100).round(2)} %",
                          "Maternal II: #{m2} -  #{((m2.to_f / total.to_f)*100).round(2)} %",
                          "Nível I: #{n1} -  #{((n1.to_f / total.to_f)*100).round(2)} %",
-                         "Nível II: #{n2} -  #{((n2.to_f / total.to_f)*100).round(2)} %", ])
+                         "Nível II: #{n2} -  #{((n2.to_f / total.to_f)*100).round(2)} %"],
+            :bar_colors => '0A0EEA')
 
      
       render :action => "grafico_demanda_unidade"
@@ -248,7 +256,8 @@ end
         :title => "Demanda por Regiao: #{Crianca.nome_regiao(session[:input])} - #{(Crianca.todas_crianca_por_regiao(session[:input])).length}" ,
         :size => '600x300',
         :format => 'image_tag',
-        :labels => ["Matriculadas: #{(Crianca.demanda_por_regiao(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_regiao(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_regiao(session[:input])).length}"])
+        :labels => ["Matriculadas: #{(Crianca.demanda_por_regiao(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_regiao(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_regiao(session[:input])).length}"],
+        :bar_colors => '0A0EEA')
 
       render :action => "grafico_demanda_regiao"
   end
