@@ -3,7 +3,7 @@
 
 
 <%  if session[:vaga_id].nil? %>
-   <font size="3" color="red"> <b><u>ATENÇÂO:</u> NÃO EXISTE VAGAS PARA ESTA CLASSE NESTA UNIDADE, <u>clicar no botão FECHAR</u></b></font>
+   <font size="3" color="red"> <b><u>ATENÇÃO:</u> NÃO EXISTE VAGAS PARA ESTA CLASSE NESTA UNIDADE, <u>clicar no botão FECHAR</u></b></font>
 <%else if @crianca.empty? %>
        <font size="3" color="red"> <b><u>ATENÇÃO:</u> NÃO EXISTE DEMANDA PARA ESTA VAGA NESTA UNIDADE, <u>clicar no botão FECHAR</u></b></font>
    <%else%>
