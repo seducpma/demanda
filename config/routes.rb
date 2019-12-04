@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :vagas,:collection => { :consultas => :get}
+  map.resources :vagas,:collection => { :consultas => :get, :salvar_matricula => :get}
 
   map.resources :observacao_criancas
 

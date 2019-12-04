@@ -193,22 +193,22 @@ end
 def grupo_id
     session[:vaga_grupo]=(params[:vaga_grupo_id]).to_i
     session[:vaga_unidade_nome]
+
+
+
+
+
+
     @unidade=Unidade.find(:all, :conditions => ['nome =?', session[:vaga_unidade_nome]])
     session[:quant_vaga]= (Vaga.find(:all, :conditions => ['unidade_id =? AND grupo_id=?  AND crianca_id is null', session[:vaga_unidade_id], session[:vaga_grupo]])).count
     session[:regiao_id]= @unidade[0].regiao_id
-
     @criancasP = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND ( servidor_publico = 1 OR trabalho = 1 OR declaracao=1 OR autonomo = 1  OR transferencia = 1)  AND unidade_ref = ?  AND grupo_id = ? AND recadastrada!=0",  session[:vaga_unidade_nome], session[:vaga_grupo] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, transferencia, autonomo DESC, created_at ASC")
-
     @criancasR = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND regiao_id = ?  AND grupo_id = ? AND recadastrada!=0 AND unidade_ref != ? ", session[:regiao_id],  session[:vaga_grupo],  session[:vaga_unidade_nome] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
-
     @criancasU = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND unidade_ref = ?  AND grupo_id = ? AND recadastrada!=0",  session[:vaga_unidade_nome], session[:vaga_grupo] ],:order => "regiao_id DESC, servidor_publico DESC, trabalho DESC, declaracao DESC, autonomo DESC, transferencia DESC, created_at ASC")
-
     @criançastt= (@criancasR + @criancasU) - @criancasP
-
     @divisao=Crianca.find(:all,  :conditions => ["id = 1"])
     @divisao[0].nome="========> NA REGIÃO <========="
     @divisao[0].id = 0
-
     @criancasT =  @criancasU  + @divisao +(@criancasR - @criancasU)
 
     # testa para exibir mensagem no _crianca_vaga <=========================================
@@ -231,6 +231,36 @@ def grupo_id
      render :partial => 'crianca_vaga'
 
 end
+
+  def salvar_matricula
+      vaga_n=[0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      n_vagas=(Vaga.find(:all, :conditions => ['unidade_id =? AND grupo_id=?  AND crianca_id is null', session[:vaga_unidade],session[:vaga_grupo]])).count
+     @vagas=Vaga.find(:all, :conditions => ['unidade_id =? AND grupo_id=?  AND crianca_id is null', session[:vaga_unidade],session[:vaga_grupo]],:readonly=>false)
+     session[:unidade]= Unidade.find(session[:vaga_unidade]).nome
+     session[:classe]=Grupo.find(session[:vaga_grupo]).nome
+     i=1
+     while i < n_vagas+1
+        for vaga in @vagas
+          vaga_n[i]= vaga.id
+          i=1+i
+        end
+     end
+    @criancas=  Crianca.find(params[:criancas_ids])
+    v=1
+    for crianca in @criancas
+                @vaga=Vaga.find(vaga_n[v])
+                @vaga.status ='MATRICULADA'
+                @vaga.crianca_id= crianca.id
+                crianca.vaga_id = vaga_n[v]
+                crianca.status ='MATRICULADA'
+                v=v+1
+                crianca.save
+                @vaga.save
+  
+
+        end
+
+  end
 
 
 

@@ -1,0 +1,46 @@
+<div id="interno3">
+<% title "EMPRESA PARCEIRA" %>
+<div class ="tabs">
+    <font size="5"><strong>CRIANÇAS MATRICULAS </strong></font></br>
+      <hr>
+       <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC"  width="100%">
+         <td>
+         <fieldset><legend><font  size=3> Matricula</font></legend>
+           <table  width="100%">
+             <tr bgcolor="#F5F5F5" >
+             <td  width="10%"><strong>Unidade: </strong></td>
+             <td><%= session[:unidade] %></td>
+            </tr>
+            <tr bgcolor="#F5F5F5"  width="100%">
+             <td  width="10%"><strong>Classe: </strong></td>
+             <td><%=h session[:classe]%></td>
+            </tr>
+            <tr bgcolor="#F5F5F5">
+                <td valign="top"><strong>Matriculados:</strong></td>
+             <td> <% for crianca in @criancas%>
+                      - <%= crianca.nome %> <br/>
+                  <%end%>
+             </td>
+            </tr>
+             <tr>
+                 <td colspan="2"><strong> Nª Vagas ainda disponíveis:</strong> <%= (Vaga.find(:all, :conditions => ['unidade_id =? AND grupo_id=?  AND crianca_id is null', session[:vaga_unidade],session[:vaga_grupo]])).count %></td>
+
+            </tr>
+
+           </table>
+          </fieldset>
+        </td>
+      </tr>
+       <table>
+          <tr>
+            <td width="6%"align="left" > <%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+            <td  align="left" > <%= button_to 'Matricular', preenchimento_path %></td>
+            
+          </tr>
+        </table>
+</div>
+<br/>
+</div>
+
+

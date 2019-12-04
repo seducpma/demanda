@@ -1,4 +1,4 @@
-<table>
+<table >
         <%if session[:vaga_id] == 0%>
              <%if   session[:crianca_id]==0%>
                 <tr>
@@ -9,7 +9,7 @@
               <%else%>
                 <tr>
                     <td>
-                       <font size="3" color="red"><b><u>ATENÇÃO:</u> Não existe <u>VAGA CADASTRADA</u> disponível para esta classe nesta unidade.   <br/> Clicar em FECHAR    </b></font>
+                       <font size="3" color="red"><b><u>ATENÇÃO:</u> Não existe <u>VAGA CADASTRADA</u> disponível para esta classe nesta unidade.   <br/> Clicar em FECHAR <%= button_to "Cadastrar VAGA",new_vaga_path %>   </b></font>
                     </td>
                 </tr>
              <%end%>
@@ -24,12 +24,12 @@
 
             <%else%>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <font size="2" color="red"><b><u>ATENÇÃO:</u> 1) A lista está divida em duas partes,  a 1ª é a demanda <br/>
                                                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                                         da unidade escolar, a 2ª é a demanda da região.<br/>
                                                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                                      2) As listas já estão calssificadas na ordem de promiridade. <br/>
+                                                                      2) As listas já estão classificadas na ordem de promiridade. <br/>
                                                                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                                       3) Quantidade de vagas disponíveis (cadastradas): <%=session[:quant_vaga]%>.</b></font>
                     </td>
@@ -37,14 +37,48 @@
 
                 <tr>
                     <td>
-                             <%= collection_select :vaga, :crianca_id , @criancasT, :id, :nome, :include_blank => ' -- Selecione -- ' %>
-                                               <%= observe_field :vaga_crianca_id,
+                             <%#= collection_select :vaga, :crianca_id , @criancasT, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+                                               <%#= observe_field :vaga_crianca_id,
                                                   :with => :vaga_crianca_id,
                                                    :url => { :action => 'crianca_id'}%>
+
+                        <%form_tag salvar_matricula_vagas_path, :method => :get do %>
+                               <% for crianca in @criancasT %>
+                        <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: black "bgcolor="#F5F5F5">
+                                    <tr>
+                                        <% if  crianca.nome =='========> NA REGIÃO <========='%>
+                                             <td colspan="2" align="center" bgcolor="#DCDCDC"><b><%=h crianca.nome %></b></td>
+                                        <%else%>
+                                             <td width ="1px" align="center"><%= check_box_tag "criancas_ids[]",crianca.id %></td>
+                                             <td><%=h crianca.nome %></td>
+                                        <%end%>
+
+
+                                        <!--
+                                       <td width ="1px" align="center">
+                                           <%# if  crianca.nome !='========> NA REGIÃO <========='%>
+                                                <%#= check_box_tag "crianca_ids[]",crianca.id %>
+                                           <%#else%>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                           <%#end%>
+                                       </td>
+                                       <td><%=h crianca.nome %></td>
+                                      -->
+                                   </tr>
+                                 </table>
+                              <%end %>
+                            <table>
+                                <tr>
+                                   <td colspan="2" ><%= submit_tag "Salvar", :class => "btn_filtrar" %></td>
+                               </tr>
+                           </table>
+                        <%end%>
 
                     </td>
                 </tr>
 
             <%end%>
         <%end%>
+
+
 </table>

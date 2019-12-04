@@ -56,7 +56,7 @@
          <table>
            <tr>
 
-              <td width="4%"><%= button_to 'Salvar', :action=> "salvar" %></td>
+              <td width="4%"><%#= button_to 'Salvar', :action=> "salvar" %> <%= submit_tag "Salvarxxxx", :class => "btn_filtrar" %></td>
 
              <td  width="4%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
              <td ><%= button_to 'Matricular', preenchimento_path, {:method => "get"}  %></td>

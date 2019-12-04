@@ -327,15 +327,6 @@ end
 
       end
 
-        #if params[:recadastrarX].to_i == 1
-
-
-        #else
-         #  @crianca.data_rec= Time.now
-         #  @crianca.local_rec= current_user.unidade.nome
-         #end
-          # ^^  após recadastramento comentar estes comandos ^^
-          
    
     hoje = Date.today.to_s
     final = '2012-07-01'
@@ -362,31 +353,29 @@ if  (data <= Date.today.to_s and data >= DATAB1)
            end
        end
 
-        if params[:recadastrarX].to_i == 1
+  #      if params[:recadastrarX].to_i == 1
+     #   else
+     #     if session[:recadastrada]== 'recadastrar'
+     #              @crianca.recadastrada = 1
+     #              @crianca.data_rec= Time.now
+     #              @crianca.local_rec= current_user.unidade.nome
+    #               session[:recadastrada]= 0
+   #                @crianca.save
+   #           session[:recadastrada]= 0
+   #       else  if (session[:recadastrada]== 'edit') and (@crianca.recadastrada != 2)
+   #                @crianca.recadastrada = 1
+   #                @crianca.data_rec= Time.now
+   #                @crianca.local_rec= current_user.unidade.nome
+   #                session[:recadastrada]= 0
+   #                @crianca.save
 
-
-        else
-          if session[:recadastrada]== 'recadastrar'
-                   @crianca.recadastrada = 1
-                   @crianca.data_rec= Time.now
-                   @crianca.local_rec= current_user.unidade.nome
-                   session[:recadastrada]= 0
-                   @crianca.save
-              session[:recadastrada]= 0
-          else  if (session[:recadastrada]== 'edit') and (@crianca.recadastrada != 2)
-                   @crianca.recadastrada = 1
-                   @crianca.data_rec= Time.now
-                   @crianca.local_rec= current_user.unidade.nome
-                   session[:recadastrada]= 0
-                   @crianca.save
-
-             end
-          end
-        end
-
+  #           end
+  #        end
+  #      end
+  # ^^  após recadastramento comentar estes comandos ^^
 
       wc1=@crianca.declaracao
-      t=0
+
       respond_to do |format|
       if @crianca.update_attributes(params[:crianca])
         if  session[:sim]== 1

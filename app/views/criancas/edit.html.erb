@@ -3,7 +3,7 @@
 <% title "CRIANCAS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong> RECADASTRAMENTO</strong></font><br/>
+     <font size="3"><strong> ALTERAÇÃO DE CADASTRO</strong></font><br/>
  </div>
 
 
@@ -393,6 +393,7 @@
                        </tr>
 
                  <%end%>
+<!--
                 <% if @crianca.transferencia ==false %>
                        <tr>
                            <td width="90%"><b> 5)Transferência de criança entre unidades educacionais do Municipio ?</b> &nbsp ==================================> </td>
@@ -438,7 +439,7 @@
                                                   </div></td>
                        </tr>
                  <%end%>
-
+-->
             </table>
           </fieldset>
         </td>
@@ -506,11 +507,11 @@
                });
          });
    </script>
-
+<!--
      <fieldset>
-        <%= radio_button_tag(:recadastrarX, "1")%> <font size="3"><b> NÃO RECADASTRAMENTO</b></font>
+        <%#= radio_button_tag(:recadastrarX, "1", :checked => 'true' ) %> <font size="3"><b> NÃO RECADASTRAMENTO</b></font>
      </fieldset>
-
+-->
       <fieldset>
        <table width="100%" >
          <tr>
