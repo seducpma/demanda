@@ -35,6 +35,43 @@
                             <td  colspan="4"> &nbsp&nbsp <b> </b></td>
                         </tr>
        </table>
+
+    <br/>
+          <table width="80%"border="1" cellspacing="0" cellpadding="1"  align="center"   >
+         <%quant=0%>
+        <% @vagasD.each do |vaga| %>
+
+          <%quant=quant+1%>
+         <% end %>
+        <tr>
+            <td colspan="4">  <div id="caixa_titulo">
+                                <font size="3"><strong>VAGAS DISPONÍVEIS NA UNIDADE</strong></font><br/>
+                              </div></td>
+        </tr>
+
+                    <tr  bgcolor="#F5F5F">
+                        <td width=" 25%" align="center"><center><b>Grupos</b></center></td>
+                        <td width=" 5%" align="center"><center><b>Vagas</b></center></td>
+                        <td width=" 35%"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b> Unidade </b></td>
+                        <td width=" 35%"> <b>&nbsp&nbsp&nbsp Região </b></td>
+
+
+                    </tr>
+                    <% @vagas_unidade.each do |vagaU| %>
+                        <tr bgcolor="#DCDCDC">
+                            <td align="center"><center><%=vagaU.grupo.nome%></center></td>
+                            <td align="center"><center><%=vagaU.quantidade%></center></td>
+                            <td> - <%= truncate(vagaU.unidade.nome,:length => 25,:omission => "..." )%> </td>
+                            <td >  <%= truncate(vagaU.unidade.regiao.nome,:length => 25,:omission => "... " )%> </td>
+
+
+                        </tr>
+                    <%end%>
+                        <tr> <td> &nbsp <b> TOTAL DE VAGAS  </b></td>
+                            <td align="center"><b> <%=  quant%></b></td>
+                            <td  colspan="4"> &nbsp&nbsp <b> </b></td>
+                        </tr>
+       </table>
    <br/>
         <%quant=0%>
         <table bgcolor="#DCDCDC" width="60%"align="center" border="1" cellspacing="0" cellpadding="1" >
