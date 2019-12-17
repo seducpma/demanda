@@ -64,11 +64,23 @@
               <td valign="top"><b>Observações</b></td>
               <td colspan="5"> <%=h @crianca.obs%> <br/><%= render :partial => 'observacoes'  %></td>
             </tr>
-
+            <% if @crianca.irmao == true%>
+                <tr bgcolor="#F5F5F5">
+                  <td colspan="6"valign="top"><b>ATENÇÃO: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Possui irmão matriculado na unidade: </b> <%=h @crianca.unidade_i%> </td>
+                  <td colspan="5"> <%=h @crianca.obs%> <br/><%= render :partial => 'observacoes'  %></td>
+                </tr>
+             <%end%>
           </table>
          </fieldset>
        <fieldset><legend><font  size=3><b> Dados da inscrição</b></font></legend>
          <table width="100%">
+             <%if @crianca.transferencia == true and @crianca.status == 'NA_DEMANDA'  %>
+             <tr ><td colspan="6"> <font size="2" color="red">
+                       <b>Inscrição nº<%=h "#{@crianca.id}" %></b> - 
+                       solicitação de transferêncida da unidade <b><%=h "#{@crianca.unidade_t}" %></b> para região <%=h "#{@crianca.regiao.nome}" %></font>
+                         </td>
+                 </tr>
+             <%end%>
             <tr bgcolor="#F5F5F5">
                <td align="left" width="18%"><b>Endereço Indicado:</b></td>
                <td colspan="3" align="left"><%=h @crianca.end_indicacao %> - <%=h @crianca.num_indicacao %></td>
@@ -141,7 +153,7 @@
                <td align="left"  colspan="6"> <b>Dia/Hora Inscrição:</b>
              <%=h @crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%>(<%=h @crianca.unidade.nome%>)
              <% if  @crianca.recadastrada == 1%>
-                  &nbsp&nbsp - <b>Recadastramento:</b><%=h @crianca.data_rec.strftime("%e/%m/%Y - %H:%M horas")%>( <%=h @crianca.local_rec%>)
+                  &nbsp&nbsp - <b>Recadastramento:<% if !@crianca.data_rec.nil? %></b><%=h @crianca.data_rec.strftime("%e/%m/%Y - %H:%M horas")%>( <%=h @crianca.local_rec%>)<%end%>
              <%end%>
              &nbsp&nbsp - <b>Status:</b><%=h @crianca.status%>
 <!--                 <%#if @crianca.status == 'MATRICULADA'%>

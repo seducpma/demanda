@@ -47,10 +47,15 @@
                         <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: black "bgcolor="#F5F5F5">
                                     <tr>
                                         <% if  crianca.nome =='========> NA REGIÃO <========='%>
-                                             <td colspan="2" align="center" bgcolor="#DCDCDC"><b><%=h crianca.nome %></b></td>
+                                             <td colspan="2" align="center" bgcolor="#DCDCDC"><b><%=h crianca.nome %>&nbsp&nbsp&nbsp&nbsp 
+                                                        
+                                                 </b>
+                                             </td>
                                         <%else%>
                                              <td width ="1px" align="center"><%= check_box_tag "criancas_ids[]",crianca.id %></td>
-                                             <td><%=h crianca.nome %></td>
+                                             <td><%=h crianca.nome %>&nbsp&nbsp&nbsp&nbsp 
+                                                        <%if crianca.irmao == true%> <font color="red"> (Irmão - <%=h crianca.unidade_i%>)</font><%end%>
+                                             </td>
                                         <%end%>
 
 

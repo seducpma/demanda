@@ -68,9 +68,9 @@
           </table>
          </fieldset>
        <fieldset><legend><font  size=3><b> Dados da inscrição</b></font></legend>
-         <table width="100%">
+         <table width="100%"><font size="3" color="red">
              <b>Inscrição nº<%=h "#{@crianca.id}" %></b> - Nova demanda para inscrição nº: <b><%=h "#{@criancas.id}" %></b> -
-                solicitação de transferêncida da unidade <b><%=h "#{@crianca.unidade_t}" %></b> para região <%=h "#{@crianca.regiao.nome}" %>(<%=h "#{@crianca.id}" %>)
+                solicitação de transferêncida da unidade <b><%=h "#{@crianca.unidade_t}" %></b> para região <%=h "#{@crianca.regiao.nome}" %></font>
             <tr bgcolor="#F5F5F5">
                <td align="left" width="18%"><b>Endereço Indicado:</b></td>
                <td colspan="3" align="left"><%=h @crianca.end_indicacao %> - <%=h @crianca.num_indicacao %></td>

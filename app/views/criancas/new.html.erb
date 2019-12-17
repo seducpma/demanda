@@ -119,6 +119,14 @@
                                <%= f.text_field :necessidade, :size =>"36"%>&nbsp&nbsp
               </td>
         </tr>
+         <tr>
+                   <td colspan="3"><b>Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b>
+                   &nbsp&nbsp <% session[:sim]= 0 %><%= f.select :irmao , (OPCAOSN).sort %> </td>
+
+                    <td colspan="3" class="botao6">
+                         <b>Unidade:</b> <%= f.collection_select  :unidade_i, @unidades, :nome, :nome, :include_blank => ' --- Selecione opção ---'  %>&nbsp&nbsp
+                    </td>
+              </tr>
 
       </table>
   </fieldset>
