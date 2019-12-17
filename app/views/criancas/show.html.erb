@@ -72,12 +72,12 @@
              <%end%>
           </table>
          </fieldset>
-       <fieldset><legend><font  size=3><b> Dados da inscrição</b></font></legend>
+       <fieldset><legend><font  size=3><b> Dados da inscrição</b>&nbsp&nbsp <font color="blue"> (<%=@crianca.status%>)&nbsp&nbsp</font></font></legend>
          <table width="100%">
              <%if @crianca.transferencia == true and @crianca.status == 'NA_DEMANDA'  %>
              <tr ><td colspan="6"> <font size="2" color="red">
                        <b>Inscrição nº<%=h "#{@crianca.id}" %></b> - 
-                       solicitação de transferêncida da unidade <b><%=h "#{@crianca.unidade_t}" %></b> para região <%=h "#{@crianca.regiao.nome}" %></font>
+                       solicitação de transferêncida da unidade <b><%=h "#{@crianca.unidade_t}" %></b> para região <%=h "#{@crianca.regiao.nome}" %> (<%=h "#{@crianca.unidade_ref}" %>)</font>
                          </td>
                  </tr>
              <%end%>
