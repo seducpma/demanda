@@ -19,13 +19,13 @@
                    <%if @crianca.n_especial == false%>
                         <td colspan="3" align="left">NÃO </td>
                     <%else%>
-                         <td colspan="3" align="left">SIM</td>
+                         <td colspan="3" align="left"> <font color="red"> SIM </font></td>
                    <%end%>
                <td align="left"><b>Necessidade:</b></td>
                    <%if @crianca.necessidade.empty? %>
                         <td colspan="3" align="left"> ---- xxx ---- </td>
                     <%else%>
-                        <td align="left">  <%=h @crianca.necessidade%>xxx</td>
+                        <td align="left"> <font color="red"> <%=h @crianca.necessidade%></font></td>
                    <%end%>
             </tr>
             <tr bgcolor="#F5F5F5">
@@ -64,6 +64,12 @@
               <td valign="top"><b>Observações</b></td>
               <td colspan="5"> <%=h @crianca.obs%> <br/><%= render :partial => 'observacoes'  %></td>
             </tr>
+            <% if @crianca.irmao == true%>
+                <tr bgcolor="#F5F5F5">
+                  <td colspan="6"valign="top"><font color="red"><b>ATENÇÃO: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Possui irmão matriculado na unidade: </b> <%=h @crianca.unidade_i%> </font></td>
+
+                </tr>
+             <%end%>
 
           </table>
          </fieldset>
