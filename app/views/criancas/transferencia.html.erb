@@ -105,15 +105,18 @@
 
                <tr>
                     <td colspan="4" >
-                         &nbsp&nbsp&nbsp&nbsp<font size ="2" color="blue">
-                    <b id="pisca1"><u>ATENÇÃO:</u></b> Esta opção trata-se de transferência de criança entre as unidades educacionais do municipio de Americana<br/>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         &nbsp&nbsp&nbsp&nbsp<font size ="3" color="blue">
+                    <b id="pisca1"><u>ATENÇÃO:</u></b> Esta opção trata-se de transferência de criança entre as unidades educacionais do municipio de Americana . 
+                   
                     NÃO SE APLICA QUANDO TRATAR-SE DE TRANSFERÊNCIA PROVINDA DE OUTROS LOCALIDADES .</font>
          </td>
        </tr>
       <tr>
          <td colspan="4">
-                    &nbsp&nbsp&nbsp   <b>Unidade que frequenta atualmente:</b> &nbsp <%= collection_select :crianca, :unidade_t, @unidade_regiao, :nome, :nome, :include_blank => 'É necessário selecionar uma opção' %>
+     
+     <%  @unidade_regiao= Unidade.find(:all , :joins=> 'JOIN vagas on  vagas.unidade_id = unidades.id JOIN criancas on  vagas.crianca_id = criancas.id ',   :conditions=>['vagas.crianca_id = ? AND unidades.ativo = 1 AND ( unidades.tipo = 1 or unidades.tipo = 3 or unidades.tipo = 7 or unidades.tipo = 8) AND criancas.recadastrata = 1', session[:id_anterior].to_i] )%>
+                <%#  @unidade_regiao= Unidade.find(:all , :joins=> 'JOIN vagas on  criancas.vaga_id = vagas.id', :conditions=>['vagas.unidade_id =? AND unidades.ativo = 1 AND ( unidades.tipo = 1 or unidades.tipo = 3 or unidades.tipo = 7 or unidades.tipo = 8)',session[:id_anterior]])%>
+                 &nbsp&nbsp&nbsp <font size ="3" color="blue"> => </font> <font size ="3" > <b>Unidade que frequenta atualmente:</b> &nbsp <%= collection_select :crianca, :unidade_t, @unidade_regiao, :nome, :nome, :include_blank => 'É necessário selecionar uma opção' %></font>
                     </td>
               </tr>
 

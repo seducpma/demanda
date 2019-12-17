@@ -254,8 +254,10 @@ end
                 @vaga=Vaga.find(vaga_n[v])
                 @vaga.status ='MATRICULADA'
                 @vaga.crianca_id= crianca.id
+                x1=@vaga.unidade_id
                 crianca.vaga_id = vaga_n[v]
                 crianca.status ='MATRICULADA'
+                crianca.matriculado = Unidade.find(@vaga.unidade_id).nome
                 v=v+1
                 crianca.save
                 @vaga.save
