@@ -8,6 +8,7 @@
             <th width="8%">Nasc/o</th>
              <th width="20%">Mãe</th>
             <th width="5%">Status</th>
+            <th width="5%">Unidade</th>
             <th width="5%"></th>
 
 
@@ -30,6 +31,7 @@
                 <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
                 <td align="left"><%=h crianca.mae%></td>
                 <td align="left"><%=h crianca.status%> </td>
+                <td align="left"><%=h crianca.unidade.nome%> </td>
                 <td> <%= button_to"Transferir",  {:action => "transferencia", :id =>crianca}, :target => '_blank', :title => "Editar" %></td>
                  
           </tr>

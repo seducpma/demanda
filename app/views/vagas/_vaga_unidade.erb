@@ -2,13 +2,19 @@
     
       <table width="80%"border="1" cellspacing="0" cellpadding="1"  align="center"   >
          <%quant=0%>
+         <%quant1=0%>
         <% @vagas.each do |vaga| %>
-
           <%quant=quant+1%>
          <% end %>
+
+        <% @vagasD.each do |vaga| %>
+
+          <%quant1=quant1+1%>
+         <% end %>
+
         <tr>
             <td colspan="4">  <div id="caixa_titulo">
-                                <font size="3"><strong>VAGA NA UNIDADE</strong></font><br/>
+                                <font size="3"><strong>VAGAS CADASTRADAS NA UNIDADE</strong></font><br/>
                               </div></td>
         </tr>
 
@@ -20,7 +26,7 @@
                         
                         
                     </tr>
-                    <% @vagas_unidade.each do |vagaU| %>
+                    <% @vagas_unidadet.each do |vagaU| %>
                         <tr bgcolor="#DCDCDC">
                             <td align="center"><center><%=vagaU.grupo.nome%></center></td>
                             <td align="center"><center><%=vagaU.quantidade%></center></td>
@@ -32,17 +38,13 @@
                     <%end%>
                         <tr> <td> &nbsp <b> TOTAL DE VAGAS  </b></td>
                             <td align="center"><b> <%=  quant%></b></td>
-                            <td  colspan="4"> &nbsp&nbsp <b> </b></td>
+                            <td> <b> Vagas com Matriculada:</b> <%=  quant - quant1%></td>
+                            <td> <b>Vagas disponíveis:</b> <%=quant1%></td>
                         </tr>
        </table>
 
     <br/>
           <table width="80%"border="1" cellspacing="0" cellpadding="1"  align="center"   >
-         <%quant=0%>
-        <% @vagasD.each do |vaga| %>
-
-          <%quant=quant+1%>
-         <% end %>
         <tr>
             <td colspan="4">  <div id="caixa_titulo">
                                 <font size="3"><strong>VAGAS DISPONÍVEIS NA UNIDADE</strong></font><br/>
@@ -68,7 +70,7 @@
                         </tr>
                     <%end%>
                         <tr> <td> &nbsp <b> TOTAL DE VAGAS  </b></td>
-                            <td align="center"><b> <%=  quant%></b></td>
+                            <td align="center"><b> <%=  quant1%></b></td>
                             <td  colspan="4"> &nbsp&nbsp <b> </b></td>
                         </tr>
        </table>

@@ -120,10 +120,7 @@ display: none;
                                   <li><%= link_to "Status",consulta_unidade_status_path %></li>
                                </ul>
                             </li>
-
-                        <%end%>
-                         <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC'))%>
-                              <li><%= link_to "Cadastrar",new_crianca_path %></li>
+                            <li><%= link_to "Cadastrar",new_crianca_path %></li>
                          <%end%>
                         <li><a>Consultar</a>
                            <ul>
@@ -133,11 +130,11 @@ display: none;
                               <li><%= link_to "Status",consulta_status_path %></li>
                            </ul>
                         </li>
-                         <% if (current_user.has_role?('admin'))%>
+                         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
                              <li><%= link_to "Matricular",preenchimento_path %></li>
                           <!--<li><%#= link_to "Recadastrar",recadastrar_consultas_path %></li>-->
                          <% end%>
-                          <% if (current_user.has_role?('admin')or current_user.has_role?('SEDUC'))%>
+                          <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
                              <li><%= link_to "Transferencia",transferencia_crianca_criancas_path %></li>
                           <%end%>
 
@@ -164,7 +161,7 @@ display: none;
                            <li><%= link_to "Transferencias",transferencias_path %></li>
                            </ul>
               </li>
-              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC'))%>
+              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#;">Vagas</a>
                  <ul style="width:108px;">

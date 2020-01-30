@@ -1,3 +1,11 @@
+<%if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then %>
+     <% @unidades = Unidade.find(:all, :conditions => ['regiao_id > 99 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'], :order=> 'tipo,nome') %>
+<% else %>
+     <% @unidades = Unidade.find(:all, :conditions => ['regiao_id > 99 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8) AND id= ? ', current_user.unidade_id ], :order=> 'tipo,nome') %>
+ <% end %>
+
+
+
 <table width="100%" align="center" >
    <tr>
      <td colspan="2"align="right"><font size="2"> <b class="label_busca2">Unidade:</b></font>

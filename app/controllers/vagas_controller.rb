@@ -141,6 +141,7 @@ class VagasController < ApplicationController
   end
 
    def consulta_vaga
+   
    if params[:type_of].to_i == 1
        w=params[:vaga][:grupo_id]
        t=0
@@ -169,6 +170,8 @@ class VagasController < ApplicationController
                @vagas = Vaga.find(:all, :conditions => ["unidade_id = ? AND disponivel = 0", params[:vaga][:unidade_id]],:order => 'unidade_id ASC')
                @vagasD = Vaga.find(:all, :conditions => ["unidade_id = ? AND status is null ", params[:vaga][:unidade_id]],:order => 'unidade_id ASC')
                @vagas_unidade =  Vaga.find_by_sql("SELECT unidade_id, grupo_id, count(id) as quantidade FROM vagas where unidade_id = '"+ (params[:vaga][:unidade_id].to_s) +"' AND status is null GROUP BY grupo_id ORDER BY unidade_id ")
+               @vagas_unidadet =  Vaga.find_by_sql("SELECT unidade_id, grupo_id, count(id) as quantidade FROM vagas where unidade_id = '"+ (params[:vaga][:unidade_id].to_s) +"'GROUP BY grupo_id ORDER BY unidade_id ")
+               #@vagas_unidadeM =  Vaga.find_by_sql("SELECT unidade_id, grupo_id, count(id) as quantidade FROM vagas WHERE unidade_id = '"+ (params[:vaga][:unidade_id].to_s) +"' AND status = 'MATRICULADA' GROUP BY grupo_id ORDER BY unidade_id ")
                @vagas_unidadeD =  Vaga.find_by_sql("SELECT unidade_id, grupo_id, count(id) as quantidade FROM vagas where unidade_id = '"+ (params[:vaga][:unidade_id].to_s) +"' AND  status is null GROUP BY grupo_id ORDER BY unidade_id ")
                @vagas_regiao =  Vaga.find_by_sql("SELECT vg.unidade_id, vg.grupo_id, count(vg.id) as quantidade FROM vagas vg INNER JOIN unidades uni ON vg.unidade_id = uni.id INNER JOIN regiaos reg ON uni.regiao_id = reg.id WHERE  unidade_id = '"+ (params[:vaga][:unidade_id].to_s) +"' AND vg.status is null GROUP BY reg.id , vg.grupo_id  ORDER BY reg.id ")
                @vagas_regiaoD =  Vaga.find_by_sql("SELECT vg.unidade_id, vg.grupo_id, count(vg.id) as quantidade FROM vagas vg INNER JOIN unidades uni ON vg.unidade_id = uni.id INNER JOIN regiaos reg ON uni.regiao_id = reg.id WHERE  unidade_id = '"+ (params[:vaga][:unidade_id].to_s) +"' AND vg.status is null GROUP BY reg.id , vg.grupo_id  ORDER BY reg.id ")
