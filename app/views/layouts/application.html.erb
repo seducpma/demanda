@@ -167,13 +167,13 @@ display: none;
                  <ul style="width:108px;">
 
                           <li><%= link_to "Cadastrar",new_vaga_path %></li>
-
-                            <li><a>Consultar</a>
-                               <ul>
-                                  <li><%= link_to "Vagas", consultas_vagas_path %></li>
-                             </ul>
-                            </li>
-                         
+                             <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') )%>
+                               <li><a>Consultar</a>
+                                 <ul>
+                                   <li><%= link_to "Vagas", consultas_vagas_path %></li>
+                                </ul>
+                               </li>
+                             <%end%>
                      </ul>
               </li>
               <%end%>
