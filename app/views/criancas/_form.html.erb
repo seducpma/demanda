@@ -28,6 +28,12 @@
          <td>    <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %><BR /></td>
        </tr>
        <tr>
+         <td></td>
+         <td> <font color="red"><b><div id='nome_aviso' ></div>  <div id='aviso_mae'></div></font></b></td>
+         <td colspan="3"><font color="red"><b><div id='nome_mae'></div></b></td>
+
+       </tr>
+       <tr>
          <td><b><font color="red" size="5">*</font>Mãe</b></div></td>
          <td><%= f.text_field :mae, :size=>"38"%>
              <%= observe_field :crianca_mae,
@@ -38,12 +44,7 @@
          <td><%= f.text_field :pai, :size=>"38" %></td>
 
        </tr>
-       <tr>
-         <td></td>
-         <td><b><div id='nome_aviso' ></div>  <div id='aviso_mae'></div></b></td>
-         <td colspan="3"><b><div id='nome_mae'></div></b></td>
 
-       </tr>
        <tr>
            <td colspan="2"> <b>Responsável Legal pela criança?</b>
                 <a  class="filtro_vagasS2"><%= f.radio_button :responsavel, true, :checked => true %></a>

@@ -915,11 +915,11 @@ end
 
   def mesmo_nome
     session[:nome] = params[:crianca_nome]
-    @verifica = Crianca.find_by_nome(session[:nome])
-    if @verifica then
+    @verifica = Crianca.find(:all, :conditions=> ['nome =? and (recadastrada = 2 OR recadastrada = 1)',params[:crianca_nome]])
+    if @verifica.present? then
       render :update do |page|
-        page.replace_html 'nome_aviso', :text => 'Nome já cadastrado no sistema'
-        page.replace_html 'aviso_mae', :text => 'Mae:' +  @verifica.mae
+        page.replace_html 'nome_aviso', :text => '<font color="red" id="pisca1"> NOME JÁ CADASTRADO NO SISTEMA </font>'
+        page.replace_html 'aviso_mae', :text => '<font color="red" id="pisca1">  MÃE:' +  @verifica[0].mae
         
     end
     else
@@ -932,7 +932,9 @@ end
   end
 
   def mesma_mae
-     if Crianca.find_by_mae(params[:crianca_mae]) then
+     @verifica_mae = Crianca.find(:all, :conditions=> ['mae =? and (recadastrada = 2 OR recadastrada = 1)',params[:crianca_mae]])
+     @verifica = Crianca.find(:all, :conditions=> ['nome =? and (recadastrada = 2 OR recadastrada = 1)',params[:crianca_nome]])
+     if @verifica_mae.present? then
        if Crianca.find_by_nome(session[:nome]) then
         render :update do |page|
           page.replace_html 'nome_mae', :text => 'Criança já cadastrada no sistema '
