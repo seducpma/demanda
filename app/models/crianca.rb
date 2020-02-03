@@ -15,7 +15,7 @@ class Crianca < ActiveRecord::Base
   before_save  :maiusculo
   #before_update  :reclassificacao
   
-  Status = %w(NA_DEMANDA CANCELADA RECUSOU)
+  Status = %w(NA_DEMANDA CANCELADA MATRICULADA RECUSOU)
 
 
   #def reclassificacao

@@ -740,6 +740,18 @@ def consulta_altera_status
      end
 end
 
+def matricula_unidade
+    t=0
+    if params[:matricula_status]=='MATRICULADA'
+    t=0
+     render :update do |page|
+         page.replace_html 'matricula_unidade', :partial => "matricula_unidade"
+     end
+
+    end
+end
+
+
 
 def classificao_unidade
 
