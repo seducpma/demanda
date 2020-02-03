@@ -105,7 +105,7 @@
 
             <tr>
               <td valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></td>
-              <td valign="top" align="left" ><%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%> 
+              <td valign="top" align="left" ><%if !@crianca.regiao_id.nil?%><%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%><%else%> <b>NÃO SELECIONADO</b><%end%>
                      </td>
               <td valign="top" align="left"><b>Unidades na região: </b></td>
               <td valign="top"align="left"><% for unidade in @unidade_regiao%>

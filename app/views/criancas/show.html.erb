@@ -85,7 +85,7 @@
                <td align="left" width="18%"><b>Endereço Indicado:</b></td>
                <td colspan="3" align="left"><%=h @crianca.end_indicacao %> - <%=h @crianca.num_indicacao %></td>
                <td align="left" width="4%"><b>Bairro/Região:</b></td>
-               <td  align="left"><%=h @crianca.regiao.nome %></td>
+               <td  align="left"><%if !@crianca.regiao_id.nil?%><%=h @crianca.regiao.nome %><b>NÃO SELECIONADO</b><%end%></td>
             </tr>
             <tr bgcolor="#F5F5F5">
                <td align="left"><b>Justificativa:</b></td>
@@ -139,7 +139,7 @@
             </tr>
             <tr bgcolor="#F5F5F5"  width="100%">
               <td valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Classe:</b><br/><br/><b>* Unidade mais próxima:</b></td>
-              <td valign="top" align="left" ><%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%> - <%#=h @crianca.periodo%><br/><br/> <%=h @crianca.unidade_ref%> *</td>
+              <td valign="top" align="left" ><%if !@crianca.regiao_id.nil?%><%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%> - <%#=h @crianca.periodo%><br/><br/> <%=h @crianca.unidade_ref%> *<%else%> <b>NÃO SELECIONADO</b><%end%></td>
               <td valign="top" align="center"><b>Unidades na região: </b></td>
               <td valign="top"align="left" colspan="4"><% for unidade in @unidade_regiao%>
                                               - <%= unidade.nome %> <br/>

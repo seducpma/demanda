@@ -136,6 +136,9 @@ end
     session[:id_crianca] = params[:id]
     session[:nome] = params[:nome]
     session[:recadastrada]= 'edit'
+    session[:show]=1
+        t=0
+
   end
 
 def recadastrar_crianca
@@ -172,6 +175,7 @@ end
     #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
     session[:id_crianca] = params[:id]
     session[:nome] = params[:nome]
+        session[:show]=1
   end
 
 
