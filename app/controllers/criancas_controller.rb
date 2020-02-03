@@ -500,6 +500,7 @@ end
          if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ? " , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
+                  t=0
               else
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ? ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
@@ -933,7 +934,7 @@ end
 
   def mesmo_nome
     session[:nome] = params[:crianca_nome]
-    @verifica = Crianca.find(:all, :conditions=> ['nome =? and (recadastrada = 2 OR recadastrada = 1)',params[:crianca_nome]])
+    @verifica = Crianca.find(:all, :conditions=> ['nome =? and (recadastrada = 2 OR recadastrada = 1 )',params[:crianca_nome]])
     if @verifica.present? then
       render :update do |page|
         page.replace_html 'nome_aviso', :text => '<font color="red" id="pisca1"> NOME JÁ CADASTRADO NO SISTEMA </font>'

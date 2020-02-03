@@ -35,9 +35,15 @@
                                  <%end%>
                 </td>
             
-                <td align="left"><%=h crianca.status%>
+                <td align="left">
                                  <%if crianca.transferencia == true%>
                                        <!--<br/>(Matriculada)-->
+                                 <%end%>
+                                 <%if crianca.recadastrada== 0 %>
+                                       <b> NÂO RECADASTRADA </b>
+                                  <%else%>
+                                       <!--<br/>(Matriculada)-->
+                                      <%=h crianca.status%>
                                  <%end%>
 
                 </td>
