@@ -499,7 +499,7 @@ end
      if params[:type_of].to_i == 1
          if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
-                  @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA'" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
+                  @criancas = Crianca.find( :all,:conditions => ["nome like ? " , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
               else
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ? ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
