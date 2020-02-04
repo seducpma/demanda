@@ -1002,6 +1002,7 @@ end
 
  def impressao
        @crianca = Crianca.find(:all,:conditions => ["id = ?",   session[:child]])
+       @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca[0].regiao_id])
       render :layout => "impressao"
 end
 
