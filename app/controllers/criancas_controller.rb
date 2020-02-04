@@ -1171,6 +1171,7 @@ end
 
  def lista_bairros
     @unidade_regiao = Unidade.find(:all, :conditions => ['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)', params[:crianca_regiao_id]])
+     
     render :partial => 'lista_unidade_regiao'
   end
 

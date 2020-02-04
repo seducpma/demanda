@@ -422,6 +422,11 @@ $("#localizacao_data_aquisicao").datepicker({dateFormat: 'dd-mm-yy', changeYear:
      $(".objeto").hide();
    });
 
+ $(".botaosalvar").change(function()
+    {
+     $(".botao").show();
+   });
+
 
 
   // Fim autocomplete
