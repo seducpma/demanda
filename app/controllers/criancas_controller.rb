@@ -505,9 +505,9 @@ end
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ? ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
               end
-              @canceladas = Crianca.find( :all,:conditions => [" nome like ? AND status =? AND recadastrada!=0",  "%" + params[:search1].to_s + "%" , 'CANCELADA'],:order => 'nome ASC')
-              @demandas = Crianca.find( :all,:conditions => [" nome like ? and status =? AND recadastrada!=0",  "%" + params[:search1].to_s + "%" , 'NA_DEMANDA'],:order => 'nome ASC')
-              @matriculadas = Crianca.find( :all,:conditions => [" nome like ? and status =?  AND recadastrada!=0",  "%" + params[:search1].to_s + "%" , 'MATRICULADA'],:order => 'nome ASC')
+              @canceladas = Crianca.find( :all,:conditions => [" nome like ? AND status =? ",  "%" + params[:search1].to_s + "%" , 'CANCELADA'],:order => 'nome ASC')
+              @demandas = Crianca.find( :all,:conditions => [" nome like ? and status =? ",  "%" + params[:search1].to_s + "%" , 'NA_DEMANDA'],:order => 'nome ASC')
+              @matriculadas = Crianca.find( :all,:conditions => [" nome like ? and status =?  ",  "%" + params[:search1].to_s + "%" , 'MATRICULADA'],:order => 'nome ASC')
         render :update do |page|
           page.replace_html 'criancas', :partial => "criancas"
         end
