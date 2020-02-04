@@ -137,8 +137,8 @@ end
     session[:nome] = params[:nome]
     session[:recadastrada]= 'edit'
     session[:show]=1
-        t=0
-
+    session[:acerto]=1
+    session[:acertorecadastrada]=2
   end
 
 def recadastrar_crianca
@@ -290,6 +290,11 @@ end
   # PUT /criancas/1.xml
   def update
     @crianca = Crianca.find(params[:id])
+    if session[:acerto] = 1
+        w=@crianca.recadastrada = session[:acertorecadastrada]
+        session[:acerto]=0
+    end
+   t=0
 
       if session[:sim]== 1
           if @crianca.servidor_publico == true
