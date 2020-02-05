@@ -92,7 +92,8 @@ t=0
      @criancas=Crianca.find(params[:id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'], :order => 'nome ASC')
      #@unidade_regiao= Unidade.find(:all , :joins=> 'JOIN vagas on  vagas.unidade_id = unidades.id JOIN criancas on  vagas.crianca_id = criancas.id ',   :conditions=>['vagas.crianca_id = ? AND unidades.ativo = 1 AND ( unidades.tipo = 1 or unidades.tipo = 3 or unidades.tipo = 7 or unidades.tipo = 8) AND criancas.recadastrata = 1', session[:id_anterior].to_i])
-     t=0
+     session[:nasc]=1
+
       @crianca = Crianca.new
 
      session[:tnome]=@criancas.nome
@@ -198,92 +199,173 @@ end
   # POST /criancas.xml
   def create
     @crianca = Crianca.new(params[:crianca])
+ 
+      if session[:nasc]==1
+
+                  # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
+                    @crianca.unidade_id = current_user.unidade_id
+                    if session[:show_transferencia]==1
+                        @crianca.nascimento = session[:dataN]
+                        @crianca.save
+                        data = @crianca.nascimento.strftime("%Y-%m-%d")
+                    else
+                        data=@crianca.nascimento.strftime("%Y-%m-%d")
+                    end
+                     @crianca.recadastrada = 1
+                    hoje = Date.today.to_s
+                    final = '2012-07-01'
+                    if (hoje > data)  and (data >= final)
+                       if  (data <= Date.today.to_s and data >= DATAB1)
+                       @crianca.grupo_id = 1
+                        else if(data < DATAB1 and data >= DATAB2)
+                           @crianca.grupo_id = 2
+                           else if(data < DATAB2 and data >= DATAM1A)
+                                  @crianca.grupo_id = 4
+                                  else if(data < DATAM1A and data >= DATAM1B)
+                                      @crianca.grupo_id = 8
+                                      else if(data < DATAM1B and data >= DATAM2)
+                                              @crianca.grupo_id = 5
+                                            else if(data < DATAM2 and data >= DATAN1)
+                                                    @crianca.grupo_id = 6
+                                                  else if(data < DATAN1 and data >= DATAN2)
+                                                        @crianca.grupo_id = 7
+                                                       end
+                                                 end
+                                           end
+                                      end
+                                 end
+                           end
+                       end
+
+                  $flag_imp = 0
+                  $flag_btimp = 0
+                  session[:sim]= 0
+                   if session[:show_transferencia]==1
+                          @crianca.transferencia = true
+                   end
+                    respond_to do |format|
+                      if @crianca.save
+                        flash[:notice] = 'Criança cadastrada com sucesso.'
+                          if session[:show]==1
+                            format.html { redirect_to(@crianca) }
+                            @crianca.recadastrada=session[:novo_cadastrar]
+                            @crianca.save
+                            @crianca.recadastrada=session[:novo_cadastrar]
+                            format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
+                              session[:show]=0
+                         end
+                         if session[:show_transferencia]==1
+                               session[:id_crinaca_trans]= @crianca.id
+                               @crianca.grupo_id=session[:trans_grupo_id]
+                               @crianca.save
+                              format.html { redirect_to(show_transferencia_path) }
+                              format.xml  { head :ok }
+                              session[:show_recadastramento]==0
+                         end
+
+                      else
+                        format.html { render :action => "new" }
+                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                      end
+                    end
+
+                  else
+                    respond_to do |format|
+                        flash[:notice] = 'Verificar DATA DE NASCIMENTO .'
+                        format.html { render :action => "new" }
+                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                    end
+                  end
+       
+      else
+      
 
     #inscrição permitida para crianças após outubro/2020
 
-      if @crianca.nascimento.strftime("%Y%m%d").to_i > 20190930
-           respond_to do |format|
-                flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
-                format.html { render :action => "aviso" }
-                format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
-            end
-      else
-
-
-          # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
-            @crianca.unidade_id = current_user.unidade_id
-            if session[:show_transferencia]==1
-                @crianca.nascimento = session[:dataN]
-                @crianca.save
-                data = @crianca.nascimento.strftime("%Y-%m-%d")
-            else
-                data=@crianca.nascimento.strftime("%Y-%m-%d")
-            end
-             @crianca.recadastrada = 1
-            hoje = Date.today.to_s
-            final = '2012-07-01'
-            if (hoje > data)  and (data >= final)
-               if  (data <= Date.today.to_s and data >= DATAB1)
-               @crianca.grupo_id = 1
-                else if(data < DATAB1 and data >= DATAB2)
-                   @crianca.grupo_id = 2
-                   else if(data < DATAB2 and data >= DATAM1A)
-                          @crianca.grupo_id = 4
-                          else if(data < DATAM1A and data >= DATAM1B)
-                              @crianca.grupo_id = 8
-                              else if(data < DATAM1B and data >= DATAM2)
-                                      @crianca.grupo_id = 5
-                                    else if(data < DATAM2 and data >= DATAN1)
-                                            @crianca.grupo_id = 6
-                                          else if(data < DATAN1 and data >= DATAN2)
-                                                @crianca.grupo_id = 7
-                                               end
-                                         end
-                                   end
-                              end
-                         end
-                   end
-               end
-
-          $flag_imp = 0
-          $flag_btimp = 0
-          session[:sim]= 0
-           if session[:show_transferencia]==1
-                  @crianca.transferencia = true
-           end
-            respond_to do |format|
-              if @crianca.save
-                flash[:notice] = 'Criança cadastrada com sucesso.'
-                  if session[:show]==1
-                    format.html { redirect_to(@crianca) }
-                    @crianca.recadastrada=session[:novo_cadastrar]
-                    @crianca.save
-                    @crianca.recadastrada=session[:novo_cadastrar]
-                    format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                      session[:show]=0
-                 end
-                 if session[:show_transferencia]==1
-                       session[:id_crinaca_trans]= @crianca.id
-                       @crianca.grupo_id=session[:trans_grupo_id]
-                       @crianca.save
-                      format.html { redirect_to(show_transferencia_path) }
-                      format.xml  { head :ok }
-                      session[:show_recadastramento]==0
-                 end
-
+              if @crianca.nascimento.strftime("%Y%m%d").to_i > 20190930
+                   respond_to do |format|
+                        flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
+                        format.html { render :action => "aviso" }
+                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                    end
               else
-                format.html { render :action => "new" }
-                format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
-              end
-            end
 
-          else
-            respond_to do |format|
-                flash[:notice] = 'Verificar DATA DE NASCIMENTO .'
-                format.html { render :action => "new" }
-                format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
-            end
-          end
+
+                  # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
+                    @crianca.unidade_id = current_user.unidade_id
+                    if session[:show_transferencia]==1
+                        @crianca.nascimento = session[:dataN]
+                        @crianca.save
+                        data = @crianca.nascimento.strftime("%Y-%m-%d")
+                    else
+                        data=@crianca.nascimento.strftime("%Y-%m-%d")
+                    end
+                     @crianca.recadastrada = 1
+                    hoje = Date.today.to_s
+                    final = '2012-07-01'
+                    if (hoje > data)  and (data >= final)
+                       if  (data <= Date.today.to_s and data >= DATAB1)
+                       @crianca.grupo_id = 1
+                        else if(data < DATAB1 and data >= DATAB2)
+                           @crianca.grupo_id = 2
+                           else if(data < DATAB2 and data >= DATAM1A)
+                                  @crianca.grupo_id = 4
+                                  else if(data < DATAM1A and data >= DATAM1B)
+                                      @crianca.grupo_id = 8
+                                      else if(data < DATAM1B and data >= DATAM2)
+                                              @crianca.grupo_id = 5
+                                            else if(data < DATAM2 and data >= DATAN1)
+                                                    @crianca.grupo_id = 6
+                                                  else if(data < DATAN1 and data >= DATAN2)
+                                                        @crianca.grupo_id = 7
+                                                       end
+                                                 end
+                                           end
+                                      end
+                                 end
+                           end
+                       end
+
+                  $flag_imp = 0
+                  $flag_btimp = 0
+                  session[:sim]= 0
+                   if session[:show_transferencia]==1
+                          @crianca.transferencia = true
+                   end
+                    respond_to do |format|
+                      if @crianca.save
+                        flash[:notice] = 'Criança cadastrada com sucesso.'
+                          if session[:show]==1
+                            format.html { redirect_to(@crianca) }
+                            @crianca.recadastrada=session[:novo_cadastrar]
+                            @crianca.save
+                            @crianca.recadastrada=session[:novo_cadastrar]
+                            format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
+                              session[:show]=0
+                         end
+                         if session[:show_transferencia]==1
+                               session[:id_crinaca_trans]= @crianca.id
+                               @crianca.grupo_id=session[:trans_grupo_id]
+                               @crianca.save
+                              format.html { redirect_to(show_transferencia_path) }
+                              format.xml  { head :ok }
+                              session[:show_recadastramento]==0
+                         end
+
+                      else
+                        format.html { render :action => "new" }
+                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                      end
+                    end
+
+                  else
+                    respond_to do |format|
+                        flash[:notice] = 'Verificar DATA DE NASCIMENTO .'
+                        format.html { render :action => "new" }
+                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                    end
+                  end
+        end
     end
 end
   # PUT /criancas/1
