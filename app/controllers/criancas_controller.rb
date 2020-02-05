@@ -184,8 +184,6 @@ end
 def aviso
 end
 
-
-
   def status
 
   end
