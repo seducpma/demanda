@@ -76,6 +76,7 @@ t=0
   # GET /criancas/new.xml
   def new
      @crianca = Crianca.new
+     session[:nasc]=0
      session[:show]=1
      session[:show_transferencia]=0
      session[:show_recadastramento]=0
@@ -201,7 +202,7 @@ end
     @crianca = Crianca.new(params[:crianca])
  
       if session[:nasc]==1
-
+          session[:nasc]=0
                   # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
                     @crianca.unidade_id = current_user.unidade_id
                     if session[:show_transferencia]==1
@@ -282,7 +283,7 @@ end
 
     #inscrição permitida para crianças após outubro/2020
 
-              if @crianca.nascimento.strftime("%Y%m%d").to_i > 20190930
+              if @crianca.nascimento.strftime("%Y%m%d").to_i > 20191004
                    respond_to do |format|
                         flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
                         format.html { render :action => "aviso" }
