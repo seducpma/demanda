@@ -314,9 +314,9 @@
 
 
       <fieldset>
-       <table width="100%" >
+          <table width="100%" >
            <tr>
-               <td colspan="3" > <font color="red"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Para habilitar o botão SALVAR é necessário selecionar uma <u> REGIÃO </u> e uma <u> UNIDADE DE REFERÊNCIA </u></font></td>
+               <td colspan="4" > <font color="red"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Para habilitar o botão SALVAR é necessário selecionar uma <u> REGIÃO </u> e uma <u> UNIDADE DE REFERÊNCIA </u></font></td>
            </tr>
          <tr>
            <td width="4%"align="left"><b><div id='Certeza'><div class="botao" style="display:none"> <%= f.submit 'Salvar' %></div></div></b></td>
@@ -324,7 +324,8 @@
 
 <%end%>
             <td width="6%"align="left" ><%= button_to 'Consultar' ,consultas_criancas_path, :title => "Consultar" %></td>
-             <td><%= button_to 'Fechar', home_path, {:method => "get"}  %>  </td>
+            <td width="6%"align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %>
+            <td><font color="GREEN"> <div id="matricula"></div> </font></td></td>
 
     <%session[:show]=0%>
     <%session[:show_recadastramento]=1%>
