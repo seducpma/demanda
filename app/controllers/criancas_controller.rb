@@ -63,7 +63,6 @@ end
 
      @crianca = Crianca.find(session[:id_crinaca_trans])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8) ',@crianca.regiao_id])
-t=0
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @crianca }
@@ -375,10 +374,12 @@ end
         w=@crianca.recadastrada = session[:acertorecadastrada]
         session[:acerto]=0
     end
-   t=0
-
+   id=@crianca.id
+   @crianca.update_attributes(params[:crianca])
+   @crianca = Crianca.find(id)
+ 
       if session[:sim]== 1
-          t=0
+ 
           if @crianca.servidor_publico == true
             session[:servidor_publico] = 1
             if session[:ser]== 1
@@ -399,19 +400,15 @@ end
              session[:trabalho] = 0
          end
          if @crianca.declaracao==true
-             t=0
-             session[:declaracao]= 1
+              session[:declaracao]= 1
              if session[:dec]== 1
-                 t=0
-                 session[:declaracao]= 0
+                  session[:declaracao]= 0
                  session[:dec]=0
              end
          else
                session[:declaracao]= 0
-               t=0
-         end
-   t=0
-         if @crianca.autonomo==true
+          end
+          if @crianca.autonomo==true
               session[:autonomo]=1
               if session[:aut]== 1
                   session[:autonomo]=0
