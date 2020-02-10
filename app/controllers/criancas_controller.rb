@@ -378,6 +378,7 @@ end
    t=0
 
       if session[:sim]== 1
+          t=0
           if @crianca.servidor_publico == true
             session[:servidor_publico] = 1
             if session[:ser]== 1
@@ -398,14 +399,18 @@ end
              session[:trabalho] = 0
          end
          if @crianca.declaracao==true
+             t=0
              session[:declaracao]= 1
              if session[:dec]== 1
+                 t=0
                  session[:declaracao]= 0
                  session[:dec]=0
              end
          else
                session[:declaracao]= 0
+               t=0
          end
+   t=0
          if @crianca.autonomo==true
               session[:autonomo]=1
               if session[:aut]== 1
