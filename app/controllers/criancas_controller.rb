@@ -127,7 +127,7 @@ end
   # GET /criancas/1/edit
   def edit
      @unidade_regiao= Unidade.find(:all , :conditions=>[' ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'])
-
+     session[:sim]= 1
     @crianca = Crianca.find(params[:id])
     data=@crianca.nascimento
 
