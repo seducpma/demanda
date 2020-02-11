@@ -253,7 +253,7 @@
                       <td width="90%"><b>2) Mãe apresentou carteira de trabalho devidamente assinada? &nbsp
                           <b><u>OU </u></b> &nbsp documento/certidão que comprove ser  <br/>
                           &nbsp&nbsp funcionária estatutária de órgão público (EXCETO Prefeitura Municipal de Americana) ======================> </td>
-                     <td><%= f.select :trabalho, (OPCAOSN).sort, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.trabalho) %>
+                     <td><%= f.select :trabalho, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.trabalho) %>
                                    <%= observe_field 'crianca_trabalho',
                                       :update => "trabalho",
                                       :url    => { :action => 'trabalho_action' },
@@ -414,7 +414,7 @@
                  <%else%>
                        <tr>
                            <td width="90%"><b> 5)Transferência de criança entre unidades educacionais do Municipio ?</b> &nbsp ==================================> </td>
-                           <td><%= f.select :transferencia, (OPCAOSN).sort, :include_blank => 'SIM ' %>
+                           <td><%= f.select :transferencia, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.transferencia) %>
                                    <%= observe_field 'crianca_transferencia',
                                       :update => "transf",
                                       :url    => { :action => 'transferencia_action' },
