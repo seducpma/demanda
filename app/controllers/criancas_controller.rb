@@ -377,6 +377,8 @@ end
    id=@crianca.id
    @crianca.update_attributes(params[:crianca])
    @crianca = Crianca.find(id)
+   w=@crianca.declaracao
+
  
       if session[:sim]== 1
  
@@ -401,11 +403,13 @@ end
          end
          if @crianca.declaracao==true
               session[:declaracao]= 1
+              t=0
              if session[:dec]== 1
                   session[:declaracao]= 0
                  session[:dec]=0
              end
          else
+             t=0
                session[:declaracao]= 0
           end
           if @crianca.autonomo==true
@@ -426,7 +430,7 @@ end
          else
              session[:transferencia]=0
          end
-
+        session[:sim]= 0
       end
 
    

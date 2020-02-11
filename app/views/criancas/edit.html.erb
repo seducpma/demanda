@@ -207,7 +207,7 @@
                <%else%>
                    <tr>
                        <td width="90%"><b>1) Filho(a) de Servidora Pública da <u>Prefeitura Municipal de Americana?</u></b> ===================================> </td>
-                       <td> <%= f.select :servidor_publico, (OPCAOSN).sort, :include_blank => 'SIM ' %>
+                       <td> <%= f.select :servidor_publico, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.servidor_publico) %>
                                <%= observe_field 'crianca_servidor_publico',
                                   :update => "servidor",
                                   :url    => { :action => 'servidor_action' },
@@ -253,7 +253,7 @@
                       <td width="90%"><b>2) Mãe apresentou carteira de trabalho devidamente assinada? &nbsp
                           <b><u>OU </u></b> &nbsp documento/certidão que comprove ser  <br/>
                           &nbsp&nbsp funcionária estatutária de órgão público (EXCETO Prefeitura Municipal de Americana) ======================> </td>
-                     <td><%= f.select :trabalho, (OPCAOSN).sort, :include_blank => 'SIM ' %>
+                     <td><%= f.select :trabalho, (OPCAOSN).sort, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.trabalho) %>
                                    <%= observe_field 'crianca_trabalho',
                                       :update => "trabalho",
                                       :url    => { :action => 'trabalho_action' },
@@ -308,12 +308,16 @@
                        <tr>
                            <td width="90%"><b>3) Mãe apresentou declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório?</b>  ====> </td>
                                  
-                            <td><%= f.select :declaracao, (OPCAOSN).sort, :include_blank => 'SIM' %>
+                            <td><%#= f.select :declaracao, (OPCAOSN).sort, :include_blank => 'SIM' %>
+                                <%= f.select :declaracao, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.declaracao) %>
+                                
+
                                    <%= observe_field 'crianca_declaracao',
                                       :update => "declaracao",
                                       :url    => { :action => 'declaracao_action' },
                                       :with   => 'crianca_declaracao' %>
                                 <% session[:sim]= 1 %>
+                                <%#f.declaracao = 1%>
                           </td>
                         </tr>
                        <tr>
@@ -357,7 +361,7 @@
                  <%else%>
                         <tr>
                                <td width="90%"><b>4) Mãe apresentou declaração do empregador PESSOA FÍSICA  com CPF e RG <br/>&nbsp&nbsp&nbsp <u>ou</u> declaração de trabalho AUTÔNOMO ?</b> &nbsp =======================================================> </td>
-                               <td><%= f.select :autonomo, (OPCAOSN).sort, :include_blank => 'SIM ' %>
+                               <td><%= f.select :autonomo, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.autonomo) %>
                                    <%= observe_field 'crianca_autonomo',
                                       :update => "autonomo",
                                       :url    => { :action => 'autonomo_action' },
