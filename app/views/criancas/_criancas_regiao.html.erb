@@ -26,7 +26,7 @@
                 <%end%>
                 <td align="left"> <%=h crianca.nome%>
                         <%if crianca.irmao == true %>
-                         <font size="1" color ="red"> Possui irmão matriculado (<%= crianca.unidade_i%>) </font>
+                         <font size="1" color ="red"> &nbsp&nbsp Possui irmão matriculado (<%= crianca.unidade_i%>) </font>
                     <%end%>
                 </td>
                 <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y ")%></td>
