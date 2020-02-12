@@ -85,7 +85,7 @@
                <td align="left" width="18%"><b>Endereço Indicado:</b></td>
                <td colspan="3" align="left"><%=h @crianca.end_indicacao %> - <%=h @crianca.num_indicacao %></td>
                <td align="left" width="4%"><b>Bairro/Região:</b></td>
-               <td  align="left"><%if !@crianca.regiao_id.nil?%><%=h @crianca.regiao.nome %><b>NÃO SELECIONADO</b><%end%></td>
+               <td  align="left"><%if !@crianca.regiao_id.nil?%><%=h @crianca.regiao.nome %><%else%><b>NÃO SELECIONADO</b><%end%></td>
             </tr>
             <tr bgcolor="#F5F5F5">
                <td align="left"><b>Justificativa:</b></td>
