@@ -4,11 +4,11 @@
         <tr bgcolor="#DCDCDC" >
             <th width="1%">Nº</th>
             <th width="1%">Inscrição</th>
-            <th width="10%">Data/Hora</th>
-            <th width="25%">Nome</th>
-            <th width="10%">Nasci/o</th>
+            <th width="12%">Data/Hora</th>
+            <th width="60%">Nome</th>
+            <th width="8%">Nasci/o</th>
             <th width="15%">Mãe Trabalho</th>
-            <th width="10%">Classe</th>
+            <th width="8%">Classe</th>
             
             <th colspan="2"></th>
             
@@ -22,9 +22,13 @@
                 <%  if crianca.created_at.nil? %>
                      <td align="center"></td>
                 <%else%>
-                     <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y %H:%M")%><br/></td>
+                     <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y  %H:%M")%><br/></td>
                 <%end%>
-                <td align="left"><%=h crianca.nome%></td>
+                <td align="left"> <%=h crianca.nome%>
+                        <%if crianca.irmao == true %>
+                         <font size="1" color ="red"> Possui irmão matriculado (<%= crianca.unidade_i%>) </font>
+                    <%end%>
+                </td>
                 <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y ")%></td>
                 <td > <%if crianca.servidor_publico == true%>
                                   Servidora Pública
