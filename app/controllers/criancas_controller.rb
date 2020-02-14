@@ -919,7 +919,7 @@ def consulta_classe
         w=session[:grupo]=params[:crianca][:grupo4_id]
         w1=session[:regiao]=params[:crianca][:regiao4_id]
         t=0
-         @criancas = Crianca.find( :all,:conditions => ["statuss = 'NA_DEMANDA'  AND regiao_id=? AND grupo_id=? ",  session[:regiao], session[:grupo] ],:order => "servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC,  created_at ASC")
+         @criancas = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA'  AND regiao_id=? AND grupo_id=? ",  session[:regiao], session[:grupo] ],:order => "servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC,  created_at ASC")
          render :update do |page|
            page.replace_html 'criancas', :partial => 'criancas_regiao'
          end
