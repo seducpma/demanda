@@ -980,7 +980,7 @@ def relatorio_geral
    @regiaos11= @regiaos1+@regiaos2+@regiaos3
 
    @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
-
+t=0
    #@regiaos11= Regiao.find(:all, :joins=> 'INNER JOIN criancas  on  criancas.regiao_id = regiaos.id', :conditions=>['regiaos.id > 99 AND regiaos.id < 108 AND criancas.recadastrada!=0' ], :order => 'regiaos.nome')
    #@regiaos11= Regiao.find(:all,  :conditions=>['regiaos.id > 99 AND regiaos.id < 201 AND id !=120' ], :order => 'regiaos.nome')
    #@nidades12 = Unidade.find(:all, :conditions=> ["nome like? AND ativo = 1  AND id > 99", "%"+"CR " +"%"], :order => 'nome')

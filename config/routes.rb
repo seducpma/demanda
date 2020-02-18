@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.grafico_prioridade_unidade '/grafico_prioridade_unidade', :controller => 'grafico', :action => 'grafico_prioridade_unidade'
   map.grafico_prioridade_regiao '/grafico_prioridade_regiao', :controller => 'grafico', :action => 'grafico_prioridade_regiao'
   map.relatorio_crianca '/crianca/relatorio_crianca', :controller => 'criancas', :action => 'relatorio_crianca'
-  map.consulta_geral '/geral', :controller => 'criancas', :action => 'relatorio_geral'
+  map.consulta_geral '/consutla_geral', :controller => 'criancas', :action => 'relatorio_geral'
   map.consulta_mae '/mae', :controller => 'criancas', :action => 'relatorio_mae'
   map.consulta_unidade '/unidade', :controller => 'criancas', :action => 'consulta_unidade'
   map.transferencias '/transferencias', :controller => 'criancas', :action => 'transferencias'
