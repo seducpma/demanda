@@ -99,9 +99,9 @@
        </tr>
         <tr>
              <td colspan="2"> <b>Necessidade(s) Especial(s)?</b>
-                  <a  class="filtro_vagasS3"><%= f.radio_button :n_especial, true, :checked => true %></a>
+                  <a  class="filtro_vagasS3"><%= f.radio_button :n_especial, true%></a>
                   <%= f.label :n_especial, "SIM", :value => "SIM" %>
-                  <a  class="filtro_vagasN3"><%= f.radio_button :n_especial, false%></a>
+                  <a  class="filtro_vagasN3"><%= f.radio_button :n_especial, false, :checked => true %></a>
                   <%= f.label :n_especial, "NÃO", :value => "NÃO" %>
               </td>
               <td colspan="3" class="botao3">
@@ -109,7 +109,14 @@
                                <%= f.text_field :necessidade, :size =>"36"%>&nbsp&nbsp
               </td>
         </tr>
+         <tr>
+                   <td colspan="3"><b>Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b>
+                   &nbsp&nbsp <% session[:sim]= 0 %><%= f.select :irmao , (OPCAOSN).sort %> </td>
 
+                    <td colspan="3" class="botao6">
+                         <b>Unidade:</b> <%= f.collection_select  :unidade_i, @unidades, :nome, :nome, :include_blank => ' --- Selecione opção ---'  %>&nbsp&nbsp
+                    </td>
+              </tr>
       </table>
   </fieldset>
 
