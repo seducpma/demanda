@@ -439,6 +439,7 @@ $("#localizacao_data_aquisicao").datepicker({dateFormat: 'dd-mm-yy', changeYear:
      $(".consulta_nome").show();
      $(".txt_busca").val("Digite parte da busca").css("color","gray");
      $(".consulta_rec").hide();
+     $(".consulta_mae").hide()
      $(".consulta1").hide();
      $(".consulta_unidade").hide();
      $(".consulta_professor").hide();
@@ -454,6 +455,7 @@ $("#localizacao_data_aquisicao").datepicker({dateFormat: 'dd-mm-yy', changeYear:
      $(".txt_busca_s").show();
      $(".label_busca_s").show();
      $(".consulta_rec").hide();
+     $(".consulta_mae").hide()
      $(".consulta").hide();
      $(".consulta").hide();
      $(".txt_busca").hide();
@@ -466,8 +468,17 @@ $("#localizacao_data_aquisicao").datepicker({dateFormat: 'dd-mm-yy', changeYear:
      $(".consulta_rec").show();
      $(".consulta_s").hide();
      $(".consulta").hide();
+     $(".consulta_mae").hide();
    });
 
+ $(".filtro_mae").click(function ()
+   {
+     $(".consulta_m").show();
+     $(".consulta_rec").hide();
+     $(".consulta_s").hide();
+     $(".consulta").hide();
+     $(".consulta_mae").hide();
+   });
 
 
 $(".filtro_nome").click(function ()
@@ -499,6 +510,7 @@ $(".filtro_nome").click(function ()
   });
 $(".sem_filtro").click(function ()
     { $(".txt_busca2").hide();
+      $(".consulta_mae").hide()
       $(".label_busca2").hide();
       $(".consulta_rec").hide();
       $(".txt_busca").val("");
