@@ -82,7 +82,8 @@
                           <td colspan="3" align="left">
                               <table bgcolor="#DCDCDC" width="100%">
                                   <tr>
-                                    <td align="right" width="75%"><b>TOTAL GERAL INSCRIÇÕES: &nbsp&nbsp&nbsp</b></td>
+                                    <td align="right" width="75%"><b>TOTAL GERAL INSCRIÇÕES:</b> &nbsp&nbsp&nbsp<br/>
+                                        <font size="2">(somente inscrições )&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font></td>
                                  <td align="center" width="20%"><font color ="blue"size="2"><b><%=totalregiao %></b></font></td>
                                   </tr>
                               </table>
@@ -472,7 +473,7 @@
           <% session[:tt]= session[:tgb1] + session[:tgb2] + session[:tgm1a] + session[:tgm1b] + session[:tgm2]+  session[:tgpre] %>
           <%# tt= cont1+ cont2+ cont3+ cont4+ cont5 %>
           <%# tt= cont1 %>
-        <td colspan="11"align="right"><b>TOTAL GERAL INSCRIÇÕES: &nbsp&nbsp</b></td>
+        <td colspan="11"align="right"><b>TOTAL GERAL INSCRIÇÕES: &nbsp&nbsp</b><br/><font size="2">(Inscrições + pedidos transferências)</td>
         <td align="center" width="6%"><font color ="blue "size="2"><b><%=session[:tt]  %> </b></font></td>    <!-- <MENOS 1 PARA ACERTAR A CONTA HA ERRO EM ALGUNS LUGAR-->
       </tr>
       </table>
