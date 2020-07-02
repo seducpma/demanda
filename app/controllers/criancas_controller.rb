@@ -1160,19 +1160,26 @@ end
 
 def impressao_geral
 
-   @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
-   @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
-   @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
-   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
+#   @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
+#   @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
+#   @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
+#   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
 
    @regiaos11= Regiao.find(:all,  :conditions=>['regiaos.id > 99 AND regiaos.id < 201 AND id !=120' ], :order => 'regiaos.nome')
 
   #@criancas = Crianca.find(:all, :order => 'nome')
-  @unidades11 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"CC " +"%"], :order => 'nome')
-  @unidades12 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"CR " +"%"], :order => 'nome')
-  @unidades13 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"FIL. " +"%"], :order => 'nome')
-  @unidades14 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"CONV. " +"%"], :order => 'nome')
-  @unidades15 = Unidade.find(:all, :conditions=> ["nome like? AND ativo = 1 ", "%"+"EMEI " +"%"], :order => 'nome')
+#  @unidades11 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"CC " +"%"], :order => 'nome')
+#  @unidades12 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"CR " +"%"], :order => 'nome')
+#  @unidades13 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"FIL. " +"%"], :order => 'nome')
+#  @unidades14 = Unidade.find(:all, :conditions=> ["nome like?", "%"+"CONV. " +"%"], :order => 'nome')
+#  @unidades15 = Unidade.find(:all, :conditions=> ["nome like? AND ativo = 1 ", "%"+"EMEI " +"%"], :order => 'nome')
+
+  @regiaos1= Regiao.find(:all, :conditions=>['regiaos.id > 99 AND regiaos.id < 108 ' ], :order => 'regiaos.nome')
+   @regiaos2= Regiao.find(:all, :conditions=>['regiaos.id > 107 AND regiaos.id < 115 ' ], :order => 'regiaos.nome')
+   @regiaos3= Regiao.find(:all, :conditions=>['regiaos.id > 114 AND regiaos.id < 201 AND id != 120' ], :order => 'regiaos.nome')
+   @regiaos11= @regiaos1+@regiaos2+@regiaos3
+
+   @criancas = Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0" ], :order => 'nome')
 
       render :layout => "impressao"
 end

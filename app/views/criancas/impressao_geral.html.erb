@@ -63,21 +63,21 @@
                  <table frame="box" rules="all" width = "100%" align="center">
                     <% for reg1 in @regiaos1 %>
                        <tr style="font-size:6px">
-                         <th  width="70%"><b><%= reg1.nome %></b></th>
-                         <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null",reg1]).count %></th>
+                           <th  width="70%"><b><%= reg1.nome %></b></th>
+                           <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 and regiao_id = ? and transferencia != 1",reg1]).count %></th>
                                                           <% totalregiao = totalregiao + regiao%>
                        </tr>
                      <%end%>
-
+ 
                  </table>
              </th>
              <th valign="top">
                  <table frame="box" rules="all" width = "100%" align="center">
                      <% for reg2 in @regiaos2 %>
-                       <tr style="font-size:6px">
-                         <th width="5%" ></th>
-                         <th  width="69%"><b><%= reg2.nome %></b></th>
-                         <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null ",reg2]).count %></th>
+                      <tr style="font-size:6px">
+                           <th width="5%" ></th>
+                            <th  width="69%"><b><%= reg2.nome %></b></th>
+                            <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 and regiao_id = ? and transferencia != 1",reg2]).count %></th>
                                                           <% totalregiao = totalregiao + regiao%>
                        </tr>
                      <%end%>
@@ -90,19 +90,17 @@
                        <tr style="font-size:6px">
                          <th width="5%" ></th>
                          <th  width="69%"><b><%= reg3.nome %></b></th>
-                         <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null",reg3]).count %></th>
-                                                          <% totalregiao = totalregiao + regiao%>
+                           <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 and regiao_id = ? and transferencia != 1",reg3]).count %></th>
+                                                            <% totalregiao = totalregiao + regiao%>
                        </tr>
                      <%end%>
-                      <tr style="font-size:6px"><th></th></tr>
-                      <tr bgcolor="#DCDCDC">
-                          <th colspan="3" align="left">
-                              <table frame="box" rules="all" width = "100%" align="center">
-                                  <tr style="font-size:6px">
+                      <tr style="font-size:6px"></tr>
+                       <tr style="font-size:6px">
+                          <th align="left">
+                     
                                     <th align="right" width="70%"><b>TOTAL GERAL INSCRIÇÕES: &nbsp&nbsp&nbsp</b></th>
                                     <th align="center" width="25%"><font color ="red"><b><%=totalregiao %></b></font></th>
-                                  </tr>
-                              </table>
+                     
                           </th>
                       </tr>
                  </table>
@@ -136,65 +134,57 @@
                 <% session[:b1]=0%>
                 <% session[:b2]=0%>
                 <%  session[:tgpre]=0%>
-                 <tr style="font-size:6px">
-                   <th  width="45%" align="left"><%=h regiao.nome%> </th>
-                    <th  width="5%" align="center">S.M.</th>
-                    <th  width="5%" align="center">CTPS</th>
-                    <th  width="5%" align="center">Ñ.CTPS</th>
-                    <th  width="5%" align="center">AUTO</th>
-                    <th  width="5%" align="center">Ñ.TRA</th>
-                    <th  width="5%" align="center">TRAN</th>
-                    <th  width="5%" align="center"></th>
-                 </tr>
-                 <tr style="font-size:6px" >
-                   <th align="left"> Berçario I</th>
-                                  <th  width="5%" align="center"><%=session[:b1sv]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND regiao_id=? AND recadastrada!=0 AND servidor_publico= 1 AND grupo_id= 1", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b1ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=? AND grupo_id= 1", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b1sctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=? AND grupo_id= 1", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b1auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=? AND grupo_id= 1", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b1ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=? AND grupo_id= 1", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b1trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=? AND grupo_id= 1", regiao]).size%></th>
-                                  <th width="10%" align="center"><font color="blue"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and regiao_id = ?", regiao.id]).count %>
-                                      <%session[:b1] = session[:b1] + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and regiao_id = ?", regiao.id]).count%> </font></th>
-                 </tr>
-                 <tr style="font-size:6px" >
-                   <th align="left"> Berçario II</th>
-                                  <th  width="5%" align="center"><%=session[:b2sv]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND regiao_id=? AND recadastrada!=0 AND servidor_publico= 1 AND grupo_id= 2", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b2ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=? AND grupo_id= 2", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b2sctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=? AND grupo_id= 2", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b2auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=? AND grupo_id= 2", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b2ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=? AND grupo_id= 2", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:b2trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=? AND grupo_id= 2", regiao]).size%></th>
-                                  <th width="10%" align="center"><font color="blue" ><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and regiao_id = ?", regiao.id]).count %>
-                                     <%session[:b2] =  session[:b2] + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and regiao_id = ?", regiao.id]).count%> </font></th>
-                 </tr>
-                 <tr style="font-size:6px" >
-
-                   <th align="left"> Pré Escola </th>
-                                  <th  width="5%" align="center"><%=session[:presv]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND regiao_id=? AND recadastrada!=0 AND servidor_publico= 1 AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:prectps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:presctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:preauto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:prentrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
-                                  <th  width="5%" align="center"><%=session[:pretrans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
-                                  <th width="10%" align="center"><font color="blue" ><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 6 or grupo_id= 7) and regiao_id = ?", regiao.id]).count %>
-                                     <%session[:pre] =  session[:pre] + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 6 or grupo_id= 7) and regiao_id = ?", regiao.id]).count%> </font></th>
-                 </tr>
+                    <tr bgcolor="#C6BBBB">
+                        <th  width="45%" align="left"><%=h regiao.nome%> </th>
+                        <th  width="5%" align="center">S.M.</th>
+                        <th  width="5%" align="center">CTPS</th>
+                        <th  width="5%" align="center">Ñ.CTPS</th>
+                        <th  width="5%" align="center">AUTO</th>
+                        <th  width="5%" align="center">Ñ.TRA</th>
+                        <th  width="5%" align="center"><font color="blue">Total</th>
+                        <th  width="5%" align="center">TRAN</th>
+                    </tr>
+                    <tr style="font-size:6px" >
+                        <th align="left"> Berçario I</th>
+                        <th  width="5%" align="center"><%=session[:b1sv]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND regiao_id=? AND recadastrada!=0 AND servidor_publico= 1 AND grupo_id= 1  and transferencia != 1", regiao]).size%><% session[:TTGb1sv] = session[:TTGb1sv] + session[:b1sv]%> </th>
+                        <th  width="5%" align="center"><%=session[:b1ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=? AND grupo_id= 1 and transferencia != 1", regiao]).size%><% session[:TTGb1ctps] = session[:TTGb1ctps] + session[:b1ctps]%></th>
+                        <th  width="5%" align="center"><%=session[:b1sctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=? AND grupo_id= 1 and transferencia != 1", regiao]).size%><% session[:TTGb1sctps] = session[:TTGb1sctps] + session[:b1sctps]%> </th>
+                        <th  width="5%" align="center"><%=session[:b1auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=? AND grupo_id= 1 and transferencia != 1", regiao]).size%><% session[:TTGb1auto]  = session[:TTGb1auto] + session[:b1auto]%></th>
+                        <th  width="5%" align="center"><%=session[:b1ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=? AND grupo_id= 1 and transferencia != 1", regiao]).size%><% session[:TTGb1ntrab] = session[:TTGb1ntrab] + session[:b1ntrab]%></th>
+                        <th width="10%" align="center"><font color="blue"><%= session[:b1] =  session[:b1sv] + session[:b1ctps] + session[:b1sctps] + session[:b1auto] +session[:b1ntrab] %> <% session[:TTGb1total] = session[:TTGb1total] + session[:b1]%>
+                        <th  width="5%" align="center"><%=session[:b1trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=? AND grupo_id= 1", regiao]).size%><% session[:TTGb1trans] = session[:TTGb1trans] + session[:b1trans]%></th>
+                    </tr>
+                    <tr style="font-size:6px" >
+                        <th align="left"> Berçario II</th>
+                        <th  width="5%" align="center"><%=session[:b2sv]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND regiao_id=? AND recadastrada!=0 AND servidor_publico= 1 AND grupo_id= 2 and transferencia != 1", regiao]).size%><% session[:TTGb2sv] = session[:TTGb2sv] + session[:b2sv]%> </th>
+                        <th  width="5%" align="center"><%=session[:b2ctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=? AND grupo_id= 2 and transferencia != 1", regiao]).size%><% session[:TTGb2ctps] = session[:TTGb2ctps] + session[:b2ctps]%></th>
+                        <th  width="5%" align="center"><%=session[:b2sctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=? AND grupo_id= 2 and transferencia != 1", regiao]).size%><% session[:TTGb2sctps] = session[:TTGb2sctps] + session[:b2sctps]%> </th>
+                        <th  width="5%" align="center"><%=session[:b2auto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=? AND grupo_id= 2 and transferencia != 1", regiao]).size%><% session[:TTGb2auto]  = session[:TTGb2auto] + session[:b2auto]%></th>
+                        <th  width="5%" align="center"><%=session[:b2ntrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=? AND grupo_id= 2 and transferencia != 1", regiao]).size%><% session[:TTGb2ntrab] = session[:TTGb2ntrab] + session[:b2ntrab]%></th>
+                        <th width="10%" align="center"><font color="blue" ><%= session[:b2] =   session[:b2sv] + session[:b2ctps] + session[:b2sctps] + session[:b2auto] +session[:b2ntrab] %> <% session[:TTGb2total] = session[:TTGb2total] + session[:b2]%>
+                        <th  width="5%" align="center"><%=session[:b2trans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=? AND grupo_id= 2  AND ( (autonomo= 0 or autonomo= 1) AND (declaracao= 0 or declaracao= 1) AND (trabalho= 0 or trabalho= 1) AND (servidor_publico= 0 or servidor_publico= 0))", regiao]).size%><% session[:TTGb2trans] = session[:TTGb2trans] + session[:b2trans]%></th>
+                    </tr>
+                    <tr style="font-size:6px" >
+                        <th align="left"> Pré Escola </th>
+                        <th  width="5%" align="center"><%=session[:presv]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND regiao_id=? AND recadastrada!=0 AND servidor_publico= 1 AND (grupo_id= 6 or grupo_id= 7) and transferencia != 1", regiao]).size%><% session[:TTGpresv] = session[:TTGpresv] + session[:presv]%></th>
+                        <th  width="5%" align="center"><%=session[:prectps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND trabalho= 1 AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7) and transferencia != 1", regiao]).size%><% session[:TTGprectps] = session[:TTGprectps]+session[:prectps]%></th>
+                        <th  width="5%" align="center"><%=session[:presctps]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND declaracao= 1  AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7) and transferencia != 1", regiao]).size%></th>
+                        <th  width="5%" align="center"><%=session[:preauto]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND autonomo= 1 AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7) and transferencia != 1", regiao]).size%></th>
+                        <th  width="5%" align="center"><%=session[:prentrab]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND (transferencia= 0 AND autonomo= 0 AND declaracao= 0 AND trabalho= 0 AND servidor_publico= 0) AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7) and transferencia != 1", regiao]).size%></th>
+                        <th width="10%" align="center"><font color="blue" ><%=  session[:pre]=  session[:presv] + session[:prectps] + session[:presctps] + session[:preauto] +session[:prentrab]%>
+                        <th  width="5%" align="center"><%=session[:pretrans]=Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0 AND transferencia= 1 AND regiao_id=? AND (grupo_id= 6 or grupo_id= 7)", regiao]).size%></th>
+                          </tr>
 
                  <tr style="font-size:6px" >
-                   <th align="right">Sub-Total</th>
-                   <th width="2%" align="center"><font color="blue"> <%= session[:b1sv]+session[:b2sv]+session[:presv]%></font></th>
-                   <th width="2%" align="center"> <font color="blue"><%= session[:b1ctps]+session[:b2ctps]+session[:prectps]%></font></th>
-                   <th width="2%" align="center"> <font color="blue"><%= session[:b1sctps]+session[:b2ctps]+session[:presctps]%></font></th>
-                   <th width="2%" align="center"><font color="blue"> <%= session[:b1auto]+session[:b2auto]+session[:preauto]%></font></th>
-                   <th width="2%" align="center"><font color="blue"> <%= session[:b1ntrab]+session[:b2ntrab]+session[:prentrab]%></font> </th>
-                   <th width="2%" align="center"> <font color="blue"><%= session[:b1trans]+session[:b2trans]+session[:pretrans]%></font></th>
-                   <th width="2%"><font color="blue"> <%= session[:b1]+session[:b2]+session[:pre]%></font>
-                                   <% session[:tgb1]=session[:tgb1] +session[:b1]%>
-                                   <% session[:tgb2]=session[:tgb2] +session[:b2]%>
-                                   <% session[:tgpre]=session[:tgpre] +session[:pre]%>
-                   </th>
-                 </tr>
+                        <th align="right">Sub-Total </th>
+                        <th width="2%" align="center"><font color="blue"><%=session[:b1sv]+session[:b2sv]+session[:presv]%> </font><% session[:TTGsb1sv] = session[:TTGsb1sv] + (session[:b1sv]+session[:b2sv]+session[:presv])%></th>
+                        <th width="2%" align="center"> <font color="blue"><%= session[:b1ctps]+session[:b2ctps]+session[:prectps]%>  </font><% session[:TTGsb1ctps]= session[:TTGsb1ctps] +(session[:b1ctps]+session[:b2ctps]+session[:prectps])%></th>
+                        <th width="2%" align="center"> <font color="blue"><%= session[:b1sctps]+session[:b2sctps]+session[:presctps]%></font><% session[:TTGsb1sctps]= session[:TTGsb1sctps] +(session[:b1sctps]+session[:b2sctps]+session[:presctps]) %></th>
+                        <th width="2%" align="center"><font color="blue"> <%= session[:b1auto]+session[:b2auto]+session[:preauto]%> </font><% session[:TTGsb1auto]= session[:TTGsb1auto] + (session[:b1auto]+session[:b2auto]+session[:preauto]) %></th>
+                    <th width="2%" align="center"><font color="blue"> <%= session[:b1ntrab]+session[:b2ntrab]+session[:prentrab]%>  </font> <% session[:TTGsb1ntrab]= session[:TTGsb1ntrab]+ (session[:b1ntrab]+session[:b2ntrab]+session[:prentrab]) %></th>
+                        <th width="2%"><font color="red"> <%= session[:b1]+session[:b2]+session[:pre]%> </font><% session[:TTGsb1total]= session[:TTGsb1total] + (session[:b1]+session[:b2]+session[:pre])  %>
+                        <th width="2%" align="center"> <%= session[:b1trans]+session[:b2trans]+session[:pretrans]%></font><% session[:TTGsb1trans]= session[:TTGsb1trans] + (session[:b1trans]+session[:b2trans]+session[:pretrans])%> </th>
+                      </tr>
                  <tr style="font-size:6px" >
                    <th  style="border-color: white" align="left">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
                    <th  style="border-color: white" width="2%">                   </th>
