@@ -109,6 +109,7 @@ display: none;
                   <li><%= link_to 'Sobre', sobre_path %></li>
                 </ul>
               </li>
+<% if current_user.present?%>
               <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#;">Inscrição</a>
@@ -216,10 +217,10 @@ display: none;
               </li>
               <%end%>
               
-
-
+   <%end%>
 
 <%end%>
+
        </ul>
      </div>
    </div>

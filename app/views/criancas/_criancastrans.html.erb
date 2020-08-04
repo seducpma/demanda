@@ -31,7 +31,7 @@
                 <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
                 <td align="left"><%=h crianca.mae%></td>
                 <td align="left"><%=h crianca.status%> </td>
-                <td align="left"><%=h crianca.unidade.nome%> </td>
+                <td align="left"><%if !crianca.unidade_id.nil?%> <%=h crianca.unidade.nome%> <%end%></td>
                 <td> <%= button_to"Transferir",  {:action => "transferencia", :id =>crianca}, :target => '_blank', :title => "Editar" %></td>
                  
           </tr>

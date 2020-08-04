@@ -1,4 +1,4 @@
-
+<!--
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -23,7 +23,7 @@
                  <%end%>
  <table  class ="invisible_to_print " >
    <tr  class ="invisible_to_print ">
-     <td align="right" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+     <td align="right" class ="invisible_to_print "><%= button_to "IMPRIMIR COMPROVANTE", onclick="javascript:window.print()", :title => "Imprimir" %></td>
   </tr>
  </table>
   <fieldset><legend><font  size=1><b> Dados da Criança  e Inscrição</b></font></legend>
@@ -110,7 +110,7 @@
             </tr>
            <tr style="font-size:8px">
               <th align="left" ><b>Local Inscrição:</b></th>
-              <th align="left" ><%= crianca.unidade.nome%></th>
+              <th align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet <%end%></th>
               <th align="left"><b>Data  e Hora:</b> </th>
               <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M")%></th>
            </tr>
@@ -139,7 +139,7 @@
 <br/>
 <hr/>
 
-
+-->
 
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
@@ -243,7 +243,7 @@
 
            <tr style="font-size:8px">
               <th align="left" width="12%"><b>Local Inscrição:</b></th>
-              <th width="20%" align="left" ><%= crianca.unidade.nome%></th>
+              <th width="20%" align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet <%end%></th>
               <th width="15%" align="left"><b>Data  e Hora:</b> </th>
               <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%></th>
            </tr>

@@ -1,5 +1,5 @@
 class CriancasController < ApplicationController
-
+  #require_role ["rh","administrador"], :for => [:destroy,:update,:index,:listagem_por_curso]
   before_filter :load_unidades
   before_filter :load_grupos
   before_filter :load_regiaos
@@ -109,12 +109,12 @@ end
 def transferenciacrianca
     data = (Time.now.year-6).to_s
     data = data + ' 00:00:00'
-    
-    if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
+
+           if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
                  @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'MATRICULADA' and  nascimento > ? AND nome NOT IN (SELECT nome  FROM criancas WHERE nome LIKE ? AND status='NA_DEMANDA'  )" , "%" + params[:searchtrans].to_s + "%", data, "%" + params[:searchtrans].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
-              else
+           else
                  @criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'MATRICULADA'", "%" + params[:searchtrans].to_s + "%" ],:order => 'nome ASC')
-              end
+           end
         render :update do |page|
           page.replace_html 'criancas', :partial => "criancastrans"
         end
@@ -192,12 +192,21 @@ def reclassifica
   t=0
 end
 
+def opcao1
+  t=0
+   if params[:opcao1] ==  'x1'
+     session[:servidor_publico] = 1
+     t=0
+   end
+
+end
 
   # POST /criancas
   # POST /criancas.xml
   def create
     @crianca = Crianca.new(params[:crianca])
- 
+
+
       if session[:nasc]==1
           session[:nasc]=0
                   # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
@@ -290,7 +299,9 @@ end
 
 
                   # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
-                    @crianca.unidade_id = current_user.unidade_id
+                    if current_user.present?
+                       @crianca.unidade_id = current_user.unidade_id
+                    end
                     if session[:show_transferencia]==1
                         @crianca.nascimento = session[:dataN]
                         @crianca.save
@@ -338,6 +349,20 @@ end
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
+
+                       if @crianca.opcao1=='servidor'
+                              @crianca.servidor_publico = true
+                        else if @crianca.opcao1=='trabalho'
+                                  @crianca.trabalho = true
+                             else if @crianca.opcao1=='declaracao'
+                                  @crianca.declaracao = true
+                                  else if @crianca.opcao1=='autonomo'
+                                          @crianca.autonomo = true
+                                       end
+                                  end
+                             end
+                        end
+                            @crianca.save
                             format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
                               session[:show]=0
                          end
@@ -345,6 +370,20 @@ end
                                session[:id_crinaca_trans]= @crianca.id
                                @crianca.grupo_id=session[:trans_grupo_id]
                                @crianca.save
+                             if @crianca.opcao1=='servidor'
+                                @crianca.servidor_publico = true
+                             else if @crianca.opcao1=='trabalho'
+                                      @crianca.trabalho = true
+                                 else if @crianca.opcao1=='declaracao'
+                                         @crianca.declaracao = true
+                                      else if @crianca.opcao1=='autonomo'
+                                              @crianca.autonomo = true
+                                           end
+                                      end
+                                 end
+                            end
+                           @crianca.save
+                        
                               format.html { redirect_to(show_transferencia_path) }
                               format.xml  { head :ok }
                               session[:show_recadastramento]==0
@@ -496,7 +535,33 @@ if  (data <= Date.today.to_s and data >= DATAB1)
         end
         session[:id]=@crianca.id
         @crianca = Crianca.find(session[:id])
-        flash[:notice] = 'Criança atualizada com sucesso.'
+                        if @crianca.opcao1=='servidor'
+                               @crianca.servidor_publico = true
+                               @crianca.trabalho = false
+                               @crianca.declaracao = false
+                               @crianca.autonomo = false
+                        else if @crianca.opcao1=='trabalho'
+                                    @crianca.trabalho = true
+                                    @crianca.servidor_publico = false
+                                    @crianca.declaracao = false
+                                    @crianca.autonomo = false
+                             else if @crianca.opcao1=='declaracao'
+                                        @crianca.declaracao = true
+                                        @crianca.servidor_publico = false
+                                        @crianca.trabalho = false
+                                        @crianca.autonomo = false
+                                  else if @crianca.opcao1=='autonomo'
+                                             @crianca.autonomo = true
+                                              @crianca.servidor_publico = false
+                                              @crianca.declaracao = false
+                                              @crianca.trabalho = false
+                                       end
+                                  end
+                             end
+                        end
+                        t=0
+         @crianca.save
+        flash[:notice] = 'Atualizado com sucesso.'
          if session[:show]==1
               format.html { redirect_to(@crianca) }
               format.xml  { head :ok }
@@ -589,6 +654,7 @@ end
 
    def consultacrianca
      if params[:type_of].to_i == 1
+      if current_user.present?
          if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ? AND nascimento >= ?   " , "%" + params[:search1].to_s + "%", DATAN2],:order => 'nome ASC, unidade_id ASC')
@@ -596,7 +662,11 @@ end
               else
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ?AND nascimento >= ?  ", "%" + params[:search1].to_s + "%", DATAN2 ],:order => 'nome ASC')
-              end
+         end
+      else
+        @criancas = Crianca.find( :all,:conditions => ["nome like ?AND nascimento >= ?  ", "%" + params[:search1].to_s + "%", DATAN2 ],:order => 'nome ASC')
+        t=0
+      end
               @canceladas = Crianca.find( :all,:conditions => [" nome like ? AND status =? AND nascimento >= ? ",  "%" + params[:search1].to_s + "%" , 'CANCELADA', DATAN2],:order => 'nome ASC')
               @demandas = Crianca.find( :all,:conditions => [" nome like ? and status =? AND nascimento >= ? ",  "%" + params[:search1].to_s + "%" , 'NA_DEMANDA', DATAN2],:order => 'nome ASC')
               @matriculadas = Crianca.find( :all,:conditions => [" nome like ? and status =? AND nascimento >= ?   ",  "%" + params[:search1].to_s + "%" , 'MATRICULADA', DATAN2],:order => 'nome ASC')
@@ -1368,19 +1438,22 @@ end
   end
 
   def load_unidades
-    session[:unidade] = current_user.unidade_id
+   if current_user.present?
     if current_user.unidade_id== 53 or current_user.unidade_id==52
+       session[:unidade] = current_user.unidade_id
        @unidades1 =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1" ],:order => "nome")
-       @unidades =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1" ],:order => "nome")
        @unidades2 =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83)  and (id <> 54) AND ativo = 1" ],:order => "nome")
     else
+       
+          session[:unidade] = current_user.unidade_id
+       
        @unidades1 =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=?", session[:unidade]  ],:order => "nome")
-       @unidades =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1" ],:order => "nome")
-       @unidades2 =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 "  ],:order => "nome")
+      @unidades2 =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 "  ],:order => "nome")
        
     end
+  end
+    @unidades =  Unidade.find(:all,  :conditions => ["(tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1" ],:order => "nome")
 
-    
   end
 
     

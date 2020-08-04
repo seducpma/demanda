@@ -96,6 +96,14 @@ $(".filtro_vagasN2").click(function ()
      $(".botao2").hide();
    });
 
+$(".servidorS").click(function ()
+   {
+     $(".servidor").show();
+   });
+$(".servidorN").click(function ()
+   {
+     $(".servidor").hide();
+   });
 
 $(".filtro_vagasS3").click(function ()
    {

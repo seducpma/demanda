@@ -151,7 +151,7 @@
             </tr>
            <tr bgcolor="#F5F5F5"  width="100%">
                <td align="left"  colspan="6"> <b>Dia/Hora Inscrição:</b>
-             <%=h @crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%>(<%=h @crianca.unidade.nome%>)
+             <%=h @crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%> <%if !@crianca.unidade_id.nil?%> (<%=h @crianca.unidade.nome%>) <%else%> (Internet)<%end%>
              <% if  @crianca.recadastrada == 1%>
                   &nbsp&nbsp - <b>Recadastramento:<% if !@crianca.data_rec.nil? %></b><%=h @crianca.data_rec.strftime("%e/%m/%Y - %H:%M horas")%>( <%=h @crianca.local_rec%>)<%end%>
              <%end%>
@@ -180,11 +180,13 @@
 
  <table>
          <tr>
-            <td width="4%"align="left"><%= button_to 'Consultar' ,consulta_unidade_path, :title => "Consultar" %></td>
-            <%if @crianca.unidade_id == current_user.unidade_id or  current_user.unidade_id == 52%>
-                <td width="6%"align="left" ><%= button_to 'Editar', {:action => "edit", :id =>@crianca}, :method => "get", :title => "Editar"%></td>
-             <%end%>
-             <td width="4%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+            <td width="4%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+            <%if current_user.present?%>
+               <%if @crianca.unidade_id == current_user.unidade_id or  current_user.unidade_id == 52%>
+                  <td width="6%"align="left" ><%= button_to 'Editar', {:action => "edit", :id =>@crianca}, :method => "get", :title => "Editar"%></td>
+                <%end%>
+                <td width="4%"align="left"><%= button_to 'Consultar' ,consulta_unidade_path, :title => "Consultar" %></td>
+           <%end%>
              <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
 
           </tr>

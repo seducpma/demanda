@@ -11,10 +11,12 @@
               <!--<a href="#" class="filtro"><%#= radio_button_tag(:type_of, "1") %></a>Nome (Recadastrados)-->
               
               <a href="#" class="filtro"><%= radio_button_tag(:type_of, "1") %></a>Nome
-              <a href="#" class="filtro_status"><%= radio_button_tag(:type_of, "2") %></a>Na Unidade
-              <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "6") %></a>Na SEDUC
-              <a href="#" class="filtro_rec"><%= radio_button_tag(:type_of, "3") %></a>Nome (Não Recadastrados)
-              <a href="#" class="filtro_mae"><%= radio_button_tag(:type_of, "5") %></a>Mãe
+              <% if current_user.present? %>
+                  <a href="#" class="filtro_status"><%= radio_button_tag(:type_of, "2") %></a>Na Unidade
+                  <a href="#" class="sem_filtro"><%= radio_button_tag(:type_of, "6") %></a>Na SEDUC
+                  <a href="#" class="filtro_rec"><%= radio_button_tag(:type_of, "3") %></a>Nome (Não Recadastrados)
+                  <a href="#" class="filtro_mae"><%= radio_button_tag(:type_of, "5") %></a>Mãe
+              <%end%>
             </td>
          </tr>
          <tr>

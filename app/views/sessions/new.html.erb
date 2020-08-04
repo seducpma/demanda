@@ -1,6 +1,6 @@
 <br/><br/>
 <div id="conteudo">
-<table width="70%" border="1" align="center" class="login">
+<table width="90%" border="1" align="center" class="login">
   <tr>
     <td colspan="2" align="center">
         <font size="4"><b>SISTEMA DE CONTROLE DE DEMANDA ESCOLAR <br/>DA SECRETARIA DE EDUCAÇÃO DE AMERICANA </b></font>
@@ -8,14 +8,23 @@
      </td>
   </tr>
   <tr>
-     <td rowspan="2">
-       <center><div id="img"></div></center>
+     <td rowspan="3"> <center><font color="blue" size="4"><b>SISDEMAN</b></font><br/>
+       
+       </center><div id="img"></div></center>
      </td>
-     <td width="40%">
-       <p align="center"><font color="blue" size="3">SISDEMAN</font></p>
-         <% form_tag session_path do -%>
+     <td width="40%" align="center">
+              <font color="Blue" size="3"><b><u>INSCRIÇÃO PARA VAGAS <br/> CRECHE OU PRÉ ESCOLA</font></b></u><br/></p>
+       <font  ><b>Para fazer a inscrição para creche ou pré escola, clique no botão abaixo. Não é necessário possuir login e senha.</font></b><br/></p>
+        <%= button_to('FAZER INSCRIÇÃO', new_crianca_path, :method => "get", :title => "Inscrição")%>
+     </td>
+</tr>
+  <tr>
+    <td colspan="3" align="center">
+<font size="1"><b> Acesso somente para pessoas autorizadas pela SEDUC</font></b>
+
+<% form_tag session_path do -%>
             <p align="center"><b><label for="login">Login</label></b>
-           &nbsp'<%= text_field_tag 'login','',:size => 10 %><br/>
+           &nbsp<%= text_field_tag 'login','',:size => 10 %><br/>
           <b><label for="password">Senha</label></b>
           <%= password_field_tag 'password','',:size => 10 %><br/><br/>
 
@@ -23,13 +32,12 @@
           <font size="2"><b>Memorizar usuário</b></font><br/> !-->
           <%= submit_tag 'Entrar' %></p>
          <% end -%>
-  <br/>
-  <br/>
+    
       <!-- < %= link_to 'Esqueci a Senha', new_password_path%>-->
      </td>
   </tr>
   <tr>
-   <td colspan="2" align="center">
+   <td colspan="3" align="center">
         <font size="2"><b>Problemas com a senha?</b></font><br/>
         <%= link_to 'Não possui senha', signup_path %>  <br/>
         <%#= link_to 'Esqueci a senha', new_password_path%>  
@@ -37,9 +45,9 @@
   </tr>
   <tr>
     <td colspan="2" align="center">
-      <!-- Inicio do botao do Firefox -->
-      Utilize preferencialmente o navegador 
+      <font size="3"> &nbsp&nbsp <b id="pisca1"> <font color ="red"> <u>ATENÇÃO:</u> </font></b>     Utilize<b> OBRIGATORIAMENTE </b>o navegador
       <a href="http://br.mozdev.org/" target="_blank"><img src="http://www.mozilla.org/contribute/buttons/110x32bubble_r_pt.png" alt="Firefox" width="110" height="32" style="border-style:none;" title="Mozilla Firefox" /></a>
+       
       <!-- Fim do botao do Firefox -->
     </td>
   </tr>
