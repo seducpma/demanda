@@ -98,6 +98,8 @@ REFERENCIA = { 'Residência'=> 'Residencia',
                'Avô/Avó' => 'Avô/Avó',
                'Trabalho'=> 'Trabalho',
                'Outros'=> 'Outros',
+               'Familiar'=> 'Familiar',
+               'Cuidador'=> 'Cuidador',
         }
 
 PERIODO = { '         ' => '         ',

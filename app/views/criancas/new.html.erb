@@ -3,7 +3,7 @@
 <% title "CRIANCAS".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
-     <font size="3"><strong>CADASTRO DE SOLICITAÇÃO DE VAGA</strong></font><br/>
+     <font size="3"><strong>CADASTRO DE SOLICITAÇÃO DE VAGA        <%   if !current_user.present? %> - INSCRIÇÃO ON-LINE    <%end%></strong></font><br/>
  </div>
       <div class="tabs">
       <%#= render :partial => 'form' %>
@@ -25,10 +25,10 @@
                          Municipal de Educação de Americana. A criança ficará classificada obrigatoriamente na região de  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          abrangência do endereço residencial da família ou aquele indicado pelo responsável legal, mediante   <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          justificativa e comprovação. A criança ficará classificada em uma única região, podendo ser atendida <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         em qualquer uma uma das unidades da região, conforme disponibilidade de vagas.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         em qualquer uma das unidades da região, conforme disponibilidade de vagas.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                         2) Todas as informações prestadas na inscrição deverão estar corretas e devidamente comprovadas  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         rcom osespectivos documentos. Informações não comprovadas serão desconsideradas podendo <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         com os respectivos documentos. Informações não comprovadas serão desconsideradas podendo <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          implicar, no <u>CANCELAMENTO</u> da inscrição.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 
@@ -103,7 +103,7 @@
        <tr  bgcolor="#FFFFF">
           <td><b>Fone(s) Recado</b></td>
          <td><%= f.text_field :tel2, :size =>"36" %></td>
-         <td><b>Nome</b></td>
+         <td><b>Nome (recado)</b></td>
          <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
        </tr>
         <tr  bgcolor="#FFFFF">
@@ -134,7 +134,7 @@
   <legend><font size="4">Dados da Inscrição</font></legend>
   <table width="100%">
       <tr  bgcolor="#FFFFF">
-          <td colspan="6"><font size ="3" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço, para fins de classificação, do local onde a crinaça fica durante o dia. É necessário indicar,  comprovar e justificar o vínculo da criança com este endereço (ex. casa dos avós,  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
+          <td colspan="6"><font size ="3" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço, para fins de classificação, do local onde a criança fica durante o dia. É necessário indicar,  comprovar e justificar o vínculo da criança com este endereço (ex. casa dos avós,  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
 
       </tr>
        <tr  bgcolor="#FFFFF">
@@ -149,8 +149,8 @@
        </tr>
        <tr  bgcolor="#FFFFF">
          <td colspan="6"> 
-            <font size ="3" color="red"><b><u> Indicar um região  </u></b>da cidade onde deseja matricular a criança. 
-              Estas  regiões são definidas pela SEDUC. <b>NÃO </b> é possivel indicar um unidade especifica.<br/>
+            <font size ="3" color="red"><b><u> Indicar uma região  </u></b>da cidade onde deseja matricular a criança.
+              Estas  regiões são definidas pela SEDUC. <b>NÃO </b> é possivel indicar uma unidade específica.<br/>
          <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
           <font size ="3" color="black"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Região:</b> &nbsp&nbsp</font>
          <a class="botaosalvar"><%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'OBRIGATÓRIO SELECIONAR UMA OPÇÃO' %></a>
@@ -161,7 +161,7 @@
              <font color="red"><br/> <b id="pisca1" > 
                &nbsp
               <font size="3"> <u>ATENÇÃO:</u>&nbsp</b>
-                <b>APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS  UNIDADES DA REGIÃO selecionada para que possa indicar uma das unidade na região desejada e  clicar o botão SALVAR.</b>
+                <b>APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS  UNIDADES DA REGIÃO selecionada para que possa indicar uma das unidade na região desejada <font color="red" size="5"> * </font>.</b>
               </font>
          </td>
        </tr>
@@ -190,10 +190,10 @@
                            </td>
                         </tr>
                         <tr bgcolor="#FFFFF">
-                           <td>  <a href="#" ><%= f.radio_button(:opcao1, 'trabalho') %></a><font size="3"> Mãe/reposnável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<br/>
+                           <td>  <a href="#" ><%= f.radio_button(:opcao1, 'trabalho') %></a><font size="3"> Mãe/reponsável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<br/>
                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
                                 <font size="2">
-                                 <b id="pisca1"><u>ATENÇÃO:</u></b> No caso de mãe trabalhar sob regime estatutário, poderá ser aceito como comprovante de trabalho <br/>
+                                 <b id="pisca1"><u>ATENÇÃO:</u></b> No caso a mãe trabalhar sob regime estatutário, poderá ser aceito como comprovante de trabalho <br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                   certidão ou declaração onde conste o órgão ou instituição em que trabalha (indicando se é da esfera municipal,<br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -213,12 +213,12 @@
                            </td>
                          </tr>
                          <tr  bgcolor="#FFFFF">
-                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reposnável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório?<br/>
+                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório?<br/>
                                 <font size="2">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
                                     <b id="pisca1"><u>ATENÇÃO:</u></b> Mãe trabalha mas não possui carteira assinada mas possui  declaração do empregador PESSOA JURÍDICA com    <br/>
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                        CNPJetc...), Esta declaração deve conter a qualificaçao completa do empregador pessoa jurídica (nome, CNPJ,  <br/>
+                                        CNPJ.Esta declaração deve conter a qualificaçao completa do empregador pessoa jurídica (nome, CNPJ,  <br/>
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                          endereço, telefone, atividade desenvolvida pelo empregado, horário de trabalho  e <b>firma reconhecida em cartório</b>.<br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -231,7 +231,7 @@
                          </td>
                        </tr>
                       <tr  bgcolor="#FFFFF">
-                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'autonomo') %></a> <font size="3"> Mãe/reposnável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>ou</u> declaração de trabalho AUTÔNOMO.</b><br/>
+                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'autonomo') %></a> <font size="3"> Mãe/reponsável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>ou</u> declaração de trabalho AUTÔNOMO.</b><br/>
                                 <font size="2">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
                                  <b id="pisca1"><u>ATENÇÃO:</u></b> Esta declaração deve conter a qualificaçao completa do empregador pessoa  física e/ou da mãe,  quando  <br/>
@@ -249,7 +249,7 @@
                                </font>                        </td>
                        </tr>
                       <tr  bgcolor="#FFFFF">
-                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'não trabalha') %></a> <font size="3"> Mãe/reposnável NÃO trabalha fora de casa</b><td>
+                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'não trabalha') %></a> <font size="3"> Mãe/reponsável NÃO trabalha fora de casa</b><td>
 
                        </tr>
                  </table>
@@ -309,7 +309,7 @@
       <tr>
         <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
                    3) É responsabilidade dos pais e/ou responsável legal manter os dados atualizados no cadastro<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                   junto à unidade escolar onde realizou a inscrição. Assim, deverá ser informada qualquer alteração<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   junto Secretaria de Educação - Americana. Assim, deverá ser informada qualquer alteração<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                    nos dados solicitados na inscrição, inclusive os telefones, pois será somente por meio de ligações<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                    telefônicas que ocorrerá o contato no caso de surgimento de vaga. Deverá ser informada, também,<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                    ainda qualquer alteração relativa ao trabalho&nbsp&nbsp da &nbsp mãe,&nbsp pois &nbsp&nbsp essa &nbsp informação &nbsp  é  &nbsp&nbsp critério de <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

@@ -110,7 +110,7 @@
             </tr>
            <tr style="font-size:8px">
               <th align="left" ><b>Local Inscrição:</b></th>
-              <th align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet <%end%></th>
+              <th align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet   (on-line) <%end%></th>
               <th align="left"><b>Data  e Hora:</b> </th>
               <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M")%></th>
            </tr>
@@ -243,7 +243,7 @@
 
            <tr style="font-size:8px">
               <th align="left" width="12%"><b>Local Inscrição:</b></th>
-              <th width="20%" align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet <%end%></th>
+              <th width="20%" align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet (on-line)  <%end%></th>
               <th width="15%" align="left"><b>Data  e Hora:</b> </th>
               <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%></th>
            </tr>
@@ -299,4 +299,8 @@
 &nbsp&nbsp&nbsp
  <font size ="1" ><b>Americana, <%= Time.now.strftime("%d/%m/%Y") %></b></font>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Assinatura do Responsável:______________________________________
-
+ <table  class ="invisible_to_print " width ="100%" >
+   <tr  class ="invisible_to_print ">
+     <td align="right" class ="invisible_to_print "><%= button_to "IMPRIMIR COMPROVANTE", onclick="javascript:window.print()", :title => "Imprimir" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+  </tr>
+ </table>

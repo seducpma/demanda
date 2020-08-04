@@ -180,7 +180,7 @@
 
            <tr  bgcolor="#FFFFF">
                  <td colspan="6"> <b>Unidade onde foi realizada a Inscrição:&nbsp </b>                           <%if @crianca.unidade.nil?%>
-                               Internet
+                               Internet (on-line)
                            <%else%>
                               <%#= collection_select :crianca, :unidade_id, @unidade_regiao, :id, :nome, :include_blank => @crianca.unidade_t  %>
                            <%end%>
