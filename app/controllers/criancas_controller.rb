@@ -372,13 +372,34 @@ end
                                @crianca.save
                              if @crianca.opcao1=='servidor'
                                 @crianca.servidor_publico = true
+                                @crianca.trabalho = false
+                                @crianca.declaracao = false
+                                @crianca.autonomo = false
+
                              else if @crianca.opcao1=='trabalho'
                                       @crianca.trabalho = true
+                                      @crianca.servidor_publico = false
+                                      @crianca.declaracao = false
+                                      @crianca.autonomo = false
+
                                  else if @crianca.opcao1=='declaracao'
                                          @crianca.declaracao = true
+                                         @crianca.servidor_publico = false
+                                         @crianca.trabalho = false
+                                         @crianca.autonomo = false
+
                                       else if @crianca.opcao1=='autonomo'
                                               @crianca.autonomo = true
-                                           end
+                                              @crianca.servidor_publico = false
+                                              @crianca.trabalho = false
+                                              @crianca.declaracao = false
+                                            else if @crianca.opcao1=='não trabalha'
+                                                @crianca.servidor_publico = false
+                                                @crianca.trabalho = false
+                                                @crianca.declaracao = false
+                                                @crianca.autonomo = false
+                                               end
+                                          end
                                       end
                                  end
                             end
@@ -407,6 +428,7 @@ end
 end
   # PUT /criancas/1
   # PUT /criancas/1.xml
+  
   def update
     @crianca = Crianca.find(params[:id])
     if session[:acerto] = 1
@@ -555,7 +577,13 @@ if  (data <= Date.today.to_s and data >= DATAB1)
                                               @crianca.servidor_publico = false
                                               @crianca.declaracao = false
                                               @crianca.trabalho = false
-                                       end
+                                     else if @crianca.opcao1=='não trabalha'
+                                               @crianca.servidor_publico = false
+                                               @crianca.trabalho = false
+                                               @crianca.declaracao = false
+                                               @crianca.autonomo = false
+                                          end
+                                      end
                                   end
                              end
                         end

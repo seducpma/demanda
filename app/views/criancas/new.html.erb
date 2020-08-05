@@ -74,10 +74,12 @@
        </tr>
        <tr   bgcolor="#FFFFF">
            <td colspan="2"> <b>Responsável Legal pela criança?</b>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <a  class="filtro_vagasS2"><%= f.radio_button :responsavel, true, :checked => true %></a>
                 <%= f.label :responsavel, "SIM", :value => "SIM" %>
                 <a  class="filtro_vagasN2"><%= f.radio_button :responsavel, false%></a>
                 <%= f.label :responsavel, "NÃO", :value => "NÃO" %>
+                <br/><font size="1"> (Caso pais não sejam os responsáveis legais)</font>
             </td>
             <td colspan="3" class="botao2">
                  <b>Nome:</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -138,8 +140,8 @@
 
       </tr>
        <tr  bgcolor="#FFFFF">
-           <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"4" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-           <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"40"%>
+           <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"1" %>&nbsp&nbsp
+           <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"35"%>
 
 
            </td>
@@ -175,7 +177,7 @@
             <table  width="100%">
                  <tr  bgcolor="#FFFFF">
                       <td colspan="2">
-                          <font color =" red" size="3"><b> <u>ATENÇÃO:</u></b> Selecionar <u>UMA opção </u> sob a situação de trabalho da mãe ou responsável cuidador da criança.
+                          <font color =" red" size="3"><b> <u>ATENÇÃO:</u></b> Selecionar <u>UMA opção </u> sobre a situação de trabalho da mãe ou responsável cuidador da criança.
                       </td>
                 </tr>
                <tr  bgcolor="#FFFFF">
@@ -199,32 +201,32 @@
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                   estadual ou federal),  bem como o regime de contratação, de seu cargo ou função, local (com endereço completo) <br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                   e horários e/ou escalas de trabalho. Esta certidão ou declaração verá, preferencialmente, estar acompanhada <br/>
+                                   e horários e/ou escalas de trabalho. Esta certidão ou declaração deverá, preferencialmente, estar acompanhada <br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                    de holerite ou contra-cheque emitido nos últimos três meses. No caso de   funcionários (as) da Prefeitura  <br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                    Municipal de Americana, selecionar a opção anterior. <br/>
                                  </font>
                                <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"28" %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"20" %>
                                  &nbsp <b>Nº</b><%= text_field :crianca, :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= text_field :crianca, :bairro_trab, :size=>"20" %>
                                  &nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"6" %>
                                </font>
                            </td>
                          </tr>
                          <tr  bgcolor="#FFFFF">
-                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório?<br/>
+                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.<br/>
                                 <font size="2">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
-                                    <b id="pisca1"><u>ATENÇÃO:</u></b> Mãe trabalha mas não possui carteira assinada mas possui  declaração do empregador PESSOA JURÍDICA com    <br/>
+                                    <b id="pisca1"><u>ATENÇÃO:</u></b> Mãe trabalha e <b> não</b> possui carteira assinada, mas possui  declaração do empregador PESSOA JURÍDICA com    <br/>
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         CNPJ.Esta declaração deve conter a qualificaçao completa do empregador pessoa jurídica (nome, CNPJ,  <br/>
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                          endereço, telefone, atividade desenvolvida pelo empregado, horário de trabalho  e <b>firma reconhecida em cartório</b>.<br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                <font color="red"><b> >>>>> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<<<<</b><br/>
+                                <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
                                 <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"28"  %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"20"  %>
                                  &nbsp <b>Nº</b><%= text_field :crianca, :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= text_field :crianca, :bairro_trab, :size=>"20" %>
                                  &nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"8" %>
                                </font>                        
@@ -241,9 +243,9 @@
                                 reconhecida em cartório. (Caso trabalhe em diferentes localidades, será necessário declaração de todos os locais).<br/>
 
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                <font color="red"><b> >>>>> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<<<<</b><br/>
+                                <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
                                 <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"28"  %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"20"  %>
                                  &nbsp <b>Nº</b><%= text_field :crianca, :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= text_field :crianca, :bairro_trab, :size=>"20" %>
                                  &nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"8" %>
                                </font>                        </td>
@@ -273,7 +275,7 @@
 -->
                   <tr  bgcolor="#FFFFF">
                       <td colspan="2">
-                          <font color =" red" size="3"><b> <u>ATENÇÃO:</u></b> No ato de matricula serão exigidos os documentos conforme declaração acima preenchida, a não enterga dos documentos e ou declaração não comprovada ou falsa a vaga será CANCELADA.</u>.</font>
+                          <font color =" red" size="3"><b> <u>ATENÇÃO:</u></b> No ato de matrícula serão exigidos os documentos conforme declaração acima preenchida, a não entrega dos documentos e ou declaração não comprovada ou falsa a vaga será CANCELADA.</u>.</font>
                       </td>
                   </tr>
             </table>

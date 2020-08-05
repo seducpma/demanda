@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "VOCẼ ACABOU DE SAIR DO SISDEMANA"
+    flash[:notice] = "VOCẼ ACABOU DE SAIR DO SISDEMAN"
     redirect_back_or_default('/')
   end
 
