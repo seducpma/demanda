@@ -62,7 +62,7 @@
                :with => :crianca_mae,
                :url => { :action => "mesma_mae" } %>
          </td>
-         <td><b>Pai </b></td>
+         <td>&nbsp&nbsp<b>Pai </b></td>
          <td><%= f.text_field :pai, :size=>"38" %></td>
 
        </tr>
@@ -72,6 +72,7 @@
          <td colspan="3"><b><div id='nome_mae'></div></b></td>
 
        </tr>
+      <!--
        <tr   bgcolor="#FFFFF">
            <td colspan="2"> <b>Responsável Legal pela criança?</b>
                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -87,11 +88,20 @@
                   <b>Parentesco</b><%= f.select :parentesco, GRAU, :include_blank => ''%>
             </td>
       </tr>
+      -->
+       <tr   bgcolor="#FFFFF">
+           <td colspan="3"> <b>Responsável Legal pela criança?</b>
+               &nbsp - &nbsp
+                   <b>Nome</b>&nbsp <%= f.text_field :responsavel_n, :size => "38"%>&nbsp&nbsp
+                  <br/><font size="1"> (Caso pais não sejam os responsáveis legais)</font>
+           </td>
+            <td> <b>Vínculo com a criança</b> <%= f.select :parentesco, GRAU, :include_blank => ''%></td>
+      </tr>
 
       <tr  bgcolor="#FFFFF">
-         <td><b>Endereço (residencial)  </b></td>
+         <td><b>Endereço  <font size="1"> (residencial)  </b></font></td>
          <td><%= f.text_field :endereco %> &nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"2" %></td>
-         <td><b>Bairro</b></td>
+         <td>&nbsp&nbsp <b>Bairro</b></td>
          <td><%= f.text_field :bairro, :size=>"38" %></td>
        </tr>
        <tr  bgcolor="#FFFFF">
@@ -103,23 +113,64 @@
           </td>
        </tr>
        <tr  bgcolor="#FFFFF">
-          <td><b>Fone(s) Recado</b></td>
+          <td><b>Fone(s) <font size="1"> (Recado) </font></b></td>
          <td><%= f.text_field :tel2, :size =>"36" %></td>
-         <td><b>Nome (recado)</b></td>
+         <td>&nbsp&nbsp<b>Nome <font size="1"> (recado)</font></b></td>
          <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
        </tr>
-        <tr  bgcolor="#FFFFF">
+ <!--       <tr  bgcolor="#FFFFF">
+          <script>
+                       $(document).ready(function()
+                        {
+                          $("#dropdownnecessidade").click(function ()
+                           {
+                             $("#necessidadea").slideToggle("high");
+                            });
+                        });
+         </script>
              <td colspan="2"> <b>Necessidade(s) Especial(s)?</b>
+                  <a href="#" id="dropdownecessidade">
                   <a  class="filtro_vagasS3"><%= f.radio_button :n_especial, true%></a>
                   <%= f.label :n_especial, "SIM", :value => "SIM" %>
                   <a  class="filtro_vagasN3"><%= f.radio_button :n_especial, false,  :checked => true %></a>
-                  <%= f.label :n_especial, "NÃO", :value => "NÃO" %>
+                  <%= f.label :n_especial, "NÃO", :value => "NÃO" %></a>
               </td>
               <td colspan="3" class="botao3">
                    <b>Necessidade:</b>&nbsp&nbsp&nbsp
+                   <div id="necessidade" style="display:none">
                                <%= f.text_field :necessidade, :size =>"36"%>&nbsp&nbsp
+                   </div>
               </td>
         </tr>
+-->
+
+
+
+              <tr  bgcolor="#FFFFF">
+                <td colspan="2"> <script>
+                       $(document).ready(function()
+                        {
+                          $("#dropdownbutton12").click(function ()
+                           {
+                             $("#menu12").slideToggle("high");
+                            });
+                        });
+                       </script>
+                       <b>Necessidade(s) Especial(s)?</b>
+
+                  <a href="#" id="dropdownbutton12"><%= f.radio_button :n_especial, true %></a>SIM
+                                                    <%=  f.radio_button :n_especial, false, :checked => true  %>NÃO
+                <td colspan="2">
+                   <div id="menu12" style="display:none">
+                     <b>Necessidade:</b><%= f.text_field :necessidade, :size =>"36" %>
+                   </div>
+                  </td>
+                 </td>
+              </tr>
+
+
+
+
          <tr  bgcolor="#FFFFF">
                    <td colspan="3"><b>Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b>
                    &nbsp&nbsp <% session[:sim]= 0 %><%= f.select :irmao , (OPCAOSN).sort %> </td>
@@ -140,14 +191,14 @@
 
       </tr>
        <tr  bgcolor="#FFFFF">
-           <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"1" %>&nbsp&nbsp
-           <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"35"%>
+           <td colspan="6"><b>Endereço </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"1" %>&nbsp&nbsp
+           <b>Bairro</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"35"%>
 
 
            </td>
        </tr>
        <tr bgcolor="#FFFFF">
-           <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança:</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
+           <td colspan="6"><b>Justificativa </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
        </tr>
        <tr  bgcolor="#FFFFF">
          <td colspan="6"> 
@@ -185,16 +236,38 @@
                       <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color:#00FFFFFF" >
                         <tr bgcolor="#FFFFF">
                            <td>
-                              <%= f.radio_button(:opcao1, 'servidor') %><font size=3> A criança é filho(a) de Servidor(a) Pública da <u>Prefeitura Municipal de Americana.</u></font><br/>
-                                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Secretaria: </b> <%= text_field :crianca, :servidor_local, :size => "25" %>
-                                              &nbsp&nbsp&nbsp <b>Matrícula:</b><%= text_field :crianca, :matricula, :size =>"12"  %>
-                                              &nbsp&nbsp&nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"15" %>
+                             <script>
+                                 $(document).ready(function()
+                                   {
+                                     $("#dropdownbutton_servidor").click(function ()
+                                       {
+                                           $("#servidor").slideToggle("high");
+                                        });
+                                  });
+                              </script>
+                              <a href="#" id="dropdownbutton_servidor" ><%= f.radio_button(:opcao1, 'servidor') %></a><font size=3> A criança é filho(a) de Servidor(a) Pública da <u>Prefeitura Municipal de Americana.</u></font><br/>
+                                          <div id="servidor" style="display:none">
+                                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Secretaria: </b> <%= f.text_field :servidor_local, :size => "25" %>
+                                              &nbsp&nbsp&nbsp <b>Matrícula:</b><%= f.text_field  :matricula, :size =>"12"  %>
+                                              &nbsp&nbsp&nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"15" %>
+                                          </div>
                            </td>
                         </tr>
                         <tr bgcolor="#FFFFF">
-                           <td>  <a href="#" ><%= f.radio_button(:opcao1, 'trabalho') %></a><font size="3"> Mãe/reponsável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<br/>
+                           <td>
+                             <script>
+                                 $(document).ready(function()
+                                   {
+                                     $("#dropdownbutton_trabalho").click(function ()
+                                       {
+                                           $("#trabalho").slideToggle("high");
+                                        });
+                                  });
+                              </script>
+                             <a href="#" id="dropdownbutton_trabalho" ><%= f.radio_button(:opcao1, 'trabalho') %></a><font size="3"> Mãe/reponsável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<br/>
                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
-                                <font size="2">
+                           <div id="trabalho" style="display:none">
+                                 <font size="2">
                                  <b id="pisca1"><u>ATENÇÃO:</u></b> No caso a mãe trabalhar sob regime estatutário, poderá ser aceito como comprovante de trabalho <br/>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                   certidão ou declaração onde conste o órgão ou instituição em que trabalha (indicando se é da esfera municipal,<br/>
@@ -208,32 +281,59 @@
                                    Municipal de Americana, selecionar a opção anterior. <br/>
                                  </font>
                                <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"20" %>
-                                 &nbsp <b>Nº</b><%= text_field :crianca, :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= text_field :crianca, :bairro_trab, :size=>"20" %>
-                                 &nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"6" %>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20" %>
+                                 &nbsp <b>Nº</b><%= f.text_field :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
+                                 &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"6" %>
                                </font>
+                           </div>
                            </td>
                          </tr>
                          <tr  bgcolor="#FFFFF">
-                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.<br/>
-                                <font size="2">
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
-                                    <b id="pisca1"><u>ATENÇÃO:</u></b> Mãe trabalha e <b> não</b> possui carteira assinada, mas possui  declaração do empregador PESSOA JURÍDICA com    <br/>
-                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                        CNPJ.Esta declaração deve conter a qualificaçao completa do empregador pessoa jurídica (nome, CNPJ,  <br/>
-                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                         endereço, telefone, atividade desenvolvida pelo empregado, horário de trabalho  e <b>firma reconhecida em cartório</b>.<br/>
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
-                                <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"20"  %>
-                                 &nbsp <b>Nº</b><%= text_field :crianca, :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= text_field :crianca, :bairro_trab, :size=>"20" %>
-                                 &nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"8" %>
-                               </font>                        
+                            <td> 
+                                           <script>
+                                               $(document).ready(function()
+                                                {
+                                                  $("#dropdownbutton_declaracao").click(function ()
+                                                   {
+                                                     $("#declaracao").slideToggle("high");
+                                                    });
+                                                });
+                                             </script>                              
+                              
+
+                              <a href="#" id="dropdownbutton_declaracao" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.<br/>
+                                <div id="declaracao" style="display:none">
+                                    <font size="2">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
+                                        <b id="pisca1"><u>ATENÇÃO:</u></b> Mãe trabalha e <b> não</b> possui carteira assinada, mas possui  declaração do empregador PESSOA JURÍDICA com    <br/>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            CNPJ.Esta declaração deve conter a qualificaçao completa do empregador pessoa jurídica (nome, CNPJ,  <br/>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                             endereço, telefone, atividade desenvolvida pelo empregado, horário de trabalho  e <b>firma reconhecida em cartório</b>.<br/>
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
+                                    <font size ="2" color="black">
+                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20"  %>
+                                     &nbsp <b>Nº</b><%= f.text_field  :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
+                                     &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"8" %>
+                                   </font>
+                                  </div>
                          </td>
                        </tr>
                       <tr  bgcolor="#FFFFF">
-                            <td>  <a href="#" ><%= f.radio_button(:opcao1, 'autonomo') %></a> <font size="3"> Mãe/reponsável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>ou</u> declaração de trabalho AUTÔNOMO.</b><br/>
+                            <td>
+                             <script>
+                                 $(document).ready(function()
+                                   {
+                                     $("#dropdownbutton_autonomo").click(function ()
+                                       {
+                                           $("#autonomo").slideToggle("high");
+                                        });
+                                  });
+                              </script> 
+
+                              <a href="#" id="dropdownbutton_autonomo" ><%= f.radio_button(:opcao1, 'autonomo') %></a> <font size="3"> Mãe/reponsável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>ou</u> declaração de trabalho AUTÔNOMO.</b><br/>
+                              <div id="autonomo" style="display:none">
                                 <font size="2">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
                                  <b id="pisca1"><u>ATENÇÃO:</u></b> Esta declaração deve conter a qualificaçao completa do empregador pessoa  física e/ou da mãe,  quando  <br/>
@@ -245,10 +345,12 @@
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
                                 <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= text_field :crianca,:local_trabalho, :size=>"20"  %>
-                                 &nbsp <b>Nº</b><%= text_field :crianca, :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= text_field :crianca, :bairro_trab, :size=>"20" %>
-                                 &nbsp <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"8" %>
-                               </font>                        </td>
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20"  %>
+                                 &nbsp <b>Nº</b><%= f.text_field  :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
+                                 &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"8" %>
+                               </font>         
+                             </div>
+                            </td>
                        </tr>
                       <tr  bgcolor="#FFFFF">
                             <td>  <a href="#" ><%= f.radio_button(:opcao1, 'não trabalha') %></a> <font size="3"> Mãe/reponsável NÃO trabalha fora de casa</b><td>
@@ -298,7 +400,20 @@
         <td colspan="2" ><font size ="3" color="RED"><b> &nbsp&nbsp&nbsp&nbsp
                     <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp
                         1)TODAS AS INFORMAÇÕES INVERÍDICAS E NÃO COMPROVADOS IMPLICARÃO NO IMEDIATO<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                           <u>CANCELAMENTO</u>  DA INSCRIÇÃO.</b>
+                           <u>CANCELAMENTO</u>  DA INSCRIÇÃO.</b><br/>
+                           <center>
+                           <table width="85%" >
+                             <tr>
+                               <td>
+
+                           <b><i><font color="black">“Art. 299 do Código Penal – Omitir, em documento público ou particular, declaração que nele deveria
+                                  constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de prejudicar
+                                  direito, criar obrigação ou alterar a verdade sobre o fato juridicamente relevante. Pena: reclusão de 1 (um) a 5 (cinco)
+                                  anos e multa, se o documento é público e reclusão de 1(um) a 3 (três) anos, se o documento é particular.”</i></b></font>
+                               </td>
+                             </tr>
+                           </table>
+                           </center>
 
         </td>
       </tr>

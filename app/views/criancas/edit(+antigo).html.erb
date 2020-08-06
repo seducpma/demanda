@@ -1,0 +1,241 @@
+
+<div id="interno2">
+<% title "CRIANCAS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong> ALTERAÇÃO DE CADASTRO</strong></font><br/>
+ </div>
+
+
+  <div class="tabs">
+<% form_for(@crianca) do |f| %>
+ <%= f.error_messages %>
+
+  <font color ="red"  size="4"> Campos com <b><font size="5"> * </font></b> preenchimento obrigatório </font>
+  <fieldset>
+   <legend><font size=4>Dados da Criança</font></legend>
+   <table width="100%">
+       <tr>
+         <td><b><font color="red" size="5">*</font>Nome </b></td>
+         <td><%= f.text_field :nome, :size=>"38" %>
+             <%= observe_field :crianca_nome,
+               :with => :crianca_nome,
+               :url => { :action => 'mesmo_nome' } %>
+          </td>
+         <td><b><%= f.label :nascimento, 'Nascimento' %></b></td>
+         <td> <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %> <BR /></td>
+
+
+
+    <% $novadata = f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 3)) %>
+       </tr>
+       <tr>
+         <td><b><font color="red" size="5">*</font>Mãe</b></td>
+         <td><%= f.text_field :mae, :size=>"38"%>
+             <%= observe_field :crianca_mae,
+               :with => :crianca_mae,
+               :url => { :action => "mesma_mae" } %>
+         </td>
+         <td><b>Pai </b></td>
+         <td><%= f.text_field :pai, :size=>"38" %></td>
+
+       </tr>
+       <tr>
+         <td></td>
+         <td><b><div id='nome_aviso' ></div>  <div id='aviso_mae'></div></b></td>
+         <td colspan="3"><b><div id='nome_mae'></div></b></td>
+
+       </tr>
+       <tr>
+           <td colspan="2"> <b>Responsável Legal pela criança?</b>
+                <a  class="filtro_vagasS2"><%= f.radio_button :responsavel, true, :checked => true %></a>
+                <%= f.label :responsavel, "SIM", :value => "SIM" %>
+                <a  class="filtro_vagasN2"><%= f.radio_button :responsavel, false%></a>
+                <%= f.label :responsavel, "NÃO", :value => "NÃO" %>
+            </td>
+            <td colspan="3" class="botao2">
+                 <b>Nome:</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             <%= f.text_field :responsavel_n, :size => "15"%>&nbsp&nbsp
+                  <b>Parentesco</b><%= f.select :parentesco, GRAU, :include_blank => ''%>
+            </td>
+      </tr>
+       <tr>
+         <td><b>Endereço  </b></td>
+         <td><%= f.text_field :endereco %> &nbsp<b>Nº</b><%= f.text_field :numero, :size=>"2" %></td>
+         <td><b>Bairro</b></td>
+         <td><%= f.text_field :bairro, :size=>"38" %></td>
+       </tr>
+       <tr>
+          <td><b>Complemento</b></td>
+          <td><%= f.text_field :complemento, :size=>"38" %></td>
+          <td><b><font color="red" size="5">*</font>Fone</b></td>
+          <td><%= f.text_field :tel1,:size =>"13" %>&nbsp&nbsp
+              <b>Celular</b>&nbsp&nbsp<%= f.text_field :celular,:size =>"14"%>
+          </td>
+       </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td><b>Fone(s) Recado</b></td>
+         <td><%= f.text_field :tel2, :size =>"36" %></td>
+         <td><b>Nome</b></td>
+         <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
+       </tr>
+        <tr>
+             <td colspan="2"> <b>Necessidade(s) Especial(s)?</b>
+                  <a  class="filtro_vagasS3"><%= f.radio_button :n_especial, true, :checked => true %></a>
+                  <%= f.label :n_especial, "SIM", :value => "SIM" %>
+                  <a  class="filtro_vagasN3"><%= f.radio_button :n_especial, false%></a>
+                  <%= f.label :n_especial, "NÃO", :value => "NÃO" %>
+              </td>
+              <td colspan="3" class="botao3">
+                   <b>Necessidade:</b>&nbsp&nbsp&nbsp
+                               <%= f.text_field :necessidade, :size =>"36"%>
+              </td>
+        </tr>
+       <tr>
+          <td><b><font color="red" size="5">*</font>Classificação </b></td>
+          <td colspan="3"><%=h @crianca.grupo.nome%></td>
+        </tr>
+
+      </table>
+  </fieldset>
+
+ <fieldset>
+  <legend><font size=4>Dados da Inscrição</font></legend>
+  <table width="100%">
+      <tr>
+        <td width ="18%" colspan="4"><b> <%= f.label :unidade, 'Unidade da Inscrição:' %></b>        &nbsp&nbsp
+        <%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => '---Selecione---' %>&nbsp&nbsp&nbsp&nbsp(Onde foi feita a inscrição)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <fieldset> <legend><font size=4>Prioridade</font></legend>
+            <table width="100%">
+               <tr>
+                 <td colspan="2"><b>1) Mãe trabalha com CTPS assinada?</b>&nbsp
+                      <a  class="filtro_vagasS4"><%= f.radio_button :trabalho, true %></a>
+                      <%= f.label :trabalho, "SIM", :value => "SIM" %>
+                      <a  class="filtro_vagasN4"><%= f.radio_button :trabalho, false, :checked => true%></a>
+                      <%= f.label :trabalho, "NÃO", :value => "NÃO" %>
+                  </td>
+                    <td colspan="3" class="botao4">
+                         <b>Local:</b>&nbsp&nbsp<%= f.text_field :local_trabalho, :size => "25"%>&nbsp&nbsp
+                          <b>Fone</b><%= f.text_field :fone_trabalho, :size =>"12"  %>
+                    </td>
+              </tr>
+               <tr>
+                   <td colspan="2"><b>2) Filho(a) de Servidora Pública</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a  class="filtro_vagasS5"><%= f.radio_button :servidor_publico, true%></a>
+                        <%= f.label :servidor_publico, "SIM", :value => "SIM" %>
+                        <a  class="filtro_vagasN5"><%= f.radio_button :servidor_publico, false, :checked => true %></a>
+                        <%= f.label :servidor_publico, "NÃO", :value => "NÃO" %>
+                    </td>
+                    <td colspan="3" class="botao5">
+                         <b>Local: </b><%= f.text_field :servidor_local, :size => "25" %>&nbsp&nbsp
+                         <b>Fone</b><%= f.text_field :fone_trabalho, :size =>"12"  %>
+                    </td>
+              </tr>
+            </table>
+          </fieldset>
+        </td>
+      </tr>
+
+
+
+
+
+      <tr>
+         <td><b><font color="red" size="5">*</font><%= f.label :regiao, 'Região de Preferência  ' %> </b></td>
+         <td colspan="2"><%= f.collection_select :regiao_id, @regiaos, :id, :nome, :include_blank => '---Selecione---' %>
+             <%= observe_field '#crianca_regiao_id',
+                 :with => :crianca_regiao_id,
+                 :url => { :action => 'rg' } %>
+         </td>
+      </tr>
+      <tr>
+         <td><b>Data Inscrição:</b></td>
+         <td colspan="2">  <%= f.datetime_select(:created_at, :order => [:day, :month, :year, :hour, :minute ], :start_year => (Date.today.year), :end_year => (Date.today.year - 30)) %>
+
+         </td>
+      </tr>
+     <tr>
+         <td width="2%" valign="top">&nbsp&nbsp&nbsp&nbsp<font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/observa.png", :size => "100x26"), "#inline_form_observacao", :class =>"inline" %></u></b></font></td>
+          <td colspan="3"><%=h @crianca.obs%><br/>
+            <div id="dados"> <%= render :partial => 'observacoes'  %></div></td>
+        </tr>
+          </table>
+  </fieldset>
+  <fieldset>
+  <legend><font size=4>Vagas Oferedidas</font></legend>
+    <table width="100%">
+      <tr>
+        <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                    1) A toda criança têm direito a uma vaga que será ofericida pela Secretaria de Educação na <b>região</b> <br/>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp  selecionada nesta inscrição.</b>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                    2) Assim que houver disponibilidade de vaga a Secretaria de Educação entrará e contato com  o  <br/>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp responsável pela criança (mantenha os dados de contato atualizados).</b>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                    3) A ordem de antendimento da solicitação de vaga será conforme legislação em vigor.</b>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                    4) Caso haja alterção da opção da região na inscrição, esta será reclassifica.</b>
+        </td>
+      </tr>
+     <tr>
+         <td width="2%" valign="top"><b class="botao1" style="display:none">&nbsp&nbsp&nbsp&nbsp<font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/Vagas.png", :size => "100x26"), "#inline_form_vaga", :class =>"inline" %></u></b></font></td>
+         <td><div id="dados_vaga"> <%= render :partial => 'vagas'  %></div></td>
+        </tr>
+     </table>
+
+  </fieldset>
+
+ <br/>
+   <script>
+       $(document).ready(function()
+         {
+            $("#dropdownbutton5").click(function ()
+               {
+                  $("#menu5").slideToggle("high");
+               });
+         });
+   </script>
+
+ <br/>
+
+
+
+      <fieldset>
+       <table width="100%" >
+         <tr>
+           <td width="4%"align="left"><b><div id='Certeza'><%= f.submit 'Salvar' %></div></b></td>
+
+<%end%>
+            <td width="6%"align="left" ><%= button_to 'Consultar' ,consultas_criancas_path, :title => "Consultar" %></td>
+             <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+
+
+
+         </tr>
+       </table>
+      </fieldset>
+    </fieldset>
+  </font>
+  </div>
+
+</div>
+<br/>
+</div>
+    <%= render "form_observacao" %>
+    <%= render "form_vaga" %>

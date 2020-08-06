@@ -61,7 +61,7 @@ end
 
      @criancas=Crianca.find(session[:id_anterior])
 
-     @crianca = Crianca.find(session[:id_crinaca_trans])
+     @crianca = Crianca.find(session[:id_crianca_trans])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8) ',@crianca.regiao_id])
     respond_to do |format|
       format.html # show.html.erb
@@ -252,6 +252,9 @@ end
                    end
                     respond_to do |format|
                       if @crianca.save
+                      w=  @crianca.local_trabalho
+
+t=0
                         flash[:notice] = 'Criança cadastrada com sucesso.'
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
@@ -262,7 +265,7 @@ end
                               session[:show]=0
                          end
                          if session[:show_transferencia]==1
-                               session[:id_crinaca_trans]= @crianca.id
+                               session[:id_crianca_trans]= @crianca.id
                                @crianca.grupo_id=session[:trans_grupo_id]
                                @crianca.save
                               format.html { redirect_to(show_transferencia_path) }
@@ -344,6 +347,8 @@ end
                     respond_to do |format|
                       if @crianca.save
                         flash[:notice] = 'Criança cadastrada com sucesso.'
+                        w1=@crianca.local_trabalho
+                        t=0
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
@@ -367,7 +372,7 @@ end
                               session[:show]=0
                          end
                          if session[:show_transferencia]==1
-                               session[:id_crinaca_trans]= @crianca.id
+                               session[:id_crianca_trans]= @crianca.id
                                @crianca.grupo_id=session[:trans_grupo_id]
                                @crianca.save
                              if @crianca.opcao1=='servidor'
@@ -437,6 +442,13 @@ end
     end
    id=@crianca.id
    @crianca.update_attributes(params[:crianca])
+#   @crianca.save
+#   w=@crianca.servidor_publico
+#   w1=@crianca.trabalho
+#   w2=@crianca.declaracao
+###   w3=@crianca.autonomo
+#   w4=@crianca.opcao1
+#   t=0
    @crianca = Crianca.find(id)
    w=@crianca.declaracao
 
@@ -552,43 +564,30 @@ if  (data <= Date.today.to_s and data >= DATAB1)
             wc3=@crianca.autonomo= session[:autonomo]
             wc4=@crianca.transferencia= session[:transferencia]
             session[:sim]= 0
+            t=0
             @crianca.save
 
         end
         session[:id]=@crianca.id
         @crianca = Crianca.find(session[:id])
-                        if @crianca.opcao1=='servidor'
-                               @crianca.servidor_publico = true
-                               @crianca.trabalho = false
-                               @crianca.declaracao = false
-                               @crianca.autonomo = false
-                        else if @crianca.opcao1=='trabalho'
-                                    @crianca.trabalho = true
-                                    @crianca.servidor_publico = false
-                                    @crianca.declaracao = false
-                                    @crianca.autonomo = false
-                             else if @crianca.opcao1=='declaracao'
-                                        @crianca.declaracao = true
-                                        @crianca.servidor_publico = false
-                                        @crianca.trabalho = false
-                                        @crianca.autonomo = false
-                                  else if @crianca.opcao1=='autonomo'
-                                             @crianca.autonomo = true
-                                              @crianca.servidor_publico = false
-                                              @crianca.declaracao = false
-                                              @crianca.trabalho = false
-                                     else if @crianca.opcao1=='não trabalha'
-                                               @crianca.servidor_publico = false
-                                               @crianca.trabalho = false
-                                               @crianca.declaracao = false
-                                               @crianca.autonomo = false
-                                          end
+                        if @crianca.servidor_publico == true
+                               @crianca.opcao1=  'servidor'
+                        else if @crianca.trabalho == true
+                                    @crianca.opcao1=  'trabalho'
+                             else if @crianca.declaracao == true
+                                         @crianca.opcao1=  'declaracao'
+                                  else if @crianca.autonomo == true
+                                         @crianca.opcao1=='autonomo'
+                                      else
+                                          @crianca.opcao1='não trabalha'
                                       end
                                   end
                              end
                         end
                         t=0
-         @crianca.save
+
+
+        @crianca.save
         flash[:notice] = 'Atualizado com sucesso.'
          if session[:show]==1
               format.html { redirect_to(@crianca) }
