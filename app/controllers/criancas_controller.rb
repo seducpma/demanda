@@ -253,8 +253,6 @@ end
                     respond_to do |format|
                       if @crianca.save
                       w=  @crianca.local_trabalho
-
-t=0
                         flash[:notice] = 'Criança cadastrada com sucesso.'
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
@@ -1215,6 +1213,12 @@ end
  end
 
  def impressao
+       @crianca = Crianca.find(:all,:conditions => ["id = ?",   session[:child]])
+       @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca[0].regiao_id])
+      render :layout => "impressao"
+end
+
+  def impressao_nao_logado
        @crianca = Crianca.find(:all,:conditions => ["id = ?",   session[:child]])
        @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca[0].regiao_id])
       render :layout => "impressao"

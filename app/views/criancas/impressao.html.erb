@@ -1,4 +1,3 @@
-<!--
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -21,9 +20,9 @@
                  <%if crianca.transferencia == true%>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp (Transferência)<br/>
                  <%end%>
- <table  class ="invisible_to_print " >
+                    <table  class ="invisible_to_print " width="100%">
    <tr  class ="invisible_to_print ">
-     <td align="right" class ="invisible_to_print "><%= button_to "IMPRIMIR COMPROVANTE", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+     <td align="center" class ="invisible_to_print "><%= button_to "IMPRIMIR COMPROVANTE", onclick="javascript:window.print()", :title => "Imprimir" %></td>
   </tr>
  </table>
   <fieldset><legend><font  size=1><b> Dados da Criança  e Inscrição</b></font></legend>
@@ -130,16 +129,65 @@
 
          </table>
        </fieldset>
+       <fieldset><legend><font  size=1><b> IMPORTANTE</b></font></legend>
+         <table width="100%">
+           <tr style="font-size:8px">
+               <th align="left"colspan="2" >
+                      <b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          1) É RESPONSABILIDADE DOS PAIS E/OU RESPONSÁVEIS LEGAIS MANTER OS DADOS (TELEFONES, ENDEREÇOS, <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           SITUAÇÃO PROFISSIONAL E OUTROS) DEVIDAMENTE ATUALIZADOS  NO CADASTRO JUNTO À UNIDADE ONDE FOI<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           REALIZADA A INSCRIÇÃO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        2) INSCRIÇÃO QUE CONTENHA INFORMAÇÕES E DADOS INCORRETOS E IMPRECISOS E/OU NÃO APRESENTAR OS <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           DOCUMENTOS E COMPROVANTES DEVIDOS SERÁ <u>CANCELADA</u> A QUALQUER MOMENTO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        3) ASSIM QUE HOUVER DISPONIBILIDADE DE VAGA NA REGIÃO INDICADA, A SECRETARIA DE EDUCAÇÂO ENTRARÁ   <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
+                           EM CONTATO COM O RESPONSÁVEL PELA CRIANÇA.SEGUINDO A ORDEM DE CLASSIFICAÇÃO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        4) A CLASSIFICAÇÃO SERÁ REALIZADA POR SETORIZAÇÃO REGIONAL DEFINIDA PELA SECRETARIA DA EDUCAÇÃO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            A CRIANÇA SERÁ CLASSIFICADA EM UMA ÚNICA REGIÃO, PODENDO SER ATENDIDA EM QUALQUER  UMA DAS <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            UNIDADES DA REGIÃO, CONFORME DISPONIBILIDADE DE VAGA.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        5) VISANDO A OTIMIZAÇÂO NO ATENDIMENTO DA DEMANDA, A SECRETARIA DE EDUCAÇÃO PODERÁ ALTERAR, A <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        QUALQUER TEMPO, OS GRUPOS DE ESCOLAS E BAIRROS QUE INTEGRAM A SETORIZAÇLÃO REGIONAL.<br/><br/>
+
+                        <b><i><font size="2" color="RED">“Código Penal Brasileiro - Art. 299 – Omitir, em documento público ou particular, declaração que nele deveria
+                                  constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de prejudicar
+                                  direito, criar obrigação ou alterar a verdade sobre o fato juridicamente relevante. Pena: reclusão de 1 (um) a 5 (cinco)
+                                  anos e multa, se o documento é público e reclusão de 1(um) a 3 (três) anos, se o documento é particular.”</i></b></font>
+
+
+                     </b>
+
+
+              </th>
+             </tr>
+
+        </table>
+       </fieldset>
+
 <%end%>
+<br/>
+<br/>
 &nbsp&nbsp&nbsp
 
 <font size ="1" ><b>Americana, <%= Time.now.strftime("%d/%m/%Y") %></b></font>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Assinatura do Responsável:______________________________________
 <br/>
 <br/>
+<br/>
+<br/>
 <hr/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<font size ="1" >(via da Unidade Escolar)</font>
 
--->
+
+
+
+
+<div style="page-break-after: always"></div>
 
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
@@ -301,6 +349,8 @@
         </table>
        </fieldset>
    <%end%>
+<br/>
+<br/>
 &nbsp&nbsp&nbsp
  <font size ="1" ><b>Americana, <%= Time.now.strftime("%d/%m/%Y") %></b></font>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Assinatura do Responsável:______________________________________
@@ -309,3 +359,13 @@
      <td align="center" class ="invisible_to_print "><%= button_to "IMPRIMIR COMPROVANTE", onclick="javascript:window.print()", :title => "Imprimir" %> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </td>
   </tr>
  </table>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<hr/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<font size ="1" >(via dos pais ou responsáveis)</font>

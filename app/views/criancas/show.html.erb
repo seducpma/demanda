@@ -187,8 +187,11 @@
                 <%end%>
                 <td width="4%"align="left"><%= button_to 'Consultar' ,consulta_unidade_path, :title => "Consultar" %></td>
            <%end%>
-             <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
-
+            <%if current_user.present?%>
+                 <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+           <%else%>
+                  <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_nao_logado_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+           <%end%>
           </tr>
     </table>
  
