@@ -4,6 +4,9 @@
                     <b>Unidade que estuda:</b> <%= collection_select  :crianca, :unidade_i, @unidades, :nome, :nome, :include_blank => ' --- Selecione opção ---'  %>&nbsp&nbsp
                     
           </td>
+          <td><b>Nome:</b> <%= text_field :crianca, :irmao_nome, :size=>"40" %>
+
+          </td>
        </tr>
 
 </table>

@@ -139,7 +139,7 @@
             <% if @crianca.irmao == true%>
                 <tr bgcolor="#F5F5F5">
                   <td><b>Irmão matriculado:</b></td>
-                  <td colspan="6"valign="top"><font color="red"><b> Possui irmão matriculado na unidade: </b> <%=h @crianca.unidade_i%> </font></td>
+                  <td colspan="6"valign="top"><font color="red"><b> Possui irmão matriculado na unidade: </b> <%=h @crianca.unidade_i%> </font> </font> - <font color="black"> (<b>Nome:<b/> <%=h @crianca.irmao_nome%>)</font> </td>
 
                 </tr>
              <%else%>
