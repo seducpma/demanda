@@ -132,7 +132,7 @@
  <fieldset>
   <legend><font size="4">Dados da Inscrição</font></legend>
   <table width="100%">
-      <tr  bgcolor="#FFFFF">
+      <!--<tr  bgcolor="#FFFFF">
           <td colspan="6"><font size ="2" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço do local onde a criança fica durante o dia, para fins de definir a unidade de matricula. É necessário indicar e justificar o vínculo da criança com este endereço (ex. casa dos avós,  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
 
       </tr>
@@ -145,13 +145,13 @@
        </tr>
        <tr bgcolor="#FFFFF">
            <td colspan="6"><b>Justificativa </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
-       </tr>
+       </tr>-->
        <tr  bgcolor="#FFFFF">
-          <td colspan="6"><font size ="2" color="red"><b><u>ATENÇÃO:</u></b> Apos responder a perguntas abaixo SIM/NÃO aguarde a página atualizar para poder continuar.</font> </td>
+          <td colspan="6"><font size ="2" color="red"><b><u>ATENÇÃO:</u></b>&nbsp&nbsp Após responder a perguntas abaixo SIM/NÃO aguarde a página atualizar para poder continuar.</font> </td>
 
        </tr>
               <tr  bgcolor="#FFFFF">
-                 <td colspan="6"class="botao6"><b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO1).sort %>    </td>
+                 <td colspan="6"class="botao6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO1).sort %>    </td>
               </tr>
              <tr  bgcolor="#FFFFF">
                    <td colspan="6"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b></td>

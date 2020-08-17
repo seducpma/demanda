@@ -1224,6 +1224,7 @@ end
   end
 
   def mesma_mae
+
      @verifica_mae = Crianca.find(:all, :conditions=> ['mae =?  and nome = ?',params[:crianca_mae], session[:nome]])
     # @verifica = Crianca.find(:all, :conditions=> ['nome =? AND (recadastrada = 2 OR recadastrada = 1) AND status != "MATRICULADA"',params[:crianca_nome]])
 
