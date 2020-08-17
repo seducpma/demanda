@@ -1,0 +1,12 @@
+<% @regiaos= Regiao.find(:all, :conditions=>['id>99'], :order =>'nome') %>
+
+<table width="100%" align="center" >
+   <tr>
+     <td colspan="2"align="right"left"><font size="2"> <b class="label_busca2"> Região:</b></font>
+         <%= collection_select :criancaR, :regiao_idR, @regiaos, :id, :nome, :include_blank => ' -- Selecionar -- ', :class=> "txt_busca2"  %>
+         <%= observe_field 'criancaR_regiao_idR',
+                :url    => { :action => 'consulta_status_regiao' },
+               :with   => 'criancaR_regiao_idR' %>
+     </td>
+   </tr>
+  </table>

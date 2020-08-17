@@ -1,0 +1,300 @@
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+       <font size="2"><i><b><u>RECADASTRAMENTO DEMANDA ESCOLAR</u></b><br/>
+&nbsp&nbsp&nbsp
+     <font size="1"><i><b>Prefeitua Municipal de  Americana </b></i>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp
+<font size="1"><b><u></u>       </b></i><br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <font size="1"><b><i> Secretaria da Educação</i></b>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<%for crianca in @crianca%>
+<font size="2"><font size="1">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <strong>Inscrição nº<%=h crianca.id %> </strong></font><br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<font size="1">Data Inscrição: <%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%> </font><br/>
+                 <%if crianca.transferencia == true%>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp (Transferência)<br/>
+                 <%end%>
+ <table  class ="invisible_to_print " >
+   <tr  class ="invisible_to_print ">
+     <td align="right" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+  </tr>
+ </table>
+  <fieldset><legend><font  size=1><b> Dados da Criança  e Inscrição</b></font></legend>
+       <table width="100%" frame="box" rules="all" >
+            <tr style="font-size:8px">
+               <th align="left" width="7%"><b>Nome:</b></th>
+               <th  align="left"width="40%"><%=h crianca.nome %></th>
+               <th align="left"width="4%"><b>Nascimento:</b></th>
+               <th align="left" colspan="6">  <%=h crianca.nascimento.strftime("%d/%m/%Y")%></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Mãe:</b></th>
+               <th align="left"><%=h crianca.mae %></th>
+               <th align="left" width="4%"><b>Pai:</b></th>
+               <th colspan="6" align="left"><%=h crianca.pai %></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Responsável:</b></th>
+               <th align="left"><%=h crianca.responsavel_n %></th>
+               <th align="left" width="4%"><b>Parentesco</b></th>
+               <th colspan="6" align="left"><%=h crianca.parentesco %></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Endereço:</b></th>
+               <th align="left"><%=h crianca.endereco %> - <%=h crianca.numero %></th>
+               <th align="left" width="4%"><b>Bairro:</b></th>
+               <th colspan="6" align="left"><%=h crianca.bairro%></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Complemento:</b></th>
+               <th align="left"><%=h crianca.complemento%></th>
+               <th align="left"><b>Telefone:</b></th>
+               <th align="left">  <%=h crianca.tel1%></th>
+               <th align="left"  width="4%"><b>Celular:</b></th>
+               <th><%=h crianca.celular%>  </th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Fone(recado):</b></th>
+               <th align="left">  <%=h crianca.tel2%></th>
+               <th><b>Nome(recado):</b></th>
+               <th colspan="6"><%=h crianca.nomerecado%>  </th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Classificação</b></th>
+               <th align="left"><%=h crianca.grupo.nome %> </th>
+               <th colspan="2"align="left" width="4%"><b>Necessidade Especial: </b>
+                <% if crianca.servidor_publico == false %>
+                      NÃO
+                  <%else%>
+                      SIM
+                  <%end%>
+               </th>
+               <th><b>Necessidade:</b></th>
+               <th><%=h crianca.necessidade%></th>
+            </tr>
+
+
+
+          </table>
+         <table width="100%" width="100%" frame="box" rules="all" >
+            <tr style="font-size:8px">
+               <th align="left" width="18%"><b>Endereço Indicado:</b></th>
+               <th align="left" width="47%"><%=h crianca.end_indicacao %> - <%=h crianca.num_indicacao %></th>
+               <th align="left" width="15%"><b>Bairro/Região:</b></th>
+               <th align="left" width="18%"><%=h crianca.regiao.nome %></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Trabalho Mãe : </b></th>
+                <th align="left" colspan="5" > <%if crianca.servidor_publico == true%>
+                                 <%=h crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> (P1)
+                                 <%else if crianca.trabalho == true %>
+                                         <%=h crianca.local_trabalho%>, <%=h crianca.num_trab%>  <b> &nbsp - &nbsp Bairro:</b> <%=h crianca.bairro_trab%> <b>&nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> (P2)
+                                       <%else if crianca.declaracao == true %>
+                                              <%=h crianca.local_trabalho %>, <%=h crianca.num_trab%> <b> &nbsp - &nbsp Bairro:</b> <%=h crianca.bairro_trab%> <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> (P3)
+                                             <%else if crianca.autonomo == true %>
+                                                  <%=h crianca.atividade_autonomo%> - <%=h crianca.local_trabalho%>, <%=h crianca.num_trab%>  <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> (P4)
+                                                 <%else  %>
+                                                    Não Trabalha (P5)
+                                                 <%end%>
+                                             <%end%>
+                                        <%end%>
+                                   <%end%>
+              </th>
+            </tr>
+           <tr style="font-size:8px">
+              <th align="left" ><b>Local Inscrição:</b></th>
+              <th align="left" ><%= crianca.unidade.nome%></th>
+              <th align="left"><b>Data  e Hora:</b> </th>
+              <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M")%></th>
+           </tr>
+
+
+            <tr style="font-size:8px">
+              <th valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></th>
+              <th valign="top" align="left" ><%=h crianca.regiao.nome%><br/><br/><%=h crianca.grupo.nome%> - <%=h crianca.periodo%>
+                     </th>
+              <th valign="top" align="left"><b>Unidades na região: </b></th>
+              <th valign="top"align="left"><% for unidade in @unidade_regiao%>
+                                              - <%= unidade.nome %> <br/>
+                                           <%end%>
+                                </th>
+
+            </tr>
+
+         </table>
+       </fieldset>
+<%end%>
+&nbsp&nbsp&nbsp
+
+<font size ="1" ><b>Americana, <%= Time.now.strftime("%d/%m/%Y") %></b></font>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Assinatura do Responsável:______________________________________
+<br/>
+<br/>
+<hr/>
+
+
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+       <font size="2"><i><b><u>RECADASTRAMENTO DEMANDA ESCOLAR</u></b><br/>
+&nbsp&nbsp&nbsp
+     <font size="1"><i><b>Prefeitua Municipal de  Americana </b></i>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp
+<font size="1"><b><u></u>       </b></i><br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <font size="1"><b><i> Secretaria da Educação</i></b>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<%for crianca in @crianca%>
+<font size="2"><font size="1">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <strong>Inscrição nº<%=h crianca.id %> </strong></font><br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<font size="1">Data Inscrição: <%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%> </font><br/>
+  <fieldset><legend><font  size=1><b> Dados da Criança e Inscrição</b></font></legend>
+       <table width="100%" frame="box" rules="all" >
+            <tr style="font-size:8px">
+               <th align="left" width="7%"><b>Nome:</b></th>
+               <th  align="left"width="40%"><%=h crianca.nome %></th>
+               <th align="left"width="4%"><b>Nascimento:</b></th>
+               <th align="left" colspan="6">  <%=h crianca.nascimento.strftime("%d/%m/%Y")%></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Mãe:</b></th>
+               <th align="left"><%=h crianca.mae %></th>
+               <th align="left" width="4%"><b>Pai:</b></th>
+               <th colspan="6" align="left"><%=h crianca.pai %></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Responsável:</b></th>
+               <th align="left"><%=h crianca.responsavel_n %></th>
+               <th align="left" width="4%"><b>Parentesco</b></th>
+               <th colspan="6" align="left"><%=h crianca.parentesco %></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Endereço:</b></th>
+               <th align="left"><%=h crianca.endereco %> - <%=h crianca.numero %></th>
+               <th align="left" width="4%"><b>Bairro:</b></th>
+               <th colspan="6" align="left"><%=h crianca.bairro%></th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Complemento:</b></th>
+               <th align="left"><%=h crianca.complemento%></th>
+               <th align="left"><b>Telefone:</b></th>
+               <th align="left">  <%=h crianca.tel1%></th>
+               <th align="left"  width="4%"><b>Celular:</b></th>
+               <th><%=h crianca.celular%>  </th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Fone(recado):</b></th>
+               <th align="left">  <%=h crianca.tel2%></th>
+               <th><b>Nome(recado):</b></th>
+               <th colspan="6"><%=h crianca.nomerecado%>  </th>
+            </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Classificação</b></th>
+               <th align="left"><%=h crianca.grupo.nome %> </th>
+               <th colspan="2"align="left" width="4%"><b>Necessidade Especial: </b>
+                <% if crianca.servidor_publico == false %>
+                      NÃO
+                  <%else%>
+                      SIM
+                  <%end%>
+               </th>
+               <th><b>Necessidade:</b></th>
+               <th><%=h crianca.necessidade%></th>
+            </tr>
+          </table>
+         <table width="100%" width="100%" frame="box" rules="all" >
+             <tr style="font-size:8px">
+               <th align="left" width="18%"><b>Endereço Indicado:</b></th>
+               <th align="left" width="47%"><%=h crianca.end_indicacao %> - <%=h crianca.num_indicacao %></th>
+               <th align="left" width="15%"><b>Bairro/Região:</b></th>
+               <th align="left" width="18%"><%=h crianca.regiao.nome %></th>
+             </tr>
+            <tr style="font-size:8px">
+               <th align="left"><b>Trabalho Mãe : </b></th>
+                <th align="left" colspan="5" > <%if crianca.servidor_publico == true%>
+                                 <%=h crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> 
+                                 <%else if crianca.trabalho == true %>
+                                         <%=h crianca.local_trabalho%>, <%=h crianca.num_trab%>  <b> &nbsp - &nbsp Bairro:</b> <%=h crianca.bairro_trab%> <b>&nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> 
+                                       <%else if crianca.declaracao == true %>
+                                              <%=h crianca.local_trabalho %>, <%=h crianca.num_trab%> <b> &nbsp - &nbsp Bairro:</b> <%=h crianca.bairro_trab%> <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> 
+                                             <%else if crianca.autonomo == true %>
+                                                  <%=h crianca.atividade_autonomo%> - <%=h crianca.local_trabalho%>, <%=h crianca.num_trab%>  <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> 
+                                                 <%else  %>
+                                                    Não Trabalha
+                                                 <%end%>
+                                             <%end%>
+                                        <%end%>
+                                   <%end%>
+              </th>
+            </tr>
+
+           <tr style="font-size:8px">
+              <th align="left" width="12%"><b>Local Inscrição:</b></th>
+              <th width="20%" align="left" ><%= crianca.unidade.nome%></th>
+              <th width="15%" align="left"><b>Data  e Hora:</b> </th>
+              <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%></th>
+           </tr>
+
+
+            <tr style="font-size:8px">
+              <th valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></th>
+              <th valign="top" align="left" ><%=h crianca.regiao.nome%><br/><br/><%=h crianca.grupo.nome%> - <%=h crianca.periodo%>
+                     </th>
+              <th valign="top" align="left"><b>Unidades na região: </b></th>
+              <th valign="top"align="left"><% for unidade in @unidade_regiao%>
+                                              - <%= unidade.nome %> <br/>
+                                           <%end%>
+                                </th>
+
+            </tr>
+
+         </table>
+
+       </fieldset>
+       <fieldset><legend><font  size=1><b> IMPORTANTE</b></font></legend>
+         <table width="100%">
+           <tr style="font-size:8px">
+               <th align="left"colspan="2" >
+                      <b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          1) É RESPONSABILIDADE DOS PAIS E/OU RESPONSÁVEIS LEGAIS MANTER OS DADOS (TELEFONES, ENDEREÇOS, <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           SITUAÇÃO PROFISSIONAL E OUTROS) DEVIDAMENTE ATUALIZADOS  NO CADASTRO JUNTO À UNIDADE ONDE FOI<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           REALIZADA A INSCRIÇÃO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        2) INSCRIÇÃO QUE CONTENHA INFORMAÇÕES E DADOS INCORRETOS E IMPRECISOS E/OU NÃO APRESENTAR OS <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           DOCUMENTOS E COMPROVANTES DEVIDOS SERÁ <u>CANCELADA</u> A QUALQUER MOMENTO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        3) ASSIM QUE HOUVER DISPONIBILIDADE DE VAGA NA REGIÃO INDICADA, A SECRETARIA DE EDUCAÇÂO ENTRARÁ   <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
+                           EM CONTATO COM O RESPONSÁVEL PELA CRIANÇA.SEGUINDO A ORDEM DE CLASSIFICAÇÃO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        
+                        4) A CLASSIFICAÇÃO SERÁ REALIZADA POR SETORIZAÇÃO REGIONAL DEFINIDA PELA SECRETARIA DA EDUCAÇÃO.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            A CRIANÇA SERÁ CLASSIFICADA EM UMA ÚNICA REGIÃO, PODENDO SER ATENDIDA EM QUALQUER  UMA DAS <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            UNIDADES DA REGIÃO, CONFORME DISPONIBILIDADE DE VAGA.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                        5) VISANDO A OTIMIZAÇÂO NO ATENDIMENTO DA DEMANDA, A SECRETARIA DE EDUCAÇÃO PODERÁ ALTERAR, A <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            QUALQUER TEMPO, OS GRUPOS DE ESCOLAS E BAIRROS QUE INTEGRAM A SETORIZAÇLÃO REGIONAL.
+
+                        
+                     </b>
+
+
+              </th>
+             </tr>
+
+        </table>
+       </fieldset>
+   <%end%>
+&nbsp&nbsp&nbsp
+ <font size ="1" ><b>Americana, <%= Time.now.strftime("%d/%m/%Y") %></b></font>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Assinatura do Responsável:______________________________________

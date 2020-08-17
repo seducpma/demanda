@@ -34,18 +34,29 @@ end
     render :action => 'relatorio_crianca'
   end
 
+def show_pre
+     @crianca = Crianca.find(params[:id])
+     @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
+##  VERJA O SHOW EM BAIXO VVVVV
+  end
 
   # GET /criancas/1
   # GET /criancas/1.xml
   def show
      @crianca = Crianca.find(params[:id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @crianca }
+     if (session[:ficha_pre]==1) or (@crianca.nascimento < (DATAN1).to_date)
+       render :action => 'show_pre'
+       session[:ficha_pre]=0
+     else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @crianca }
+      end
     end
   end
 
+  
 
   def show_recadastramento
      @crianca = Crianca.find(session[:id_crianca])
@@ -85,6 +96,20 @@ end
       format.xml  { render :xml => @crianca }
     end
   end
+
+  def new_pre
+     @crianca = Crianca.new
+     session[:nasc]=0
+     session[:show]=1
+     session[:show_transferencia]=0
+     session[:show_recadastramento]=0
+     session[:novo_cadastrar]=2  # cadastrar após recadstramento
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @crianca }
+    end
+  end
+
 
 
   def transferencia
@@ -128,6 +153,25 @@ end
      @unidade_regiao= Unidade.find(:all , :conditions=>[' ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'])
      session[:sim]= 1
     @crianca = Crianca.find(params[:id])
+
+    data=@crianca.nascimento
+
+    session[:status] = @crianca.status
+    #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
+    session[:id_crianca] = params[:id]
+    w=session[:id_grupo]= @crianca.grupo_id
+    t=0
+    session[:nome] = params[:nome]
+    session[:recadastrada]= 'edit'
+    session[:show]=1
+    session[:acerto]=1
+    session[:acertorecadastrada]=2
+  end
+
+  def edit_pre
+    @unidade_regiao= Unidade.find(:all , :conditions=>[' ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'])
+     session[:sim]= 1
+    @crianca = Crianca.find(params[:id])
     data=@crianca.nascimento
 
     session[:status] = @crianca.status
@@ -139,6 +183,7 @@ end
     session[:acerto]=1
     session[:acertorecadastrada]=2
   end
+
 
 def recadastrar_crianca
     s= params[:crianca_id]
@@ -205,10 +250,9 @@ end
   # POST /criancas.xml
   def create
     @crianca = Crianca.new(params[:crianca])
-
-
       if session[:nasc]==1
           session[:nasc]=0
+          t=0
                   # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
                     @crianca.unidade_id = current_user.unidade_id
                     if session[:show_transferencia]==1
@@ -284,9 +328,8 @@ end
                         format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
                     end
                   end
-       
+
       else
-      
 
     #inscrição permitida para crianças após outubro/2020
 
@@ -297,8 +340,6 @@ end
                         format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
                     end
               else
-
-
                   # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
                     if current_user.present?
                        @crianca.unidade_id = current_user.unidade_id
@@ -336,38 +377,56 @@ end
                            end
                        end
 
-                  $flag_imp = 0
-                  $flag_btimp = 0
-                  session[:sim]= 0
-                   if session[:show_transferencia]==1
+                      $flag_imp = 0
+                      $flag_btimp = 0
+                      session[:sim]= 0
+                       if session[:show_transferencia]==1
                           @crianca.transferencia = true
-                   end
+                       end
                     respond_to do |format|
                       if @crianca.save
                         flash[:notice] = 'Criança cadastrada com sucesso.'
+
                         w1=@crianca.local_trabalho
-                        t=0
+
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
 
-                       if @crianca.opcao1=='servidor'
-                              @crianca.servidor_publico = true
-                        else if @crianca.opcao1=='trabalho'
-                                  @crianca.trabalho = true
-                             else if @crianca.opcao1=='declaracao'
-                                  @crianca.declaracao = true
-                                  else if @crianca.opcao1=='autonomo'
-                                          @crianca.autonomo = true
-                                       end
-                                  end
-                             end
-                        end
+                               if @crianca.opcao1=='servidor'
+                                      @crianca.servidor_publico = true
+                                else if @crianca.opcao1=='trabalho'
+                                          @crianca.trabalho = true
+                                     else if @crianca.opcao1=='declaracao'
+                                          @crianca.declaracao = true
+                                          else if @crianca.opcao1=='autonomo'
+                                                  @crianca.autonomo = true
+                                               end
+                                          end
+                                     end
+                                end
                             @crianca.save
-                            format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                              session[:show]=0
+                            if session[:ficha_pre]==1
+                                
+                                if @crianca.opcao2== '1'
+                                     @crianca.opcao2='estudou em outra unidade'
+                                end
+                                if @crianca.declaracao==true or @crianca.trabalho==true
+                                  @crianca.opcao1='trabalha'
+                                else
+                                  @crianca.opcao1='não trabalha'
+                                end
+                                @crianca.save
+                                 format.html { redirect_to(show_transferencia_path) }
+                                 format.xml  { head :ok }
+                                
+                            else
+                                 format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
+                                 format.xml  { head :ok }
+                                 session[:show]=0
+                            end
                          end
                          if session[:show_transferencia]==1
                                session[:id_crianca_trans]= @crianca.id
@@ -405,20 +464,17 @@ end
                                           end
                                       end
                                  end
-                            end
-                           @crianca.save
-                        
+                             end
+                            @crianca.save
                               format.html { redirect_to(show_transferencia_path) }
                               format.xml  { head :ok }
                               session[:show_recadastramento]==0
-                         end
-
-                      else
+                           end
+                        else
                         format.html { render :action => "new" }
                         format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
-                      end
+                        end
                     end
-
                   else
                     respond_to do |format|
                         flash[:notice] = 'Verificar DATA DE NASCIMENTO .'
@@ -583,9 +639,21 @@ if  (data <= Date.today.to_s and data >= DATAB1)
                              end
                         end
                         t=0
-
-
-        @crianca.save
+                       @crianca.save
+                       if session[:ficha_pre]==1
+                                  @crianca.status = 'NA_DEMANDA'
+                                  if @crianca.opcao2== '1'
+                                       @crianca.opcao2='estudou em outra unidade/cidade'
+                                  else
+                                     @crianca.opcao2= nil
+                                  end
+                                  if @crianca.declaracao==true or @crianca.trabalho==true
+                                    @crianca.opcao1='trabalha'
+                                  else
+                                    @crianca.opcao1='não trabalha'
+                                  end
+                                  @crianca.save
+                       end
         flash[:notice] = 'Atualizado com sucesso.'
          if session[:show]==1
               format.html { redirect_to(@crianca) }
@@ -1218,6 +1286,12 @@ end
       render :layout => "impressao"
 end
 
+def impressao_pre
+       @crianca = Crianca.find(:all,:conditions => ["id = ?",   session[:child]])
+       @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca[0].regiao_id])
+      render :layout => "impressao"
+end
+
   def impressao_nao_logado
        @crianca = Crianca.find(:all,:conditions => ["id = ?",   session[:child]])
        @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca[0].regiao_id])
@@ -1435,6 +1509,14 @@ end
       end
  end
 
+ def trabalho_action_pre
+     if params[:crianca_trabalho] == '1'
+        render :partial => 'pre_trabalho'
+      else
+       session[:trab]= 1
+       render :partial => 'nada'
+      end
+ end
   def declaracao_action
      if params[:crianca_declaracao] == '1'
         render :partial => 'declaracao'
@@ -1443,6 +1525,24 @@ end
        render :partial => 'nada'
       end
  end
+
+ def irmao_action_pre
+      if params[:crianca_irmao] == '1'
+        render :partial => 'pre_irmao'
+      else
+        session[:dec]= 1
+       render :partial => 'nada'
+      end
+ end
+  def declaracao_action_pre
+     if params[:crianca_declaracao] == '1'
+        render :partial => 'pre_declaracao'
+      else
+        session[:dec]= 1
+       render :partial => 'nada'
+      end
+ end
+
 
  def autonomo_action
      if params[:crianca_autonomo] == '1'
@@ -1454,6 +1554,32 @@ end
  end
 
 
+  def estudo_action_pre
+
+     if params[:crianca_opcao2] == '1'
+        render :partial => 'pre_estudo'
+      else
+        session[:dec]= 1
+       render :partial => 'nada'
+      end
+ end
+ def pre_criancas
+
+ end
+
+ def criancas_pre
+   
+   data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+   data_pre = data_pre + ' 00:00:00'
+t=0
+    #@criancas_pre = Crianca.find(:all, :conditions => ["matricula = 0" ], :order => "nome ASC")
+    @criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  nascimento < ?  and recadastrada > 0" , "%" + params[:crianca].to_s + "%", data_pre ],:order => 'nome ASC, unidade_id ASC')
+    t=0
+        render :update do |page|
+          page.replace_html 'criancas', :partial => "criancas_pre"
+        end
+
+end
 
  protected
     #Inicialização variavel / combobox grupo
@@ -1501,11 +1627,5 @@ end
   end
 
 
-  
-
-
-
-
 end
-
 

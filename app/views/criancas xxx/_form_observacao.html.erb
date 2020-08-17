@@ -1,0 +1,38 @@
+<div style='display:none'>
+  <div id='inline_form_observacao' style='padding: 0; margin-right: .1em; background:#EEE9E9;'>
+    <% form_remote_for( :observacao_crianca,:url => { :action => 'create_observacao_crianca' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
+    <b><u>OBSERVAÇÕES - CRIANÇAS</u></b> <br/>
+      <hr>
+       <%= error_messages_for 'contact' %>
+       <table  width="100%" bgcolor="#F5F5F5">
+        <tr>
+            <td width="10%" valign="top"><b><font size="2"><%= f.label :observacao, 'Observações:' %></font></b></td>
+            
+            <td><%= f.text_area :observacao, :cols=>'80', :rows=> '3', :id=>"contador1" %><br/>
+              <script>
+                      $(document).on("keydown", "#contador1", function () {
+                          var caracteresRestantes = 800;
+                          var caracteresDigitados = parseInt($(this).val().length);
+                          var caracteresRestantes = caracteresRestantes - caracteresDigitados;
+
+                          $(".caracteres").text(caracteresRestantes);
+
+                      });
+
+              </script>
+              <font size ="1"><span class="caracteres">800</span> Caracteres Restantes </font>
+
+            </td>
+        </tr>
+        <tr>
+           <td align="left"><font size="2"><b>Funcionário:</b></font></td>
+           <td align="left" ><font size="2"> <%=  f.text_field :funcionario, :size => '30' %></font></td>
+        </tr>
+
+        <tr>
+            <td align="left" colspan="2"><%= f.submit "Salvar" %></td>
+        </tr>
+       </table>
+      <%end%>
+  </div>
+</div>

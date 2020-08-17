@@ -1,0 +1,51 @@
+  <div class="tabs">
+    <table bgcolor="#DCDCDC" width="100%">
+     <% if @criancas_pre.present? %>
+            <tr bgcolor="#DCDCDC" >
+                <th width="1%">Nº </th>
+                <th width="25%">Nome</th>
+                <th width="8%">Nasc/o</th>
+                 <th width="20%">Mãe</th>
+                 <th width="5%">Status</th>
+                <th width="12%">Classe</th>
+                <th width="15%">Status</th>
+
+                <th width="5%">Pré-Escola</th>
+            </tr>
+            <%$t=0%>
+            <% @criancas_pre.each do |crianca| %>
+            <%$t = $t+1%>
+            <tr bgcolor="#F5F5F5" style="font-size:12px">
+                    <td align="center"><%=h crianca.id%> </td>
+                    <td align="left"><%=h crianca.nome%></td>
+                    <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                    <td align="left"><%=h crianca.mae%></td>
+                    <td align="left"><%=h crianca.status%></td>
+                    <td align="center"><%if !crianca.grupo_id.nil?%>
+                                         <%=h crianca.grupo.nome%></td>
+                                       <%end%>
+                    <td align="left">   <%=h crianca.status%></td>
+                    <%if (crianca.grupo_id == 6  and crianca.grupo_id == 7) and crianca.status == 'NA_DEMANDA'%>
+                        <td align="left"><font color="red"> Inscrição já realizada </font></td>
+                    <%else%>
+                        <td align="left"><%= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%></td>
+                    <%end%>
+                
+              </tr>
+              <% end %>
+           <% else %>
+              <tr bgcolor="#DCDCDC" >
+                <th width="95%"> Criança NÃO cadastrata do sistema DEMANDA</th>
+             </tr>
+              <tr bgcolor="#F5F5F5" style="font-size:12px">
+                    <td align="center"> Não existe ficha para esta criança, para cadastrar-la clique no botão ao lado  ===============================================>
+                    </td>
+                <td align="left"><%= button_to 'Fazer Inscrição', new_pre_path, {:method => "get"}  %></td>
+              </tr>
+
+          <% end %>
+     </table>
+
+
+  </div>
+

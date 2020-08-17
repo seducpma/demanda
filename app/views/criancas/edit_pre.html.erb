@@ -1,0 +1,393 @@
+<%session[:ficha_pre]=1%>
+<div id="interno2">
+<% title "CRIANCAS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong> CADASTRO DE INSCRIÇÃO PARA PRÉ-ESCOLA – 1ª Etapa e 2ª Etapa </strong></font><br/>
+ </div>
+      <div class="tabs">
+            <% form_for(@crianca) do |f| %>
+             <%= f.error_messages %>
+            <font size ="4" color="BLUE"><b id="pisca1">  LEIA ATENTAMENTE</b><b> AS INSCRIÇÕES NA TELA E <u>PREENCHA CORRETAMENTE</u>. ERROS DE PREENCHIMENTOS, PROBLEMAS DE CONEXÃO E EQUIPAMENTOS É DE INTEIRA RESPONSABILIDADE DA PESSOA QUE ESTÁ FAZENDO A INSCRIÇÃO.</b><br/></font><br/>
+                <font size ="3" color="RED">
+                               <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              1) A...............  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                blablabla ....<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                               ttititi..........   <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                               kakakak .............<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                              2) Todas as informações prestadas na inscrição deverão estar corretas e devidamente comprovadas  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                               com os respectivos documentos. Informações não comprovadas serão desconsideradas podendo <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                               implicar, no <u>CANCELAMENTO</u> da inscrição.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+                               3) Visando otimização no atendimento da demanda, a Secretaria de Educação de Americana poderá humhumhum SEi NÃO..... ,<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+                           </b>
+                  </font>
+                  <fieldset>
+                   <legend  bgcolor="#FFFFF"><font size=4>Dados da Criança</font></legend>
+                   <table width="100%">
+                       <font color ="red"  size="2"> Campos com <b><font size="5"> * </font></b> preenchimento obrigatório </font>
+                       <tr   bgcolor="#FFFFF">
+                         <td><b><font color="red" size="5">*</font>Nome </b></td>
+                         <td><%= f.text_field :nome, :size=>"38" %>
+                             <%= observe_field :crianca_nome,
+                               :with => :crianca_nome,
+                               :url => { :action => 'mesmo_nome' } %>
+                          </td>
+                         <td><b><font size="5" color ="red"> * </font></b> <b><%= f.label :nascimento, 'Nascimento' %></b></td>
+                         <td>    <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %><BR /></td>
+                       </tr>
+                       <tr  bgcolor="#FFFFF">
+                         <td><b><font color="red" size="5">*</font>Mãe</b></td>
+                         <td><%= f.text_field :mae, :size=>"38"%>
+                             <%= observe_field :crianca_mae,
+                               :with => :crianca_mae,
+                               :url => { :action => "mesma_mae" } %>
+                         </td>
+                         <td>&nbsp&nbsp<b>Pai </b></td>
+                         <td><%= f.text_field :pai, :size=>"38" %></td>
+
+                       </tr>
+                       <tr  bgcolor="#FFFFF">
+                         <td></td>
+                         <td><b><div id='nome_aviso' ></div>  <div id='aviso_mae'></div></b></td>
+                         <td colspan="3"><b><div id='nome_mae'></div></b></td>
+
+                       </tr>
+                       <tr   bgcolor="#FFFFF">
+                           <td colspan="3"> <b>Responsável Legal pela criança?</b>
+                               &nbsp - &nbsp
+                                   <b>Nome</b>&nbsp <%= f.text_field :responsavel_n, :size => "38"%>&nbsp&nbsp
+                                  <br/><font size="1"> (Caso pais não sejam os responsáveis legais)</font>
+                           </td>
+                            <td> <b>Vínculo com a criança</b> <%= f.select :parentesco, GRAU, :include_blank => ''%></td>
+                      </tr>
+
+                      <tr  bgcolor="#FFFFF">
+                         <td><b>Endereço  <font size="1"> (residencial)  </b></font></td>
+                         <td><%= f.text_field :endereco %> &nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"2" %></td>
+                         <td>&nbsp&nbsp <b>Bairro</b></td>
+                         <td><%= f.text_field :bairro, :size=>"38" %></td>
+                       </tr>
+                       <tr  bgcolor="#FFFFF">
+                          <td><b>Complemento</b></td>
+                          <td><%= f.text_field :complemento, :size=>"38" %></td>
+                          <td><b><font color="red" size="5">*</font>Fone</b></td>
+                          <td><%= f.text_field :tel1,:size =>"13" %>&nbsp&nbsp
+                              <b>Celular</b>&nbsp&nbsp<%= f.text_field :celular,:size =>"14"%>
+                          </td>
+                       </tr>
+                       <tr  bgcolor="#FFFFF">
+                          <td><b>Fone(s) <font size="1"> (Recado) </font></b></td>
+                         <td><%= f.text_field :tel2, :size =>"36" %></td>
+                         <td>&nbsp&nbsp<b>Nome <font size="1"> (recado)</font></b></td>
+                         <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
+                       </tr>
+                              <tr  bgcolor="#FFFFF">
+                                <td colspan="2"> <script>
+                                       $(document).ready(function()
+                                        {
+                                          $("#dropdownbutton12").click(function ()
+                                           {
+                                             $("#menu12").slideToggle("high");
+                                            });
+                                        });
+                                       </script>
+                                       <b>Necessidade(s) Especial(s)?</b>
+
+                                  <a href="#" id="dropdownbutton12"><%= f.radio_button :n_especial, true %></a>SIM
+                                                                    <%=  f.radio_button :n_especial, false, :checked => true  %>NÃO
+                                <td colspan="2">
+                                   <div id="menu12" style="display:none">
+                                     <b>Necessidade:</b><%= f.text_field :necessidade, :size =>"36" %>
+                                   </div>
+                                  </td>
+                                 </td>
+                              </tr>
+
+
+
+
+
+                      </table>
+                  </fieldset>
+
+             <fieldset>
+              <legend><font size="4">Dados da Inscrição</font></legend>
+              <table width="100%">
+                    <tr  bgcolor="#FFFFF">
+                        <td colspan="6"><font size ="2" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço do local onde a criança fica durante o dia, para fins de definir a unidade de matricula. É necessário indicar e justificar o vínculo da criança com este endereço (ex. casa dos avós,  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
+
+                    </tr>
+                   <tr  bgcolor="#FFFFF">
+                       <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"4" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"30"%>
+
+
+                       </td>
+                   </tr>
+                   <tr bgcolor="#FFFFF">
+                       <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança:</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
+                   </tr>
+                   <%# if current_user.has_role?('admin') or  current_user.has_role?('direcao') or  current_user.has_role?('secretaria')   %>
+                       <tr  bgcolor="#FFFFF">
+                             <td colspan="6"> <b>Unidade onde foi realizada a primeira Inscrição:&nbsp </b>
+                                      <%if @crianca.unidade.nil?%>
+                                           Internet (on-line)
+                                       <%else%>
+                                          <%#= collection_select :crianca, :unidade_id, @unidade_regiao, :id, :nome, :include_blank => @crianca.unidade_t  %>
+                                           <%=  @crianca.unidade.nome%>
+                                       <%end%>
+
+                             </td>
+                        </tr>
+                               <tr  bgcolor="#FFFFF">
+                             <td colspan="6"> <b>Data Inscrição:</b>&nbsp <%= f.datetime_select(:created_at , :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></td>
+                        </tr>
+                   <%#else%>
+                     <!--    <tr  bgcolor="#FFFFF">
+                              <td colspan="6"> <b>Unidade onde foi realizada a Inscrição </b>
+                                  <%=h @crianca.unidade.nome%> &nbsp&nbsp&nbsp -&nbsp&nbsp&nbsp <b>Data Inscrição:</b>
+                                  <%=h @crianca.created_at.strftime("%d/%m/%Y- %H:%M horas")%> </td>
+                          </tr> -->
+                  <%#end%>
+        <tr  bgcolor="#FFFFF">
+          <td colspan="6"><font size ="2" color="red"><b><u>ATENÇÃO:</u></b> Após responder a perguntas abaixo SIM/NÃO aguarde a página atualizar para poder continuar.</font> </td>
+
+       </tr>
+               <tr  bgcolor="#FFFFF">
+                    <td colspan="6"class="botao6"><b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO1).sort %>    </td>
+                </tr>
+                <%if  @crianca.irmao == false %>
+                       <tr  bgcolor="#FFFFF">
+                             <td colspan="5"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b></td>
+                              <%= observe_field 'crianca_irmao',
+                                                :update => "irmao",
+                                                :url    => { :action => 'irmao_action_pre' },
+                                                :with   => 'crianca_irmao' %>
+                        </tr>
+                         <tr bgcolor="#FFFFF">  <td colspan="6""><div id="irmao"></div></td>     </tr>
+                <%else%>
+                          <tr bgcolor="#FFFFF">
+                               <td colspan="6"> <%= f.select :irmao, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.irmao) %>&nbsp&nbsp  Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b>
+                              <%= observe_field 'crianca_irmao',
+                                                :update => "irmao",
+                                                :url    => { :action => 'irmao_action_pre' },
+                                                :with   => 'crianca_irmao' %>                                       <% session[:sim]= 1 %>
+                                    </td>
+                          </tr>
+                          <tr bgcolor="#FFFFF"><td colspan="6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Unidade que estuda:  <%= collection_select  :crianca, :unidade_i, @unidades, :nome, :nome  %>&nbsp&nbsp.</u> </td>
+                          </tr>
+               <%end%>
+                <%if  @crianca.opcao2.nil? %>
+                        <tr  bgcolor="#FFFFF">
+                          <td colspan="5"class="botao6"><%= f.select :opcao2 , (OPCAOSN).sort %>   &nbsp&nbsp <b> A criança estudou anteriormente em escola particular ou escola pública de outros municípios? </b></td>
+                                <%= observe_field 'crianca_opcao2',
+                                                :update => "estudo",
+                                                :url    => { :action => 'estudo_action_pre' },
+                                                :with   => 'crianca_opcao2' %>
+                       </tr>
+                        <tr bgcolor="#FFFFF">
+                             <td colspan="6""><div id="estudo"></div></td>
+                        </tr>
+                <%else%>
+                        <tr  bgcolor="#FFFFF">
+
+                          <td colspan="6"> <%= f.select :opcao2, ((options_for_select [['NÃO', nil], ['SIM', 'estudou em outra unidade/cidade']],  :selected => 'estudou em outra unidade/cidade')  ) %>&nbsp&nbsp  <b> A criança estudou anteriormente em escola particular ou escola pública de outros municípios?</b></td>
+                                <%= observe_field 'crianca_opcao2',
+                                                :update => "estudo",
+                                                :url    => { :action => 'estudo_action_pre' },
+                                                :with   => 'crianca_opcao2' %>
+                       </tr>
+                        <tr bgcolor="#FFFFF">
+                             <td colspan="6"><div id="estudo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                               <%= text_field :crianca, :opcao2, :size=>"30"%> - <%= text_field :crianca,:opcao3, :size=>"50" %></div>
+                             </td>
+                        </tr>
+                <%end%>
+                <%if  @crianca.trabalho == false %>
+                       <tr  bgcolor="#FFFFF">
+                         <td colspan="5"class="botao6"><%= f.select :trabalho , (OPCAOSN).sort %> <b> Mãe/reponsável trabalha e <u>possui</u> carteira de trabalho (CTPS) devidamente assinada. &nbsp </b> </td>
+                                            <%= observe_field 'crianca_trabalho',
+                                                  :update => "trabalho",
+                                                  :url    => { :action => 'trabalho_action' },
+                                                  :with   => 'crianca_trabalho' %>
+                        </tr>
+                         <tr bgcolor="#FFFFF">  <td colspan="6""><div id="trabalho"></div></td>     </tr>
+                <%else%>
+                          <tr bgcolor="#FFFFF">
+                               <td colspan="6"> <%= f.select :trabalho, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.trabalho) %>&nbsp&nbsp <b> Mãe/reponsável trabalha e <u>possui</u> carteira de trabalho (CTPS) devidamente assinada</b>
+                                            <%= observe_field 'crianca_trabalho',
+                                                  :update => "trabalho",
+                                                  :url    => { :action => 'trabalho_action_pre' },
+                                                  :with   => 'crianca_trabalho' %>                                     <% session[:sim]= 1 %>
+                                    </td>
+                          </tr>
+                           <tr bgcolor="#FFFFF">
+                              <td colspan="6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                             <b>End. Trabalho: </b> <%= text_field :crianca,:local_trabalho %> &nbsp<b>Nº</b><%= text_field :crianca, :num_trab, :size=>"2" %>&nbsp
+                                              <%= text_field :crianca, :bairro_trab, :size=>"20" %>&nbsp
+                                              <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"15" %>
+                              </td>
+                          </tr>
+               <%end%>
+
+
+                <%if  @crianca.declaracao == false %>
+                       <tr  bgcolor="#FFFFF">
+                             <td colspan="5"class="botao6"><%= f.select :declaracao , (OPCAOSN).sort %> <b>  Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS) ou Trabalho AUTONOMO.</b> </td>
+                                            <%= observe_field 'crianca_declaracao',
+                                                  :update => "declaracao",
+                                                  :url    => { :action => 'declaracao_action_pre' },
+                                                  :with   => 'crianca_declaracao' %>
+                        </tr>
+                         <tr bgcolor="#FFFFF">  <td colspan="6""><div id="declaracao"></div></td>     </tr>
+                <%else%>
+                          <tr bgcolor="#FFFFF">
+                               <td colspan="6"> <%= f.select :declaracao, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.declaracao) %>&nbsp&nbsp  Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b>
+                                            <%= observe_field 'declaracao_trabalho',
+                                                  :update => "declaracao",
+                                                  :url    => { :action => 'declaracao_action_pre' },
+                                                  :with   => 'crianca_declaracao' %>                                     <% session[:sim]= 1 %>
+                                    </td>
+                          </tr>
+                           <tr bgcolor="#FFFFF">
+                              <td colspan="6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                             <b>End. Trabalho: </b> <%= text_field :crianca,:local_trabalho %> &nbsp<b>Nº</b><%= text_field :crianca, :num_trab, :size=>"2" %>&nbsp
+                                              <%= text_field :crianca, :bairro_trab, :size=>"20" %>&nbsp
+                                              <b>Fone:</b> <%= text_field :crianca, :fone_trabalho, :size=>"15" %>
+                              </td>
+                          </tr>
+               <%end%>
+
+
+
+  
+                 <tr>
+                     <td width="2%" valign="top"><font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/observa.png", :size => "100x26"), "#inline_form_observacao", :class =>"inline" %></u></b></font></td>
+                      <td colspan="3"><%=h @crianca.obs%><br/>
+                        <div id="dados"> <%= render :partial => 'observacoes'  %></div></td>
+                    </tr>
+
+                 </table>
+
+             </fieldset>
+
+
+
+
+              <fieldset>
+            <legend><font size=4>IMPORTANTE</font></legend>
+              <table width="100%">
+                <tr>
+                  <td colspan="2" ><font size ="3" color="RED"><b> &nbsp&nbsp&nbsp&nbsp
+                              <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp
+                                  1)TODAS AS INFORMAÇÕES INVERÍDICAS E NÃO COMPROVADOS IMPLICARÃO NO IMEDIATO<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                     <u>CANCELAMENTO</u>  DA INSCRIÇÃO.</b><br/>
+                                     <center>
+                                     <table width="85%" >
+                                       <tr>
+                                         <td>
+
+                                     <b><i><font color="black">“Art. 299 do Código Penal – Omitir, em documento público ou particular, declaração que nele deveria
+                                            constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de prejudicar
+                                            direito, criar obrigação ou alterar a verdade sobre o fato juridicamente relevante. Pena: reclusão de 1 (um) a 5 (cinco)
+                                            anos e multa, se o documento é público e reclusão de 1(um) a 3 (três) anos, se o documento é particular.”</i></b></font>
+                                         </td>
+                                       </tr>
+                                     </table>
+                                     </center>
+
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                              2) Assim que houver disponibilidade de vaga, a Secretaria de Educação entrará em contato com  o   <br/>
+                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp  responsável pela criança.
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
+                             3) É responsabilidade dos pais e/ou responsável legal manter os dados atualizados no cadastro<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             junto Secretaria de Educação - Americana. Assim, deverá ser informada qualquer alteração<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             nos dados solicitados na inscrição, inclusive os telefones, pois será somente por meio de ligações<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             telefônicas que ocorrerá o contato no caso de surgimento de vaga. Deverá ser informada, também,<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             ainda qualquer alteração relativa ao trabalho&nbsp&nbsp da &nbsp mãe.
+                  </td>
+                </tr>
+
+               <tr>
+                   <td width="2%" valign="top"><b class="botao1" style="display:none">&nbsp&nbsp&nbsp&nbsp<font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/Vagas.png", :size => "100x26"), "#inline_form_vaga", :class =>"inline" %></u></b></font></td>
+                   <td><div id="dados_vaga"> <%= render :partial => 'vagas'  %></div></td>
+                  </tr>
+               </table>
+
+            </fieldset>
+
+             <br/>
+               <script>
+                   $(document).ready(function()
+                     {
+                        $("#dropdownbutton5").click(function ()
+                           {
+                              $("#menu5").slideToggle("high");
+                           });
+                     });
+               </script>
+
+             <br/>
+
+
+
+                  <fieldset>
+                      <table width="100%" >
+
+                     <tr>
+                       <%  %>session[:id_crianca]
+                       <td width="4%"align="left"><b> <%= f.submit 'Salvar' %></b></td>
+
+
+            <%end%>
+                        <td width="6%"align="left" ><%= button_to 'Consultar' ,consultas_criancas_path, :title => "Consultar" %></td>
+                        <td width="6%"align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %>
+                        <td><font color="GREEN"> <div id="matricula"></div> </font></td></td>
+
+                <%session[:show]=0%>
+                <%session[:show_recadastramento]=1%>
+
+                     </tr>
+                   </table>
+                  </fieldset>
+                
+              </font>
+
+
+            <br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <%session[:show]=1%>
+    <%session[:show_recadastramento]=0%>
+</div>
+<br/>
+</div>
+
+    <%= render "form_observacao" %>
+    <%= render "form_vaga" %>
+
+

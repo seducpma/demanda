@@ -1,0 +1,806 @@
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <img src="/stylesheets/images/logo.png"   alt=""  class="float-left"  />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+       <font size="2"><i><b><u>DEMANDA ESCOLAR</u></b><br/>
+&nbsp&nbsp&nbsp
+     <font size="1"><i><b>Prefeitua Municipal de  Americana </b></i>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp
+<font size="1"><b><u></u> DEMANDA GERAL      </b></i><br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <font size="1"><b><i> Secretaria da Educação</i></b>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<br/>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp
+
+ <table  class ="invisible_to_print " >
+   <tr  class ="invisible_to_print ">
+     <td align="right" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+  </tr>
+ </table>
+ <fieldset>
+   <legend><font size=2><b>DEMANDA POR REGIÃO</b></font></legend>
+       <table frame="box" rules="all" width = "70%" align="center">
+        <!--<tr style="font-size:8px"  bgcolor="#C6BBBB">-->
+          <tr style="font-size:8px"  bgcolor="#DCDCDC">
+            <th width="33%">
+              <table frame="box" rules="all" width = "100%" align="center">
+                    <tr style="font-size:8px"  bgcolor="#DCDCDC">
+                        <th width="15%">Região</th>
+                        <th width="6%">Total</th>
+                    </tr>
+               </table>
+            </th>
+            <th  width="33%">
+                  <table frame="box" rules="all" width = "100%" align="center">
+                    <tr style="font-size:8px" bgcolor="#DCDCDC">
+                        <th width="1%" ></th>
+                        <th width="15%">Região</th>
+                        <th width="5%">Total</th>
+                    </tr>
+               </table>
+            </th>
+            <th   width="33%">
+              <table frame="box" rules="all" width = "100%" align="center">
+                    <tr style="font-size:8px"  bgcolor="#DCDCDC">
+                        <th width="1%"></th>
+                        <th width="15%">Região</th>
+                         <th width="5%">Total</th>
+                    </tr>
+                 </table>
+            </th>
+         </tr>
+         <tr>
+            <% totalregiao0 = 0%>
+             <% totalregiao1 = 0 %>
+             <% totalregiao = 0%>
+
+             <th valign="top">
+                 <table frame="box" rules="all" width = "100%" align="center">
+                    <% for reg1 in @regiaos1 %>
+                       <tr style="font-size:8px">
+                         <th  width="70%"><b><%= reg1.nome %></b></th>
+                         <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null",reg1]).count %></th>
+                                                          <% totalregiao = totalregiao + regiao%>
+                       </tr>
+                     <%end%>
+
+                 </table>
+             </th>
+             <th valign="top">
+                 <table frame="box" rules="all" width = "100%" align="center">
+                     <% for reg2 in @regiaos2 %>
+                       <tr style="font-size:8px">
+                         <th width="5%" ></th>
+                         <th  width="69%"><b><%= reg2.nome %></b></th>
+                         <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null ",reg2]).count %></th>
+                                                          <% totalregiao = totalregiao + regiao%>
+                       </tr>
+                     <%end%>
+
+                 </table>
+             </th>
+             <th valign="top">
+                 <table frame="box" rules="all" width = "100%" align="center">
+                     <% for reg3 in @regiaos3 %>
+                       <tr style="font-size:8px">
+                         <th width="5%" ></th>
+                         <th  width="69%"><b><%= reg3.nome %></b></th>
+                         <th  width="30%" align="center"><%= regiao = Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? and vaga_id is null",reg3]).count %></th>
+                                                          <% totalregiao = totalregiao + regiao%>
+                       </tr>
+                     <%end%>
+                      <tr style="font-size:8px"><th></th></tr>
+                      <tr bgcolor="#DCDCDC">
+                          <th colspan="3" align="left">
+                              <table frame="box" rules="all" width = "100%" align="center">
+                                  <tr style="font-size:8px">
+                                    <th align="right" width="70%"><b>TOTAL GERAL INSCRIÇÕES: &nbsp&nbsp&nbsp</b></th>
+                                    <th align="center" width="25%"><font color ="red"><b><%=totalregiao %></b></font></th>
+                                  </tr>
+                              </table>
+                          </th>
+                      </tr>
+                 </table>
+             </th>
+
+         </tr>
+
+
+       </table>
+
+  </fieldset>
+
+ <fieldset>
+   <legend><font size=2><b>DEMANDA GERAL POR REGIÃO</b></font></legend>
+<% b1=0%>
+<% b2=0%>
+<% tgb=0%>
+<% tgb1=0%>
+<% tgb2=0%>
+<% tgm1a=0%>
+<% tgm1b=0%>
+<% tgm2=0%>
+<% m1a=0%>
+<% m1b=0%>
+<% m1b1=0%>
+<% m1b0=0%>
+<% m2=0%>
+<% n1=0%>
+<% n2=0%>
+<% tgn1=0%>
+<% tgn2=0%>
+      <table  width="100%" frame="box" rules="all">
+        <tr style="font-size:8px">
+           <td valign="top" width ="29%">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th colspan="2">&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+                    
+                </tr>
+
+                <% @regiaos11.each do |regiao| %>
+                <% b1=0%>
+                <% b2=0%>
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                     <th  colspan="2" width="35%" align="left"><%=h regiao.nome%> </th>
+                 </tr>
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario I</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and regiao_id = ?", regiao.id]).count %>
+                                   <%b1 = b1 + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario II</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and regiao_id = ?", regiao.id]).count %>
+                                 <%b2 =  b2 + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                   <th width="10%"></th>
+                 </tr>
+                 <tr bgcolor="#C6CCCC" style="font-size:8px">
+                   <th align="right">Sub-Total</th>
+                   <th width="2%"> <%= (b1)+(b2)%>
+                                   <% tgb1=tgb1 +(b1)%>
+                                   <% tgb2=tgb2 +(b2)%>
+                   </th>
+                 </tr>
+                <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                   <th width="2%">
+                   </th>
+                 </tr>
+                <%end%>
+            </table>
+          </td>
+           <td valign="top" width ="29%">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th  colspan="2" width="35%">&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+
+                </tr>
+
+                <% @regiaos11.each do |regiao| %>
+                <% m1a=0%>
+                <% m1b=0%>
+                <% m2=0%>
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th  colspan="2" width="35%" align="left"><%=h regiao.nome%> </th>
+
+                 </tr>
+                <tr  style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - A</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 4 and regiao_id = ?", regiao.id]).count %>
+                                  <%m1a = m1a + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - B</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and regiao_id = ?", regiao.id]).count %>
+                                  <%m1b = m1b + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                <tr  style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal II</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and regiao_id = ?", regiao.id]).count %>
+                                  <%m2 = m2 + Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                <tr bgcolor="#C6CCCC" style="font-size:8px">
+                   <th align="right">Sub-Total</th>
+                   <th width="10%"> <%= m1a + m1b+ m2%>
+                                   <% tgm1a =tgm1a +m1a%>
+                                   <% tgm1b= tgm1b +m1b%>
+                                   <% tgm2= tgm2 + m2%>
+                   </th>
+                 </tr>
+                <tr font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                   <th width="10%">
+                   </th>
+                 </tr>
+                <%end%>
+            </table>
+          </td>
+           <td valign="top" width ="29%">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th width="35%">&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+                    <th width="2%"></th>
+               </tr>
+                <% @regiaos11.each do |regiao| %>
+                <% n1=0%>
+                <% n2=0%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th  colspan="2" width="35%" align="left"><%=h regiao.nome%> </th>
+
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel I</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and regiao_id = ?", regiao.id]).count %>
+                                  <%n1 = n1 + Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel II</th>
+                   <th width="10%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and regiao_id = ?", regiao.id]).count %>
+                                <%n2 = n2 + Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and regiao_id = ?", regiao.id]).count%> </th>
+                 </tr>
+                 <tr  style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                   <th width=10%"></th>
+                 </tr>
+                 <tr bgcolor="#C6CCCC" style="font-size:8px">
+                   <th align="right">Sub-Total</th>
+                   <th width="10%"> <%= n1+ n2%>
+                                   <% tgn1 =tgn1 + n1%>
+                                   <% tgn2= tgn2 + n2%>
+                   </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                     <th colspan="2" align="left">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                   </th>
+                 </tr>
+<%end%>
+            </table>
+          </td>
+           <td valign="top" width ="14%">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px" >
+                    <th width="35%">Total Geral</th>
+                </tr>
+                 <%cont1=0%>
+                 <%# @unidades11.each do |unidade| %>
+                <%@regiaos11.each do |regiao| %>
+
+                 <% num =  Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ? AND recadastrada = 1", regiao.id]).count%>
+                 <% cont1 = cont1+num%>
+                 <tr style="border-color: white">
+                   <th  colspan="2" width="35%" align="left"style="border-color: white">&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+
+                 </tr>
+                <tr  style="font-size:8px"style="border-color: white">
+                   <th colspan="2" style="border-color: white">&nbsp&nbsp&nbsp&nbsp&nbsp  </th>
+                 </tr>
+                 <tr style="font-size:8px"style="border-color: white">
+                  <th  colspan="2"style="border-color: white">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                 </tr>
+                 <tr  style="font-size:8px"style="border-color: white">
+                   <th  colspan="2"align="left"style="border-color: white">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+
+                 </tr>
+                 <tr bgcolor="#C6CCCC">
+
+                     <th  colspan="2"align="center"> <b>TOTAL: &nbsp&nbsp </b><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and regiao_id = ?", regiao.id]).count %> </th>
+                 </tr>
+                 <tr style="border-color: white">
+                   <th  colspan="2"align="left"style="border-color: white">&nbsp&nbsp&nbsp&nbsp&nbsp </th>
+                 </tr>
+
+                <%end%>
+            </table>
+                 <tr  >
+                     <td align="right" colspan="3" ><b>Total Inscrições: </b></td>
+                      <td align="center"  ><font color ="red "size="2"><b><%= cont1  %></b></font></td>
+                 </tr>
+
+           </td>
+        </tr>
+      </table>
+
+<% b1=0%>
+<% b10=0%>
+<% b11=0%>
+<% b2=0%>
+<% b20=0%>
+<% b21=0%>
+<% m1a=0%>
+<% m1a0=0%>
+<% m1a1=0%>
+<% m1b=0%>
+<% m1b1=0%>
+<% m1b0=0%>
+<% m2=0%>
+<% m20=0%>
+<% m21=0%>
+<% n1=0%>
+<% n10=0%>
+<% n11=0%>
+<% n2=0%>
+<% n21=0%>
+<% n20=0%>
+
+
+
+      <table  width="100%" frame="box" rules="all">
+        <tr style="font-size:8px">
+          <td width ="25%">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th width="35%">Unidade</th>
+                    <th width="2%">Total</th>
+                </tr>
+                 <%cont1=0%>
+                 <% @unidades11.each do |unidade| %>
+                 <% num =  Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count%>
+                 <% cont1 = cont1+num%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th  colspan="2" width="35%" align="left"><%=h unidade.nome%></th>
+
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario I</th>
+                   <th  align="center" width="2%"><%= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count %>
+                                  <%b10 = b10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%b11 = b11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                  <%b1 = b1 + Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario II</th>
+                   <th  align="center" width="2%"><%= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count %>
+                                   <%b20 = b20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                   <%b21 = b21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                   <%b2 = b2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count%> </th>
+                  </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - A</th>
+                   <th  align="center" width="2%"><%= Crianca.find(:all, :conditions => ["status = 'NA_DEMANDA' and grupo_id= 4 and opcao1 = ?", unidade.nome]).count %>
+                                  <%m1a0 = m1a0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                  <%m1a1 = m1a1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                 <%m1a = m1a + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - B)</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?", unidade.nome]).count %>
+                                   <%m1b0 = m1b0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                   <%m1b1 = m1b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                   <%m1b = m1b + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr  style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count %>
+                                <%m20 = m20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%m21 = m21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                <%m2 = m2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count%> </th>                 
+                 </tr>
+                 <tr  style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count %>
+                                  <%n10 = n10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%n11 = n11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga =1", unidade.nome]).count%>
+                                  <%n1 = n1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count %>
+                                <%n20 = n20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%n21 = n21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                <%n2 = n2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="right">Total</th>
+                   <th align="center" width="2%">  <%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %></th>
+                 </tr>
+                <%end%>
+                 <tr bgcolor="#F5F5F5"  style="font-size:8px">
+                   <th colspan="2" align="right"><b>Total Inscrições: </b>&nbsp&nbsp
+                            <font color ="red"><b><%= cont1 %></b></font>&nbsp&nbsp</th>
+                 </tr>
+            </table>
+           </td>
+           <td  width ="25%" valign="top">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th width="35%">Unidade</th>
+                    <th width="2%">Total</th>
+                </tr>
+                 <%cont2=0%>
+                 <% @unidades12.each do |unidade| %>
+                 <% num =  Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %>
+                 <%cont2 = cont2+num%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th  colspan="2" width="35%" align="left"><%=h unidade.nome%></th>
+
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count %>
+                                  <%b10 = b10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%b11 = b11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                  <%b1 = b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count %>
+                                   <%b20 = b20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                   <%b21 = b21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                   <%b2 = b2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - A</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 4 and opcao1 = ?", unidade.nome]).count %>
+                                  <%m1a0 = m1a0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                  <%m1a1 = m1a1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                  <%m1a = m1a + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - B</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?", unidade.nome]).count %>
+                                   <%m1b0 = m1b0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                   <%m1b1 = m1b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                   <%m1b = m1b + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count %>
+                                <%m20 = m20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%m21 = m21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                <%m2 = m2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count %>
+                                    <%n10 = n10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                    <%n11 = n11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga =1", unidade.nome]).count%>
+                                    <%n1 = n1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count %>
+                                <%n20 = n20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%n21 = n21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                <%n2 = n2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="right">Total</th>
+                   <th align="center" width="2%">  <%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %></th>
+                 </tr>
+
+                <%end%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th colspan="2" align="right"><b>Total Inscrições: </b>&nbsp&nbsp
+                            <font color ="red"><b><%= cont2 %></b></font>&nbsp&nbsp</th>
+                 </tr>
+                 <tr>
+                   <td colspan="4" align="center"><br/><br/><br/><br/><br/><br/><br/><br/></td>
+                 </tr>
+
+                <tr bgcolor="#F5F5F5">
+                    <th width="35%"><font size="2" color="WHITE">X</font>
+                            Unidade</th>
+                    <th width="2%">Total</th>
+                </tr>
+                 <%cont5=0%>
+                 <% @unidades15.each do |unidade| %>
+                 <% num =  Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %>
+                 <%cont5 = cont5+num%>
+                 <tr bgcolor="#F5F5F5">
+                   <th  colspan="2" width="35%" align="left"><%=h unidade.nome%></th>
+
+                 </tr>
+               <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal II</th>
+                   <th width="2%"><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count %>
+                                <%m2 = m2 + Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? ", unidade.nome]).count%>
+                                <%m20 = m20 + Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%m21 = m21 + Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                  </th>
+                 </tr>
+                 <tr>
+                   <th align="right">Total</th>
+                   <th><%= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %><br/></th>
+                   
+                 </tr>
+                 <tr>
+                   <th align="right"></th>
+                   <th></th>
+
+                 </tr>
+
+                <%end%>
+                 <tr bgcolor="#F5F5F5">
+                   <td colspan="2" align="right"><b>Total Inscrições: </b>
+                            <font color ="red "><b>&nbsp&nbsp <%= cont5 %>&nbsp&nbsp&nbsp&nbsp </b></font></td>
+                 </tr>
+            </table>
+           </td>
+           <td  width ="25%"valign="top">
+            <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th width="35%">Unidade</th>
+                    <th width="2%">Total</th>
+                </tr>
+                 <%cont3=0%>
+                 <% @unidades13.each do |unidade| %>
+                 <% num =  Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %>
+                 <%cont3 = cont3+num%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th  colspan="2" width="35%" align="left"><%=h unidade.nome%></th>
+
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count %>
+                                  <%b10 = b10 + Crianca.find(:all, :select =>'id', :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%b11 = b11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                  <%b1 = b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count %>
+                                   <%b20 = b20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                   <%b21 = b21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                   <%b2 = b2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - A</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 4 and opcao1 = ?", unidade.nome]).count %>
+                                  <%m1a0 = m1a0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                  <%m1a1 = m1a1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                  <%m1a = m1a + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - B</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?", unidade.nome]).count %>
+                                   <%m1b0 = m1b0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                   <%m1b1 = m1b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                   <%m1b = m1b + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count %>
+                                <%m20 = m20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%m21 = m21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                <%m2 = m2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count %>
+                                  <%n10 = n10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%n11 = n11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga =1", unidade.nome]).count%>
+                                  <%n1 = n1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count %>
+                                <%n20 = n20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%n21 = n21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                <%n2 = n2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count%> </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="right">Total</th>
+                   <th align="center" width="2%">  <%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %></th>
+                 </tr>
+                <%end%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th colspan="2" align="right"><b>Total Inscrições: </b>&nbsp&nbsp
+                            <font color ="red"><b><%= cont3 %></b></font>&nbsp&nbsp</th>
+                 </tr>
+            </table>
+           </td>
+           <td  width ="25%" valign="top">
+             <table  width="100%" frame="box" rules="all">
+                <tr bgcolor="#F5F5F5" style="font-size:8px">
+                    <th width="35%">Unidade</th>
+                    <th width="2%">Total</th>
+                </tr>
+                 <%cont4=0%>
+                 <% @unidades14.each do |unidade| %>
+                 <% num =  Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %>
+                 <%cont4 = cont4+num%>
+                 <tr style="font-size:8px">
+                   <th  colspan="2" width="35%" align="left"><%=h unidade.nome%></th>
+
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count %>
+                                  <%b10 = b10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%b11 = b11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                  <%b1 = b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 1 and opcao1 = ?", unidade.nome]).count%>
+                   </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Berçario II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count %>
+                                 <%b20 = b20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                 <%b21 = b21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                                 <%b2 = b2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 2 and opcao1 = ?", unidade.nome]).count%>
+                   </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - A</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id=4 and opcao1 = ?", unidade.nome]).count %>
+                                  <%m1a0 = m1a0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                  <%m1a1 = m1a1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                                  <%m1a = m1a + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and (grupo_id= 4 or grupo_id = 3) and opcao1 = ? ", unidade.nome]).count%>
+                   </th>
+                 </tr >
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal I - B</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id=8 and opcao1 = ?", unidade.nome]).count %>
+                                  <%m1b = m1b + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ? ", unidade.nome]).count%>
+                                   <%m1b0 = m1b0 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 0", unidade.nome]).count%>
+                                   <%m1b1 = m1b1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 8 and opcao1 = ?  and vaga = 1", unidade.nome]).count%>
+                   </th>
+                 </tr >
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Maternal II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ?", unidade.nome]).count %>
+                                <%m2 = m2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? ", unidade.nome]).count%>
+                                <%m20 = m20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%m21 = m21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 5 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+                  </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel I</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count %>
+                                  <%n1 = n1 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ?", unidade.nome]).count%>
+                                  <%n10 = n10 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                  <%n11 = n11 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 6 and opcao1 = ? and vaga =1", unidade.nome]).count%>
+                   </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="left">&nbsp&nbsp&nbsp&nbsp&nbsp - Nivel II</th>
+                   <th align="center" width="2%"><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count %>
+                                <%n2 = n2 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ?", unidade.nome]).count%>
+                                <%n20 = n20 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 0", unidade.nome]).count%>
+                                <%n21 = n21 + Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and grupo_id= 7 and opcao1 = ? and vaga = 1", unidade.nome]).count%>
+
+                   </th>
+                 </tr>
+                 <tr style="font-size:8px">
+                   <th align="right">Total</th>
+                   <th align="center" ><%= Crianca.find(:all, :select =>'id', :conditions => ["status = 'NA_DEMANDA' and opcao1 = ?", unidade.nome]).count %></th>
+                 </tr>
+
+                <%end%>
+                 <tr bgcolor="#F5F5F5" style="font-size:8px">
+                   <th colspan="2" align="right"><b>Total Inscrições: </b>&nbsp&nbsp
+                            <font color ="red "><b><%= cont4 %></b></font>&nbsp&nbsp&nbsp&nbsp</th>
+                 </tr>
+            </table>
+           </td>
+        </tr>
+      </table>
+   </fieldset>
+<fieldset>
+   <legend><font size=2><b>DEMANDA GERAL POR CLASSE</b></font></legend>
+      <table  width="100%" frame="box" rules="all">
+        <tr style="font-size:8px">
+          <th><b>Classe</b></th>
+          <th><b>S/Of.</b>  </th>
+          <th><b>C/Of. </b> </th>
+          <th><b>Total </b> </th>
+          <th width="1%"></th>
+          <th><b>Classe</b></th>
+          <th><b>S/Of.</b>  </th>
+          <th><b>C/Of. </b>  </th>
+          <th><b>Total </b>  </th>
+          <th width="1%"></th>
+           <th><b>Classe</b></th>
+          <th><b>S/Of.</b>  </th>
+          <th><b>C/Of. </b>  </th>
+          <th><b>Total </b>  </th>
+          <th width="1%"></th>
+          <th><b>Classe</b><font></th>
+          <th><b>S/Of.</b>  </th>
+          <th><b>C/Of. </b>  </th>
+          <th><b>Total </b>  </th>
+       </tr>
+       <tr bgcolor="#F5F5F5" style="font-size:8px">
+          <th>- BERÇARIO I:</th>
+          <th><%= b10%>  </th>
+          <th><%= b11%>  </th>
+          <th><%= b1%>  </th>
+          <th width="1%"></th>
+          <th>- Maternal I - A: </th>
+          <th><%= m1a0%>  </th>
+          <th><%= m1a1%>  </th>
+          <th><%= m1a%>  </th>
+          <th width="1%"></th>
+          <th>- MATERNAL II: </th>
+          <th><%= m20%>  </th>
+          <th><%= m21%>  </th>
+          <th><%= m2%>  </th>
+          <th width="1%"></th>
+          <th>- NÍVEL I: </th>
+          <th><%= n10%>  </th>
+          <th><%= n11%>  </th>
+          <th><%= n1%>  </th>
+
+       </tr>
+        <tr bgcolor="#F5F5F5" style="font-size:8px">
+           <th>- BERÇARIO II: </th>
+          <th><%= b20%>  </th>
+          <th><%= b21%>  </th>
+          <th><%= b2%>  </th>
+          <th width="1%"></th>
+          <th>- Maternal I B: </th>
+          <th><%= m1b0%>  </th>
+          <th><%= m1b1%>  </th>
+          <th><%= m1b%>  </th>
+          <th> </th>
+          <th> </th>
+          <th> </th>
+          <th> </th>
+          <th ></th>
+          <th width="1%"></th>
+          <th>- NÍVEL II: </th>
+          <th><%= n20%>  </th>
+          <th><%= n21%>  </th>
+          <th><%= n2%>  </th>
+        </tr>
+       <tr style="font-size:8px">
+          <% tt= 0 %>
+          <% tt= cont1+ cont2+ cont3+ cont4 + cont5%>
+        <th colspan="16"align="right"><b>TOTAL GERAL INSCRIÇÕES: &nbsp&nbsp</b></th>
+        <th align="center" width="4%"><font color ="red "><b><%=totalregiao0 %></b></font></th>
+        <th align="center"width="4%"><font color ="red" ><b><%=totalregiao1 %></b></font></th>
+        <th align="center" width="4%"><font color ="red" ><b><%=tt %> </b></font></th>
+
+      </tr>
+      </table>
+</fieldset>
+
+
+
+<table>
+  <tr style="font-size:8px" >
+    <th>
+      <b>Lista  sujeita a alterações a qualquer momento</b><font>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <font size ="1" ><b>Americana, <%= Time.now.strftime("%d/%m/%Y") %></b>
+    </th>
+  </tr>
+
+</table>
+  </div>
+
+<br/>
+<font size="1">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+________________________________
+
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+________________________________<br/>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+p/  Unidade Escolar
+         
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+Assinatura do Responsável<br/>
+
+</font>
+&nbsp&nbsp
+

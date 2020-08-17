@@ -1,0 +1,44 @@
+<table>
+    <tr>
+        <td>
+           <table >
+
+             <tr>
+                  <td align="center"><font size="3"><b><u>Unidades dispiníveis nesta região</b></u>            <font></td>
+              </tr>
+              <%num=1%>
+             <% for unidade in @unidade_regiao %>
+              <tr>
+                  <td align="left">&nbsp&nbsp&nbsp&nbsp <font size="3"><%=num%>) <b>Unidade:</b> <%=  unidade.nome%>            <font></td>
+              </tr>
+              <%num= num + 1%>
+            <% end %>
+ 
+              <tr>
+                  <td><font size ="2" color="blue"><b> 
+                    <b id="pisca1"><u>ATENÇÃO:</u></b><b> 
+                        A vaga poderá ser oferecida em qualquer uma das unidades da região indicada, conforme disponibilidade.
+                     </b>
+            </font> </td>
+              </tr>
+
+          </table>
+        </td>
+      <tr>
+          <td colspan="5"><b><font color="red" size="5"> * </font><%= 'Unidade mais próxima ao endereço ou indicada:  ' %> </b>
+             <%= collection_select :crianca, :unidade_ref, @unidade_regiao, :nome, :nome, :include_blank => 'É necessário selecionar uma opção'  %>
+            
+         </td>
+      </tr>
+
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+

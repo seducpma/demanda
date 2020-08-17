@@ -1,0 +1,50 @@
+  <div class="tabs">
+    <center><font size="4"><b><u>INSCRIÇÃO - RECADASTRAMENTO</u></b></font></center><br/>
+       <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+
+            <th width="1%">Inscrição</th>
+            <th width="10%">Data/Hora</th>
+            <th width="20%">Nome</th>
+            <th width="20%">Nasc/o</th>
+            <th width="10%">Classe</th>
+            <th >Unidade onde fez a Inscrição</th>
+
+            <th></th>
+
+        </tr>
+           <%$t=0%>
+           <% @criancas.each do |crianca| %>
+           <%$t = $t+1%>
+        <tr bgcolor="#F5F5F5" style="font-size:10px">
+                <td align="center"><%=h crianca.id%></td>
+               <%  if crianca.created_at.nil? %>
+                     <td align="center"></td>
+                <%else%>
+                     <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y %H:%M")%><br/></td>
+                <%end%>
+
+                <td align="left"><%=h crianca.nome%></td>
+                <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                <td align="center"> <%=h crianca.grupo.nome %></td>
+                <td align="center"> <%=h crianca.unidade.nome %></td>
+                <td align="right" ><%= link_to button_to('Recadastrar', {:action => "recadastrar", :id =>crianca.id}, :target => '_blank', :title => "Recadastrar") %></td>              </tr>
+              
+              
+            <% end %>
+     </table>
+
+     <table bgcolor="#DCDCDC" width="100%">
+      <tr >
+        
+        <td colspan="3" align="right"><b>TOTAL INSCRIÇÕES: </b>
+            <font color ="red "size="2"><b><%=$t %></b></font>
+          </td>
+      </tr>
+    </table>
+
+    <tr>
+
+    </tr>
+  </div>
+

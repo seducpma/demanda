@@ -111,6 +111,11 @@ PERIODO = { '         ' => '         ',
             'MANHÃ'=> 'MANHÃ)',
             'TARDE'=> 'TARDE',
         }
+PERIODO1 = { '         ' => '         ',
+            'MATUTINO' => 'MATUTINO',
+            'VESPERTINO' => 'VESPERTINO',
+        }
+
 
 OPCAO ={ 'SIM '=>'SIM',
          'NÃO'=> 'NÃO'
@@ -133,13 +138,13 @@ OPCAOSN ={ 'SIM '=> 1,
 #DATAN2 ='2013-04-01'
 
 #1ª Bimestre
-DATAB1 ='2019-01-01'
-DATAB2 ='2018-04-01'
-DATAM1A='2017-10-01'
-DATAM1B='2017-04-01'
-DATAM2 ='2016-04-01'
-DATAN1 ='2015-04-01'
-DATAN2 ='2014-04-01'
+DATAB1 ='2020-01-01'
+DATAB2 ='2019-04-01'
+DATAM1A='2018-10-01'
+DATAM1B='2018-04-01'
+DATAM2 ='2017-04-01'
+DATAN1 ='2016-04-01'
+DATAN2 ='2015-04-01'
 
 
 BAIRRO = {

@@ -1,0 +1,36 @@
+<div id="interno2">
+<% title "CRIANÇAS", :id =>"crianças" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>INSCRIÇÃO PARA PRÉ-ESCOLA</strong></font><br/>
+   </div>
+  <div class="tabs">
+    <% form_remote_tag :url => criancas_pre_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>        <table width="100%" align="center" bgcolor="#DCDCDC" >
+          <tr>
+            <td colspan="2"align="right"left"><font size="2" color="red">(É necessário verificar se a criança já possui algum cadastro no sistema). </font> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <b class="label_busca">Nome:</b></font>
+               <%= text_field_tag :crianca, params[:crianca], :class=> "txt_busca" %>
+               <%= submit_tag "Verificar", :class => "btn_filtrar" %>
+            </td>
+         </tr>
+
+        </table>
+    <% end %>
+    <br/>
+    <hr/>
+    <div id="criancas"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+
+  <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <td align="left"><%= button_to 'Consultar', consulta_unidade_path, :title => "Consultar" %></td>
+    </tr>
+  </table>
+ </div>
+
+  <br/>
+</div>
+</div>
+
+

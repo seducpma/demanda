@@ -1,0 +1,19 @@
+<% c=0 %>
+<% @crianca.observacao_criancas.each do |obs|%>
+      <b><%= c=c+1%>.</b> <%="#{obs.observacao}" %>  <br/>
+      &nbsp&nbsp&nbsp <b>Funcionário:</b> <%="#{obs.funcionario}" %> &nbsp&nbsp&nbsp
+      <b>Data: </b> <%  if obs.data.nil?  %>
+                        
+                    <%else%>
+                        <%=  obs.updated_at.strftime("%d/%m/%Y - %H:%M horas ")%>
+                    <%end%>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                                           <% if (current_user.has_role?('admin'))%>
+                                                <%= link_to  image_tag('/stylesheets/images/excluir.png', :title => 'Excluir'),  { :controller=> "observacao_criancas",:action => "destroy", :id =>obs}, :confirm => 'Confirma exclusão?', :method => "delete", :title => "Deletar"%>
+                                           <%end%>
+      <br/>
+      ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br/>
+
+<%end%>
+

@@ -1,0 +1,37 @@
+<div id="interno2">
+<% title "CRIANÇAS", :id =>"crianças" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>RECADASTRAMENTO</strong></font><br/>
+   </div>
+  <div class="tabs">
+    <table width="100%" align="center" >
+       <tr>
+           <%@criancas_demanda = Crianca.find( :all,:conditions => ["status = 'NA_DEMANDA' AND recadastrada = 0"],:order => 'nome ASC, unidade_id ASC')%>
+         <td colspan="2"align="right"left"><font size="2"> <b class="label_busca">Nome:</b></font>
+              
+              <%= collection_select :crianca, :id, @criancas_demanda, :id, :nome, :include_blank => ' -- Selecionar -- '  %>
+              <%= observe_field 'crianca_id',
+               :update => "criancas",
+               :url    => { :action => 'recadastrar_crianca' },
+               :with   => 'crianca_id' %>
+          </td>
+
+       </tr>
+      </table>
+    <br/>
+    <hr/>
+    <div id="criancas"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+
+  <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <!--<td align="left"><%= button_to 'Consultar', consulta_unidade_path, :title => "Consultar" %></td>-->
+    </tr>
+  </table>
+ </div>
+ </div>
+  <br/>
+</div>
+

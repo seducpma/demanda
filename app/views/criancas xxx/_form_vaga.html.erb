@@ -1,0 +1,45 @@
+<div style='display:none'>
+  <div id='inline_form_vaga' style='padding: 0; margin-right: .2em; background:#EEE9E9;'>
+    <% form_remote_for( :vaga_crianca,:url => { :action => 'create_vaga_crianca' }, :success => "$.fn.colorbox.close();$('select').multiselect('refresh')") do |f|%>
+    <b><u>VAGA OFERECIDA</u></b> <br/>
+      <hr>
+       <%= error_messages_for 'contact' %>
+       <table  width="100%" bgcolor="#F5F5F5">
+        <tr>
+          <td><font size="2"> <b>Criança: </b></font> </td>
+          <td><font size="2"> <%=h @crianca.nome %></font></td>
+        </tr>
+        <tr>
+          <td><font size="2"> <b>Unidade: </b></font> </td>
+          <td><font size="2"> <%= f.collection_select  :unidade, @unidades, :nome, :nome, :include_blank => '---Selecionar---' %></font></td>
+      </tr>
+              <tr>
+          <td><font size="2">   <b>Aceitou: </b></font> </td>
+          <td><font size="2"> <%=  f.select :resposta,(OPCAO).sort, :include_blank => '-- Selecionar --' %>
+              &nbsp&nbsp <font size="2">   <b>Quem: </b> <%=  f.text_field :quem, :size => '12' %></font>
+
+
+
+            </font></td>
+        </tr>
+         <tr>
+          <td><font size="2"> <b>Justificativa: </b></font> </td>
+          <td><font size="2"> <%=  f.text_field :justificativa, :size => '32' %></font></td>
+        </tr>
+
+       <tr>
+           <td align="left"><font size="2"><b>Funcionário:</b></font></td>
+           <td align="left" ><font size="2"> <%=  f.text_field :funcionario, :size => '32' %></font></td>
+        </tr>
+       <tr>
+           <td align="left"><font size="2"><b>Observação:</b></font></td>
+           <td align="left" ><font size="2"> <%=  f.text_field :observacao, :size => '32' %></font></td>
+        </tr>
+
+        <tr>
+            <td align="left" colspan="2"><%= f.submit "Salvar" %></td>
+        </tr>
+       </table>
+      <%end%>
+  </div>
+</div>

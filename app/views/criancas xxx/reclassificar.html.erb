@@ -1,0 +1,36 @@
+<div id="interno2">
+<% title "CRIANÇAS", :id =>"crianças" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>RECLASSIFICAR</strong></font><br/>
+   </div>
+  <div class="tabs">
+    <% form_for :url => reclassifica_crianca_path, :method => :put  do |f| %>
+    <table width="100%" align="center" bgcolor="#DCDCDC" >
+          <tr>
+            <td><font size="3"><br/><b> TENHA CERTEZA QUE DESEJA RECLASSIFICAR TODAS AS CRIANÇAS<br/><br/>
+                  ESTE PROCESDIMENTO ALTERA A CLASSE DE TODAS AS CRIANÇAS CADASTRADAS <br/><br/>
+                  UMA VEZ RECLASSIFICADAS <font color="red"> NÂO<font> HÁ COMO VOLTAR A TRAZ</b>
+            </td>
+         </tr>
+         <tr>
+           <td align="right"> <%= f.submit "Executar", :class => "btn_filtrar" %></td>
+         </tr>
+        </table>
+    <% end %>
+    <br/>
+    <hr/>
+    <div id="reclassifica"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+
+  <table>
+    <tr>
+     <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     
+    </tr>
+  </table>
+ </div>
+ </div>
+  <br/>
+</div>
+

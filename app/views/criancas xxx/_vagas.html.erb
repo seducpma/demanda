@@ -1,0 +1,16 @@
+
+<% c=0 %>
+<% @crianca.vaga_criancas.each do |vaga|%>
+      <b><%= c=c+1%>.</b>
+         <b> Unidade:</b> <%="#{vaga.unidade}" %> &nbsp&nbsp&nbsp <b> Aceito:</b> <%="#{vaga.resposta}"  %>   &nbsp&nbsp&nbsp <b> Quem respondeu:</b> <%="#{vaga.quem}"  %>  &nbsp&nbsp&nbsp         <b> Justificativa:</b>  <%="#{vaga.justificativa}" %>  <br/>
+          &nbsp&nbsp&nbsp <b>Funcionário:</b> <%="#{vaga.funcionario}" %> &nbsp&nbsp&nbsp
+          <b>Data: </b> <%  if vaga.data.nil?  %>
+
+                    <%else%>
+                        <%=  vaga.updated_at.strftime("%d/%m/%Y - %H:%M horas ")%>
+                    <%end%>
+      <br/>
+      &nbsp&nbsp&nbsp <b> Observação:</b>  <%="#{vaga.observacao}" %>  <br/>
+      ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br/>
+
+<%end%>

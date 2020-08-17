@@ -1,0 +1,52 @@
+<div id="interno2">
+<% title "CRIANÇAS1", :id =>"crianças1" %>
+ <div class="tabs">
+   <div id="caixa_titulo">
+    <font size="3"><strong>CLASSIFICAÇÃO GERAL POR REGIAO</strong></font><br/>
+   </div>
+  <div class="tabs">
+
+
+        <table width="100%" align="center">
+           <tr>
+             <td colspan="2"align="right"><font size="2"> <b class="label_busca3">Classe:</b></font>
+                <%= collection_select :crianca, :grupo_id, @grupo, :id, :nome, :include_blank => ' -- Selecionar -- ', :class=> "txt_busca2"  %>
+                <font size="2"> <b class="label_busca2"> Unidade:</b></font>
+                 <%= collection_select :crianca, :unidade_id, @unidade, :id, :nome, :include_blank => ' -- Selecionar -- ', :class=> "txt_busca2"  %>
+                 <%= observe_field 'crianca_unidade_id',
+                       :update => "criancas",
+                           :url    => { :action => 'classificacao_unidade' },
+                       :with   => 'crianca_unidade_id', 'crianca_grupo_id' %>
+
+
+             </td>
+
+
+           </tr>
+          </table>
+
+
+
+
+
+
+
+
+    <br/>
+    <hr/>
+    <div id="criancas"><div id='status' style='display:none;' align="center" ><%= image_tag("/stylesheets/images/loading.gif") %></div></div>
+    <br/>
+
+  <table>
+    <tr>
+     <td width="4%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+     <td align="left"><%= button_to 'Consultar', :title => "Consultar" %></td>
+     
+     
+    </tr>
+  </table>
+ </div>
+ </div>
+  <br/>
+</div>
+

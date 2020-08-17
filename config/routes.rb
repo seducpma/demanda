@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
   map.resources :unidades
-  map.resources :criancas, :collection => {:impressao => :get, :consultas => :get, :impressao_class_unidade => :get, :impressao_class_classe => :get, :status => :get, :impressao_geral => :get, :recadastrar => :get,  :update => :put, :impressao_recadastramento => :get, :transferencia_crianca => :get, :impressao_nao_logado => :get}
+  map.resources :criancas, :collection => {:impressao => :get, :impressao_pre => :get,:consultas => :get, :impressao_class_unidade => :get, :impressao_class_classe => :get, :status => :get, :impressao_geral => :get, :recadastrar => :get,  :update => :put, :impressao_recadastramento => :get, :transferencia_crianca => :get, :impressao_nao_logado => :get}
   map.resources :grupos
   map.resources :regiaos
   map.resources :regiaos
@@ -43,6 +43,9 @@ ActionController::Routing::Routes.draw do |map|
   map.consulta_vaga '/consulta_vaga', :controller => 'vagas', :action => 'consulta_vaga'
   map.vaga_crianca '/vaga_crianca', :controller => 'vagas', :action => 'vaga_crianca'
   map.show_preenchimento'/show_preenchimento', :controller => 'vagas', :action => 'show_preenchimento'
+  map.show_pre'/show_pre', :controller => 'criancas', :action => 'show_pre'
+
+
   map.preenchimento'/preenchimento', :controller => 'vagas', :action => 'preenchimento'
   map.show_salvar'/show_salvar', :controller => 'vagas', :action => 'show_salvar'
   map.preenche_vaga '/preenche_vaga', :controller => 'vagas', :action => 'preenche_vaga'
@@ -77,7 +80,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :fichas
 
   
-
+  map.pre_criancas '/pre_criancas', :controller => 'criancas', :action => 'pre_criancas'
+  map.criancas_pre '/criancas_pre', :controller => 'criancas', :action => 'criancas_pre'
+  map.new_pre '/new_pre', :controller => 'criancas', :action => 'new_pre'
   
   map.consultacrianca '/consultacrianca', :controller => 'criancas', :action => 'consultacrianca'
   map.consultatransferencias '/consultatransferencias', :controller => 'criancas', :action => 'consultatransferencias'

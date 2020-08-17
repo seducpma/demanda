@@ -1,0 +1,84 @@
+  <div class="tabs">
+    <table bgcolor="#DCDCDC" width="100%">
+
+        <tr bgcolor="#DCDCDC" >
+            <th width="1%">Nº </th>
+            <th width="10%">Data/Hora</th>
+            <th width="30%">Nome</th>
+            <th width="8%">Nasc/o</th>
+             <th width="20%">Mãe</th>
+            <th width="12%">Classe</th>
+            <th width="10%">Região</th>
+            <th width="5%">Status</th>
+            
+
+        </tr>
+  
+           <%$t=0%>
+           <% @criancas.each do |crianca| %>
+           <%$t = $t+1%>
+        <tr bgcolor="#F5F5F5" style="font-size:12px">
+                <td align="center"><%=h crianca.id%> </td>
+               <%  if crianca.created_at.nil? %>
+                     <td align="center"></td>
+                <%else%>
+                     <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y")%><br/></td>
+                <%end%>
+                <td align="left"><%=h crianca.nome%></td>
+                <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                <td align="left"><%=h crianca.mae%></td>
+                <td align="center"><%if !crianca.grupo_id.nil?%>
+                                     <%=h crianca.grupo.nome%></td>
+                                   <%end%>
+                <td align="left"><%if !crianca.regiao_id.nil?%>
+                                      <%=h crianca.regiao.nome%>
+                                 <%end%>
+                </td>
+            
+                <td align="left">
+                                 <%if crianca.transferencia == true%>
+                                       <!--<br/>(Matriculada)-->
+                                 <%end%>
+
+                                       <!--<br/>(Matriculada)-->
+                                      <%=h crianca.status%>
+
+
+                </td>
+          </tr>
+        <%   if current_user.present? %>
+             <% @criancasinscritas= Crianca.find(:all, :select => 'id', :conditions => ['id =? and (unidade_ref = ?)', crianca, current_user.unidade.nome])%>
+       <%end%>
+          <tr>
+
+            <td align="left" colspan="7"><%= link_to image_tag("/stylesheets/images/visualizar.png"), {:action => "show", :id =>crianca},:target => '_blank', :title => "Visualizar" %>
+                <!--<%#if  @criancasinscritas.present? or (current_user.has_role?('admin') or current_user.has_role?('SEDUC')or current_user.has_role?('supervisao')) %>-->
+               <%   if current_user.present? %>
+                  <%if  (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or (crianca.unidade_id == current_user.unidade_id and crianca.recadastrada != 0 or crianca.status != 'CANCELADA (Duplicidade)') or crianca.unidade_ref == current_user.unidade.nome )  %>
+                    <%= link_to image_tag("/stylesheets/images/editar1.png"),  {:action => "edit", :id =>crianca}, :target => '_blank', :title => "Editar" %>
+                    <%= link_to image_tag("/stylesheets/images/status.png"), {:action => "alteracao_status", :id =>crianca.id}, :target => '_blank', :title => "Status" %>
+                  <%end%>
+             <%end%>
+            </td>
+
+          </tr>
+
+            <% end %>
+
+
+
+     </table>
+    <table bgcolor="#DCDCDC" width="100%" >
+      <tr >
+        <td align="right"><font color ="red "size="2"><b>TOTAL INSCRIÇÕES: <%= @demandas.count + @matriculadas.count + @canceladas.count%> </b></font> </td>
+        <td align="right"> <font color ="red "size="2"><b> NA DEMANDA: <%= @demandas.count%></b></font></td>
+        <td align="right"> <font color ="red "size="2"><b> MATRICULADAS: <%= @matriculadas.count%></b></font></td>
+        <td align="right"> <font color ="red "size="2"><b> CANCELADAS: <%= @canceladas.count%></b></font></td>
+
+
+
+      </tr>
+    </table>
+
+  </div>
+

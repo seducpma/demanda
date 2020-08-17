@@ -1,0 +1,75 @@
+   <div class="tabs">
+    <center><font size="4"><b><u>Consulta Indicação Unidade </u></b></font></center><br/>
+       <table bgcolor="#DCDCDC" width="100%">
+        <tr bgcolor="#DCDCDC" >
+            <th width="1%">Nº</th>
+            <th width="1%">Inscrição</th>
+            <th width="10%">Data/Hora</th>
+            <th width="20%">Nome</th>
+            <th width="20%">Nasci/o</th>
+            <th width="5%">Mãe <br/>Servidora</th>
+            <th width="5%">Mãe <br/>Trabalha</th>
+            <th width="5%">Mãe Trab.<br/>Autonoma</th>
+            <th width="10%">Classe</th>
+            <th width="10%">Período</th>
+            <th width="10%">Preferência</th>
+        </tr>
+           <%$t=0%>
+           <% @criancas.each do |crianca| %>
+           <%$t = $t+1%>
+        <tr bgcolor="#F5F5F5" style="font-size:10px">
+                <td align="center" width="2%"><%= $t%>º</td>
+                <td align="center"><%=h crianca.id%></td>
+                <%  if crianca.created_at.nil? %>
+                     <td align="center"></td>
+                <%else%>
+                     <td align="center"><%=h crianca.created_at.strftime("%d/%m/%Y %H:%M")%><br/></td>
+                <%end%>
+                <td align="left"><%=h crianca.nome%></td>
+                <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y ")%></td>
+                                  <%if crianca.servidor_publico == false %>
+                                      <td align="center">NÃO</td>
+                                  <%else%>
+                                       <td align="center">SIM</td>
+                                  <%end%>
+                                  <%if crianca.trabalho == false %>
+                                      <td align="center">NÃO</td>
+                                  <%else%>
+                                       <td align="center">SIM</td>
+                                  <%end%>
+                                  <%if crianca.autonomo == false %>
+                                      <td align="center">NÃO</td>
+                                  <%else%>
+                                      <td align="center">SIM</td>
+                                  <%end%>
+                                  
+                <td align="center"><%=h crianca.grupo.nome%></td>
+                <td align="center"><%=h crianca.periodo%></td>
+                <td align="center"><%=h crianca.unidade_ref%></td>
+              <%if current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao') or current_user.has_role?('supervisao')%>
+              </tr>
+               <tr>
+                 <td align="center" colspan="3"><%= link_to image_tag("/stylesheets/images/visualizar.png"), {:action => "show", :id =>crianca},:target => '_blank', :title => "Visualizar" %>                <%= link_to image_tag("/stylesheets/images/editar1.png"),  {:action => "edit", :id =>crianca.id}, :target => '_blank', :title => "Editar" %></td>
+              </tr>
+                <%else%>
+                    <tr>
+                        <td align="center"><%= link_to image_tag("/stylesheets/images/visualizar.png"), {:action => "show", :id =>crianca},:target => '_blank', :title => "Visualizar" %></td>
+                    </tr>
+                <%end%>
+              <% session[:child] = crianca.id %>
+            <% end %>
+     </table>
+
+     <table bgcolor="#DCDCDC" width="100%">
+      <tr >
+        <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_class_unidade_criancas_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+        <td colspan="3" align="right"><b>TOTAL INSCRIÇÕES: </b>
+            <font color ="red "size="2"><b><%=$t %></b></font>
+          </td>
+      </tr>
+    </table>
+
+    <tr>
+
+    </tr>
+  </div>
