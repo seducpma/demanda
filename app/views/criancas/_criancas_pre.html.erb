@@ -1,6 +1,7 @@
   <div class="tabs">
     <table bgcolor="#DCDCDC" width="100%">
      <% if @criancas_pre.present? %>
+      <tr bgcolor="#FFFFFF"  ><td colspan="20"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NA DEMANDA</b></td> </tr>
             <tr bgcolor="#DCDCDC" >
                 <th width="1%">Nº </th>
                 <th width="25%">Nome</th>
@@ -10,7 +11,7 @@
                 <th width="12%">Classe</th>
                 <th width="15%">Status</th>
 
-                <th width="5%">Pré-Escola</th>
+                <th colspan="2" width="5%"></th>
             </tr>
             <%$t=0%>
             <% @criancas_pre.each do |crianca| %>
@@ -25,25 +26,158 @@
                                          <%=h crianca.grupo.nome%></td>
                                        <%end%>
                     <td align="left">   <%=h crianca.status%></td>
-                    <%if (crianca.grupo_id == 6  and crianca.grupo_id == 7) and crianca.status == 'NA_DEMANDA'%>
-                        <td align="left"><font color="red"> Inscrição já realizada </font></td>
-                    <%else%>
-                        <td align="left"><%= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%></td>
-                    <%end%>
+                    <%#if (crianca.grupo_id == 6  and crianca.grupo_id == 7) and crianca.status == 'NA_DEMANDA'%>
+                       <!-- <td align="left"><font color="red"> Inscrição já realizada </font></td>-->
+                    <%#else%>
+                        <td align="left"><%#= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                           <%= button_to 'Inscrição',{:action => "show", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                        <td>
+                          <%= button_to 'Matricular',{:action => "alteracao_status", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%> 
+                        </td>
+                    <%#end%>
                 
               </tr>
               <% end %>
-           <% else %>
-              <tr bgcolor="#DCDCDC" >
+      <% end %>
+
+     <% if @criancas_pre_mat.present? %>
+              <tr  bgcolor="#FFFFFF" ><td colspan="20"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  <b>MATRICULADAS</b></td> </tr>
+            <tr bgcolor="#DCDCDC" >
+                <th width="1%">Nº </th>
+                <th width="25%">Nome</th>
+                <th width="8%">Nasc/o</th>
+                 <th width="20%">Mãe</th>
+                 <th width="5%">Status</th>
+                <th width="12%">Classe</th>
+                <th width="15%">Status</th>
+
+                <th colspan="2" width="5%"></th>
+            </tr>
+            <%$t=0%>
+            <% @criancas_pre_mat.each do |crianca| %>
+            <%$t = $t+1%>
+            <tr bgcolor="#F5F5F5" style="font-size:12px">
+                    <td align="center"><%=h crianca.id%> </td>
+                    <td align="left"><%=h crianca.nome%></td>
+                    <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                    <td align="left"><%=h crianca.mae%></td>
+                    <td align="left"><%=h crianca.status%></td>
+                    <td align="center"><%if !crianca.grupo_id.nil?%>
+                                         <%=h crianca.grupo.nome%></td>
+                                       <%end%>
+                    <td align="left">   <%=h crianca.status%></td>
+                    <%#if (crianca.grupo_id == 6  and crianca.grupo_id == 7) and crianca.status == 'NA_DEMANDA'%>
+                       <!-- <td align="left"><font color="red"> Inscrição já realizada </font></td>-->
+                    <%#else%>
+                        <td align="left"><%#= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                           <%= button_to 'Inscrição',{:action => "show", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                        <td>
+                          <%= button_to 'Matricular',{:action => "alteracao_status", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                    <%#end%>
+
+              </tr>
+              <% end %>
+            <% end %>
+     <% if @criancas_pre_canc.present? %>
+      <tr bgcolor="#FFFFFF"  ><td colspan="20"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CANCELADAS</b></td> </tr>
+            <tr bgcolor="#DCDCDC" >
+                <th width="1%">Nº </th>
+                <th width="25%">Nome</th>
+                <th width="8%">Nasc/o</th>
+                 <th width="20%">Mãe</th>
+                 <th width="5%">Status</th>
+                <th width="12%">Classe</th>
+                <th width="15%">Status</th>
+
+                <th colspan="2" width="5%"></th>
+            </tr>
+            <%$t=0%>
+            <% @criancas_pre_canc.each do |crianca| %>
+            <%$t = $t+1%>
+            <tr bgcolor="#F5F5F5" style="font-size:12px">
+                    <td align="center"><%=h crianca.id%> </td>
+                    <td align="left"><%=h crianca.nome%></td>
+                    <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                    <td align="left"><%=h crianca.mae%></td>
+                    <td align="left"><%=h crianca.status%></td>
+                    <td align="center"><%if !crianca.grupo_id.nil?%>
+                                         <%=h crianca.grupo.nome%></td>
+                                       <%end%>
+                    <td align="left">   <%=h crianca.status%></td>
+                    <%#if (crianca.grupo_id == 6  and crianca.grupo_id == 7) and crianca.status == 'NA_DEMANDA'%>
+                       <!-- <td align="left"><font color="red"> Inscrição já realizada </font></td>-->
+                    <%#else%>
+                        <td align="left"><%#= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                           <%= button_to 'Inscrição',{:action => "show", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                        <td>
+                          <%= button_to 'Matricular',{:action => "alteracao_status", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                    <%#end%>
+
+              </tr>
+              <% end %>
+      <% end %>
+     <% if @criancas_pre_rec.present? %>
+      <tr bgcolor="#FFFFFF"  ><td colspan="20"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp RECUSADAS</b></td> </tr>
+            <tr bgcolor="#DCDCDC" >
+                <th width="1%">Nº </th>
+                <th width="25%">Nome</th>
+                <th width="8%">Nasc/o</th>
+                 <th width="20%">Mãe</th>
+                 <th width="5%">Status</th>
+                <th width="12%">Classe</th>
+                <th width="15%">Status</th>
+
+                <th colspan="2" width="5%"></th>
+            </tr>
+            <%$t=0%>
+            <% @criancas_pre_rec.each do |crianca| %>
+            <%$t = $t+1%>
+            <tr bgcolor="#F5F5F5" style="font-size:12px">
+                    <td align="center"><%=h crianca.id%> </td>
+                    <td align="left"><%=h crianca.nome%></td>
+                    <td align="center"><%=h crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                    <td align="left"><%=h crianca.mae%></td>
+                    <td align="left"><%=h crianca.status%></td>
+                    <td align="center"><%if !crianca.grupo_id.nil?%>
+                                         <%=h crianca.grupo.nome%></td>
+                                       <%end%>
+                    <td align="left">   <%=h crianca.status%></td>
+                    <%#if (crianca.grupo_id == 6  and crianca.grupo_id == 7) and crianca.status == 'NA_DEMANDA'%>
+                       <!-- <td align="left"><font color="red"> Inscrição já realizada </font></td>-->
+                    <%#else%>
+                        <td align="left"><%#= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                           <%= button_to 'Inscrição',{:action => "show", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                        <td>
+                          <%= button_to 'Matricular',{:action => "alteracao_status", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                        </td>
+                    <%#end%>
+
+              </tr>
+              <% end %>
+      <% end %>
+
+
+
+
+           <%# else %>
+
+
+<!--              <tr bgcolor="#DCDCDC" >
                 <th width="95%"> Criança NÃO cadastrata do sistema DEMANDA</th>
              </tr>
               <tr bgcolor="#F5F5F5" style="font-size:12px">
                     <td align="center"> Não existe ficha para esta criança, para cadastrar-la clique no botão ao lado  ===============================================>
                     </td>
-                <td align="left"><%= button_to 'Fazer Inscrição', new_pre_path, {:method => "get"}  %></td>
+                <td align="left"><%#= button_to 'Fazer Inscrição', new_pre_path, {:method => "get"}  %></td>
               </tr>
-
-          <% end %>
+-->
+          <%# end %>
      </table>
 
 

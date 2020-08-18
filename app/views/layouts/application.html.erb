@@ -118,21 +118,19 @@ display: none;
                             <li><a>Editar</a>
                                <ul>
                                   <li><%= link_to "Inscrição",consultas_criancas_path %></li>
-                                  <li><%= link_to "Status",consulta_unidade_status_path %></li>
+                                  <li><a>Staus</a>
+                                     <ul>
+                                        <li><%= link_to "Creche",consulta_unidade_status_path %></li>
+                                        <li><%= link_to "Pré_escola",consultas_pre_criancas_path %></li>
+                                     </ul>
+                                  </li>
                                </ul>
                             </li>
                             <li><%= link_to "Cadastrar (Creche)",new_crianca_path %></li>
                             <li><%= link_to "Cadastrar (Pré)",new_pre_path %></li>
                             <!--<li><%#= link_to "Cadastrar (Pré)",pre_criancas_path %></li> -->
                          <%end%>
-                        <li><a>Consultar</a>
-                           <ul>
-                              <li><%= link_to "Inscrição",consultas_criancas_path %></li>
-
-
-                              <li><%= link_to "Status",consulta_status_path %></li>
-                           </ul>
-                        </li>
+    
                          <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
                              <li><%= link_to "Matricular",preenchimento_path %></li>
                           <!--<li><%#= link_to "Recadastrar",recadastrar_consultas_path %></li>-->
@@ -143,7 +141,18 @@ display: none;
 
                      </ul>
               </li>
-              
+
+               <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
+                 <li><a class="item-primary" href="#;">Consultar</a>
+                     <ul style="width:108px;">
+                              <li><%= link_to "Inscrição Creche",consultas_criancas_path %></li>
+                              <li><%= link_to "Inscrição Pré",consultas_pre_criancas_path %></li>
+                              <li><%= link_to "Status",consulta_status_path %></li>
+                    </ul>
+                  </li>
+              <%end%>
+
+
               <li><a class="item-primary" href="#;">Classificação</a>
                  <ul style="width:108px;">
                           <li><%= link_to "Classificação",consulta_unidade_path %></li>

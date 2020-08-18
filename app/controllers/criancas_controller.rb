@@ -1279,10 +1279,7 @@ end
   def mesma_mae_pre
 
      @verifica_mae = Crianca.find(:all, :conditions=> ['mae =?  and nome = ?  and (grupo_id = 6 or grupo_id = 7)',params[:crianca_mae], session[:nome]])
-    # @verifica = Crianca.find(:all, :conditions=> ['nome =? AND (recadastrada = 2 OR recadastrada = 1) AND status != "MATRICULADA"',params[:crianca_nome]])
-
-     if @verifica_mae.present? then
-
+      if @verifica_mae.present? then
        if Crianca.find_by_nome(session[:nome]) then
           @status_cri = Crianca.find(:all, :conditions=> ['nome =? and (status ="MATRICULADA" or status ="CANCELADA (Recadastramento)") ',session[:nome]])
           if !@status_cri.present?
@@ -1619,6 +1616,56 @@ end
       end
  end
  def pre_criancas
+
+     if params[:type_of].to_i == 1
+         data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+         data_pre = data_pre + ' 00:00:00'
+         w=params[:search1]
+         @criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  nascimento < ?  and recadastrada > 0" , "%" + params[:search1].to_s + "%", data_pre ],:order => 'nome ASC, unidade_id ASC')
+          render :update do |page|
+              page.replace_html 'criancas', :partial => "criancas_pre"
+           end
+     else if params[:type_of].to_i == 2
+             data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+             data_pre = data_pre + ' 00:00:00'
+             @criancas_pre = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6)and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 render :update do |page|
+                  page.replace_html 'criancas', :partial => "criancas_pre"
+               end
+         else if params[:type_of].to_i == 6
+                 data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+                 data_pre = data_pre + ' 00:00:00'
+                 @criancas_pre = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='MATRICULADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='CANCELADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='RECUSOU')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 t=0
+                  render :update do |page|
+                      page.replace_html 'criancas', :partial => "criancas_pre"
+                   end
+               else if params[:type_of].to_i == 3
+                     data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+                     data_pre = data_pre + ' 00:00:00'
+                     @criancas_pre = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 7)and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                         render :update do |page|
+                          page.replace_html 'criancas', :partial => "criancas_pre"
+                       end
+
+                     else if params[:type_of].to_i == 5
+
+
+
+
+
+                           end
+
+                     end
+             end
+        end
+     end
+
+
+
 
  end
 
