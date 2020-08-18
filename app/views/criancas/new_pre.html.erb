@@ -49,7 +49,7 @@
          <td><%= f.text_field :nome, :size=>"38" %>
              <%= observe_field :crianca_nome,
                :with => :crianca_nome,
-               :url => { :action => 'mesmo_nome' } %>
+               :url => { :action => 'mesmo_nome_pre' } %>
           </td>
          <td><b><font size="5" color ="red"> * </font></b> <b><%= f.label :nascimento, 'Nascimento' %></b></td>
          <td>    <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year-3), :end_year => (Date.today.year - 5)) %><BR /></td>
@@ -59,7 +59,7 @@
          <td><%= f.text_field :mae, :size=>"38"%>
              <%= observe_field :crianca_mae,
                :with => :crianca_mae,
-               :url => { :action => "mesma_mae" } %>
+               :url => { :action => "mesma_mae_pre" } %>
          </td>
          <td>&nbsp&nbsp<b>Pai </b></td>
          <td><%= f.text_field :pai, :size=>"38" %></td>

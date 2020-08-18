@@ -1223,6 +1223,25 @@ end
     end
   end
 
+    def mesmo_nome_pre
+    w=session[:nome] = params[:crianca_nome]
+    @verifica = Crianca.find(:all, :conditions=> ['nome =? and (recadastrada = 2 OR recadastrada = 1 ) and (grupo_id = 6 or grupo_id = 7)',params[:crianca_nome]])
+        t=0
+    if @verifica.present? then
+      render :update do |page|
+        page.replace_html 'nome_aviso', :text => '<font color="red" id="pisca1"> NOME JÁ CADASTRADO NO SISTEMA </font>'
+        page.replace_html 'aviso_mae', :text => '<font color="red" id="pisca1">  MÃE:' +  @verifica[0].mae
+
+    end
+    else
+      render :update do |page|
+        page.replace_html 'nome_aviso', :text => ''
+        page.replace_html 'aviso_mae', :text => ''
+      end
+
+    end
+  end
+
   def mesma_mae
 
      @verifica_mae = Crianca.find(:all, :conditions=> ['mae =?  and nome = ?',params[:crianca_mae], session[:nome]])
@@ -1256,6 +1275,41 @@ end
        render :nothing => true
      end
   end
+
+  def mesma_mae_pre
+
+     @verifica_mae = Crianca.find(:all, :conditions=> ['mae =?  and nome = ?  and (grupo_id = 6 or grupo_id = 7)',params[:crianca_mae], session[:nome]])
+    # @verifica = Crianca.find(:all, :conditions=> ['nome =? AND (recadastrada = 2 OR recadastrada = 1) AND status != "MATRICULADA"',params[:crianca_nome]])
+
+     if @verifica_mae.present? then
+
+       if Crianca.find_by_nome(session[:nome]) then
+          @status_cri = Crianca.find(:all, :conditions=> ['nome =? and (status ="MATRICULADA" or status ="CANCELADA (Recadastramento)") ',session[:nome]])
+          if !@status_cri.present?
+            render :update do |page|
+                page.replace_html 'nome_mae', :text => 'Criança já cadastrada no sistema '
+                page.replace_html 'Certeza', :text =>  'Criança ja cadastrada'
+                page.replace_html 'matricula', :text => ''
+              end
+          else
+             render :update do |page|
+                 page.replace_html 'nome_mae', :text => ''
+                 page.replace_html 'matricula', :text => 'CRIANÇA JÁ POSSUI INSCRIÇÂO, TEM CERTEZA QUE DESEJA SALVAR NOVA FICHA DE INSCRIÇÃO?'
+                page.replace_html 'Certeza', :text => "<input id='crianca_submit' name='commit' type='submit' value='Salvar' />"
+              end
+          end
+      else
+          render :update do |page|
+             page.replace_html 'nome_mae', :text => ''
+             page.replace_html 'matricula', :text => 'CRIANÇA JÁ POSSUI INSCRIÇÂO, TEM CERTEZA QUE DESEJA SALVAR NOVA FICHA DE INSCRIÇÃO?'
+             page.replace_html 'Certeza', :text => "<input id='crianca_submit' name='commit' type='submit' value='Salvar' />"
+          end
+       end
+     else
+       render :nothing => true
+     end
+  end
+
 
   def same_birthday
     data_nasc = params[:ano].to_s + '-' + params[:mes].to_s + '-' + params[:dia].to_s
