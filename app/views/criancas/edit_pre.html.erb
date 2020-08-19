@@ -9,19 +9,28 @@
             <% form_for(@crianca) do |f| %>
              <%= f.error_messages %>
       <font size ="4" color="BLUE"><b id="pisca1">
-          LEIA ATENTAMENTE</b><b> AS INSCRIÇÕES NA TELA E <u>PREENCHA CORRETAMENTE</u>. ERROS DE PREENCHIMENTOS, PROBLEMAS DE CONEXÃO E EQUIPAMENTOS É DE INTEIRA RESPONSABILIDADE DA PESSOA QUE ESTÁ FAZENDO A INSCRIÇÃO.</b><br/></font><br/>
+          LEIA ATENTAMENTE:</b><b> A SECRETARIA MUNICIPAL DE EDUCAÇÃO NÃO PODERÁ SER RESPONSABILIZADA POR ERROS DE PREENCHIMENTO, BEM COMO EVENTUAIS FALHAS NO ENVIO DE DADOS OCASIONADOS POR PROBLEMAS DE CONEXÃO E/OU DEFEITOS EM EQUIPAMENTOS DE QUEM ESTÁ REALIZANDO A INSCRIÇÃO.</b><br/></font><br/>
           <font size ="3" color="RED">
-                         <b><u>ATENÇÃO:</u>
-                         Todas as informações prestadas na inscrição deverão estar corretas e devidamente &nbsp&nbsp comprovadas &nbsp&nbsp
-                         com os respectivos documentos. &nbsp&nbsp Informações não comprovadas serão desconsideradas podendo
-                         implicar, &nbsp&nbsp no <u>CANCELAMENTO</u> da inscrição.<br/> <br/>
+                         <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        1) Esta ficha destina-se à inscrição para atendimento na rede pública de Americana em turmas de  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         Pré-Escola,devendo ser preenchida somente para crianças que encontram-se <b><u>SEM</u></b> matrícula no   <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         corrente ano ou estejam atualmente matriculadas em escola particular ou em escolas de outros<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         municípios.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
+                        2) <b><u>TODAS</u></b> as crianças atualmente  matriculadas no maternal 2 escolas da Rede Municipal de <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         Americana ou unidades conveniadas da cidade <b><u>ja estão</b></u> devidamente inscritas e <b>NÃO DEVEM </b> nem <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         precisam fazer sua inscrição, pois haverá direcionamento de matrículas para a Pré-Escola com base <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         em consulta realizada na escola em que a criança se encontra atualmente matriculada. <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                      3) Todas as informações prestadas na inscrição deverão ser devidamente comprovadas com os <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         respectivosdocumentos no ato da convocação para matrícula. Informações não comprovadas  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         PODERÃO implicar na alteração da escola onde a criança será atendida.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                      4) Caso a criança não esteja em idade de atendimento para a Pré-Escola ou o endereço informado<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         não seja da cidade de Americana, esta inscrição será <u>DESCONSIDERADA</u>.  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                      </b>
             </font>
-
-
-
 
   <fieldset>
    <legend  bgcolor="#FFFFF"><font size=4>Dados da Criança</font></legend>
@@ -99,7 +108,9 @@
 
                   <a href="#" id="dropdownbutton12"><%= f.radio_button :n_especial, true %></a>SIM
                                                     <%=  f.radio_button :n_especial, false, :checked => true  %>NÃO
- 
+
+                 </td>
+                <td colspan="2">
                    <div id="menu12" style="display:none">
                      <b>Necessidade:</b><%= f.text_field :necessidade, :size =>"36" %>
                    </div>
@@ -117,20 +128,6 @@
              <fieldset>
               <legend><font size="4">Dados da Inscrição</font></legend>
               <table width="100%">
-                    <tr  bgcolor="#FFFFF">
-                        <td colspan="6"><font size ="2" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço do local onde a criança fica durante o dia, para fins de definir a unidade de matricula. É necessário indicar e justificar o vínculo da criança com este endereço (ex. casa dos avós,  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
-
-                    </tr>
-                   <tr  bgcolor="#FFFFF">
-                       <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"4" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                       <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"30"%>
-
-
-                       </td>
-                   </tr>
-                   <tr bgcolor="#FFFFF">
-                       <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança:</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
-                   </tr>
                    <%# if current_user.has_role?('admin') or  current_user.has_role?('direcao') or  current_user.has_role?('secretaria')   %>
                        <tr  bgcolor="#FFFFF">
                              <td colspan="6"> <b>Unidade onde foi realizada a primeira Inscrição:&nbsp </b>
@@ -282,41 +279,25 @@
             <legend><font size=4>IMPORTANTE</font></legend>
               <table width="100%">
                 <tr>
-                  <td colspan="2" ><font size ="3" color="RED"><b> &nbsp&nbsp&nbsp&nbsp
-                              <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp
-                                  1)TODAS AS INFORMAÇÕES INVERÍDICAS E NÃO COMPROVADOS IMPLICARÃO NO IMEDIATO<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                     <u>CANCELAMENTO</u>  DA INSCRIÇÃO.</b><br/>
-                                     <center>
-                                     <table width="85%" >
-                                       <tr>
-                                         <td>
+         <td colspan="2" ><font size ="3" color=""> &nbsp&nbsp&nbsp&nbsp
+              1) Com base nessas indicações será realizado o estudo da demanda e os alunos serão
+              direcionados, conforme a disponibilidade de vagas de cada unidade de ensino. O  aluno
+              será atendido preferencialmente em escola pública próxima ao endereço, obedecendo ao
+              estabelecido pelo Art. 4º, inciso X da Lei de Diretrizes e Bases da Educação Nacional
+              (Lei nº 9394/1996). . Salientamos, ainda, que a indicação da preferência do período/turno
+              não é garantia de atendimento no período/turno assinalado, sendo possível o direcionamento
+              para matrícula em período/turno diferente ao indicado, conforme disponibilidade de vagas das
+              unidades escolares.  <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                                     <b><i><font color="black">“Art. 299 do Código Penal – Omitir, em documento público ou particular, declaração que nele deveria
-                                            constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de prejudicar
-                                            direito, criar obrigação ou alterar a verdade sobre o fato juridicamente relevante. Pena: reclusão de 1 (um) a 5 (cinco)
-                                            anos e multa, se o documento é público e reclusão de 1(um) a 3 (três) anos, se o documento é particular.”</i></b></font>
-                                         </td>
-                                       </tr>
-                                     </table>
-                                     </center>
+             2) Declaro estar ciente de que declaração falsa pode implicar na sanção penal prevista no art. 299
+             do Código Penal, in verbis: <i>“Art. 299 – Omitir, em documento público ou particular, declaração
+               que nele deveria constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que
+               devia ser escrita, com o fim de prejudicar direito, criar obrigação ou alterar a verdade sobre
+               o fato juridicamente relevante.</i><br/>
+               <u>Pena:</u> reclusão de 1 (um) a 5 (cinco) anos e multa, se o documento é público, reclusão de 1 (um) a 3 (três) anos, se o documento é particular.”
+        </td>
+                </tr>
 
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
-                              2) Assim que houver disponibilidade de vaga, a Secretaria de Educação entrará em contato com  o   <br/>
-                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp  responsável pela criança.
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" ><font size ="3" color="blue"><b> &nbsp&nbsp&nbsp&nbsp
-                             3) É responsabilidade dos pais e/ou responsável legal manter os dados atualizados no cadastro<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                             junto Secretaria de Educação - Americana. Assim, deverá ser informada qualquer alteração<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                             nos dados solicitados na inscrição, inclusive os telefones, pois será somente por meio de ligações<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                             telefônicas que ocorrerá o contato no caso de surgimento de vaga. Deverá ser informada, também,<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                             ainda qualquer alteração relativa ao trabalho&nbsp&nbsp da &nbsp mãe.
-                  </td>
-                </tr>
 
                <tr>
                    <td width="2%" valign="top"><b class="botao1" style="display:none">&nbsp&nbsp&nbsp&nbsp<font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/Vagas.png", :size => "100x26"), "#inline_form_vaga", :class =>"inline" %></u></b></font></td>
