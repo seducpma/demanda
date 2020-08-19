@@ -35,7 +35,7 @@ end
   end
 
 def show_pre
-     @crianca = Crianca.find(session[:id_crianca])
+     @crianca = Crianca.find(params[:id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
 ##  VERJA O SHOW EM BAIXO VVVVV
   end
@@ -390,12 +390,7 @@ end
                         w1=@crianca.local_trabalho
 
                           if session[:show]==1
-                            if session[:ficha_pre]== 1
-                             w= session[:id_crianca]= @crianca.id
-                              format.html {redirect_to(show_pre_path) }
-                            else  
-                             format.html { redirect_to(@crianca) }
-                            end
+                            format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
