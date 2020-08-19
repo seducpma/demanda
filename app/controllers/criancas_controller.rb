@@ -45,15 +45,15 @@ def show_pre
   def show
      @crianca = Crianca.find(params[:id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
-     if (session[:ficha_pre]==1) or (@crianca.nascimento < (DATAN1).to_date)
-       render :action => 'show_pre'
-       session[:ficha_pre]=0
-     else
+  #   if (session[:ficha_pre]==1) or (@crianca.nascimento < (DATAN1).to_date)
+  #     render :action => 'show_pre'
+  #     session[:ficha_pre]=0
+  #   else
       respond_to do |format|
         format.html # show.html.erb
         format.xml  { render :xml => @crianca }
       end
-    end
+  #  end
   end
 
   
