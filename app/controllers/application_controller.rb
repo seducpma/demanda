@@ -86,10 +86,20 @@ Diretor Ed. Básica'=> 'Diretor Ed. Básica',
           'Pedagogo'=> 'Pedagogo'}
 
 GRAU = { 'Pai/Mãe'=> 'Pai/Mãe',
+         'Padastro/Madastra'=> 'Padastro/Madastra',
          'Irmão(ã)' => 'Irmão(ã)',
          'Avô/Avó' => 'Avô/Avó',
          'Tio/Tia'=> 'Tio/Tia',
          'Enteado(a)'=> 'Enteado(a)',
+         'Primo(a)'=> 'Primo(a)',
+         'Outros' => 'Outros'
+        }
+
+GRAU1 = {'Padastro/Madastra'=> 'Padastro/Madastra',
+         'Irmão(ã)' => 'Irmão(ã)',
+         'Avô/Avó' => 'Avô/Avó',
+         'Tio/Tia'=> 'Tio/Tia',
+
          'Primo(a)'=> 'Primo(a)',
          'Outros' => 'Outros'
         }
@@ -114,6 +124,10 @@ PERIODO = { '         ' => '         ',
 PERIODO1 = { '         ' => '         ',
             'MATUTINO' => 'MATUTINO',
             'VESPERTINO' => 'VESPERTINO',
+        }
+PERIODO2 = { '         ' => '         ',
+            'MANHÃ' => 'MANHÃ',
+            'TARDE' => 'TARDE',
         }
 
 

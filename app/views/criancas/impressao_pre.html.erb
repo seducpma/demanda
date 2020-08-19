@@ -39,7 +39,7 @@
                <th align="left" colspan="6">  <%=h crianca.nascimento.strftime("%d/%m/%Y")%></th>
             </tr>
             <tr style="font-size:8px">
-               <th colspan="2"align="left" width="4%"><b>Necessidade Especial: </b>
+               <th colspan="2"align="left" width="4%"><b>Necessidade Educacional Especial: </b>
                 <% if crianca.servidor_publico == false %>
                       NÃO
                   <%else%>
@@ -82,29 +82,17 @@
                <th colspan="6"><%=h crianca.nomerecado%>  </th>
             </tr>
             <tr style="font-size:8px">
+               <th align="left"><b>Observações:</b></th>
+               <th colspan="6" align="left">  <%=h crianca.obs %></th>
+            </tr>
+            <tr style="font-size:8px">
                <th align="left"><b>Classe:</b></th>
-               <th align="left"><%=h crianca.grupo.nome %>  (<%=crianca.grupo.descricao%>) </th>
-               <th colspan="2"align="left" width="4%"><b>Necessidade Especial: </b>
-                <% if crianca.servidor_publico == false %>
-                      NÃO
-                  <%else%>
-                      SIM
-                  <%end%>
-               </th>
-               <th><b>Necessidade:</b></th>
-               <th><%=h crianca.necessidade%></th>
+               <th colspan="6" align="left"><%=h crianca.grupo.nome %>  (<%=crianca.grupo.descricao%>) </th>
+              
             </tr>
 
-          </table>
-         <table width="100%" width="100%" frame="box" rules="all" >
             <tr style="font-size:8px">
-               <th align="left" width="18%"><b>Endereço Indicado:</b></th>
-               <th align="left" width="47%"><%if  !crianca.end_indicacao.nil?%><%=h crianca.end_indicacao %> - <%=h crianca.num_indicacao %><%end%></th>
-               <th align="left" width="15%"><b>Bairro:</b></th>
-               <th align="left" width="18%"><%if  !crianca.bairro_indicacao.nil?%><%=h crianca.bairro_indicacao %><%end%></th>
-            </tr>
-            <tr style="font-size:8px">
-               <th align="left"><b>Trabalho Mãe : </b></th>
+               <th align="left"><b>Trabalho Mãe: </b></th>
                 <th align="left" colspan="5" ><%if crianca.servidor_publico == true%>
                                     SERVIDORA PÚBLICO (P1)<%=h crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h crianca.fone_trabalho%> (P1))
                                  <%else if crianca.trabalho == true %>

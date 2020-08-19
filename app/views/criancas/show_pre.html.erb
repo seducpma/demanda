@@ -55,7 +55,7 @@
                <td><%=h @crianca.celular%>  </td>
             </tr>
             <tr bgcolor="#F5F5F5">
-               <td align="left"><b>Fone (recado):</b></td>
+               <td align="left"><b>Fone (rec.):</b></td>
                <td align="left" colspan="3">  <%=h @crianca.tel2%></td>
                <td><b>Nome:</b> </td>
                <td><%=h @crianca.nomerecado%>  </td>
@@ -76,11 +76,10 @@
                          </td>
                  </tr>
              <%end%>
-            <tr bgcolor="#F5F5F5">
-               <td align="left" width="18%"><b>Endereço Indicado:</b></td>
-               <td colspan="3" align="left"><%=h @crianca.end_indicacao %> - <%=h @crianca.num_indicacao %></td>
-               <td><b>Trab. Mãe: </b></td>
-<td  align="left"><%if @crianca.servidor_publico == true%>
+
+       <tr bgcolor="#F5F5F5">
+               <td colspan="6"><b>Trabalho Mãe: </b> &nbsp&nbsp
+                                 <%if @crianca.servidor_publico == true%>
                                     SERVIDORA PÚBLICO (P1)
                                  <%else if @crianca.trabalho == true %>
                                       CTPS ASSINADA (P2)
@@ -94,15 +93,10 @@
                                              <%end%>
                                         <%end%>
                                  <%end%>
-
-                  </td>
-            </tr>
-            <tr bgcolor="#F5F5F5">
-               <td align="left"><b>Justificativa:</b></td>
-               <td colspan="3" align="left"><%=h @crianca.justif_indicacao %> - <%=h @crianca.vinculo %></td>
-               <td align="left" width="4%"><b>Local Trab.:</b></td>
-               <td width="25%" > <%if @crianca.servidor_publico == true%>
-                                 <%=h @crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                       <b>Local Trabalho:</b>&nbsp&nbsp
+                                 <%if @crianca.servidor_publico == true%>
+                                    <%=h @crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
                                  <%else if @crianca.trabalho == true %>
                                          <%=h @crianca.local_trabalho%>, <%=h @crianca.num_trab%> - <%=h @crianca.bairro_trab%> <b> - Fone:</b> <%=h @crianca.fone_trabalho%>
                                        <%else if @crianca.declaracao == true %>
@@ -118,7 +112,7 @@
               </td>
             </tr>
            <tr bgcolor="#F5F5F5"  width="100%">
-             <td align="left"><b>Local Inscrição:</b></td>
+             <td align="left" width ="14%"><b>Local Inscrição:</b></td>
              <td align="left" colspan="3" ><%#=h @crianca.unidade.nome%></td>
              <td width="10%" ><b>Responsável: </b> </td>
                 <% if @crianca.responsavel == false %>
@@ -159,12 +153,12 @@
              <%end%>
             <% if @crianca.trabalho == false%> 
                 <tr bgcolor="#F5F5F5">
-                  <td colspan="6"><b>Mãe/responsável trabalha com CTPS assinada:</b> &nbsp&nbsp NÃO </font></td>
+                  <td colspan="6"><b>Mãe/responsável legal trabalha COM registro em carteira de trabalho (CTPS):</b> &nbsp&nbsp NÃO </font></td>
 
                 </tr>
              <%else%>
                <tr bgcolor="#F5F5F5">
-                 <td colspan="6"><b>Mãe/responsável trabalha  com CTPS assinada:</b> &nbsp&nbsp SIM -
+                 <td colspan="6"><b>Mãe/responsável legal trabalha COM registro em carteira de trabalho (CTPS):</b> &nbsp&nbsp SIM -
                        <%if !@crianca.local_trabalho.nil?%>
                           <%=h @crianca.local_trabalho%>,
                        <%end%>
@@ -182,12 +176,12 @@
              <%end%>
              <% if @crianca.declaracao == false%>
                 <tr bgcolor="#F5F5F5">
-                  <td colspan="6"><b>Mãe/responsável trabalha sem CTPS ou autônoma:</b> &nbsp&nbsp NÃO </font></td>
+                  <td colspan="6"><b>Mãe/responsável legal trabalha SEM registro em carteira de trabalho (CTPS) e/ou é profissional autônoma:</b> &nbsp&nbsp NÃO </font></td>
 
                 </tr>
              <%else%>
                <tr bgcolor="#F5F5F5">
-                 <td colspan="6"><b>Mãe/responsável trabalha sem CTPS ou autônoma:</b> &nbsp&nbsp SIM -
+                 <td colspan="6"><b>Mãe/responsável legal trabalha SEM registro em carteira de trabalho (CTPS) e/ou é profissional autônoma:</b> &nbsp&nbsp SIM -
                        <%if !@crianca.local_trabalho.nil?%>
                           <%=h @crianca.local_trabalho%>,
                        <%end%>
@@ -241,7 +235,7 @@
                <%if @crianca.unidade_id == current_user.unidade_id or  current_user.unidade_id == 52%>
                   <td width="6%"align="left" ><%= button_to 'Editar', {:action => "edit_pre", :id =>@crianca}, :method => "get", :title => "Editar"%></td>
                 <%end%>
-                <td width="4%"align="left"><%= button_to 'Consultarxxx' ,consulta_unidade_path, :title => "Consultar" %></td>
+                <!--<td width="4%"align="left"><%#= button_to 'Consultarxxx' ,consulta_unidade_path, :title => "Consultar" %></td>-->
            <%end%>
             <%if current_user.present?%>
                  <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
