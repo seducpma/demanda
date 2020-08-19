@@ -8,112 +8,111 @@
       <div class="tabs">
             <% form_for(@crianca) do |f| %>
              <%= f.error_messages %>
-            <font size ="4" color="BLUE"><b id="pisca1">  LEIA ATENTAMENTE</b><b> AS INSCRIÇÕES NA TELA E <u>PREENCHA CORRETAMENTE</u>. ERROS DE PREENCHIMENTOS, PROBLEMAS DE CONEXÃO E EQUIPAMENTOS É DE INTEIRA RESPONSABILIDADE DA PESSOA QUE ESTÁ FAZENDO A INSCRIÇÃO.</b><br/></font><br/>
-                <font size ="3" color="RED">
-                               <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                              1) A...............  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                blablabla ....<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                               ttititi..........   <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                               kakakak .............<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-                              2) Todas as informações prestadas na inscrição deverão estar corretas e devidamente comprovadas  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                               com os respectivos documentos. Informações não comprovadas serão desconsideradas podendo <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                               implicar, no <u>CANCELAMENTO</u> da inscrição.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <font size ="4" color="BLUE"><b id="pisca1">
+          LEIA ATENTAMENTE</b><b> AS INSCRIÇÕES NA TELA E <u>PREENCHA CORRETAMENTE</u>. ERROS DE PREENCHIMENTOS, PROBLEMAS DE CONEXÃO E EQUIPAMENTOS É DE INTEIRA RESPONSABILIDADE DA PESSOA QUE ESTÁ FAZENDO A INSCRIÇÃO.</b><br/></font><br/>
+          <font size ="3" color="RED">
+                         <b><u>ATENÇÃO:</u>
+                         Todas as informações prestadas na inscrição deverão estar corretas e devidamente &nbsp&nbsp comprovadas &nbsp&nbsp
+                         com os respectivos documentos. &nbsp&nbsp Informações não comprovadas serão desconsideradas podendo
+                         implicar, &nbsp&nbsp no <u>CANCELAMENTO</u> da inscrição.<br/> <br/>
 
 
-                               3) Visando otimização no atendimento da demanda, a Secretaria de Educação de Americana poderá humhumhum SEi NÃO..... ,<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-
-                           </b>
-                  </font>
-                  <fieldset>
-                   <legend  bgcolor="#FFFFF"><font size=4>Dados da Criança</font></legend>
-                   <table width="100%">
-                       <font color ="red"  size="2"> Campos com <b><font size="5"> * </font></b> preenchimento obrigatório </font>
-                       <tr   bgcolor="#FFFFF">
-                         <td><b><font color="red" size="5">*</font>Nome </b></td>
-                         <td><%= f.text_field :nome, :size=>"38" %>
-                             <%= observe_field :crianca_nome,
-                               :with => :crianca_nome,
-                               :url => { :action => 'mesmo_nome' } %>
-                          </td>
-                         <td><b><font size="5" color ="red"> * </font></b> <b><%= f.label :nascimento, 'Nascimento' %></b></td>
-                         <td>    <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %><BR /></td>
-                       </tr>
-                       <tr  bgcolor="#FFFFF">
-                         <td><b><font color="red" size="5">*</font>Mãe</b></td>
-                         <td><%= f.text_field :mae, :size=>"38"%>
-                             <%= observe_field :crianca_mae,
-                               :with => :crianca_mae,
-                               :url => { :action => "mesma_mae" } %>
-                         </td>
-                         <td>&nbsp&nbsp<b>Pai </b></td>
-                         <td><%= f.text_field :pai, :size=>"38" %></td>
-
-                       </tr>
-                       <tr  bgcolor="#FFFFF">
-                         <td></td>
-                         <td><b><div id='nome_aviso' ></div>  <div id='aviso_mae'></div></b></td>
-                         <td colspan="3"><b><div id='nome_mae'></div></b></td>
-
-                       </tr>
-                       <tr   bgcolor="#FFFFF">
-                           <td colspan="3"> <b>Responsável Legal pela criança?</b>
-                               &nbsp - &nbsp
-                                   <b>Nome</b>&nbsp <%= f.text_field :responsavel_n, :size => "38"%>&nbsp&nbsp
-                                  <br/><font size="1"> (Caso pais não sejam os responsáveis legais)</font>
-                           </td>
-                            <td> <b>Vínculo com a criança</b> <%= f.select :parentesco, GRAU, :include_blank => ''%></td>
-                      </tr>
-
-                      <tr  bgcolor="#FFFFF">
-                         <td><b>Endereço  <font size="1"> (residencial)  </b></font></td>
-                         <td><%= f.text_field :endereco %> &nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"2" %></td>
-                         <td>&nbsp&nbsp <b>Bairro</b></td>
-                         <td><%= f.text_field :bairro, :size=>"38" %></td>
-                       </tr>
-                       <tr  bgcolor="#FFFFF">
-                          <td><b>Complemento</b></td>
-                          <td><%= f.text_field :complemento, :size=>"38" %></td>
-                          <td><b><font color="red" size="5">*</font>Fone</b></td>
-                          <td><%= f.text_field :tel1,:size =>"13" %>&nbsp&nbsp
-                              <b>Celular</b>&nbsp&nbsp<%= f.text_field :celular,:size =>"14"%>
-                          </td>
-                       </tr>
-                       <tr  bgcolor="#FFFFF">
-                          <td><b>Fone(s) <font size="1"> (Recado) </font></b></td>
-                         <td><%= f.text_field :tel2, :size =>"36" %></td>
-                         <td>&nbsp&nbsp<b>Nome <font size="1"> (recado)</font></b></td>
-                         <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
-                       </tr>
-                              <tr  bgcolor="#FFFFF">
-                                <td colspan="2"> <script>
-                                       $(document).ready(function()
-                                        {
-                                          $("#dropdownbutton12").click(function ()
-                                           {
-                                             $("#menu12").slideToggle("high");
-                                            });
-                                        });
-                                       </script>
-                                       <b>Necessidade(s) Especial(s)?</b>
-
-                                  <a href="#" id="dropdownbutton12"><%= f.radio_button :n_especial, true %></a>SIM
-                                                                    <%=  f.radio_button :n_especial, false, :checked => true  %>NÃO
-                                <td colspan="2">
-                                   <div id="menu12" style="display:none">
-                                     <b>Necessidade:</b><%= f.text_field :necessidade, :size =>"36" %>
-                                   </div>
-                                  </td>
-                                 </td>
-                              </tr>
+                     </b>
+            </font>
 
 
 
 
+  <fieldset>
+   <legend  bgcolor="#FFFFF"><font size=4>Dados da Criança</font></legend>
+   <table width="100%">
+       <font color ="red"  size="2"> Campos com <b><font size="5"> * </font></b> preenchimento obrigatório </font>
+       <tr   bgcolor="#FFFFF">
+         <td><b><font color="red" size="5">*</font>Nome </b></td>
+         <td><%= f.text_field :nome, :size=>"38" %>
+             <%= observe_field :crianca_nome,
+               :with => :crianca_nome,
+               :url => { :action => 'mesmo_nome_pre' } %>
+          </td>
+         <td><b><font size="5" color ="red"> * </font></b> <b><%= f.label :nascimento, 'Nascimento' %></b></td>
+         <td>    <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year-3), :end_year => (Date.today.year - 5)) %><BR /></td>
+       </tr>
 
-                      </table>
-                  </fieldset>
+       <tr  bgcolor="#FFFFF">
+         <td colspan="2"><b><font color="red" size="5">*</font>Mãe</b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <%= f.text_field :mae, :size=>"38"%>    <br/><font size="1" color="blue" > <b>   Preencher os dados dos genitores conforme registros na Certidão de Nascimento e/ou RG da criança.</b></font>
+             <%= observe_field :crianca_mae,
+               :with => :crianca_mae,
+               :url => { :action => "mesma_mae_pre" } %>
+         </td>
+         <td  colspan="2">&nbsp&nbsp<b>Pai </b>  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <%= f.text_field :pai, :size=>"38" %> <br/> <font size="1" color="blue" > <b>   Caso não conste o nome do pai no documento da criança, deixar o campo correspondente sem preenchimento.</b></font>
+         </td>
+
+       </tr>
+       <tr  bgcolor="#FFFFF">
+         <td></td>
+         <td><b><div id='nome_aviso' ></div>  <div id='aviso_mae'></div></b></td>
+         <td colspan="3"><b><div id='nome_mae'></div></b></td>
+
+       </tr>
+       <tr   bgcolor="#FFFFF">
+           <td colspan="3"> <b>Responsável Legal pela criança?</b>
+               &nbsp - &nbsp
+                   <b>Nome</b>&nbsp <%= f.text_field :responsavel_n, :size => "34"%>&nbsp&nbsp
+                   <br/><font size="1" color="blue" > <b> (Preencher somente caso nenhum dos genitores sejam os responsáveis legais)</b></font>
+           </td>
+           <td valign="top"> <b>Vínculo com a criança</b> <%= f.select :parentesco, GRAU1, :include_blank => ''%></td>
+      </tr>
+
+      <tr  bgcolor="#FFFFF">
+         <td><b>Endereço  <font size="1"> (residencial)  </b></font></td>
+         <td><%= f.text_field :endereco %> &nbsp&nbsp<b>Nº</b><%= f.text_field :numero, :size=>"2" %></td>
+         <td>&nbsp&nbsp <b>Bairro</b></td>
+         <td><%= f.text_field :bairro, :size=>"38" %></td>
+       </tr>
+       <tr  bgcolor="#FFFFF">
+          <td><b>Complemento</b></td>
+          <td><%= f.text_field :complemento, :size=>"38" %></td>
+          <td><b><font color="red" size="5">*</font>Fone</b></td>
+          <td><%= f.text_field :tel1,:size =>"13" %>&nbsp&nbsp
+              <b>Celular</b>&nbsp&nbsp<%= f.text_field :celular,:size =>"14"%>
+          </td>
+       </tr>
+       <tr  bgcolor="#FFFFF">
+          <td><b>Fone(s) <font size="1"> (Recado) </font></b></td>
+         <td><%= f.text_field :tel2, :size =>"36" %></td>
+         <td>&nbsp&nbsp<b>Nome <font size="1"> (recado)</font></b></td>
+         <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
+       </tr>
+              <tr  bgcolor="#FFFFF">
+                <td colspan="4"> <script>
+                       $(document).ready(function()
+                        {
+                          $("#dropdownbutton12").click(function ()
+                           {
+                             $("#menu12").slideToggle("high");
+                            });
+                        });
+                       </script>
+                       <b>Criança possui Necessidade(s) Educacional(ais) Especial(ais)?</b>
+
+                  <a href="#" id="dropdownbutton12"><%= f.radio_button :n_especial, true %></a>SIM
+                                                    <%=  f.radio_button :n_especial, false, :checked => true  %>NÃO
+ 
+                   <div id="menu12" style="display:none">
+                     <b>Necessidade:</b><%= f.text_field :necessidade, :size =>"36" %>
+                   </div>
+
+                 </td>
+              </tr>
+
+
+
+
+
+      </table>
+  </fieldset>
 
              <fieldset>
               <legend><font size="4">Dados da Inscrição</font></legend>
