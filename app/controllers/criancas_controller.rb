@@ -222,6 +222,21 @@ end
         session[:show]=1
   end
 
+ def alteracao_grupo
+   @crianca = Crianca.find(params[:id])
+    w1=params[:id]
+    w=@crianca.regiao_id
+    @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
+
+
+    data=@crianca.nascimento
+
+    session[:status] = @crianca.status
+    #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
+    session[:id_crianca] = params[:id]
+    session[:nome] = params[:nome]
+        session[:show]=1
+  end
 
 def aviso
 end
@@ -409,7 +424,14 @@ end
                                 end
                             @crianca.save
                             if session[:ficha_pre]==1
-                                
+
+                                mes=@crianca.nascimento.strftime("%m")
+                                ano=@crianca.nascimento.strftime("%Y")
+                                teste = ano+'-'+mes   ### veja abaixo VVVVV
+                               if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
+                                  @crianca.regiao_id=999
+                               end
+
                                 if @crianca.opcao2== '1'
                                      @crianca.opcao2='estudou em outra unidade'
                                 end
@@ -419,7 +441,7 @@ end
                                   @crianca.opcao1='não trabalha'
                                 end
                                 @crianca.save
-                                 format.html { redirect_to(show_transferencia_path) }
+                                 format.html { redirect_to(show_pre_path) }
                                  format.xml  { head :ok }
                                 
                             else
@@ -656,6 +678,8 @@ if  (data <= Date.today.to_s and data >= DATAB1)
                        end
         flash[:notice] = 'Atualizado com sucesso.'
          if session[:show]==1
+              @crianca.regiao_id= nil
+              @crianca.save
               format.html { redirect_to(@crianca) }
               format.xml  { head :ok }
               session[:show]=0
@@ -751,15 +775,15 @@ end
          if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ? AND nascimento >= ?  AND (grupo_id <> 6 AND  grupo_id <> 7) " , "%" + params[:search1].to_s + "%", DATAN2],:order => 'nome ASC, unidade_id ASC')
-                  t=0
+                  
               else
                  #@criancas = Crianca.find( :all,:conditions => ["nome like ? AND status = 'NA_DEMANDA' AND recadastrada!=0 ", "%" + params[:search1].to_s + "%" ],:order => 'nome ASC')
                   @criancas = Crianca.find( :all,:conditions => ["nome like ?AND nascimento >= ?   AND (grupo_id <> 6 AND  grupo_id <> 7) ", "%" + params[:search1].to_s + "%", DATAN2 ],:order => 'nome ASC')
-                  t=0
+                 
          end
       else
         @criancas = Crianca.find( :all,:conditions => ["nome like ?AND nascimento >= ?   AND (grupo_id <> 6 AND grupo_id <> 7) ", "%" + params[:search1].to_s + "%", DATAN2 ],:order => 'nome ASC')
-        t=0
+       
       end
               @canceladas = Crianca.find( :all,:conditions => [" nome like ? AND status =? AND nascimento >= ?   AND (grupo_id <> 6 AND  grupo_id <> 7)",  "%" + params[:search1].to_s + "%" , 'CANCELADA', DATAN2],:order => 'nome ASC')
               @demandas = Crianca.find( :all,:conditions => [" nome like ? and status =? AND nascimento >= ?   AND (grupo_id <> 6 AND  grupo_id <> 7)",  "%" + params[:search1].to_s + "%" , 'NA_DEMANDA', DATAN2],:order => 'nome ASC')
@@ -1652,7 +1676,11 @@ end
                           page.replace_html 'criancas', :partial => "criancas_pre"
                        end
 
-                     else if params[:type_of].to_i == 5
+                     else if params[:type_of].to_i == 4
+                           @criancas_pre = Crianca.find( :all,:conditions => ["(regiao_id= 999) and (status='NA_DEMANDA')" ],:order => 'grupo_id ASC, nome ASC')
+                               render :update do |page|
+                                page.replace_html 'criancas', :partial => "criancas_pre_4_5_6"
+                             end
 
 
 
@@ -1683,6 +1711,8 @@ t=0
         end
 
 end
+
+
 
  protected
     #Inicialização variavel / combobox grupo

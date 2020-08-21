@@ -1,0 +1,152 @@
+
+<div id="interno2">
+<% title "CRIANCAS".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong> ALTERAÇÃO DE CADASTRO</strong></font><br/>
+ </div>
+
+     <div class="tabs">
+<% form_for(@crianca) do |f| %>
+ <%= f.error_messages %>
+  <fieldset>
+   <legend><font size=4>Dados da Criança</font></legend>
+   <table width="100%">
+       <tr>
+         <td><b>Nome </b></td>
+         <td><%=h @crianca.nome %></td>
+         <td width =""><b><%= f.label :nascimento, 'Nascimento' %></b></td>
+         <td> <%=h @crianca.nascimento.strftime("%d/%m/%Y")%></td>
+                               
+       </tr>
+       <tr>
+         <td><b>Mãe</b></td>
+         <td><%=h @crianca.mae %></td>
+         <td><b>Pai </b></td>
+         <td><%=h @crianca.pai %></td>
+
+       </tr>
+      <tr>
+        <td> <b>Responsável </b></td>
+        <td>  <%=h @crianca.responsavel_n %></td>
+        <td >
+          <b>Parentesco</b><%=h @crianca.parentesco %>
+          </td>
+
+      </tr>
+       <tr>
+         <td><b>Endereço  </b></td>
+         <td><%=h @crianca.endereco %> - <%=h @crianca.numero %></td>
+         <td><b>Bairro</b></td>
+         <td><%=h @crianca.bairro %></td>
+       </tr>
+       <tr>
+          <td><b>Complemento</b></td>
+          <td><%=h @crianca.complemento %></td>
+          <td><b>Fone</b></td>
+          <td><%=h @crianca.tel1 %>&nbsp&nbsp
+              <b>Celular</b>&nbsp&nbsp<%=h @crianca.celular %>
+          </td>
+       </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td><b>Fone(s) Recado</b></td>
+         <td><%=h @crianca.tel2 %></td>
+         <td><b>Nome</b></td>
+         <td> <%=h @crianca.nomerecado %></td>
+       </tr>
+       <tr>
+          <td><b>Classificação </b></td>
+          <td><%=h @crianca.grupo.nome%></td>
+          <td><b>Necessidade(s) Especial(s)?</b></td>
+          <td><%=h @crianca.necessidade %></td>
+      </tr>
+      </table>
+  </fieldset>
+
+ <fieldset>
+  <legend><font size=4>Dados da Inscrição</font></legend>
+  <table width="100%" >
+    <%  if @crianca.unidade_id.present? %>
+      <tr >
+         <td width ="20%"><b> <%= f.label :unidade, 'Unidade da Inscrição' %></b></td>
+         <td colspan="3"><%=h @crianca.unidade.nome %></td>
+      </tr>
+    <%end%>
+       <tr>
+        <td width ="20%"> <font size ="3" color ="'blue"><b> Alterar Classe:</b>  </font></td>
+        <!--<td colspan="3"> <font size ="3"><b><%#= f.select :status, options_for_select(Crianca::Status) %></b> </font></td>-->
+        <td colspan="3"> <font size ="3"> <%= f.select :grupo_id, CLASSE_PRE, :include_blank => nil%></td>
+        <!--<td colspan="2"><font size ="3"color ="'blue"> <b>&nbsp Unidade Matricula:</b> <%= f.collection_select  :matriculado  , @unidades, :nome, :nome, :include_blank => 'Selecione opção se MATRICULADA'  %> </font></td>-->
+      </tr>
+              <tr >
+                    <td align="left"><b>Trabalho Mãe : </b></td>
+                    <td align="left" colspan="5" > <%if @crianca.servidor_publico == true%>
+                                     <%=h @crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
+                                     <%else if @crianca.trabalho == true %>
+                                             <%=h @crianca.local_trabalho%>, <%=h @crianca.num_trab%>  <b> &nbsp - &nbsp Bairro:</b> <%=h @crianca.bairro_trab%> <b>&nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
+                                           <%else if @crianca.declaracao == true %>
+                                                  <%=h @crianca.local_trabalho %>, <%=h @crianca.num_trab%> <b> &nbsp - &nbsp Bairro:</b> <%=h @crianca.bairro_trab%> <b> &nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
+                                                 <%else if @crianca.autonomo == true %>
+                                                      <%=h @crianca.atividade_autonomo%> - <%=h @crianca.local_trabalho%>, <%=h @crianca.num_trab%>  <b> &nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
+                                                     <%else  %>
+                                                        Não Trabalha
+                                                     <%end%>
+                                                 <%end%>
+                                            <%end%>
+                                       <%end%>
+                  </td>
+                </tr>
+           <tr>
+              <td align="left" ><b>Local Inscrição:</b></td>
+              <td  align="left" valign="top" > <%  if @crianca.unidade_id.present? %> <%= @crianca.unidade.nome%><%else%> <i>ON-Line</i><%end%></td>
+              <td align="left"><b> &nbsp Data  e Hora:</b> </td>
+              <td align="left"><%=  @crianca.created_at.strftime("%e/%m/%Y - %H:%M horas")%></td>
+           </tr>
+
+
+      <tr>
+         <td><b>Data Inscrição:</b></td>
+         <td><%=h @crianca.created_at.strftime("%d/%m/%Y")%></td>
+      </tr>
+       <tr>
+              <td valign="top"><b>Observações</b></td>
+              <td colspan="5"> <%=h @crianca.obs%> <br/><%= render :partial => 'observacoes'  %></td>
+            </tr>
+     </table>
+
+  </fieldset>
+
+ <br/>
+ <br/>
+
+
+
+      <fieldset>
+       <table width="100%" >
+         <tr>
+           <td width="4%"align="left"><b><div id='Certeza'><%= f.submit 'Salvar' %></div></b></td>
+
+<%end%>
+
+             <td><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+
+
+
+         </tr>
+       </table>
+      </fieldset>
+    
+  </font>
+  </div>
+
+
+
+
+
+
+
+</div>
+<br/>
+</div>

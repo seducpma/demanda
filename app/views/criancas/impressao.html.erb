@@ -87,7 +87,7 @@
                <th align="left" width="18%"><b>Endereço Indicado:</b></th>
                <th align="left" width="47%"><%=h crianca.end_indicacao %> - <%=h crianca.num_indicacao %></th>
                <th align="left" width="15%"><b>Bairro/Região:</b></th>
-               <th align="left" width="18%"><%=h crianca.regiao.nome %></th>
+               <th align="left" width="18%"><%if !crianca.regiao_id.nil? and !crianca.regiao_id= 999%><%=h crianca.regiao.nome %><%end%></th>
             </tr>
             <tr style="font-size:8px">
                <th align="left"><b>Trabalho Mãe : </b></th>
@@ -117,7 +117,7 @@
 
             <tr style="font-size:8px">
               <th valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></th>
-              <th valign="top" align="left" ><%=h crianca.regiao.nome%><br/><br/><%=h crianca.grupo.nome%> - <%=h crianca.periodo%>
+              <th valign="top" align="left" ><%if !crianca.regiao_id.nil? and !crianca.regiao_id= 999%><%=h crianca.regiao.nome%><br/><br/><%=h crianca.grupo.nome%> - <%=h crianca.periodo%><%end%>
                      </th>
               <th valign="top" align="left"><b>Unidades na região: </b></th>
               <th valign="top"align="left"><% for unidade in @unidade_regiao%>
@@ -267,7 +267,7 @@
                <th align="left" width="18%"><b>Endereço Indicado:</b></th>
                <th align="left" width="47%"><%=h crianca.end_indicacao %> - <%=h crianca.num_indicacao %></th>
                <th align="left" width="15%"><b>Bairro/Região:</b></th>
-               <th align="left" width="18%"><%=h crianca.regiao.nome %></th>
+               <th align="left" width="18%"><%if !crianca.regiao_id.nil? and !crianca.regiao_id= 999%><%=h crianca.regiao.nome %><%end%></th>
              </tr>
             <tr style="font-size:8px">
                <th align="left"><b>Trabalho Mãe : </b></th>
@@ -299,7 +299,7 @@
 
             <tr style="font-size:8px">
               <th valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></th>
-              <th valign="top" align="left" ><%=h crianca.regiao.nome%><br/><br/><%=h crianca.grupo.nome%> - <%=h crianca.periodo%>
+              <th valign="top" align="left" ><%if !crianca.regiao_id.nil? and !crianca.regiao_id= 999%><%=h crianca.regiao.nome%><br/><br/><%=h crianca.grupo.nome%> - <%=h crianca.periodo%><%end%>
                      </th>
               <th valign="top" align="left"><b>Unidades na região: </b></th>
               <th valign="top"align="left"><% for unidade in @unidade_regiao%>

@@ -70,6 +70,10 @@ CARGO = {'Diretor Ed. Básica'=> 'Diretor Ed. Básica',
           'TODOS' => 'TODOS'
           }
 
+CLASSE_PRE = {'Nivel 1 (1ª Etapa)'=> 6,
+              'Nivel 2 (2ª Etapa)'=> 7
+           }
+
 CLASSE = {'
 
 BERCARIO I
