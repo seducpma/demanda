@@ -319,7 +319,7 @@ end
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
                             format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                              session[:show]=0
+                            #  session[:show]=0
                          end
                          if session[:show_transferencia]==1
                                session[:id_crianca_trans]= @crianca.id
@@ -405,6 +405,7 @@ end
                         w1=@crianca.local_trabalho
 
                           if session[:show]==1
+                            session[:show]=0
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
