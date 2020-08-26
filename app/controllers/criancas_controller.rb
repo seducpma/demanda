@@ -423,7 +423,8 @@ end
                                      end
                                 end
                             @crianca.save
-                            if session[:ficha_pre]== 'v'
+                            if session[:ficha_pre]=='v'
+
                                 session[:ficha_pre]='a'
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
@@ -449,6 +450,7 @@ end
                                  format.xml  { head :ok }
                                 
                             else
+                                 session[:ficha_pre]='b'
                                  format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
                                  format.xml  { head :ok }
                                  session[:show]=0
