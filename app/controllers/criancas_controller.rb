@@ -712,7 +712,7 @@ if  (data <= Date.today.to_s and data >= DATAB1)
               @crianca.save
               format.html { redirect_to(@crianca) }
               format.xml  { head :ok }
-              session[:show]=220
+              session[:show]=0
          end
          if session[:show_recadastramento]==1
               format.html { redirect_to(show_recadastramento_path) }
