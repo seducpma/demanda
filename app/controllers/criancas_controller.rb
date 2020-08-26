@@ -312,7 +312,7 @@ end
                     respond_to do |format|
                       if @crianca.save
                       w=  @crianca.local_trabalho
-                        flash[:notice] = 'Criança cadastrada com sucesso.'
+                        flash[:notice] = 'Criança cadastrada com sucesso11.'
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
@@ -398,7 +398,7 @@ end
                        end
                     respond_to do |format|
                       if @crianca.save
-                        flash[:notice] = 'Criança cadastrada com sucesso.'
+                        flash[:notice] = 'Criança cadastrada com sucesso222.'
 
                         w1=@crianca.local_trabalho
 
