@@ -313,22 +313,13 @@ end
                       if @crianca.save
                       w=  @crianca.local_trabalho
                         flash[:notice] = 'Criança cadastrada com sucesso.'
-
-
-
-
-
-
-
-
-
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
                             format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                              #session[:show]=0
+                              session[:show]=0
                          end
                          if session[:show_transferencia]==1
                                session[:id_crianca_trans]= @crianca.id
@@ -354,9 +345,7 @@ end
                   end
 
       else
-
     #inscrição permitida para crianças após outubro/2020
-
               if @crianca.nascimento.strftime("%Y%m%d").to_i > 20191103
                    respond_to do |format|
                         flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
@@ -375,7 +364,7 @@ end
                     else
                         data=@crianca.nascimento.strftime("%Y-%m-%d")
                     end
-                    @crianca.recadastrada = 1
+                     @crianca.recadastrada = 1
                     hoje = Date.today.to_s
                     final = '2012-07-01'
                     if (hoje > data)  and (data >= final)
@@ -414,7 +403,6 @@ end
                         w1=@crianca.local_trabalho
 
                           if session[:show]==1
-                             session[:show]=2
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
@@ -433,10 +421,7 @@ end
                                      end
                                 end
                             @crianca.save
-
-
                             if session[:ficha_pre]==1
-                                session[:show]=3
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
                                 teste = ano+'-'+mes   ### veja abaixo VVVVV
@@ -459,71 +444,10 @@ end
                             else
                                  format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
                                  format.xml  { head :ok }
-                                 #session[:show]=0
+                                 session[:show]=0
                             end
-                         else
-                            if session[:ficha_pre]==1
-                                  session[:show]=11
-                                mes=@crianca.nascimento.strftime("%m")
-                                ano=@crianca.nascimento.strftime("%Y")
-                                teste = ano+'-'+mes   ### veja abaixo VVVVV
-                               if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
-                                  @crianca.regiao_id=999
-                               end
-
-                                if @crianca.opcao2== '1'
-                                     @crianca.opcao2='estudou em outra unidade'
-                                end
-                                if @crianca.declaracao==true or @crianca.trabalho==true
-                                  @crianca.opcao1='trabalha'
-                                else
-                                  @crianca.opcao1='não trabalha'
-                                end
-                                @crianca.save
-                                 format.html { redirect_to(show_pre_path) }
-                                 format.xml  { head :ok }
-
-                            else
-                                 format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                                 format.xml  { head :ok }
-                                 #session[:show]=0
-                            end
-
-
-
-
-
-
                          end
-                            if session[:ficha_pre]==1
-                                  session[:show]=10
-                                mes=@crianca.nascimento.strftime("%m")
-                                ano=@crianca.nascimento.strftime("%Y")
-                                teste = ano+'-'+mes   ### veja abaixo VVVVV
-                               if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
-                                  @crianca.regiao_id=999
-                               end
-
-                                if @crianca.opcao2== '1'
-                                     @crianca.opcao2='estudou em outra unidade'
-                                end
-                                if @crianca.declaracao==true or @crianca.trabalho==true
-                                  @crianca.opcao1='trabalha'
-                                else
-                                  @crianca.opcao1='não trabalha'
-                                end
-                                @crianca.save
-                                 format.html { redirect_to(show_pre_path) }
-                                 format.xml  { head :ok }
-                                
-                            else
-                                 format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                                 format.xml  { head :ok }
-                                 #session[:show]=0
-                            end
-
                          if session[:show_transferencia]==1
-                               session[:show]=4
                                session[:id_crianca_trans]= @crianca.id
                                @crianca.grupo_id=session[:trans_grupo_id]
                                @crianca.save
