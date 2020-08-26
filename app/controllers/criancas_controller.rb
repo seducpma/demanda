@@ -449,11 +449,11 @@ end
                             else
                                  format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
                                  format.xml  { head :ok }
-                                 session[:show]=0
+                                 #session[:show]=0
                             end
                          end
                          if session[:show_transferencia]==1
-                                               session[:show]=4
+                               session[:show]=4
                                session[:id_crianca_trans]= @crianca.id
                                @crianca.grupo_id=session[:trans_grupo_id]
                                @crianca.save
