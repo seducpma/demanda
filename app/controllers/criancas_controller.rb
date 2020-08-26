@@ -405,6 +405,7 @@ end
                         w1=@crianca.local_trabalho
 
                           if session[:show]==1
+                                                session[:show]=2
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
@@ -425,7 +426,7 @@ end
                             @crianca.save
 
                             if session[:ficha_pre]==1
-
+                                  session[:show]=3
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
                                 teste = ano+'-'+mes   ### veja abaixo VVVVV
@@ -452,6 +453,7 @@ end
                             end
                          end
                          if session[:show_transferencia]==1
+                                               session[:show]=4
                                session[:id_crianca_trans]= @crianca.id
                                @crianca.grupo_id=session[:trans_grupo_id]
                                @crianca.save
