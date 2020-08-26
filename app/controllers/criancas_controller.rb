@@ -423,7 +423,7 @@ end
                                      end
                                 end
                             @crianca.save
-                            if session[:ficha_pre]==1
+                            if session[:ficha_pre]==1 or $ficha_pre==1
 
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
