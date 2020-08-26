@@ -319,7 +319,7 @@ end
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
                             format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                              session[:show]=0
+                              #session[:show]=0
                          end
                          if session[:show_transferencia]==1
                                session[:id_crianca_trans]= @crianca.id
