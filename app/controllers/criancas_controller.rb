@@ -319,7 +319,7 @@ end
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
                             format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                            #  session[:show]=0
+                            #session[:show]=0
                          end
                          if session[:show_transferencia]==1
                                session[:id_crianca_trans]= @crianca.id
@@ -405,7 +405,7 @@ end
                         w1=@crianca.local_trabalho
 
                           if session[:show]==1
-                            session[:show]=0
+                            session[:show]=3
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
@@ -454,7 +454,7 @@ end
                                  session[:ficha_pre]='b'
                                  format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
                                  format.xml  { head :ok }
-                                 session[:show]=0
+                                 session[:show]=4
                             end
                          end
                          if session[:show_transferencia]==1
@@ -689,7 +689,7 @@ if  (data <= Date.today.to_s and data >= DATAB1)
               @crianca.save
               format.html { redirect_to(@crianca) }
               format.xml  { head :ok }
-              session[:show]=0
+              #session[:show]=0
          end
          if session[:show_recadastramento]==1
               format.html { redirect_to(show_recadastramento_path) }
