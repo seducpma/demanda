@@ -312,7 +312,7 @@ end
                     respond_to do |format|
                       if @crianca.save
                       w=  @crianca.local_trabalho
-                        flash[:notice] = 'Criança cadastrada com sucesso11.'
+                        flash[:notice] = 'Criança cadastrada com sucesso.'
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
@@ -345,7 +345,9 @@ end
                   end
 
       else
+
     #inscrição permitida para crianças após outubro/2020
+
               if @crianca.nascimento.strftime("%Y%m%d").to_i > 20191103
                    respond_to do |format|
                         flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
@@ -398,7 +400,7 @@ end
                        end
                     respond_to do |format|
                       if @crianca.save
-                        flash[:notice] = 'Criança cadastrada com sucesso222.'
+                        flash[:notice] = 'Criança cadastrada com sucesso.'
 
                         w1=@crianca.local_trabalho
 
@@ -422,6 +424,7 @@ end
                                 end
                             @crianca.save
                             if session[:ficha_pre]==1
+
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
                                 teste = ano+'-'+mes   ### veja abaixo VVVVV
