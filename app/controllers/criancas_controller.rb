@@ -423,22 +423,26 @@ end
                                      end
                                 end
                             @crianca.save
-                            if $ficha_pre==1
+                            if session[:ficha_pre]==1
 
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
                                 teste = ano+'-'+mes   ### veja abaixo VVVVV
                                if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
                                   @crianca.regiao_id=999
+                                   @crianca.save
                                end
 
                                 if @crianca.opcao2== '1'
                                      @crianca.opcao2='estudou em outra unidade'
+                                      @crianca.save
                                 end
                                 if @crianca.declaracao==true or @crianca.trabalho==true
                                   @crianca.opcao1='trabalha'
+                                   @crianca.save
                                 else
                                   @crianca.opcao1='não trabalha'
+                                   @crianca.save
                                 end
                                 @crianca.save
                                  format.html { redirect_to(show_pre_path) }
