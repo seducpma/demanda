@@ -313,6 +313,15 @@ end
                       if @crianca.save
                       w=  @crianca.local_trabalho
                         flash[:notice] = 'Criança cadastrada com sucesso.'
+
+
+
+
+
+
+
+
+
                           if session[:show]==1
                             format.html { redirect_to(@crianca) }
                             @crianca.recadastrada=session[:novo_cadastrar]
