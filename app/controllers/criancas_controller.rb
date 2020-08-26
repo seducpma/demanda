@@ -423,8 +423,8 @@ end
                                      end
                                 end
                             @crianca.save
-                            if session[:ficha_pre]==1 or $ficha_pre==1
-
+                            if session[:ficha_pre]== 'v'
+                                session[:ficha_pre]='a'
                                 mes=@crianca.nascimento.strftime("%m")
                                 ano=@crianca.nascimento.strftime("%Y")
                                 teste = ano+'-'+mes   ### veja abaixo VVVVV
@@ -666,7 +666,7 @@ if  (data <= Date.today.to_s and data >= DATAB1)
                         end
                         t=0
                        @crianca.save
-                       if session[:ficha_pre]==1
+                       if session[:ficha_pre]=='v'
                                   @crianca.status = 'NA_DEMANDA'
                                   if @crianca.opcao2== '1'
                                        @crianca.opcao2='estudou em outra unidade/cidade'
