@@ -244,7 +244,8 @@ end
 def aviso_pre
 end
 
-
+def erro
+end
 
 
   def status
@@ -335,8 +336,7 @@ end
                          end
 
                       else
-                        format.html { render :action => "new" }
-                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                        format.html { redirect_to(erro_path)}
                       end
                     end
 
@@ -519,8 +519,7 @@ end
                               session[:show_recadastramento]==0
                            end
                         else
-                        format.html { render :action => "new" }
-                        format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
+                        format.html { redirect_to(erro_path)}
                         end
                     end
                   else

@@ -62,7 +62,7 @@ ActionController::Routing::Routes.draw do |map|
   map.alterar '/alterar', :controller => 'alteracaos', :action => 'alterar'
   map.altera_status 'altera_status', :controller => 'alteracaos', :action => 'alterar_classe'
   map.alteracao_status 'alteracao_status', :controller => 'criancas', :action => 'alteraracao_status'
-
+  map.erro '/erro', :controller => 'criancas', :action => 'erro'
 
   map.grafico '/grafico', :controller => 'grafico'
   map.grafico_geral '/grafico/grafico_demanda_geral', :controller => 'grafico', :action => 'grafico_demanda_geral'
