@@ -35,7 +35,7 @@ end
   end
 
 def show_pre
-     @crianca = Crianca.find(params[:id])
+     @crianca = Crianca.find(session[:crianca_id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
 ##  VERJA O SHOW EM BAIXO VVVVV
   end
@@ -241,6 +241,10 @@ end
 def aviso
 end
 
+def aviso_pre
+end
+
+
 
 
   def status
@@ -405,7 +409,9 @@ end
                         w1=@crianca.local_trabalho
 
                           if session[:show]==1
-                            format.html { redirect_to(@crianca) }
+                            if session[:ficha_pre]!=1
+                                  format.html { redirect_to(@crianca) }
+                            end
                             @crianca.recadastrada=session[:novo_cadastrar]
                             @crianca.save
                             @crianca.recadastrada=session[:novo_cadastrar]
@@ -423,32 +429,44 @@ end
                                      end
                                 end
                             @crianca.save
-                            if session[:ficha_pre]==1
+                              if session[:ficha_pre]==1
+                                    if @crianca.nascimento.strftime("%Y%m%d").to_i > DATAPRE.to_i    #   20170630 LIMITE PRE
+                                       t=0
+                                       @crianca.destroy
+                                              flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
+                                              format.html { render :action => "aviso_pre" }
+                                            
+                                       
 
-                                mes=@crianca.nascimento.strftime("%m")
-                                ano=@crianca.nascimento.strftime("%Y")
-                                teste = ano+'-'+mes   ### veja abaixo VVVVV
-                               if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
-                                  @crianca.regiao_id=999
-                               end
+                                    else
+                                            @crianca.recadastrada = 2
+                                            mes=@crianca.nascimento.strftime("%m")
+                                            ano=@crianca.nascimento.strftime("%Y")
+                                            teste = ano+'-'+mes   ### veja abaixo VVVVV
+                                           if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
+                                              @crianca.regiao_id=999
+                                           end
 
-                                if @crianca.opcao2== '1'
-                                     @crianca.opcao2='estudou em outra unidade'
-                                end
-                                if @crianca.declaracao==true or @crianca.trabalho==true
-                                  @crianca.opcao1='trabalha'
-                                else
-                                  @crianca.opcao1='não trabalha'
-                                end
-                                @crianca.save
-                                 format.html { redirect_to(show_pre_path) }
-                                 format.xml  { head :ok }
-                                
-                            else
-                                 format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
-                                 format.xml  { head :ok }
-                                 session[:show]=0
-                            end
+                                            if @crianca.opcao2== '1'
+                                                 @crianca.opcao2='estudou em outra unidade'
+                                            end
+                                            if @crianca.declaracao==true or @crianca.trabalho==true
+                                              @crianca.opcao1='trabalha'
+                                            else
+                                              @crianca.opcao1='não trabalha'
+                                            end
+                                            @crianca.save
+                                             session[:crianca_id]=@crianca.id
+                                             format.html { redirect_to(show_pre_path) }
+                                             format.xml  { head :ok }
+                                             #format.html { redirect_to(@crianca) }
+                                    end
+
+                              else
+                                   format.xml  { render :xml => @crianca, :status => :created, :location => @crianca }
+                                   format.xml  { head :ok }
+                                   session[:show]=0
+                              end
                          end
                          if session[:show_transferencia]==1
                                session[:id_crianca_trans]= @crianca.id
@@ -663,6 +681,7 @@ if  (data <= Date.today.to_s and data >= DATAB1)
                         t=0
                        @crianca.save
                        if session[:ficha_pre]==1
+                                  @crianca.recadastrada = 2
                                   @crianca.status = 'NA_DEMANDA'
                                   if @crianca.opcao2== '1'
                                        @crianca.opcao2='estudou em outra unidade/cidade'
@@ -1643,35 +1662,35 @@ end
  def pre_criancas
 
      if params[:type_of].to_i == 1
-         data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+         data_pre = (DATAPRE2).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
          data_pre = data_pre + ' 00:00:00'
          w=params[:search1]
-         @criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  nascimento < ?  and recadastrada > 0" , "%" + params[:search1].to_s + "%", data_pre ],:order => 'nome ASC, unidade_id ASC')
+         @criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  nascimento <= ?  and recadastrada > 0" , "%" + params[:search1].to_s + "%", data_pre ],:order => 'nome ASC, unidade_id ASC')
           render :update do |page|
               page.replace_html 'criancas', :partial => "criancas_pre"
            end
      else if params[:type_of].to_i == 2
-             data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+             data_pre = (DATAPRE2).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
              data_pre = data_pre + ' 00:00:00'
-             @criancas_pre = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6)and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+             @criancas_pre = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6)and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
                  render :update do |page|
                   page.replace_html 'criancas', :partial => "criancas_pre"
                end
          else if params[:type_of].to_i == 6
-                 data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+                 data_pre = (DATAPRE2).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
                  data_pre = data_pre + ' 00:00:00'
-                 @criancas_pre = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
-                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='MATRICULADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
-                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='CANCELADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
-                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 )and (status='RECUSOU')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 )  )and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='MATRICULADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='CANCELADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='RECUSOU')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
                  t=0
                   render :update do |page|
                       page.replace_html 'criancas', :partial => "criancas_pre"
                    end
                else if params[:type_of].to_i == 3
-                     data_pre = (DATAN1).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
+                     data_pre = (DATAPRE2).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
                      data_pre = data_pre + ' 00:00:00'
-                     @criancas_pre = Crianca.find( :all,:conditions => ["nascimento < ?  and recadastrada > 0 and (grupo_id = 7)and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                     @criancas_pre = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 7)and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
                          render :update do |page|
                           page.replace_html 'criancas', :partial => "criancas_pre"
                        end

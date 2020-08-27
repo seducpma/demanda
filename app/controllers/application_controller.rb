@@ -164,6 +164,9 @@ DATAM2 ='2017-04-01'
 DATAN1 ='2016-04-01'
 DATAN2 ='2015-04-01'
 
+DATAPRE ='20170630'   #   SEM IFEM NEM SEPARADORlimite de pré diferente nos meses 04 e 06 porque existe crinaças internediária .....
+DATAPRE1= '30-06-2017'  #inverter data anterior ^^ para portugues
+DATAPRE2 ='2017-07-01'   #   COM IFEM limite de pré diferente nos meses 04 e 06 porque existe crinaças internediária ..... AUMENTAR UM DIA DA DATA ANTERIOR
 
 BAIRRO = {
 'CENTRO' => 'CENTRO',
