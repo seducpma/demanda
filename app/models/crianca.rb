@@ -10,6 +10,8 @@ class Crianca < ActiveRecord::Base
   #validates_presence_of :regiao_id
   validates_presence_of :nome
   validates_presence_of :nascimento
+  validates_presence_of :mae
+  validates_presence_of :tel1
   #validates_presence_of :unidade_ref
   #validates_presence_of :opcao1
   before_save  :maiusculo
