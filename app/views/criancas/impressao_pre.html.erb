@@ -196,9 +196,12 @@
               <th align="left" ><b>Local Inscrição:</b></th>
               <th align="left" ><% if !crianca.unidade_id.nil?%>  <%= crianca.unidade.nome%> <%else%> Internet   (on-line) <%end%></th>
               <th align="left"><b>Data  e Hora:</b> </th>
-              <th align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M")%></th>
+              <th colspan="4"align="left"><%=  crianca.created_at.strftime("%e/%m/%Y - %H:%M")%></th>
            </tr>
-
+           <tr style="font-size:8px">
+             <th align="left" valign="top" ><b>Comprovante Endereço::</b></th>
+              <th  colspan="5"align="left" ><%= image_tag  crianca.photo.url(:imagem) %></th>
+           </tr>
 
 
          </table>

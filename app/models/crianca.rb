@@ -5,6 +5,13 @@ class Crianca < ActiveRecord::Base
   has_many :observacao_criancas
   has_many :vaga_criancas
   has_many :vaga
+  #has_attached_file :photo, :styles => {:original=> "300x300>"},
+  has_attached_file :photo, :styles => {:thumb=> "300x300#", :small  => "150x150>" , :imagem=> "500x500>"},
+
+                    :url => "/photos/comprovantes/:id.:extension",
+                    :path => ":rails_root/public/photos/comprovantes/:id.:extension"
+
+
 
   #validates_presence_of :unidade_id
   #validates_presence_of :regiao_id

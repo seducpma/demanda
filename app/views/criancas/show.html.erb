@@ -67,7 +67,10 @@
                         <td valign="top"><b>Observações</b></td>
                         <td colspan="5"> <%=h @crianca.obs%> <br/><%= render :partial => 'observacoes'  %></td>
                       </tr>
-
+                      <tr bgcolor="#F5F5F5">
+                        <td valign="top"><b>Comprovante de endereço</b></td>
+                        <td colspan="5"> <%= image_tag   @crianca.photo.url(:imagem) %></td>
+                      </tr>
                     </table>
                    </fieldset>
                  <fieldset><legend><font  size=3><b> Dados da inscrição</b>&nbsp&nbsp <font color="blue"> (<%=@crianca.status%>)&nbsp&nbsp</font></font></legend>

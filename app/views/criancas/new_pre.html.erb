@@ -15,7 +15,8 @@
 
 
   <div class="tabs">
-<% form_for(@crianca) do |f| %>
+
+<% form_for @crianca, :html => { :multipart => true } do |f| %>
  <%= f.error_messages %>
       <font size ="4" color="BLUE"><b id="pisca1">
           LEIA ATENTAMENTE:</b><b> A SECRETARIA MUNICIPAL DE EDUCAÇÃO NÃO PODERÁ SER RESPONSABILIZADA POR ERROS DE PREENCHIMENTO, BEM COMO EVENTUAIS FALHAS NO ENVIO DE DADOS OCASIONADOS POR PROBLEMAS DE CONEXÃO E/OU DEFEITOS EM EQUIPAMENTOS DE QUEM ESTÁ REALIZANDO A INSCRIÇÃO.</b><br/></font><br/>
@@ -131,7 +132,10 @@
                    </div>
                   </td>
               </tr>
-
+              <tr  bgcolor="#FFFFF">
+                  <td><b>Comprovante de endereço:</b> </td>
+                  <td colspan="5"align="left"><%= f.file_field :photo%></td>
+             </tr>
       </table>
   </fieldset>
 
