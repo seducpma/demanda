@@ -133,8 +133,10 @@
                   </td>
               </tr>
               <tr  bgcolor="#FFFFF">
-                  <td><b>Comprovante de endereço:</b> </td>
-                  <td colspan="5"align="left"><%= f.file_field :photo%></td>
+                  <td><font color="red" size="5">*</font><b>Comprovante de endereço:</b> </td>
+                  <td colspan="5"align="left"><%= f.file_field :photo%><br/>
+                    <font size="3" color="red"> <b>É obrigatório anexar comprovante de endereço (foto ou documento escaneado).</b></font>
+                  </td>
              </tr>
       </table>
   </fieldset>

@@ -244,6 +244,9 @@ end
 def aviso_pre
 end
 
+def aviso_pre2
+end
+
 def erro
 end
 
@@ -434,18 +437,18 @@ end
                                              @crianca.destroy
                                                     flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
                                                     format.html { render :action => "aviso_pre1" }
-
-
                                    else
                                           if @crianca.nascimento.strftime("%Y%m%d").to_i >= DATAPRE.to_i    #   20170630 LIMITE PRE
                                       
                                              @crianca.destroy
                                                     flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
                                                     format.html { render :action => "aviso_pre" }
+                                          else if @crianca.photo_file_name.nil?
 
-
-
-                                          else
+                                                   @crianca.destroy
+                                                    flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
+                                                    format.html { render :action => "aviso_pre2" }
+                                              else
                                                   @crianca.recadastrada = 2
                                                   mes=@crianca.nascimento.strftime("%m")
                                                   ano=@crianca.nascimento.strftime("%Y")
@@ -467,7 +470,8 @@ end
                                                    format.html { redirect_to(show_pre_path) }
                                                    format.xml  { head :ok }
                                                    #format.html { redirect_to(@crianca) }
-                                          end
+                                             end
+                                         end
                                    end
 
                               else
