@@ -62,6 +62,10 @@
           <td><b>Necessidade(s) Especial(s)?</b></td>
           <td><%=h @crianca.necessidade %></td>
       </tr>
+            <tr >
+              <td  width ="15%"valign="top"><b>Comprovante de endereço</b></td>
+              <td colspan="5"> <%= image_tag   @crianca.photo.url(:imagem) %></td>
+            </tr>
       </table>
   </fieldset>
 
