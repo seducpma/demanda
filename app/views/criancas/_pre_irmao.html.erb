@@ -1,7 +1,7 @@
 <table>
       <tr>
           <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <b>Unidadeque o irmão estuda:</b> <%= collection_select  :crianca, :unidade_i, @unidades, :nome, :nome, :include_blank => ' --- Selecione opção ---'  %>&nbsp&nbsp
+                    <b>Unidade que o irmão estuda:</b> <%= collection_select  :crianca, :unidade_i, @unidades, :nome, :nome, :include_blank => ' --- Selecione opção ---'  %>&nbsp&nbsp
                     
           </td>
           <td><b>Nome do Irmão:</b> <%= text_field :crianca, :irmao_nome, :size=>"35" %>

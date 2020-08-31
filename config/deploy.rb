@@ -18,7 +18,8 @@ server application, :app, :web, :db, :primary => true
    task :stop do ; end
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-     run "ln -s /home/atena/photos/demanda /home/atena/demanda.seducpma.com/current/public/photos"    # direcionamento da pasta para guardar todo tipo de uoload
+     run "ln -s /home/atena/photos/demanda /home/atena/demanda.seducpma.com/current/public/photos"    # direcionamento da pasta para guardar todo tipo de upload
+       #precisa deletar o diretório no pc antes de subir para o servidor ....#
    end
 
    task :custom_symlinks do

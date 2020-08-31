@@ -6,7 +6,7 @@ class Crianca < ActiveRecord::Base
   has_many :vaga_criancas
   has_many :vaga
   #has_attached_file :photo, :styles => {:original=> "300x300>"},
-  has_attached_file :photo, :styles => {:thumb=> "300x300#", :small  => "150x150>" , :imagem=> "500x500>"},
+  has_attached_file :photo, :styles => {:thumb=> "300x300#", :small  => "150x150>" , :imagem=> "500x500>", :imagem_ampliada=> "900x900>"},
 
                     :url => "/photos/comprovantes/:id.:extension",
                     :path => ":rails_root/public/photos/comprovantes/:id.:extension"

@@ -166,7 +166,7 @@
                  <td colspan="6"class="botao6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO2).sort %>    </td>
               </tr>
              <tr  bgcolor="#FFFFF">
-                   <td colspan="6"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão(s) matriculado(s) na rede de Educação Infantil da SEDUC?</b></td>
+                   <td colspan="6"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão matriculado na rede de Educação Infantil da SEDUC?</b></td>
                     <%= observe_field 'crianca_irmao',
                                       :update => "irmao",
                                       :url    => { :action => 'irmao_action_pre' },
