@@ -90,7 +90,7 @@ Diretor Ed. Básica'=> 'Diretor Ed. Básica',
           'Pedagogo'=> 'Pedagogo'}
 
 GRAU = { 'Pai/Mãe'=> 'Pai/Mãe',
-         'Padastro/Madastra'=> 'Padastro/Madastra',
+         'Padrasto/Madrasta'=> 'Padrasto/Madrasta',
          'Irmão(ã)' => 'Irmão(ã)',
          'Avô/Avó' => 'Avô/Avó',
          'Tio/Tia'=> 'Tio/Tia',
@@ -99,7 +99,7 @@ GRAU = { 'Pai/Mãe'=> 'Pai/Mãe',
          'Outros' => 'Outros'
         }
 
-GRAU1 = {'Padastro/Madastra'=> 'Padastro/Madastra',
+GRAU1 = {'Padrasto/Madrasta'=> 'Padrasto/Madrasta',
          'Irmão(ã)' => 'Irmão(ã)',
          'Avô/Avó' => 'Avô/Avó',
          'Tio/Tia'=> 'Tio/Tia',

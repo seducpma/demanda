@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
+  map.login2 '/login2', :controller => 'sessions', :action => 'new2'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.grafico '/grafico', :controller => 'grafico'
   map.grafico_geral '/grafico/grafico_demanda_geral', :controller => 'grafico', :action => 'grafico_geral_demanda'

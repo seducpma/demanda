@@ -23,14 +23,14 @@
           <font size ="3" color="RED">
                          <b><u>ATENÇÃO:</u> <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         1) Esta ficha destina-se à inscrição para atendimento na rede pública de Americana em turmas de  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         Pré-Escola para <%=Time.now.year + 1%>,devendo ser preenchida somente para crianças que encontram-se <b><u>SEM</u></b> matrícula   <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         Pré-Escola para<%=Time.now.year + 1%>,  devendo ser preenchida somente para crianças que encontram-se <b><u>SEM</u></b> matrícula   <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           no corrente ano ou estejam atualmente matriculadas em escola particular ou em escolas de outros<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         municípios.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         municípios, desde que atualmente sejam moradoras na cidade de de Americana..<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                        2) <b><u>TODAS</u></b> as crianças atualmente  matriculadas no maternal 2 em escolas da Rede Municipal de <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         Americana ou unidades conveniadas da cidade <b><u>já estão</b></u> devidamente inscritas e <b>NÃO DEVEM </b>, nem <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         precisam, fazer sua inscrição, pois haverá direcionamento de matrículas para a Pré-Escola com base <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         em consulta realizada na escola em que a criança se encontra atualmente matriculada. <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        2) Para as crianças que em <%=Time.now.year%> já estão matriculadas no Maternal II em escolas da Rede Municipal de <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        Americana ou unidades conveniadas <b>NÃO DEVERÁ</b> ser preenchida esta ficha de inscrição, pois haverá <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           direcionamento de matrículas para a Pré-Escola com base em consulta realizada na escola em que <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                           a criança  se encontra atualmente matriculada.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                       3) Todas as informações prestadas na inscrição deverão ser devidamente comprovadas com os <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          respectivos documentos no ato da convocação para matrícula. Informações não comprovadas  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -46,13 +46,13 @@
    <table width="100%">
        <font color ="red"  size="2"> Campos com <b><font size="5"> * </font></b> preenchimento obrigatório </font>
        <tr   bgcolor="#FFFFF">
-         <td><b><font color="red" size="5">*</font>Nome </b></td>
-         <td><%= f.text_field :nome, :size=>"38" %>
+         <td width ="5%"valign="top"><b><font color="red" size="5">*</font>Nome </b> </td>
+         <td><%= f.text_field :nome, :size=>"50" %>  <br/><font size="1" color="blue" > <b>  Preencher com o nome da criança conforme registros de sua<br/> Certidão de Nascimento e/ou seu RG, SEM abreviaturas.</b></font>
              <%= observe_field :crianca_nome,
                :with => :crianca_nome,
                :url => { :action => 'mesmo_nome_pre' } %>
           </td>
-         <td><b><font size="5" color ="red"> * </font></b> <b><%= f.label :nascimento, 'Nascimento' %></b></td>
+          <td valign="top"><b><font size="5" color ="red"> *</font></b><b><%= f.label :nascimento, 'Nascimento' %></b></td>
          <td>    <%= f.date_select(:nascimento, :order => [:day, :month, :year], :start_year => (Date.today.year-3), :end_year => (Date.today.year - 5)) %><BR /></td>
              <%= observe_field :crianca_nascimento,
                :with => :crianca_nascimento,
@@ -64,8 +64,8 @@
        </tr>
 
        <tr  bgcolor="#FFFFF">
-         <td colspan="2"><b><font color="red" size="5">*</font>Mãe</b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-         <%= f.text_field :mae, :size=>"38"%>    <br/><font size="1" color="blue" > <b>   Preencher os dados dos genitores conforme registros na Certidão de Nascimento e/ou RG da criança.</b></font>
+         <td  valign="top"><b><font color="red" size="5">*</font>Mãe</b> </td>
+         <td><%= f.text_field :mae, :size=>"50"%>  <br/><font size="1" color="blue" > <b>   Preencher os dados dos genitores conforme registros na <br/>Certidão de Nascimento e/ou RG da criança.</b></font>
              <%= observe_field :crianca_mae,
                :with => :crianca_mae,
                :url => { :action => "mesma_mae_pre" } %>
@@ -98,7 +98,7 @@
        </tr>
        <tr  bgcolor="#FFFFF">
           <td><b>Complemento</b></td>
-          <td><%= f.text_field :complemento, :size=>"38" %></td>
+          <td><%= f.text_field :complemento, :size=>"50" %></td>
           <td><b><font color="red" size="5">*</font>Fone</b></td>
           <td><%= f.text_field :tel1,:size =>"13" %>&nbsp&nbsp
               <b>Celular</b>&nbsp&nbsp<%= f.text_field :celular,:size =>"14"%>
@@ -106,7 +106,7 @@
        </tr>
        <tr  bgcolor="#FFFFF">
           <td><b>Fone(s) <font size="1"> (Recado) </font></b></td>
-         <td><%= f.text_field :tel2, :size =>"36" %></td>
+         <td><%= f.text_field :tel2, :size =>"50" %></td>
          <td>&nbsp&nbsp<b>Nome <font size="1"> (recado)</font></b></td>
          <td> <%= f.text_field :nomerecado, :size =>"38" %>  </td>
        </tr>
@@ -133,9 +133,9 @@
                   </td>
               </tr>
               <tr  bgcolor="#FFFFF">
-                  <td><font color="red" size="5">*</font><b>Comprovante de endereço:</b> </td>
+                <td valign="top"><font color="red" size="5">*</font><b>Comprovante de endereço:</b> </td>
                   <td colspan="5"align="left"><%= f.file_field :photo%><br/>
-                    <font size="3" color="red"> <b>É obrigatório anexar comprovante de endereço (aceita arquivos de imagem [.jpg , .jpeg , .png , .bmp] ou PDF.</b></font>
+                    <font size="2" color="red"> <b id="pisca1"><u>É obrigatório</u> </b><b>anexar comprovante de endereço em nome de um dos responsáveis legais (fotografia ou documento escaneado – arquivo de imagem com extensão .jpg, .jpeg, .png, .bmp ou PDF) .</b></font>
                   </td>
              </tr>
       </table>
@@ -159,14 +159,14 @@
            <td colspan="6"><b>Justificativa </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
        </tr>-->
        <tr  bgcolor="#FFFFF">
-          <td colspan="6"><font size ="2" color="red"><b><u>ATENÇÃO:</u></b>&nbsp&nbsp Após responder a perguntas abaixo SIM/NÃO aguarde a página atualizar para poder continuar.</font> </td>
+         <td colspan="6"><font size ="2" color="red"><b id="pisca1"><u>ATENÇÃO:</u></b>&nbsp&nbsp <b>Após responder a perguntas abaixo SIM/NÃO aguarde a página atualizar para poder continuar, aguardando novas perguntas a serem respondida sobre a questão.</font></b> </td>
 
        </tr>
               <tr  bgcolor="#FFFFF">
                  <td colspan="6"class="botao6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO2).sort %>    </td>
               </tr>
              <tr  bgcolor="#FFFFF">
-                   <td colspan="6"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão matriculado na rede de Educação Infantil da SEDUC?</b></td>
+                   <td colspan="6"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão(s) matriculado(s) na Educação Infantil em escola da Rede Pública de Americana ou conveniada?</b></td>
                     <%= observe_field 'crianca_irmao',
                                       :update => "irmao",
                                       :url    => { :action => 'irmao_action_pre' },
@@ -177,7 +177,7 @@
 
               </tr>
               <tr  bgcolor="#FFFFF">
-                   <td colspan="6"class="botao6"><b><%= f.select :opcao2 , (OPCAOSN).sort %>   &nbsp&nbsp A criança estudou anteriormente em escola particular ou escola pública de outros municípios?</b> <br/></td>
+                   <td colspan="6"class="botao6"><b><%= f.select :opcao2 , (OPCAOSN).sort %>   &nbsp&nbsp A criança estuda em  <%=Time.now.year%> , ou estudou anteriormente, em escola pública de outros municípios ou em escola particular?</b> <br/></td>
                       <%= observe_field 'crianca_opcao2',
                                       :update => "estudo",
                                       :url    => { :action => 'estudo_action_pre' },
@@ -187,7 +187,7 @@
                    <td colspan="6"><div id="estudo"></div></td>
               </tr>
               <tr bgcolor="#FFFFF">
-                <td colspan="6"><%= f.select :trabalho, (OPCAOSN).sort %>   &nbsp&nbsp  <b> Mãe/responsável legal trabalha COM registro em carteira de trabalho (CTPS)? &nbsp </b> .<font/></td>
+                <td colspan="6"><%= f.select :trabalho, (OPCAOSN).sort %>   &nbsp&nbsp  <b> Mãe/responsável legal trabalha COM registro em carteira de trabalho (CTPS)? &nbsp </b><font/></td>
                                    <%= observe_field 'crianca_trabalho',
                                       :update => "trabalho",
                                       :url    => { :action => 'trabalho_action_pre' },
@@ -210,9 +210,9 @@
                        </tr>
 
 
-     <tr>
+      <tr bgcolor="#FFFFF">
          
-          <td colspan="4"> <b> Observações: <%= f.text_field :obs,  :size =>"115"%>  &nbsp&nbsp <font size="1" color="blue" ><br/> <b>   Se necessário, registrar Informações que julgar relevantes para o direcionamento e atendimento desta inscrição. </b></font><br/>
+          <td colspan="4">&nbsp&nbsp&nbsp&nbsp&nbsp <font size="2" color="blue" ><b>  Se necessário, registrar abaixo informações que julgar relevantes para o direcionamento e atendimento desta inscrição. </b></font><br/> <b> Observações: </b><%= f.text_field :obs,  :size =>"115"%>
             <div id="dados"> <%= render :partial => 'observacoes'  %></div></td>
         </tr>
 
@@ -228,14 +228,14 @@
               direcionados, conforme a disponibilidade de vagas de cada unidade de ensino. O  aluno
               será atendido preferencialmente em escola pública próxima ao endereço, obedecendo ao
               estabelecido pelo Art. 4º, inciso X da Lei de Diretrizes e Bases da Educação Nacional
-              (Lei nº 9394/1996). . Salientamos, ainda, que a indicação da preferência do período/turno
+              (Lei nº 9394/1996). Salientamos, ainda, que a indicação da preferência do período/turno
               não é garantia de atendimento no período/turno assinalado, sendo possível o direcionamento
               para matrícula em período/turno diferente ao indicado, conforme disponibilidade de vagas das
               unidades escolares.  <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
              2) Declaro estar ciente de que declaração falsa pode implicar na sanção penal prevista no art. 299
-             do Código Penal, in verbis: <i>“Art. 299 – Omitir, em documento público ou particular, declaração
-               que nele deveria constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que
+             do Código Penal, nos termos: <i>“Art. 299 – Omitir, em documento público ou particular, declaração
+               que nele devia constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que
                devia ser escrita, com o fim de prejudicar direito, criar obrigação ou alterar a verdade sobre
                o fato juridicamente relevante.</i><br/>
                <u>Pena:</u> reclusão de 1 (um) a 5 (cinco) anos e multa, se o documento é público, reclusão de 1 (um) a 3 (três) anos, se o documento é particular.”

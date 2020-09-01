@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
   # render new.erb.html
   def new
   end
+
+  def new2
+  end
   
   def erro
     
