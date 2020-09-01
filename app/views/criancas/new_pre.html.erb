@@ -162,13 +162,14 @@
        <tr bgcolor="#FFFFF">
            <td colspan="6"><b>Justificativa </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
        </tr>-->
+
+              <tr  bgcolor="#FFFFF">
+                 <td colspan="6"class="botao6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO2).sort %>    </td>
+              </tr>
        <tr  bgcolor="#FFFFF">
          <td colspan="6"><font size ="2" color="red"><b id="pisca1"><u>ATENÇÃO:</u></b>&nbsp&nbsp <b>Após responder a perguntas abaixo SIM/NÃO aguarde a página atualizar para poder continuar, aguardando novas perguntas a serem respondida sobre a questão.</font></b> </td>
 
        </tr>
-              <tr  bgcolor="#FFFFF">
-                 <td colspan="6"class="botao6">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>  Período desejado </b> &nbsp&nbsp <%= f.select :periodo , (PERIODO2).sort %>    </td>
-              </tr>
              <tr  bgcolor="#FFFFF">
                    <td colspan="6"class="botao6"><b><%= f.select :irmao , (OPCAOSN).sort %>   &nbsp&nbsp  Possui irmão(s) matriculado(s) na Educação Infantil em escola da Rede Pública de Americana ou conveniada?</b></td>
                     <%= observe_field 'crianca_irmao',
