@@ -30,7 +30,7 @@
                        1) Esta ficha destina-se à inscrição para atendimento na rede pública de Americana em turmas de <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           Pré-Escola para <%=Time.now.year + 1%>, devendo ser preenchida somente para crianças que encontram-se SEM MATRÍCULA <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           no corrente ano OU que estejam em 2020 matriculadas em ESCOLA PARTICULAR ou em ESCOLAS DE  <br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                          OUTROS MUNICÍPIOS, desde que atualmente sejam moradoras na cidade de de Americana.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          OUTROS MUNICÍPIOS, desde que atualmente sejam moradoras na cidade de Americana.<br/> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 
 
@@ -185,7 +185,7 @@
 
               </tr>
               <tr  bgcolor="#FFFFF">
-                   <td colspan="6"class="botao6"><b><%= f.select :opcao2 , (OPCAOSN).sort %>   &nbsp&nbsp A criança estuda em  <%=Time.now.year%> , ou estudou anteriormente, em escola pública de outros municípios ou em escola particular?</b> <br/></td>
+                   <td colspan="6"class="botao6"><b><%= f.select :opcao2 , (OPCAOSN).sort %>   &nbsp&nbsp A criança estuda em  <%=Time.now.year%>, ou estudou anteriormente, em escola pública de outros municípios ou em escola particular?</b> <br/></td>
                       <%= observe_field 'crianca_opcao2',
                                       :update => "estudo",
                                       :url    => { :action => 'estudo_action_pre' },
@@ -236,9 +236,9 @@
               direcionados, conforme a disponibilidade de vagas de cada unidade de ensino. O  aluno
               será atendido preferencialmente em escola pública próxima ao endereço, obedecendo ao
               estabelecido pelo Art. 4º, inciso X da Lei de Diretrizes e Bases da Educação Nacional
-              (Lei nº 9394/1996).Salientamos, ainda, que não há garantia de atendimento no período/turno
+              (Lei nº 9394/1996). Salientamos, ainda, que não há garantia de atendimento no período/turno
               assinalado, sendo possível o direcionamento para matrícula em período/turno diferente ao indicado, 
-              conforme disponibilidade de vagas das unidades escolares
+              conforme disponibilidade de vagas das unidades escolares.
               .  <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
              2) Declaro estar ciente de que declaração falsa pode implicar na sanção penal prevista no art. 299
