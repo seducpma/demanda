@@ -5193,3 +5193,153 @@ Processing SessionsController#new (for 127.0.0.1 at 2020-09-01 10:07:34) [GET]
 Rendering template within layouts/login
 Rendering sessions/new
 Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#new_pre (for 127.0.0.1 at 2020-09-01 10:16:07) [GET]
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (271.7ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.3ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendering template within layouts/application
+Rendering criancas/new_pre
+Rendered criancas/_observacoes (2.4ms)
+Rendered criancas/_vagas (2.1ms)
+Rendered criancas/_form_observacao (3.3ms)
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_form_vaga (7.7ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-01 13:16:09' AND ends_at >= '2020-09-01 13:16:09') [0m
+Completed in 1864ms (View: 49, DB: 274) | 200 OK [http://localhost/new_pre]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-01 10:22:58) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-01 10:22:58) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 8ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#new_pre (for 127.0.0.1 at 2020-09-01 10:23:14) [GET]
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (293.4ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendering template within layouts/application
+Rendering criancas/new_pre
+Rendered criancas/_observacoes (2.5ms)
+Rendered criancas/_vagas (2.3ms)
+Rendered criancas/_form_observacao (2.5ms)
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_form_vaga (5.4ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-01 13:23:16' AND ends_at >= '2020-09-01 13:23:16') [0m
+Completed in 1851ms (View: 40, DB: 296) | 200 OK [http://localhost/new_pre]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#new_pre (for 127.0.0.1 at 2020-09-01 10:24:05) [GET]
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.2ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (273.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendering template within layouts/application
+Rendering criancas/new_pre
+Rendered criancas/_observacoes (2.4ms)
+Rendered criancas/_vagas (2.0ms)
+Rendered criancas/_form_observacao (2.4ms)
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_form_vaga (5.5ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-01 13:24:07' AND ends_at >= '2020-09-01 13:24:07') [0m
+Completed in 2004ms (View: 40, DB: 276) | 200 OK [http://localhost/new_pre]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#new_pre (for 127.0.0.1 at 2020-09-01 10:24:17) [GET]
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.2ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (282.6ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendering template within layouts/application
+Rendering criancas/new_pre
+Rendered criancas/_observacoes (2.4ms)
+Rendered criancas/_vagas (2.3ms)
+Rendered criancas/_form_observacao (2.5ms)
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_form_vaga (5.3ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-01 13:24:20' AND ends_at >= '2020-09-01 13:24:20') [0m
+Completed in 2427ms (View: 47, DB: 286) | 200 OK [http://localhost/new_pre]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#new_pre (for 127.0.0.1 at 2020-09-01 10:24:38) [GET]
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (281.8ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendering template within layouts/application
+Rendering criancas/new_pre
+Rendered criancas/_observacoes (2.6ms)
+Rendered criancas/_vagas (2.7ms)
+Rendered criancas/_form_observacao (2.5ms)
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_form_vaga (5.6ms)
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-01 13:24:41' AND ends_at >= '2020-09-01 13:24:41') [0m
+Completed in 2774ms (View: 41, DB: 284) | 200 OK [http://localhost/new_pre]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-01 10:25:54) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-01 10:26:13) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-01 10:26:24) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/session/new]
