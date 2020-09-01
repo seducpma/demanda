@@ -176,7 +176,7 @@ display: none;
                            <li><%= link_to "Transferencias",transferencias_path %></li>
                            </ul>
               </li>
-              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
+              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC'))%>
               <li><span class="divider divider-vert" ></span></li>
               <li><a class="item-primary" href="#;">Vagas</a>
                  <ul style="width:108px;">
