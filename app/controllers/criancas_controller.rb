@@ -250,6 +250,9 @@ end
 def erro
 end
 
+def fora_ar
+end
+
 
   def status
 
