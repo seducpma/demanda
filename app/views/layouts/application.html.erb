@@ -119,9 +119,9 @@ display: none;
                                <ul>
                                   <li><%= link_to "Inscrição",consultas_criancas_path %></li>
                                   <li><a>Staus</a>
-                                     <ul>
-                                        <li><%= link_to "Creche",consulta_unidade_status_path %></li>
-                                            <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')) %>
+                                     <ul> <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')) %>
+                                               <li><%= link_to "Creche",consulta_unidade_status_path %></li>
+                                           
                                                <li><%= link_to "Pré_escola",consultas_pre_criancas_path %></li>
                                              <%end%>
                                      </ul>
