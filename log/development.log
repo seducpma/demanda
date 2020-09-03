@@ -7848,3 +7848,1378 @@ Rendering criancas/aviso_pre2
   [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
   [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
 Completed in 3169ms (View: 21, DB: 461) | 200 OK [http://localhost/criancas]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-03 13:06:38) [GET]
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.6ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 16:06:38' AND ends_at >= '2020-09-03 16:06:38') [0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 34ms (View: 19, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas_pre (for 127.0.0.1 at 2020-09-03 13:06:43) [GET]
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (272.5ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (42.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas_pre
+Rendered criancas/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 16:06:45' AND ends_at >= '2020-09-03 16:06:45') [0m
+  [4;36;1mroles_users Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 1839ms (View: 23, DB: 319) | 200 OK [http://localhost/criancas/consultas_pre]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#pre_criancas (for 127.0.0.1 at 2020-09-03 13:06:59) [GET]
+  Parameters: {"search1"=>"", "type_of"=>"6", "_"=>"1599149219693", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.2ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (292.7ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.2ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (15.4ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='NA_DEMANDA')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;35;1mCrianca Load (10.0ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='MATRICULADA')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;36;1mCrianca Load (12.2ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='CANCELADA')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;35;1mCrianca Load (10.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='RECUSOU')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;36;1mCrianca Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.2ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mGrupo Load (0.3ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mGrupo Load (0.3ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+Rendered criancas/_criancas_pre (313.9ms)
+Completed in 3145ms (View: 326, DB: 345) | 200 OK [http://localhost/pre_criancas?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=6&search1=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599149219693]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-03 13:11:24) [GET]
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 16:11:24' AND ends_at >= '2020-09-03 16:11:24') [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 524ms (View: 16, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas (for 127.0.0.1 at 2020-09-03 13:11:30) [GET]
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (270.5ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas
+Rendered criancas/_consulta_rec (0.8ms)
+Rendered criancas/_consulta (0.3ms)
+  [4;35;1mCrianca Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendered criancas/_consulta_status (8.2ms)
+Rendered criancas/_consulta_mae (0.7ms)
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 16:11:32' AND ends_at >= '2020-09-03 16:11:32') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 1975ms (View: 34, DB: 275) | 200 OK [http://localhost/criancas/consultas]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultacrianca (for 127.0.0.1 at 2020-09-03 14:03:34) [GET]
+  Parameters: {"search1"=>"sophia bernar", "crianca"=>{"status"=>""}, "searchmae"=>"", "type_of"=>"1", "_"=>"1599152614354", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "searchrec"=>""}
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (268.2ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (17.6ms)[0m   [0mSELECT * FROM `criancas` WHERE (nome like '%sophia bernar%'AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (12.4ms)[0m   [0;1mSELECT * FROM `criancas` WHERE ( nome like '%sophia bernar%' AND status ='CANCELADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (12.1ms)[0m   [0mSELECT * FROM `criancas` WHERE ( nome like '%sophia bernar%' and status ='NA_DEMANDA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (12.0ms)[0m   [0;1mSELECT * FROM `criancas` WHERE ( nome like '%sophia bernar%' and status ='MATRICULADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+Rendered criancas/_criancas (3.2ms)
+Completed in 2544ms (View: 9, DB: 324) | 200 OK [http://localhost/consultacrianca?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=1&searchrec=&search1=sophia+bernar&crianca%5Bstatus%5D=&searchmae=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599152614354]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultacrianca (for 127.0.0.1 at 2020-09-03 14:03:37) [GET]
+  Parameters: {"search1"=>"sophia bernar", "crianca"=>{"status"=>""}, "searchmae"=>"", "type_of"=>"1", "_"=>"1599152616416", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "searchrec"=>""}
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (266.8ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nome like '%sophia bernar%'AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE ( nome like '%sophia bernar%' AND status ='CANCELADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE ( nome like '%sophia bernar%' and status ='NA_DEMANDA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.0ms)[0m   [0mSELECT * FROM `criancas` WHERE ( nome like '%sophia bernar%' and status ='MATRICULADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+Rendered criancas/_criancas (0.1ms)
+Completed in 2148ms (View: 2, DB: 268) | 200 OK [http://localhost/consultacrianca?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=1&searchrec=&search1=sophia+bernar&crianca%5Bstatus%5D=&searchmae=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599152616416]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas (for 127.0.0.1 at 2020-09-03 14:03:43) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (275.2ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas
+Rendered criancas/_consulta_rec (0.3ms)
+Rendered criancas/_consulta (0.3ms)
+  [4;35;1mCrianca Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+Rendered criancas/_consulta_status (9.3ms)
+Rendered criancas/_consulta_mae (0.3ms)
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:03:45' AND ends_at >= '2020-09-03 17:03:45') [0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 1779ms (View: 25, DB: 281) | 200 OK [http://localhost/criancas/consultas]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultacrianca (for 127.0.0.1 at 2020-09-03 14:04:06) [GET]
+  Parameters: {"search1"=>"sophya bernar", "crianca"=>{"status"=>""}, "searchmae"=>"", "type_of"=>"1", "_"=>"1599152646420", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "searchrec"=>""}
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (277.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (19.5ms)[0m   [0mSELECT * FROM `criancas` WHERE (nome like '%sophya bernar%'AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (13.4ms)[0m   [0;1mSELECT * FROM `criancas` WHERE ( nome like '%sophya bernar%' AND status ='CANCELADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (12.6ms)[0m   [0mSELECT * FROM `criancas` WHERE ( nome like '%sophya bernar%' and status ='NA_DEMANDA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (12.2ms)[0m   [0;1mSELECT * FROM `criancas` WHERE ( nome like '%sophya bernar%' and status ='MATRICULADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mGrupo Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `grupos`[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mRegiao Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mRegiao Load (0.2ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 118) [0m
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;36;1mCrianca Load (0.3ms)[0m   [0;1mSELECT id FROM `criancas` WHERE (id =13218 and (unidade_ref = 'CC MAIRA')) [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Rendered criancas/_criancas (26.4ms)
+Completed in 2699ms (View: 24, DB: 342) | 200 OK [http://localhost/consultacrianca?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=1&searchrec=&search1=sophya+bernar&crianca%5Bstatus%5D=&searchmae=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599152646420]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#edit (for 127.0.0.1 at 2020-09-03 14:04:13) [GET]
+  Parameters: {"id"=>"13218"}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.2ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.2ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (274.7ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mUnidade Load (0.7ms)[0m   [0mSELECT * FROM `unidades` WHERE ( ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)) [0m
+  [4;36;1mCrianca Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mCrianca Load (0.5ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+Rendering template within layouts/application
+Rendering criancas/edit
+  [4;36;1mUnidade Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mBairro Load (0.6ms)[0m   [0mSELECT * FROM `bairros` WHERE (ativo = 1) ORDER BY nome[0m
+  [4;36;1mBairro Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `bairros`[0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 17) [0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;36;1mObservacaoCrianca Load (71.1ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13218) [0m
+Rendered criancas/_observacoes (74.4ms)
+  [4;35;1mVagaCrianca Load (1.0ms)[0m   [0mSELECT * FROM `vaga_criancas` WHERE (`vaga_criancas`.crianca_id = 13218) [0m
+Rendered criancas/_vagas (5.8ms)
+Rendered criancas/_form_observacao (3.9ms)
+Rendered criancas/_form_vaga (5.3ms)
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:04:15' AND ends_at >= '2020-09-03 17:04:15') [0m
+Completed in 2577ms (View: 259, DB: 356) | 200 OK [http://localhost/criancas/13218/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#create_observacao_crianca (for 127.0.0.1 at 2020-09-03 14:04:36) [POST]
+  Parameters: {"authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "observacao_crianca"=>{"funcionario"=>"", "observacao"=>"testetetszstetet"}}
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (278.2ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mObservacaoCrianca Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `observacao_criancas`[0m
+  [4;35;1mCrianca Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;35;1mUnidade Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mObservacaoCrianca Create (0.2ms)[0m   [0;1mINSERT INTO `observacao_criancas` (`funcionario`, `observacao`, `data`, `updated_at`, `crianca_id`, `created_at`) VALUES('(CC MAIRA)', 'testetetszstetet', '2020-09-03 14:04:38', '2020-09-03 17:04:38', 13218, '2020-09-03 17:04:38')[0m
+  [4;35;1mSQL (81.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mObservacaoCrianca Load (12.5ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13218) [0m
+  [4;35;1mroles_users Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (6.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Rendered criancas/_observacoes (353.0ms)
+Completed in 2574ms (View: 336, DB: 384) | 200 OK [http://localhost/criancas/create_observacao_crianca]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-03 14:06:54) [GET]
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:06:54' AND ends_at >= '2020-09-03 17:06:54') [0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 38ms (View: 22, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_unidade (for 127.0.0.1 at 2020-09-03 14:07:01) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (272.8ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consulta_unidade
+  [4;35;1mRegiao Load (0.7ms)[0m   [0mSELECT * FROM `regiaos` WHERE (id > 99) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.4ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id != 3) ORDER BY nome[0m
+  [4;35;1mGrupo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mRegiao Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered criancas/_consulta_regiao (7.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (id > 99) ORDER BY nome[0m
+Rendered criancas/_consulta_classe (2.1ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id != 3) ORDER BY nome[0m
+  [4;35;1mUnidade Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_consulta_unidade (4.2ms)
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:07:02' AND ends_at >= '2020-09-03 17:07:02') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 1773ms (View: 40, DB: 280) | 200 OK [http://localhost/unidade]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:07:34) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"5", "classe_id"=>"", "grupo4_id"=>"", "regiao2_id"=>"", "unidade_ref"=>"CC MAIRA", "regiao4_id"=>""}, "type_of"=>"3", "_"=>"1599152853848", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (266.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (10.6ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND grupo_id='5' AND unidade_ref='CC MAIRA') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (23.1ms)
+Completed in 2391ms (View: 26, DB: 282) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=3&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=&crianca%5Bregiao2_id%5D=&crianca%5Bgrupo3_id%5D=5&crianca%5Bunidade_ref%5D=CC+MAIRA&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599152853848]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#update (for 127.0.0.1 at 2020-09-03 14:07:45) [PUT]
+  Parameters: {"crianca"=>{"unidade_i"=>"", "irmao"=>"0", "necessidade"=>"", "endereco"=>"RUA GARDENIA", "mae"=>"DAYARA BERNARDINO ALVES", "trabalho"=>"true", "end_indicacao"=>"RUA GARDENIA ", "parentesco"=>"", "pai"=>"HUMBERTO LOPES SANTOS", "fone_trabalho"=>"", "vinculo"=>"", "num_trab"=>"", "celular"=>"19 989232924", "responsavel_n"=>"", "created_at(4i)"=>"14", "created_at(1i)"=>"2020", "created_at(2i)"=>"2", "created_at(3i)"=>"4", "n_especial"=>"false", "created_at(5i)"=>"10", "bairro_indicacao"=>"CIDADE JARDIM", "num_indicacao"=>"42", "nome"=>"SOPHYA BERNARDINO SANTOS", "regiao_id"=>"118", "numero"=>"42", "local_trabalho"=>"FAMILIA ATENDIDA PELO CRAS", "nomerecado"=>"", "bairro_trab"=>"", "tel2"=>"", "tel1"=>"", "nascimento(1i)"=>"2016", "nascimento(2i)"=>"11", "declaracao"=>"0", "complemento"=>"", "nascimento(3i)"=>"28", "autonomo"=>"0", "servidor_publico"=>"0", "justif_indicacao"=>"", "bairro"=>"CIDADE JARDIM"}, "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "commit"=>"Salvar", "id"=>"13218"}
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (276.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering criancas/edit
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mBairro Load (0.1ms)[0m   [0mSELECT * FROM `bairros` WHERE (ativo = 1) ORDER BY nome[0m
+  [4;36;1mBairro Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `bairros`[0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 17) [0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 4) [0m
+  [4;36;1mObservacaoCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13218) [0m
+  [4;35;1mObservacaoCrianca Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `observacao_criancas`[0m
+Rendered criancas/_observacoes (7.0ms)
+  [4;36;1mVagaCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `vaga_criancas` WHERE (`vaga_criancas`.crianca_id = 13218) [0m
+Rendered criancas/_vagas (2.9ms)
+Rendered criancas/_form_observacao (2.4ms)
+Rendered criancas/_form_vaga (3.4ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:07:47' AND ends_at >= '2020-09-03 17:07:47') [0m
+Completed in 2329ms (View: 215, DB: 283) | 200 OK [http://localhost/criancas/13218]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#update (for 127.0.0.1 at 2020-09-03 14:07:56) [PUT]
+  Parameters: {"crianca"=>{"unidade_i"=>"", "irmao"=>"0", "necessidade"=>"", "endereco"=>"RUA GARDENIA", "mae"=>"DAYARA BERNARDINO ALVES", "trabalho"=>"true", "end_indicacao"=>"RUA GARDENIA ", "parentesco"=>"", "pai"=>"HUMBERTO LOPES SANTOS", "fone_trabalho"=>"", "vinculo"=>"", "num_trab"=>"", "celular"=>"19 989232924", "responsavel_n"=>"", "created_at(4i)"=>"14", "created_at(1i)"=>"2020", "created_at(2i)"=>"2", "created_at(3i)"=>"4", "n_especial"=>"false", "created_at(5i)"=>"10", "bairro_indicacao"=>"CIDADE JARDIM", "num_indicacao"=>"42", "nome"=>"SOPHYA BERNARDINO SANTOS", "regiao_id"=>"118", "numero"=>"42", "local_trabalho"=>"FAMILIA ATENDIDA PELO CRAS", "nomerecado"=>"", "bairro_trab"=>"", "tel2"=>"", "tel1"=>"asdasd", "nascimento(1i)"=>"2016", "nascimento(2i)"=>"11", "declaracao"=>"0", "complemento"=>"", "nascimento(3i)"=>"28", "autonomo"=>"0", "servidor_publico"=>"0", "justif_indicacao"=>"", "bairro"=>"CIDADE JARDIM"}, "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "commit"=>"Salvar", "id"=>"13218"}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.2ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (276.4ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCrianca Update (0.4ms)[0m   [0;1mUPDATE `criancas` SET `tel1` = 'asdasd', `updated_at` = '2020-09-03 17:07:58' WHERE `id` = 13218[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (52.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCrianca Load (0.6ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mCrianca Update (0.5ms)[0m   [0;1mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:07:58', `grupo_id` = 6 WHERE `id` = 13218[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (49.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCrianca Load (0.6ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mCrianca Update (0.3ms)[0m   [0;1mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:07:58', `opcao1` = 'trabalho' WHERE `id` = 13218[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (47.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCrianca Update (0.5ms)[0m   [0mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:07:58', `opcao1` = 'trabalha' WHERE `id` = 13218[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (52.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCrianca Update (0.5ms)[0m   [0;1mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:07:58', `regiao_id` = NULL WHERE `id` = 13218[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (45.6ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/criancas/13218
+Completed in 2859ms (DB: 531) | 302 Found [http://localhost/criancas/13218]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#show (for 127.0.0.1 at 2020-09-03 14:07:59) [GET]
+  Parameters: {"id"=>"13218"}
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8)AND (ativo = 1) and id=4) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1 ) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (278.0ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (45.9ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.5ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13218) [0m
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` WHERE (regiao_id=NULL AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)) [0m
+Rendering template within layouts/application
+Rendering criancas/show
+  [4;36;1mObservacaoCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13218) [0m
+  [4;35;1mObservacaoCrianca Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `observacao_criancas`[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Rendered criancas/_observacoes (12.9ms)
+  [4;35;1mGrupo Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mUnidade Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 17) [0m
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:08:01' AND ends_at >= '2020-09-03 17:08:01') [0m
+Completed in 2717ms (View: 44, DB: 332) | 200 OK [http://localhost/criancas/13218]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2020-09-03 14:08:02) [GET]
+
+ActionController::RoutingError (No route matches "/photos/imagem/missing.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-03 14:09:55) [GET]
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:09:55' AND ends_at >= '2020-09-03 17:09:55') [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 29ms (View: 16, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_unidade (for 127.0.0.1 at 2020-09-03 14:10:53) [GET]
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.5ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (264.4ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consulta_unidade
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` WHERE (id > 99) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id != 3) ORDER BY nome[0m
+  [4;35;1mGrupo Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mRegiao Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered criancas/_consulta_regiao (3.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (id > 99) ORDER BY nome[0m
+Rendered criancas/_consulta_classe (1.1ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id != 3) ORDER BY nome[0m
+  [4;35;1mUnidade Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_consulta_unidade (156.5ms)
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:10:55' AND ends_at >= '2020-09-03 17:10:55') [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 1776ms (View: 176, DB: 270) | 200 OK [http://localhost/unidade]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:11:38) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153098288", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (4.4ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (271.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (10.7ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (24.1ms)
+Completed in 2645ms (View: 25, DB: 290) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153098288]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-03 14:12:10) [GET]
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:12:10' AND ends_at >= '2020-09-03 17:12:10') [0m
+  [4;36;1mroles_users Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 31ms (View: 17, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas (for 127.0.0.1 at 2020-09-03 14:12:14) [GET]
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (263.8ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas
+Rendered criancas/_consulta_rec (0.3ms)
+Rendered criancas/_consulta (0.3ms)
+  [4;36;1mCrianca Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+Rendered criancas/_consulta_status (8.1ms)
+Rendered criancas/_consulta_mae (0.3ms)
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:12:15' AND ends_at >= '2020-09-03 17:12:15') [0m
+  [4;36;1mroles_users Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.0ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 1794ms (View: 23, DB: 268) | 200 OK [http://localhost/criancas/consultas]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultacrianca (for 127.0.0.1 at 2020-09-03 14:12:28) [GET]
+  Parameters: {"search1"=>"ELIEL MENDES SOARES", "crianca"=>{"status"=>""}, "searchmae"=>"", "type_of"=>"1", "_"=>"1599153148499", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "searchrec"=>""}
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (285.1ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (19.0ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nome like '%ELIEL MENDES SOARES%' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC, unidade_id ASC[0m
+  [4;35;1mCrianca Load (12.2ms)[0m   [0mSELECT * FROM `criancas` WHERE ( nome like '%ELIEL MENDES SOARES%' AND status ='CANCELADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (12.7ms)[0m   [0;1mSELECT * FROM `criancas` WHERE ( nome like '%ELIEL MENDES SOARES%' and status ='NA_DEMANDA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7)) ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (12.4ms)[0m   [0mSELECT * FROM `criancas` WHERE ( nome like '%ELIEL MENDES SOARES%' and status ='MATRICULADA' AND nascimento >= '2015-04-01' AND (grupo_id <> 6 AND grupo_id <> 7) ) ORDER BY nome ASC[0m
+  [4;36;1mCrianca Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mRegiao Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;35;1mUnidade Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 52) [0m
+  [4;35;1mCrianca Load (0.2ms)[0m   [0mSELECT id FROM `criancas` WHERE (id =12339 and (unidade_ref = 'SEDUC')) [0m
+  [4;36;1mroles_users Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.0ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mRegiao Load (0.3ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 107) [0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT id FROM `criancas` WHERE (id =13667 and (unidade_ref = 'SEDUC')) [0m
+Rendered criancas/_criancas (27.5ms)
+Completed in 2497ms (View: 26, DB: 348) | 200 OK [http://localhost/consultacrianca?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=1&searchrec=&search1=ELIEL+MENDES+SOARES&crianca%5Bstatus%5D=&searchmae=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153148499]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#edit (for 127.0.0.1 at 2020-09-03 14:12:39) [GET]
+  Parameters: {"id"=>"13667"}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (290.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ( ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)) [0m
+  [4;36;1mCrianca Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mCrianca Load (0.2ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+Rendering template within layouts/application
+Rendering criancas/edit
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mBairro Load (0.1ms)[0m   [0mSELECT * FROM `bairros` WHERE (ativo = 1) ORDER BY nome[0m
+  [4;36;1mBairro Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `bairros`[0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 24) [0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 52) [0m
+  [4;36;1mObservacaoCrianca Load (7.7ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13667) [0m
+Rendered criancas/_observacoes (11.1ms)
+  [4;35;1mVagaCrianca Load (0.7ms)[0m   [0mSELECT * FROM `vaga_criancas` WHERE (`vaga_criancas`.crianca_id = 13667) [0m
+Rendered criancas/_vagas (4.3ms)
+Rendered criancas/_form_observacao (3.2ms)
+Rendered criancas/_form_vaga (4.4ms)
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:12:41' AND ends_at >= '2020-09-03 17:12:41') [0m
+Completed in 1856ms (View: 63, DB: 304) | 200 OK [http://localhost/criancas/13667/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#create_observacao_crianca (for 127.0.0.1 at 2020-09-03 14:12:54) [POST]
+  Parameters: {"authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "observacao_crianca"=>{"funcionario"=>"", "observacao"=>"teste"}}
+  [4;35;1mUser Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (263.0ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mObservacaoCrianca Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `observacao_criancas`[0m
+  [4;35;1mCrianca Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mUnidade Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 52) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mObservacaoCrianca Create (0.3ms)[0m   [0;1mINSERT INTO `observacao_criancas` (`funcionario`, `observacao`, `data`, `updated_at`, `crianca_id`, `created_at`) VALUES('(SEDUC)', 'teste', '2020-09-03 14:12:56', '2020-09-03 17:12:56', 13667, '2020-09-03 17:12:56')[0m
+  [4;35;1mSQL (60.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mObservacaoCrianca Load (12.9ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13667) [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Rendered criancas/_observacoes (20.8ms)
+Completed in 2360ms (View: 10, DB: 343) | 200 OK [http://localhost/criancas/create_observacao_crianca]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#update (for 127.0.0.1 at 2020-09-03 14:12:58) [PUT]
+  Parameters: {"crianca"=>{"unidade_i"=>"", "irmao"=>"0", "necessidade"=>"", "endereco"=>"RUA FRANCISCO GARBO", "mae"=>"ALESSANDRA CRISTINA SANTOS VIEGAS", "trabalho"=>"0", "end_indicacao"=>"", "parentesco"=>"", "pai"=>"ROBSON MUNIZ SOARES", "vinculo"=>"", "celular"=>"19.996091700", "responsavel_n"=>"", "created_at(4i)"=>"15", "created_at(1i)"=>"2020", "created_at(2i)"=>"3", "created_at(3i)"=>"3", "n_especial"=>"false", "created_at(5i)"=>"20", "bairro_indicacao"=>"", "num_indicacao"=>"", "nome"=>"ELIEL MENDES SOARES", "regiao_id"=>"107", "numero"=>"537", "nomerecado"=>"", "tel2"=>"", "tel1"=>"", "nascimento(1i)"=>"2017", "nascimento(2i)"=>"3", "declaracao"=>"0", "complemento"=>"CASA A", "nascimento(3i)"=>"9", "autonomo"=>"0", "servidor_publico"=>"0", "justif_indicacao"=>"", "bairro"=>""}, "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "commit"=>"Salvar", "id"=>"13667"}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (271.0ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering criancas/edit
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mBairro Load (0.1ms)[0m   [0mSELECT * FROM `bairros` WHERE (ativo = 1) ORDER BY nome[0m
+  [4;36;1mBairro Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `bairros`[0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 24) [0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 52) [0m
+  [4;36;1mObservacaoCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13667) [0m
+  [4;35;1mObservacaoCrianca Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `observacao_criancas`[0m
+Rendered criancas/_observacoes (6.9ms)
+  [4;36;1mVagaCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `vaga_criancas` WHERE (`vaga_criancas`.crianca_id = 13667) [0m
+Rendered criancas/_vagas (3.0ms)
+Rendered criancas/_form_observacao (2.5ms)
+Rendered criancas/_form_vaga (3.4ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:13:01' AND ends_at >= '2020-09-03 17:13:01') [0m
+Completed in 2553ms (View: 62, DB: 277) | 200 OK [http://localhost/criancas/13667]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#update (for 127.0.0.1 at 2020-09-03 14:13:24) [PUT]
+  Parameters: {"crianca"=>{"unidade_i"=>"", "irmao"=>"0", "necessidade"=>"", "endereco"=>"RUA FRANCISCO GARBO", "mae"=>"ALESSANDRA CRISTINA SANTOS VIEGAS", "trabalho"=>"0", "end_indicacao"=>"", "parentesco"=>"", "pai"=>"ROBSON MUNIZ SOARES", "vinculo"=>"", "celular"=>"19.996091700", "responsavel_n"=>"", "created_at(4i)"=>"15", "created_at(1i)"=>"2020", "created_at(2i)"=>"3", "created_at(3i)"=>"3", "n_especial"=>"false", "created_at(5i)"=>"20", "bairro_indicacao"=>"", "num_indicacao"=>"", "nome"=>"ELIEL MENDES SOARES", "regiao_id"=>"107", "numero"=>"537", "nomerecado"=>"", "tel2"=>"", "tel1"=>"", "nascimento(1i)"=>"2017", "nascimento(2i)"=>"3", "declaracao"=>"0", "complemento"=>"CASA A", "nascimento(3i)"=>"9", "autonomo"=>"0", "servidor_publico"=>"0", "justif_indicacao"=>"", "bairro"=>""}, "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "commit"=>"Salvar", "id"=>"13667"}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (268.8ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCrianca Update (0.5ms)[0m   [0mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:13:26', `grupo_id` = 6 WHERE `id` = 13667[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (50.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCrianca Load (0.6ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCrianca Update (0.4ms)[0m   [0mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:13:26', `opcao1` = 'não trabalha' WHERE `id` = 13667[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (51.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCrianca Update (0.4ms)[0m   [0;1mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:13:26', `regiao_id` = NULL WHERE `id` = 13667[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (48.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/criancas/13667
+Completed in 2717ms (DB: 424) | 302 Found [http://localhost/criancas/13667]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#show (for 127.0.0.1 at 2020-09-03 14:13:26) [GET]
+  Parameters: {"id"=>"13667"}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (3.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (269.6ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (37.6ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.4ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (regiao_id=NULL AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)) [0m
+Rendering template within layouts/application
+Rendering criancas/show
+  [4;36;1mObservacaoCrianca Load (0.2ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13667) [0m
+  [4;35;1mObservacaoCrianca Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `observacao_criancas`[0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Rendered criancas/_observacoes (15.1ms)
+  [4;35;1mGrupo Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mUnidade Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 24) [0m
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:13:30' AND ends_at >= '2020-09-03 17:13:30') [0m
+Completed in 3357ms (View: 288, DB: 319) | 200 OK [http://localhost/criancas/13667]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2020-09-03 14:13:30) [GET]
+
+ActionController::RoutingError (No route matches "/photos/imagem/missing.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-03 14:13:37) [GET]
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:13:37' AND ends_at >= '2020-09-03 17:13:37') [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 35ms (View: 19, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_unidade (for 127.0.0.1 at 2020-09-03 14:13:40) [GET]
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (275.0ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consulta_unidade
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` WHERE (id > 99) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id != 3) ORDER BY nome[0m
+  [4;35;1mGrupo Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mRegiao Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered criancas/_consulta_regiao (4.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (id > 99) ORDER BY nome[0m
+Rendered criancas/_consulta_classe (1.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id != 3) ORDER BY nome[0m
+  [4;35;1mUnidade Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Rendered criancas/_consulta_unidade (4.1ms)
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:13:42' AND ends_at >= '2020-09-03 17:13:42') [0m
+  [4;35;1mroles_users Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 1774ms (View: 25, DB: 282) | 200 OK [http://localhost/unidade]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:13:53) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153233087", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (275.0ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (19.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (234.8ms)
+Completed in 1869ms (View: 233, DB: 301) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153233087]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:16:13) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153373015", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.2ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (274.7ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (46.8ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (12.8ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (22.6ms)
+Completed in 1882ms (View: 25, DB: 339) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153373015]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:16:17) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153377147", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (270.9ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.2ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (20.8ms)
+Completed in 1721ms (View: 21, DB: 275) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153377147]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:16:19) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153378783", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (284.2ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (20.2ms)
+Completed in 1981ms (View: 21, DB: 289) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153378783]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:16:21) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153379094", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (264.1ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (25.7ms)
+Completed in 1705ms (View: 25, DB: 270) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153379094]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consulta_classe (for 127.0.0.1 at 2020-09-03 14:16:23) [GET]
+  Parameters: {"crianca"=>{"grupo3_id"=>"", "classe_id"=>"5", "grupo4_id"=>"", "regiao2_id"=>"107", "unidade_ref"=>"", "regiao4_id"=>""}, "type_of"=>"2", "_"=>"1599153379330", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (267.6ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (status = 'NA_DEMANDA' AND regiao_id='107' AND grupo_id='5') ORDER BY servidor_publico DESC, transferencia DESC, trabalho DESC, declaracao DESC, autonomo DESC, created_at ASC[0m
+  [4;36;1mCrianca Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+Rendered criancas/_criancas_regiao (203.9ms)
+Completed in 1932ms (View: 203, DB: 273) | 200 OK [http://localhost/consulta_classe?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=2&crianca%5Bgrupo4_id%5D=&crianca%5Bregiao4_id%5D=&crianca%5Bclasse_id%5D=5&crianca%5Bregiao2_id%5D=107&crianca%5Bgrupo3_id%5D=&crianca%5Bunidade_ref%5D=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153379330]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#edit (for 127.0.0.1 at 2020-09-03 14:19:26) [GET]
+  Parameters: {"id"=>"13667"}
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (276.6ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ( ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)) [0m
+  [4;36;1mCrianca Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mCrianca Load (0.3ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+Rendering template within layouts/application
+Rendering criancas/edit
+  [4;36;1mUnidade Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mBairro Load (0.1ms)[0m   [0mSELECT * FROM `bairros` WHERE (ativo = 1) ORDER BY nome[0m
+  [4;36;1mBairro Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `bairros`[0m
+  [4;35;1mroles_users Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 24) [0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 52) [0m
+  [4;36;1mObservacaoCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13667) [0m
+  [4;35;1mObservacaoCrianca Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `observacao_criancas`[0m
+Rendered criancas/_observacoes (6.7ms)
+  [4;36;1mVagaCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `vaga_criancas` WHERE (`vaga_criancas`.crianca_id = 13667) [0m
+Rendered criancas/_vagas (164.1ms)
+Rendered criancas/_form_observacao (2.5ms)
+Rendered criancas/_form_vaga (3.5ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:19:28' AND ends_at >= '2020-09-03 17:19:28') [0m
+Completed in 2180ms (View: 221, DB: 284) | 200 OK [http://localhost/criancas/13667/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#update (for 127.0.0.1 at 2020-09-03 14:20:56) [PUT]
+  Parameters: {"crianca"=>{"unidade_i"=>"", "irmao"=>"0", "necessidade"=>"", "endereco"=>"RUA FRANCISCO GARBO", "mae"=>"ALESSANDRA CRISTINA SANTOS VIEGAS", "trabalho"=>"0", "end_indicacao"=>"", "parentesco"=>"", "pai"=>"ROBSON MUNIZ SOARES", "vinculo"=>"", "celular"=>"19.996091700", "responsavel_n"=>"", "created_at(4i)"=>"15", "created_at(1i)"=>"2020", "created_at(2i)"=>"3", "created_at(3i)"=>"3", "n_especial"=>"false", "created_at(5i)"=>"20", "bairro_indicacao"=>"", "num_indicacao"=>"", "nome"=>"ELIEL MENDES SOARES", "regiao_id"=>"107", "numero"=>"537", "nomerecado"=>"", "tel2"=>"", "tel1"=>"", "nascimento(1i)"=>"2017", "nascimento(2i)"=>"3", "declaracao"=>"0", "complemento"=>"CASA A", "nascimento(3i)"=>"9", "autonomo"=>"0", "servidor_publico"=>"0", "justif_indicacao"=>"", "bairro"=>""}, "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI=", "commit"=>"Salvar", "id"=>"13667"}
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.2ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (268.7ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+[paperclip] Saving attachments.
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mCrianca Update (0.3ms)[0m   [0;1mUPDATE `criancas` SET `updated_at` = '2020-09-03 17:20:58', `regiao_id` = NULL WHERE `id` = 13667[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (52.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/criancas/13667
+Completed in 2672ms (DB: 325) | 302 Found [http://localhost/criancas/13667]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#show (for 127.0.0.1 at 2020-09-03 14:20:59) [GET]
+  Parameters: {"id"=>"13667"}
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (269.9ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (35.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mCrianca Load (0.6ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (`criancas`.`id` = 13667) [0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE (regiao_id=NULL AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)) [0m
+Rendering template within layouts/application
+Rendering criancas/show
+  [4;36;1mObservacaoCrianca Load (0.2ms)[0m   [0;1mSELECT * FROM `observacao_criancas` WHERE (`observacao_criancas`.crianca_id = 13667) [0m
+  [4;35;1mObservacaoCrianca Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `observacao_criancas`[0m
+  [4;36;1mroles_users Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Rendered criancas/_observacoes (15.5ms)
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mUnidade Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 24) [0m
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:21:02' AND ends_at >= '2020-09-03 17:21:02') [0m
+Completed in 2818ms (View: 30, DB: 312) | 200 OK [http://localhost/criancas/13667]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2020-09-03 14:21:02) [GET]
+
+ActionController::RoutingError (No route matches "/photos/imagem/missing.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas_pre (for 127.0.0.1 at 2020-09-03 14:24:03) [GET]
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (264.9ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas_pre
+Rendered criancas/_consulta (0.3ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-03 17:24:05' AND ends_at >= '2020-09-03 17:24:05') [0m
+  [4;36;1mroles_users Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.0ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 1935ms (View: 15, DB: 267) | 200 OK [http://localhost/criancas/consultas_pre]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#pre_criancas (for 127.0.0.1 at 2020-09-03 14:24:10) [GET]
+  Parameters: {"search1"=>"", "type_of"=>"6", "_"=>"1599153850645", "authenticity_token"=>"61/GNbKh6s9JbOCdw9MuK2rwES0I6rOqY+7KiLxjGrI="}
+  [4;35;1mUser Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (273.1ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (10.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='NA_DEMANDA')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;35;1mCrianca Load (15.4ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='MATRICULADA')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;36;1mCrianca Load (10.4ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='CANCELADA')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;35;1mCrianca Load (9.9ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='RECUSOU')) ORDER BY grupo_id ASC, nome ASC[0m
+  [4;36;1mCrianca Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+Rendered criancas/_criancas_pre (47.2ms)
+Completed in 1915ms (View: 57, DB: 322) | 200 OK [http://localhost/pre_criancas?authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&type_of=6&search1=&authenticity_token=61%2FGNbKh6s9JbOCdw9MuK2rwES0I6rOqY%2B7KiLxjGrI%3D&_=1599153850645]
