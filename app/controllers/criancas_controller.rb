@@ -34,11 +34,38 @@ end
     render :action => 'relatorio_crianca'
   end
 
+  
+  def mat2pre_edit
+
+    @unidade_regiao= Unidade.find(:all , :conditions=>[' ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)'])
+     session[:sim]= 1
+    @crianca = Crianca.find(params[:id])
+    data=@crianca.nascimento
+
+    session[:status] = @crianca.status
+    #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
+    session[:id_crianca] = params[:id]
+    session[:nome] = params[:nome]
+    session[:recadastrada]= 'edit'
+    session[:show]=1
+    session[:acerto]=1
+    session[:acertorecadastrada]=2
+    
+
+
+
+    #w=session[:crianca_id]=params[:id]
+     #@crianca = Crianca.find(params[:id])
+    #unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
+  end
+
+
 def show_pre
      @crianca = Crianca.find(session[:crianca_id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
 ##  VERJA O SHOW EM BAIXO VVVVV
   end
+
 
   # GET /criancas/1
   # GET /criancas/1.xml
@@ -803,6 +830,7 @@ end
   end
 
    def consultacrianca
+     t=0
      if params[:type_of].to_i == 1
       if current_user.present?
          if (current_user.unidade_id == 53 or current_user.unidade_id == 52) then
@@ -882,7 +910,38 @@ t=0
      end
   end
 
+   def criancamat2pre
+     t=0
+     if params[:type_of].to_i == 1
+        @criancas = Crianca.find( :all,:conditions => ["nome like ?  AND nascimento >= ? AND (grupo_id = 5 ) AND (regiao_id <> 999 AND regiao_id is not null ) AND status= 'NA_DEMANDA' AND regiao_id > 99", "%" + params[:search1].to_s + "%", DATAN2 ],:order => 'nome ASC')
+        render :update do |page|
+          page.replace_html 'criancas', :partial => "criancasmat2pre"
+        end
+     else if params[:type_of].to_i == 2
 
+              @criancas = Crianca.find( :all,:conditions => ['regiao_id = ? AND recadastrada!=0 AND nascimento >= ?   AND (grupo_id = 5 ) and status= "NA_DEMANDA"', params[:crianca][:regiao], DATAN2],:order => 'nome ASC, unidade_id ASC')
+              #@criancas = Crianca.find( :all,:conditions => ["nome like ?AND nascimento >= ? AND (grupo_id = 5 ) AND (regiao_id <> 999 AND regiao_id is not null ) AND status= 'NA_DEMANDA'", "%" + params[:search1].to_s + "%", DATAN2 ],:order => 'nome ASC')
+
+             render :update do |page|
+                page.replace_html 'criancas', :partial =>  "criancasmat2pre"
+              end
+         else if params[:type_of].to_i == 6
+                
+                @criancas = Crianca.find( :all,:conditions => ["recadastrada!=0 AND nascimento >= ? AND (grupo_id = 5 ) AND (regiao_id <> 999 AND regiao_id is not null ) AND status= 'NA_DEMANDA' AND regiao_id > 99",  DATAN2 ],:order => 'nome ASC' )
+                  render :update do |page|
+                   page.replace_html 'criancas', :partial => "criancasmat2pre"
+                  end
+               else if params[:type_of].to_i == 3
+
+                     else if params[:type_of].to_i == 5
+
+                          end
+
+                     end
+             end
+        end
+     end
+  end
 
   def consultatransferencias
      if params[:type_of].to_i == 1

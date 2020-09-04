@@ -1,0 +1,18 @@
+<% @regiao = Regiao.find(:all, :conditions=>['id >  99'],:order => 'nome')%>
+
+<table width="100%" align="center">
+   <tr>
+     <td colspan="2"align="right">       
+        <font size="2"> <b > Região:</b></font>
+         <%= collection_select :crianca, :regiao, @regiao, :id, :nome, :include_blank => ' -- Selecionar -- '  %>
+  &nbsp&nbsp
+         <%= submit_tag "Visualizar", :class => "btn_filtrar" %>
+
+     </td>
+
+
+   </tr>
+  </table>
+
+
+

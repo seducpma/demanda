@@ -142,6 +142,10 @@ display: none;
                              <li><%= link_to "Matricular",preenchimento_path %></li>
                           <!--<li><%#= link_to "Recadastrar",recadastrar_consultas_path %></li>-->
                          <% end%>
+<!--                          <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC'))%>
+                             <li><%#= link_to "Maternal 2 => Pré",mat2pre_criancas_path %></li>
+                          <%end%>
+-->
                           <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
                              <li><%= link_to "Transferencia",transferencia_crianca_criancas_path %></li>
                           <%end%>
