@@ -7,7 +7,7 @@
  </div>
       <div class="tabs">
       <%#= render :partial => 'form' %>
-
+<%session[:creche]=1%>
 
 <div id="interno2">
 <% title "CRIANCAS".singularize %>
@@ -185,28 +185,27 @@
 
  <fieldset>
   <legend><font size="4">Dados da Inscrição</font></legend>
-  <table width="100%">
+  <table width="100%" >
       <tr  bgcolor="#FFFFF">
-          <td colspan="6"><font size ="3" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço, para fins de classificação, do local onde a criança fica durante o dia. É necessário indicar,  comprovar e justificar o vínculo da criança com este endereço (ex. casa dos avós,  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
-
+          <td colspan="6"><font size ="3" color="BLUE"><b><u>ATENÇÃO:</u></b> Indicar um endereço, para fins de classificação, do local onde a criança fica durante o dia.<br/> É necessário indicar,  comprovar e justificar o vínculo da criança com este endereço (ex. casa dos avós,<br/>  ou casa onde reside, ou casa do cuidador, etc...).</font> </td>
       </tr>
        <tr  bgcolor="#FFFFF">
            <td colspan="6"><b>Endereço: </b> <%= f.text_field :end_indicacao,  :size =>"45"%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Nº </b><%= f.text_field :num_indicacao, :size=>"4" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-           <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"40"%>
-
-
-           </td>
+           <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"40"%> </td>
        </tr>
        <tr bgcolor="#FFFFF">
            <td colspan="6"><b>Justificativa: </b> <%= f.text_field :justif_indicacao,  :size =>"58"%> &nbsp&nbsp <b>Vínculo com a criança:</b> <%= f.select :vinculo, REFERENCIA, :include_blank => ''%></td>
        </tr>
-
-
-
        <tr  bgcolor="#FFFFF">
          <td colspan="6">
-       <font size ="3" color="red"><b><u> Indicar uma região  </u></b>da cidade onde deseja matricular a criança.
-              Estas  regiões são definidas pela SEDUC. <b>NÃO </b> é possivel indicar uma unidade especifica.<br/>
+       <font size ="3" color="red"><b><u> Indicar uma região </u></b>da cidade onde deseja matricular a criança.
+              Estas  regiões são definidas pela SEDUC. <b>NÃO </b> é possivel indicar uma unidade específica.<br/>
+
+        <!--
+         <font color="blue"> TODAS as vezes que se editar esta ficha pe necessário refazer aopção de região de opção.</font></font>
+       &nbsp&nbsp <b>As opções originais desta ficha foram: <%if !@crianca.regiao_id.nil? %><%=h @crianca.regiao.nome %> / <%=h @crianca.unidade_ref%><%else%><b>NÃO SELECIONADO</b><%end%></b>
+       -->
+             <br/>
          <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
           <font size ="2" color="black"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Região:</b> &nbsp&nbsp
          <a class="botaosalvar"><%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'OBRIGATÓRIO SELECIONAR UMA OPÇÃO' %></a>&nbsp&nbsp&nbsp&nbsp <b>Bairro:</b>&nbsp&nbsp  <%= f.text_field :bairro_indicacao, :size =>"20"%></font>
@@ -216,8 +215,10 @@
                    :with   => 'crianca_regiao_id' %>
              <font color="red"><br/> <b id="pisca1" >
                &nbsp
-              <font size="3"> <u>ATENÇÃO:</u>&nbsp</b>
-                <b>APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS  UNIDADES DA REGIÃO selecionada para que possa indicar uma das unidade na região desejada e  clicar o botão SALVAR.</b>
+               <font size="1" color="black"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 (Não considerar região selecionanda opção à cima, faça nova seleção de opção.)<br/></font>
+              <font size="3" color="red"> <u>ATENÇÃO:</u>&nbsp</b>
+                <b>APÓS SELECIONAR, AGUARDAR O SISTEMA RETORNAR AS  UNIDADES DA REGIÃO selecionada <br/>para que possa indicar uma das unidade na região desejada e  clicar o botão SALVAR.</b>
               </font>
          </td>
        </tr>
@@ -240,8 +241,8 @@
 
                  </td>
             </tr>
-                   <tr  bgcolor="#FFFFF">
-                 <td colspan="6"> <b>Data Inscrição:</b>&nbsp <%= f.datetime_select(:created_at , :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></td>
+            <tr  bgcolor="#FFFFF">
+                <td colspan="6"> <b>Data Inscrição:</b>&nbsp <%= f.datetime_select(:created_at , :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 5)) %></td>
             </tr>
 
 
@@ -281,7 +282,7 @@
                         <td width="95%"><font size=3> A criança é filho(a) de Servidor(a) Pública da <u>Prefeitura Municipal de Americana.</u></font></td>
                    </tr>
                   <tr bgcolor="#FFFFF">
-                       <td colspan="6"><div id="servidor"> </div></td>
+                       <td colspan="2"><div id="servidor"> </div></td>
                    </tr>
                <%else%>
                    <tr bgcolor="#FFFFF">
@@ -295,7 +296,7 @@
                        <td width="95%"><font size=3> A criança é filho(a) de Servidor(a) Pública da <u>Prefeitura Municipal de Americana.</u></font> </td>
                    </tr>
                   <tr bgcolor="#FFFFF">
-                       <td colspan="6"><div id="servidor">
+                       <td colspan="2"><div id="servidor">
                                                 <table>
                                                                <tr>
                                                                     <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -322,7 +323,7 @@
                       <td width="95%"><font size="3"> Mãe/reponsável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<font/></td>
                    </tr>
                    <tr bgcolor="#FFFFF">
-                           <td colspan="6"><div id="trabalho"></div></td>
+                           <td colspan="2"><div id="trabalho"></div></td>
                    </tr>
                  <%else%>
                     <tr bgcolor="#FFFFF">
@@ -336,7 +337,7 @@
                       <td width="95%"><font size="3"> Mãe/reponsável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<font/> </td>
                    </tr>
                      <tr bgcolor="#FFFFF">
-                           <td colspan="6"><div id="trabalho">
+                           <td colspan="2"><div id="trabalho">
                                                 <table>
                                                       <tr>
                                                           <td colspan="2">&nbsp&nbsp&nbsp&nbsp<font size ="2" color="blue">
@@ -376,7 +377,7 @@
                           <td width="95%"></a> <font size="3"> Mãe/reponsável trabalha e <b>NÃO</b> possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.</font></td>
                         </tr>
                        <tr bgcolor="#FFFFF">
-                           <td colspan="6"><div id="declaracao"> </div></td>
+                           <td colspan="2"><div id="declaracao"> </div></td>
                        </tr>
                  <%else%>
                        <tr bgcolor="#FFFFF">
@@ -390,7 +391,7 @@
                           <td width="95%"><font size="3">Mãe/reponsável trabalha e <b>NÃO</b> possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.</font> </td>
                         </tr>
                        <tr bgcolor="#FFFFF">
-                           <td colspan="6"><div id="declaracao">
+                           <td colspan="2"><div id="declaracao">
                                                     <table>
                                                           <tr>
                                                               <td colspan="2">
@@ -425,7 +426,7 @@
                             <td width="95%"><font size=3>  Mãe/reponsável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>OU</u> declaração de trabalho <b>AUTÔNOMO</b>.</font> </td>
                        </tr>
                        <tr bgcolor="#FFFFF">
-                           <td colspan="6"><div id="autonomo"></div></td>
+                           <td colspan="2"><div id="autonomo"></div></td>
                        </tr>
                  <%else%>
                         <tr bgcolor="#FFFFF">
@@ -439,7 +440,7 @@
                             <td width="95%"> <font size="3"> Mãe/reponsável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>OU</u> declaração de trabalho <b>AUTÔNOMO</b>.</font> </td>
                        </tr>
                        <tr bgcolor="#FFFFF">
-                           <td colspan="6"><div id="autonomo">
+                           <td colspan="2"><div id="autonomo">
                                                         <table>
                                                            <tr>
                                                               <td >
@@ -470,57 +471,7 @@
 
 
                </table>
-           <table>
-
-            
-<!--
-                <% if @crianca.transferencia ==false %>
-                       <tr>
-                           <td width="90%"><b> 5)Transferência de criança entre unidades educacionais do Municipio ?</b> &nbsp ==================================> </td>
-                           <td> <%= f.select :transferencia, (OPCAOSN).sort %>
-                                   <%= observe_field 'crianca_transferencia',
-                                      :update => "transf",
-                                      :url    => { :action => 'transferencia_action' },
-                                      :with   => 'transferencia_autonomo' %>
-                            </td>
-                       </tr>
-                       <tr>
-                           <td colspan="6"><div id="transf"> </div></td>
-                       </tr>
-                 <%else%>
-                       <tr>
-                           <td width="90%"><b> 5)Transferência de criança entre unidades educacionais do Municipio ?</b> &nbsp ==================================> </td>
-                           <td><%= f.select :transferencia, (options_for_select [['NÃO', false], ['SIM', true]], @crianca.transferencia) %>
-                                   <%= observe_field 'crianca_transferencia',
-                                      :update => "transf",
-                                      :url    => { :action => 'transferencia_action' },
-                                      :with   => 'transferencia_autonomo' %>
-                               <% session[:sim]= 1 %>
-                            </td>
-                       </tr>
-                       <tr>
-                           <td colspan="6"><div id="transf">
-                                                        <table>
-                                                                       <tr>
-                                                                            <td >
-                                                                                 &nbsp&nbsp&nbsp&nbsp<font size ="2" color="blue">
-                                                                            <b id="pisca1"><u>ATENÇÃO:</u></b> Esta opção trata-se de transferência de criança entre as unidades educacionais do municipio de Americana<br/>
-                                                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                                            NÃO SE APLICA QUANDO TRATAR-SE DE TRANSFERÊNCIA PROVINDA DE OUTROS LOCALIDADES .</font>
-                                                                 </td>
-                                                               </tr>
-                                                              <tr>
-                                                                 <td>
-                                                                            &nbsp&nbsp&nbsp   <b>Unidade que frequenta atualmente:</b> &nbsp <%= collection_select :crianca, :unidade_t, @unidade_regiao, :nome, :nome, :include_blank => 'É necessário selecionar uma opção' %>
-                                                                            </td>
-                                                                      </tr>
-
-                                                        </table>
-                                                  </div></td>
-                       </tr>
-                 <%end%>
--->
-            </table>
+   
           </fieldset>
         </td>
       </tr>
@@ -532,8 +483,11 @@
          </td>
       </tr>
      <tr>
-         <td width="2%" valign="top"><font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/observa.png", :size => "100x26"), "#inline_form_observacao", :class =>"inline" %></u></b></font></td>
-          <td colspan="3"><%=h @crianca.obs%><br/>
+         <td  colspan="2" valign="top"><font color ="blue"><b><u><%= link_to image_tag("/stylesheets/images/observa.png", :size => "100x26"), "#inline_form_observacao", :class =>"inline" %></u></b></font></td>
+     </tr>
+     <tr>
+
+         <td colspan="2"><%=h @crianca.obs%><br/>
             <div id="dados"> <%= render :partial => 'observacoes'  %></div></td>
         </tr>
 
@@ -611,7 +565,7 @@
           <table width="100%" >
 
          <tr>
-           <td width="4%"align="left"><b> <%= f.submit 'Salvar' %></b></td>
+          <td width="4%"align="left"><b><%= f.submit 'Salvar' %></b></td>
 
 
 <%end%>

@@ -72,6 +72,9 @@ def show_pre
   def show
      @crianca = Crianca.find(params[:id])
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
+     w1=session[:grupo_nome]=@crianca.grupo.nome
+    w2=session[:regiao_nome]=@crianca.regiao.nome
+t=0
   #   if (session[:ficha_pre]==1) or (@crianca.nascimento < (DATAN1).to_date)
   #     render :action => 'show_pre'
   #     session[:ficha_pre]=0
@@ -185,8 +188,12 @@ end
 
     session[:status] = @crianca.status
     #@unidade_matricula = Unidade.find_by_sql("select u.id, u.nome from unidades u right join criancas c on u.id in (c.option1, c.option2, c.option3, c.option4) where c.id = " + (@crianca.id).to_s)
-    session[:id_crianca] = params[:id]
+    wq=session[:id_crianca] = params[:id]
+    t=0
+    @crianca1 = Crianca.find(:all, :conditions => ['id=?', session[:id_crianca]])
     w=session[:id_grupo]= @crianca.grupo_id
+    w1=session[:grupo_nome]=@crianca.grupo.nome
+    w2=session[:regiao_nome]=@crianca.regiao.nome
     t=0
     session[:nome] = params[:nome]
     session[:recadastrada]= 'edit'
@@ -738,7 +745,14 @@ if  (data <= Date.today.to_s and data >= DATAB1)
                        end
         flash[:notice] = 'Atualizado com sucesso.'
          if session[:show]==1
-              @crianca.regiao_id= nil
+             if session[:creche]==1
+                #@crianca.regiao_id= nil
+                session[:creche]=0
+                t=0
+             else
+                 @crianca.regiao_id= nil
+               t=0
+             end
               @crianca.save
               format.html { redirect_to(@crianca) }
               format.xml  { head :ok }

@@ -55,7 +55,7 @@
                 <!--<%#if  @criancasinscritas.present? or (current_user.has_role?('admin') or current_user.has_role?('SEDUC')or current_user.has_role?('supervisao')) %>-->
                <%   if current_user.present? %>
                   <%if  (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or (crianca.unidade_id == current_user.unidade_id and crianca.recadastrada != 0 or crianca.status != 'CANCELADA (Duplicidade)') or crianca.unidade_ref == current_user.unidade.nome )  %>
-                    <%= link_to image_tag("/stylesheets/images/editar1.png"),  {:action => "edit", :id =>crianca}, :target => '_blank', :title => "Editar" %>
+                    <%= link_to image_tag("/stylesheets/images/editar1.png"),  {:action => "edit", :id =>crianca.id}, :target => '_blank', :title => "Editar" %>
                     <%= link_to image_tag("/stylesheets/images/status.png"), {:action => "alteracao_status", :id =>crianca.id}, :target => '_blank', :title => "Status" %>
                   <%end%>
              <%end%>
