@@ -19191,3 +19191,83 @@ Rendering template within layouts/application
 Rendering criancas/fora_ar
   [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-08 00:40:25' AND ends_at >= '2020-09-08 00:40:25') [0m
 Completed in 1821ms (View: 11, DB: 296) | 200 OK [http://localhost/preescola]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-07 21:49:04) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-07 21:49:05) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 27ms (View: 25, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#fora_ar (for 127.0.0.1 at 2020-09-07 21:49:08) [GET]
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (279.6ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/fora_ar
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-08 00:49:10' AND ends_at >= '2020-09-08 00:49:10') [0m
+Completed in 1868ms (View: 215, DB: 281) | 200 OK [http://localhost/preescola]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#fora_ar (for 127.0.0.1 at 2020-09-07 21:50:23) [GET]
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (277.0ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/fora_ar
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-08 00:50:25' AND ends_at >= '2020-09-08 00:50:25') [0m
+Completed in 2431ms (View: 11, DB: 278) | 200 OK [http://localhost/preescola]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-07 21:52:41) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-07 21:52:41) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#fora_ar (for 127.0.0.1 at 2020-09-07 21:52:46) [GET]
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.2ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (288.3ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.2ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/fora_ar
+  [4;35;1mInformativo Load (0.4ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-08 00:52:47' AND ends_at >= '2020-09-08 00:52:47') [0m
+Completed in 1823ms (View: 170, DB: 290) | 200 OK [http://localhost/preescola]
