@@ -280,7 +280,7 @@
 
  <table>
          <tr>
-            <td width="4%"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+            
             <%if current_user.present?%>
                <%if @crianca.unidade_id == current_user.unidade_id or  current_user.unidade_id == 52%>
                   <td width="6%"align="left" ><%= button_to 'Editar', {:action => "edit_pre", :id =>@crianca}, :method => "get", :title => "Editar"%></td>
@@ -288,10 +288,10 @@
                 <!--<td width="4%"align="left"><%#= button_to 'Consultarxxx' ,consulta_unidade_path, :title => "Consultar" %></td>-->
            <%end%>
             <%if current_user.present?%>
-                 <td><b><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                 <td><b><%= button_to 'Fechar e Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
            <%else%>
                   <td><b><%#= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_nao_logado_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
-                         <%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
+                         <%= button_to 'Fechar e Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
                     </b></td>
            <%end%>
           </tr>
