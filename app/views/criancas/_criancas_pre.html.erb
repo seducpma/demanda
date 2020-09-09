@@ -30,7 +30,7 @@
                        <!-- <td align="left"><font color="red"> Inscrição já realizada </font></td>-->
                     <%#else%>
                         <td align="left"><%#= button_to 'Fazer Inscrição',{:action => "edit_pre", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
-                           <%= button_to 'Inscrição',{:action => "show", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%>
+                           <%= button_to 'Inscrição',{:action => "show", :id =>crianca}, :method => "get", :target => '_blank',:title => "Inscrição pré-escola"%>
                         </td>
                         <td>
                           <%= button_to 'Matricular',{:action => "alteracao_status", :id =>crianca}, :method => "get", :title => "Inscrição pré-escola"%> 
