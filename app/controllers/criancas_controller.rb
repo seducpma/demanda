@@ -1766,10 +1766,10 @@ end
          else if params[:type_of].to_i == 6
                  data_pre = (DATAPRE2).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
                  data_pre = data_pre + ' 00:00:00'
-                 @criancas_pre = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 )  )and (status='NA_DEMANDA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
-                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='MATRICULADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
-                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='CANCELADA')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
-                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='RECUSOU')" ,data_pre ],:order => 'grupo_id ASC, nome ASC')
+                 @criancas_pre = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 )  )and (status='NA_DEMANDA')" ,data_pre ],:order => 'nome ASC, grupo_id ASC ')
+                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='MATRICULADA')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
+                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='CANCELADA')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
+                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='RECUSOU')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
                  t=0
                   render :update do |page|
                       page.replace_html 'criancas', :partial => "criancas_pre"
