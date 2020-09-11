@@ -1752,7 +1752,8 @@ end
          data_pre = (DATAPRE2).to_s  #  data nascimento da criança que limita  matriculada na pré escola  a aprtir de ....
          data_pre = data_pre + ' 00:00:00'
          w=params[:search1]
-         @criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  nascimento <= ?  and recadastrada > 0" , "%" + params[:search1].to_s + "%", data_pre ],:order => 'nome ASC, unidade_id ASC')
+         #@criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  nascimento <= ?  and recadastrada > 0" , "%" + params[:search1].to_s + "%", data_pre ],:order => 'nome ASC, unidade_id ASC')
+         @criancas_pre = Crianca.find( :all,:conditions => ["nome like ?  and  (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 )) and recadastrada > 0" , "%" + params[:search1].to_s + "%"],:order => 'nome ASC, unidade_id ASC')
           render :update do |page|
               page.replace_html 'criancas', :partial => "criancas_pre"
            end
