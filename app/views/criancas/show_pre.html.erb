@@ -289,11 +289,13 @@
            <%end%>
             <%if current_user.present?%>
                  <td><b><%= button_to 'Fechar e Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                 <td width="6%"align="right"><%= button_to 'Fechar', :action => "close"%></td>
+
            <%else%>
                   <td><b><%#= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_nao_logado_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
-                         <%= button_to 'Fechar e Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %>
-                    </b></td>
-           <%end%>
+                         <%= button_to 'Fechar e Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_pre_criancas_path(:crianca => session[:child])}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                      <td width="6%"align="right"><%= button_to 'Fechar', :action => "close"%> %></td>
+             <%end%>
           </tr>
     </table>
  

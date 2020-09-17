@@ -14,6 +14,10 @@ def sobre
 
 end
 
+def close
+  render :action => "window_closer"
+end
+
 # GET /criancas
   # GET /criancas.xml
   def index
