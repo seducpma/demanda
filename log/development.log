@@ -36126,3 +36126,576 @@ ActionController::RoutingError (No route matches "/photos/imagem/missing.png" wi
   
 
 Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-17 18:02:36) [GET]
+Redirected to http://localhost:3001/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2020-09-17 18:02:36) [GET]
+Rendering template within layouts/login
+Rendering sessions/new
+Completed in 23ms (View: 20, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2020-09-17 18:02:44) [POST]
+  Parameters: {"commit"=>"Entrar", "login"=>"ngarcia", "authenticity_token"=>"jUKp9nroCK6wk0O+qXCUDG85Clh4CtYCD/b5U+pkpto=", "password"=>"mus@and2"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'ngarcia' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mUser Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Redirected to http://localhost:3001/
+Completed in 15ms (DB: 1) | 302 Found [http://localhost/session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2020-09-17 18:02:44) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mInformativo Load (0.4ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-17 21:02:44' AND ends_at >= '2020-09-17 21:02:44') [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.0ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 140ms (View: 72, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas_pre (for 127.0.0.1 at 2020-09-17 18:02:48) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (300.9ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas_pre
+Rendered criancas/_consulta (0.8ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-17 21:02:49' AND ends_at >= '2020-09-17 21:02:49') [0m
+  [4;36;1mroles_users Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.0ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 1871ms (View: 33, DB: 304) | 200 OK [http://localhost/criancas/consultas_pre]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#pre_criancas (for 127.0.0.1 at 2020-09-17 18:02:53) [GET]
+  Parameters: {"type_of"=>"6", "_"=>"1600376573506", "authenticity_token"=>"jUKp9nroCK6wk0O+qXCUDG85Clh4CtYCD/b5U+pkpto=", "search1"=>""}
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (276.3ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (12.0ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at > '2020-09-09 00:00:00') ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (15.7ms)[0m   [0mSELECT * FROM `criancas` WHERE (recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at < '2020-09-09 00:00:00') ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (10.6ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='MATRICULADA')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (11.3ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='CANCELADA')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (14.2ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='DUPLICIDADE')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (13.5ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='RECUSOU')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mGrupo Load (0.3ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mGrupo Load (0.3ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+
+ActionView::TemplateError (undefined method `resent?' for #<Array:0x7fd046494ad0>) on line #145 of app/views/criancas/_criancas_pre.html.erb:
+142: 
+143:             <% end %>
+144: 
+145:      <% if @criancas_pre_duplic.resent? %>
+146:       <tr bgcolor="#FFFFFF"  ><td colspan="20"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp INSCRIÇÔES PRÉ EM DUPLICIDADE</b></td> </tr>
+147:             <tr bgcolor="#DCDCDC" >
+148:                 <th width="1%">Nº </th>
+
+    app/views/criancas/_criancas_pre.html.erb:145
+    app/controllers/criancas_controller.rb:1787:in `pre_criancas'
+    app/controllers/criancas_controller.rb:1786:in `pre_criancas'
+
+Rendered rescues/_trace (28.1ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas_pre (for 127.0.0.1 at 2020-09-17 18:03:16) [GET]
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (294.1ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas_pre
+Rendered criancas/_consulta (0.3ms)
+  [4;36;1mInformativo Load (0.3ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-17 21:03:19' AND ends_at >= '2020-09-17 21:03:19') [0m
+  [4;35;1mroles_users Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;35;1mRole Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 2742ms (View: 265, DB: 297) | 200 OK [http://localhost/criancas/consultas_pre]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#pre_criancas (for 127.0.0.1 at 2020-09-17 18:03:23) [GET]
+  Parameters: {"type_of"=>"6", "_"=>"1600376603461", "authenticity_token"=>"jUKp9nroCK6wk0O+qXCUDG85Clh4CtYCD/b5U+pkpto=", "search1"=>""}
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.2ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (281.3ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.2ms)[0m   [0mSELECT * FROM `criancas` WHERE (recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at > '2020-09-09 00:00:00') ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at < '2020-09-09 00:00:00') ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='MATRICULADA')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='CANCELADA')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='DUPLICIDADE')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='RECUSOU')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `criancas`[0m
+  [4;36;1mGrupo Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `grupos`[0m
+  [4;35;1mGrupo Load (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+Rendered criancas/_criancas_pre (403.5ms)
+Completed in 3172ms (View: 728, DB: 285) | 200 OK [http://localhost/pre_criancas?authenticity_token=jUKp9nroCK6wk0O%2BqXCUDG85Clh4CtYCD%2Fb5U%2Bpkpto%3D&type_of=6&search1=&authenticity_token=jUKp9nroCK6wk0O%2BqXCUDG85Clh4CtYCD%2Fb5U%2Bpkpto%3D&_=1600376603461]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#consultas_pre (for 127.0.0.1 at 2020-09-17 18:04:19) [GET]
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mUnidade Load (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCrianca Load (277.2ms)[0m   [0mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+Rendering template within layouts/application
+Rendering criancas/consultas_pre
+Rendered criancas/_consulta (0.3ms)
+  [4;35;1mInformativo Load (0.3ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2020-09-17 21:04:22' AND ends_at >= '2020-09-17 21:04:22') [0m
+  [4;36;1mroles_users Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.0ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 2 ) [0m
+  [4;36;1mRole Columns (0.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 2655ms (View: 16, DB: 280) | 200 OK [http://localhost/criancas/consultas_pre]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CriancasController#pre_criancas (for 127.0.0.1 at 2020-09-17 18:04:26) [GET]
+  Parameters: {"type_of"=>"6", "_"=>"1600376666263", "authenticity_token"=>"jUKp9nroCK6wk0O+qXCUDG85Clh4CtYCD/b5U+pkpto=", "search1"=>""}
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mGrupo Load (0.1ms)[0m   [0;1mSELECT * FROM `grupos` ORDER BY nome[0m
+  [4;35;1mGrupo Load (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (id <> 3) ORDER BY nome[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) and (id not between 70 and 83) and (id <> 54) AND ativo = 1) ORDER BY nome[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` WHERE ((tipo = 3 or tipo = 1 or tipo = 7 or tipo = 8) AND ativo = 1) ORDER BY nome[0m
+  [4;36;1mCrianca Load (270.2ms)[0m   [0;1mSELECT * FROM `criancas` ORDER BY nome ASC[0m
+  [4;35;1mCrianca Load (0.2ms)[0m   [0mSELECT distinct(status) FROM `criancas` ORDER BY nome ASC[0m
+  [4;36;1mCrianca Load (0.3ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at > '2020-09-09 00:00:00') ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at < '2020-09-09 00:00:00') ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='MATRICULADA')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='CANCELADA')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Load (0.1ms)[0m   [0;1mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ) )and (status='DUPLICIDADE')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;35;1mCrianca Load (0.1ms)[0m   [0mSELECT * FROM `criancas` WHERE (nascimento <= '2017-07-01 00:00:00' and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and regiao_id= 999 ))and (status='RECUSOU')) ORDER BY nome ASC, grupo_id ASC[0m
+  [4;36;1mCrianca Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `criancas`[0m
+  [4;35;1mGrupo Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `grupos`[0m
+  [4;36;1mGrupo Load (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mGrupo Load (0.1ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `grupos` WHERE (`grupos`.`id` = 6) [0m
+Rendered criancas/_criancas_pre (183.9ms)
+Completed in 3332ms (View: 526, DB: 274) | 200 OK [http://localhost/pre_criancas?authenticity_token=jUKp9nroCK6wk0O%2BqXCUDG85Clh4CtYCD%2Fb5U%2Bpkpto%3D&type_of=6&search1=&authenticity_token=jUKp9nroCK6wk0O%2BqXCUDG85Clh4CtYCD%2Fb5U%2Bpkpto%3D&_=1600376666263]
