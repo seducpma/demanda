@@ -445,6 +445,11 @@
           <th > </th>
           <th> Pré Escola (1ª e 2ª Etapa) </th>
           <th><%# session[:tgN1N2]= Crianca.find(:all,:select=> 'id', :conditions => ["status = 'NA_DEMANDA' AND recadastrada!=0  AND (grupo_id !=1 AND grupo_id !=2 AND grupo_id !=4 AND grupo_id !=5 AND grupo_id !=8) AND regiao_id > 99"]).size%> <%#= session[:tgN1N2]%>
+               <%  session[:tgprea]= Crianca.find(:all,:select=> 'id', :conditions => ["recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at > '2020-09-09 00:00:00'"]).size%>
+               <%  session[:tgpreb]= Crianca.find(:all,:select=> 'id', :conditions => ["recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at < '2020-09-09 00:00:00'"]).size%>
+               <%session[:tgpre] =   session[:tgprea]+  session[:tgpreb]%>
+
+
               <%= session[:tgpre] %> </th>
         </tr>
       </table>
