@@ -122,7 +122,7 @@
 <% session[:TTGm2sv]=0%><% session[:TTGm2ctps]=0%> <% session[:TTGm2sctps]=0 %> <% session[:TTGm2auto]=0 %> <% session[:TTGm2ntrab]=0 %><% session[:TTGm2total]=0%> <% session[:TTGm2trans]=0%>
 <% session[:TTGsb2sv]=0%><% session[:TTGsb2ctps]=0%> <% session[:TTGsb2sctps]=0 %> <% session[:TTGsb2auto]=0 %> <% session[:TTGsb2ntrab]=0 %><% session[:TTGsb2total]=0%> <% session[:TTGsb2trans]=0%>
 <% session[:TTGsb2sv]=0%><% session[:TTGsb2ctps]=0%> <% session[:TTGsb2sctps]=0 %> <% session[:TTGsb2auto]=0 %> <% session[:TTGsb2ntrab]=0 %><% session[:TTGsb2total]=0%> <% session[:TTGsb2trans]=0%>
-
+<%  session[:presctps]=0%>
    <fieldset>
    <legend><font size=2><b>DEMANDA GERAL POR CLASSE</b></font></legend>
       <table bgcolor="#DCDCDC" width="100%"align="center">
@@ -192,7 +192,8 @@
                         <th align="right">Sub-Total </th>
                         <th width="2%" align="center"><font color="blue"><%=session[:b1sv]+session[:b2sv]+session[:presv]%> </font><% session[:TTGsb1sv] = session[:TTGsb1sv] + (session[:b1sv]+session[:b2sv]+session[:presv])%></th>
                         <th width="2%" align="center"> <font color="blue"><%= session[:b1ctps]+session[:b2ctps]+session[:prectps]%>  </font><% session[:TTGsb1ctps]= session[:TTGsb1ctps] +(session[:b1ctps]+session[:b2ctps]+session[:prectps])%></th>
-                        <th width="2%" align="center"> <font color="blue"><%= session[:b1sctps]+session[:b2sctps]+session[:presctps]%></font><% session[:TTGsb1sctps]= session[:TTGsb1sctps] +(session[:b1sctps]+session[:b2sctps]+session[:presctps]) %></th>
+                        <th width="2%" align="center"> <font color="blue"><%= session[:b1sctps]+session[:b2sctps]+session[:presctps]%></font><%# session[:TTGsb1sctps]= session[:TTGsb1sctps] +(session[:b1sctps]+session[:b2sctps]+session[:presctps]) %>
+
                         <th width="2%" align="center"><font color="blue"> <%= session[:b1auto]+session[:b2auto]+session[:preauto]%> </font><% session[:TTGsb1auto]= session[:TTGsb1auto] + (session[:b1auto]+session[:b2auto]+session[:preauto]) %></th>
                         <th width="2%" align="center"><font color="blue"> <%= session[:b1ntrab]+session[:b2ntrab]+session[:prentrab]%>  </font> <% session[:TTGsb1ntrab]= session[:TTGsb1ntrab]+ (session[:b1ntrab]+session[:b2ntrab]+session[:prentrab]) %></th>
                         <th width="2%"><font color="red"> <%= session[:b1]+session[:b2]+session[:pre]%> </font><% session[:TTGsb1total]= session[:TTGsb1total] + (session[:b1]+session[:b2]+session[:pre])  %>
