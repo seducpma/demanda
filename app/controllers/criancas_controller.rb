@@ -995,7 +995,7 @@ def consultacriancaedicao
                                 @criancas = Crianca.find( :all,:conditions => ["mae like ?  AND recadastrada=0 AND nascimento >= ?   ", "%" + params[:searchmae].to_s + "%", DATAN2 ],:order => 'nome ASC')
                            end
 t=0
-                          @canceladas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 0 ", current_user.unidade_id , 'CANCELADA', DATAN2],:order => 'nome ASC')
+                          @canceladas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 0 AND nascimento >= ?", current_user.unidade_id , 'CANCELADA', DATAN2],:order => 'nome ASC')
                           @demandas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 0 AND nascimento >= ?  ", current_user.unidade_id , 'NA_DEMANDA', DATAN2],:order => 'nome ASC')
                           @matriculadas = Crianca.find( :all,:conditions => [" unidade_id = ? and status =? AND recadastrada = 0 AND nascimento >= ?  ", current_user.unidade_id , 'MATRICULADA', DATAN2],:order => 'nome ASC')
                          render :update do |page|
