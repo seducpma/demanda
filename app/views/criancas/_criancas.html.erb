@@ -30,7 +30,7 @@
                 <td align="center"><%if !crianca.grupo_id.nil?%>
                                      <%=h crianca.grupo.nome%></td>
                                    <%end%>
-                <td align="left"><%if !crianca.regiao_id.nil?%>
+                <td align="left"><%if !crianca.regiao_id.nil? and  crianca.regiao_id!=999%>
                                       <%=h crianca.regiao.nome%>
                                  <%end%>
                 </td>
