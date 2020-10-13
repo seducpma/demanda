@@ -197,8 +197,10 @@ end
     @crianca1 = Crianca.find(:all, :conditions => ['id=?', session[:id_crianca]])
     w=session[:id_grupo]= @crianca.grupo_id
     w1=session[:grupo_nome]=@crianca.grupo.nome
-    w2=session[:regiao_nome]=@crianca.regiao.nome
-    t=0
+    if !@crianca.regiao_id.nil?
+        w2=session[:regiao_nome]=@crianca.regiao.nome
+    end
+    
     session[:nome] = params[:nome]
     session[:recadastrada]= 'edit'
     session[:show]=1
