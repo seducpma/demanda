@@ -226,7 +226,7 @@ end
      @static_graph = Gchart.pie(
           #  :data => [(Crianca.por_unidade_b1(session[:input])).size, (Crianca.por_unidade_b2(session[:input])).size, (Crianca.por_unidade_m1a(session[:input])).size (Crianca.por_unidade_m1b(session[:input])).size(Crianca.por_unidade_m2(session[:input])).size(Crianca.por_unidade_n1(session[:input])).size, (Crianca.por_unidade_n2(session[:input])).size ],
             :data => [b1, b2, m1a , m1b, m1b, m2, n1, n2],
-            #:title => "Demanda xxxx  Unidade: #{Crianca.nome_unidade_total(session[:input]).size} " ,
+            #:title => "Demanda   Unidade: #{Crianca.nome_unidade_total(session[:input]).size} " ,
             #:title => "Demanda Unidade:  #{Crianca.nome_unidade_total(session[:input]).size} " ,
              :title => "Demanda por Unidade - #{nome_unidade}:  #{total} " ,
             :size => '800x350',
