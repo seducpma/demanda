@@ -117,7 +117,7 @@ display: none;
                         <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('direcao')  or current_user.has_role?('supervisao') or current_user.has_role?('secretaria'))%>
                             <li><a>Editar</a>
                                <ul>
-                                  <li><%= link_to "Inscrição",consultas_criancas_path %></li>
+                                  <li><%= link_to "Inscrição",consulta_edicao_criancas_path %></li>
                                   <li><a>Status</a>
                                      <ul> 
                                                <li><%= link_to "Creche",consulta_unidade_status_path %></li>

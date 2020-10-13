@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
   map.resources :unidades
-  map.resources :criancas, :collection => {:impressao => :get, :impressao_pre => :get,:consultas => :get, :consultas_pre => :get, :impressao_class_unidade => :get, :impressao_class_classe => :get, :status => :get, :impressao_geral => :get, :recadastrar => :get,  :update => :put, :impressao_recadastramento => :get, :transferencia_crianca => :get, :impressao_nao_logado => :get, :mat2pre => :get}
+  map.resources :criancas, :collection => {:impressao => :get, :impressao_pre => :get,:consultas => :get, :consulta_edicao => :get,:consultas_pre => :get, :impressao_class_unidade => :get, :impressao_class_classe => :get, :status => :get, :impressao_geral => :get, :recadastrar => :get,  :update => :put, :impressao_recadastramento => :get, :transferencia_crianca => :get, :impressao_nao_logado => :get, :mat2pre => :get}
   map.resources :grupos
   map.resources :regiaos
   map.resources :regiaos
@@ -93,6 +93,7 @@ ActionController::Routing::Routes.draw do |map|
   ####
 
   map.consultacrianca '/consultacrianca', :controller => 'criancas', :action => 'consultacrianca'
+ map.consultacriancaedicao '/consultacriancaedicao', :controller => 'criancas', :action => 'consultacriancaedicao'
   map.consultatransferencias '/consultatransferencias', :controller => 'criancas', :action => 'consultatransferencias'
   map.criancamat2pre '/consultacriancamat2pre', :controller => 'criancas', :action => 'criancamat2pre'
   
