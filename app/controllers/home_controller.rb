@@ -21,7 +21,9 @@ class HomeController < ApplicationController
     end
     render :nothing => true
   end
-
+def protocolo_covid
+  send_file("#{RAILS_ROOT}/public/documentos/protocolo.pdf" , :type=>"pdf")
+end
 protected
 
 

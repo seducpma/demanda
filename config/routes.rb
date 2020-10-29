@@ -46,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   map.show_preenchimento'/show_preenchimento', :controller => 'vagas', :action => 'show_preenchimento'
   map.show_pre'/show_pre', :controller => 'criancas', :action => 'show_pre'
 
-
+  map.protocolo_covid'/protocolo_covid', :controller => 'home', :action => 'protocolo_covid'
   map.preenchimento'/preenchimento', :controller => 'vagas', :action => 'preenchimento'
   map.show_salvar'/show_salvar', :controller => 'vagas', :action => 'show_salvar'
   map.preenche_vaga '/preenche_vaga', :controller => 'vagas', :action => 'preenche_vaga'
