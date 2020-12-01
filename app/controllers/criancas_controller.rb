@@ -75,6 +75,11 @@ def show_pre
   # GET /criancas/1.xml
   def show
      @crianca = Crianca.find(params[:id])
+
+    w=@crianca.id
+    w2=@crianca.regiao_id
+    t=0
+
      @unidade_regiao= Unidade.find(:all , :conditions=>['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)',@crianca.regiao_id])
    #  w1=session[:grupo_nome]=@crianca.grupo.nome
    #  w2=session[:regiao_nome]=@crianca.regiao.nome
