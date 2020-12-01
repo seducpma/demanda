@@ -128,9 +128,9 @@ display: none;
                                   </li>
                                </ul>
                             </li>
-                   <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')) %>
+                   <%# if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')) %>
                             <li><%= link_to "Cadastrar (Creche)",new_crianca_path %></li>
-                   <%end%>
+                   <%#end%>
                              <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC')) %>
                                       <li><%= link_to "Cadastrar (Pré)",new_pre_path %></li>
                               <%end %>
