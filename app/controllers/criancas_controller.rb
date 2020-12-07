@@ -403,7 +403,7 @@ end
 
     #inscrição permitida para crianças após outubro/2020
 
-              if @crianca.nascimento.strftime("%Y%m%d").to_i > 20200803
+              if @crianca.nascimento.strftime("%Y%m%d").to_i > 20200807
                    respond_to do |format|
                         flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
                         format.html { render :action => "aviso" }

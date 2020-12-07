@@ -264,7 +264,7 @@
                                         });
                                   });
                               </script>
-                             <a href="#" id="dropdownbutton_trabalho" ><%= f.radio_button(:opcao1, 'trabalho') %></a><font size="3"> Mãe/reponsável trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<br/>
+                             <a href="#" id="dropdownbutton_trabalho" ><%= f.radio_button(:opcao1, 'trabalho') %></a><font size="3"> <font color="blue">Mãe/reponsável</font> trabalha e possui carteira de trabalho (CTPS) devidamente assinada. &nbsp <b><u>OU </u></b> &nbsp documento/certidão que comprove ser funcionária estatutária de órgão público  (EXCETO Prefeitura Municipal de Americana).<br/>
                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
                            <div id="trabalho" style="display:none">
                                  <font size="2">
@@ -280,11 +280,6 @@
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                    Municipal de Americana, selecionar a opção anterior. <br/>
                                  </font>
-                               <font size ="2" color="black">
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20" %>
-                                 &nbsp <b>Nº</b><%= f.text_field :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
-                                 &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"6" %>
-                               </font>
                            </div>
                            </td>
                          </tr>
@@ -301,7 +296,7 @@
                                              </script>                              
                               
 
-                              <a href="#" id="dropdownbutton_declaracao" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> Mãe/reponsável trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.<br/>
+                              <a href="#" id="dropdownbutton_declaracao" ><%= f.radio_button(:opcao1, 'declaracao') %></a> <font size="3"> <font color="blue">Mãe/reponsável </font>trabalha e NÃO possui carteira assinada (CTPS), mas possui declaração do empregador PESSOA JURÍDICA com CNPJ e firma reconhecida em cartório.<br/>
                                 <div id="declaracao" style="display:none">
                                     <font size="2">
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
@@ -312,11 +307,6 @@
                                              endereço, telefone, atividade desenvolvida pelo empregado, horário de trabalho  e <b>firma reconhecida em cartório</b>.<br/>
                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
-                                    <font size ="2" color="black">
-                                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20"  %>
-                                     &nbsp <b>Nº</b><%= f.text_field  :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
-                                     &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"8" %>
-                                   </font>
                                   </div>
                          </td>
                        </tr>
@@ -332,7 +322,7 @@
                                   });
                               </script> 
 
-                              <a href="#" id="dropdownbutton_autonomo" ><%= f.radio_button(:opcao1, 'autonomo') %></a> <font size="3"> Mãe/reponsável trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>ou</u> declaração de trabalho AUTÔNOMO.</b><br/>
+                              <a href="#" id="dropdownbutton_autonomo" ><%= f.radio_button(:opcao1, 'autonomo') %></a> <font size="3"> <font color="blue">Mãe/reponsável </font>trabalha e  possui declaração do empregador PESSOA FÍSICA  com CPF e RG e firma reconhecida em cartório  <u>ou</u> declaração de trabalho AUTÔNOMO.</b><br/>
                               <div id="autonomo" style="display:none">
                                 <font size="2">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font  color="blue">
@@ -344,14 +334,32 @@
 
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 <font color="red"><b> >> NÃO SERÃO VÁLIDAS DECLARAÇÕES INFORMAIS, SEM FIRMA RECONHECIDA OU INCOMPLETAS <<</b><br/>
-                                <font size ="2" color="black">
+<!--                                <font size ="2" color="black">
                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20"  %>
                                  &nbsp <b>Nº</b><%= f.text_field  :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
                                  &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"8" %>
-                               </font>         
+                               </font>         -->
                              </div>
                             </td>
                        </tr>
+
+                       <tr>
+                         <td>
+                         <font color="blue"><br/> <b id="pisca1" >
+                           &nbsp
+                          <font size="2"> <u>ATENÇÃO:</u>&nbsp</b>
+                            <b>Se mãe/responsável trabalha , em qualquer uma das três opções acima, favor preencher  local de trabalho,  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp se servidora pública municipal ou NÃO trabalha fora de casa NÃO preencher.</b><br/>
+                          </font>
+                                  <font size ="2" color="black">
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Local Trabalho: </b> <%= f.text_field :local_trabalho, :size=>"20"  %>
+                                 &nbsp <b>Nº</b><%= f.text_field  :num_trab, :size=>"1" %>&nbsp <b>Bairro:</b> <%= f.text_field  :bairro_trab, :size=>"20" %>
+                                 &nbsp <b>Fone:</b> <%= f.text_field  :fone_trabalho, :size=>"8" %>
+                               </font>
+                         </td>
+                       </tr>
+
+
+
                       <tr  bgcolor="#FFFFF">
                             <td>  <a href="#" ><%= f.radio_button(:opcao1, 'não trabalha') %></a> <font size="3"> Mãe/reponsável NÃO trabalha fora de casa</b><td>
 

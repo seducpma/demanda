@@ -428,7 +428,7 @@
                     </tr>
                     <tr bgcolor="#F5F5F5">
 
-                       <td><b>Trabalho Mãe : </b></td>
+                       <td><b>Trabalho Mãe: </b></td>
                         <td colspan="5" > <%if @crianca.servidor_publico == true%>
                                          <%=h @crianca.servidor_local%>  <b> &nbsp - &nbsp Fone:</b> <%=h @crianca.fone_trabalho%>
                                          <%else if @crianca.trabalho == true %>
@@ -446,7 +446,7 @@
                       </td>
                     </tr>
                     <tr bgcolor="#F5F5F5"  width="100%">
-                      <td valign="top" align="left" width="10%"><b>Regiãox:</b><br/><br/><b>Classe:</b><br/><br/><b>* Unidade mais próxima:</b></td>
+                      <td valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Classe:</b><br/><br/><b>* Unidade mais próxima:</b></td>
                       <td valign="top" align="left" ><%if !@crianca.regiao_id.nil? %> <!--and !@crianca.regiao_id= 999%>-->
                                                                <%=h @crianca.regiao.nome%><br/><br/>
                                                                <%=h @crianca.grupo.nome%> - <%#=h @crianca.periodo%><br/><br/> <%=h @crianca.unidade_ref%> *
