@@ -144,7 +144,8 @@ OPCAOSN ={ 'SIM '=> 1,
          }
 
 
-# Variáveis de data para classificação das crianças
+# Variáveis de data para classificação das crianças  =>                                                                                                                                                                                                                                                                                                                              $time =  Time.current.to_time.to_i             # 1648847002 1/4/22 18            1680383037    1/4/23 18
+
 
 # 2º Bimestre
 DATAB1 ='2020-04-01'

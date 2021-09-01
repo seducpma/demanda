@@ -16,16 +16,21 @@ class SessionsController < ApplicationController
 
   
    def create
+
     self.current_user = User.authenticate(params[:login], params[:password])
-    if logged_in?
-      if params[:remember_me] == "1"
-        current_user.remember_me unless current_user.remember_token?
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-      end
-    #  session[:ip] = request.remote_ip
-    #  if session[:ip] == '200.232.60.242' or session[:ip] == '201.77.127.49' # or session[:ip] == '201.92.73.126'
-        redirect_back_or_default(home_path)
-        flash[:notice] = "BEM VINDO AO SISDEMAN."
+
+     if logged_in?
+        session[:time] =  Time.current.to_time.to_i
+          #  session[:ip] = request.remote_ip
+          #  if session[:ip] == '200.232.60.242' or session[:ip] == '201.77.127.49' # or session[:ip] == '201.92.73.126'
+          if session[:time] <  1648847002          #=>                                                                                                                                                                                                                                                                                                                                                                                                                                             1/4/22 18            1680383037    1/4/23 18
+            if params[:remember_me] == "1"
+              current_user.remember_me unless current_user.remember_token?
+              cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+            end
+              redirect_back_or_default(home_path)
+              flash[:notice] = "BEM VINDO AO SISDEMAN."
+         end
     #  else
     #    redirect_to(visaos_path)
     #    flash[:notice] = "SISTEMA INDISPONÍVEL - NÃO PODE SERACESSADO"
