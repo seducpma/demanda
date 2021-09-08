@@ -404,7 +404,7 @@ end
     #inscrição permitida para crianças após outubro/2020
 
 
-            if @crianca.nascimento.strftime("%Y%m%d").to_i < 2016304 #or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210107
+            if @crianca.nascimento.strftime("%Y%m%d").to_i < 20160401 #or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210107
 
         t=0
                    respond_to do |format|

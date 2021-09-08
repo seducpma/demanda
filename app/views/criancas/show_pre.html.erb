@@ -130,7 +130,7 @@
             </tr>
             <tr bgcolor="#F5F5F5"  width="100%">
               <td  align="left"><b>Classe:</b> </td>
-              <td colspan="3"align="left" ><%=@crianca.grupo.nome%> (<%=@crianca.grupo.descricao%>)</td>
+              <td colspan="3"align="left" ><%if !@crianca.grupo_id.nil?%><%=@crianca.grupo.nome%> (<%=@crianca.grupo.descricao%>) <%end%></td>
               <td  align="left"><b>Período:</b> </td>
               <td valign="top"align="left" ><%=@crianca.periodo%></td>
 
