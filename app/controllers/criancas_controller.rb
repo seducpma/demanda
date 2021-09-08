@@ -487,12 +487,12 @@ end
                                 end
                             @crianca.save
                               if session[:ficha_pre]==1
-                                   if @crianca.nascimento.strftime("%Y%m%d").to_i < DATA_FIM_PRE.to_i    #   20170630 LIMITE PRE
+                                   if @crianca.nascimento.strftime("%Y%m%d").to_i > DATA_FIM_PRE.to_i    #   20180630 LIMITE PRE
                                              @crianca.destroy
                                                     flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
                                                     format.html { render :action => "aviso_pre1" }
                                    else
-                                          if @crianca.nascimento.strftime("%Y%m%d").to_i >= DATAPRE.to_i    #   20170630 LIMITE PRE
+                                          if @crianca.nascimento.strftime("%Y%m%d").to_i > DATAPRE.to_i    #   20180630 LIMITE PRE
                                       
                                              @crianca.destroy
                                                     flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
