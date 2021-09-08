@@ -390,7 +390,7 @@
                        <td align="left" width="18%"><b>Endereço Indicado:</b></td>
                        <td colspan="3" align="left"><%=h @crianca.end_indicacao %> - <%=h @crianca.num_indicacao %></td>
                        <td align="left" width="4%"><b>Bairro/Região:</b></td>
-                       <td  align="left"><%if !@crianca.regiao_id.nil? %> <!--and !@crianca.regiao_id= 999%>-->
+                       <td  align="left"><%if !@crianca.regiao_id.nil? and !@crianca.regiao_id= 999%>
                                                 <%=h @crianca.regiao.nome%>
                                           <%else%><b>NÃO SELECIONADO</b>
                                           <%end%></td>
