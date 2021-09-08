@@ -403,13 +403,17 @@ end
 
     #inscrição permitida para crianças após outubro/2020
 
-            if @crianca.nascimento.strftime("%Y%m%d").to_i > 20210830 or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210107
+
+            if @crianca.nascimento.strftime("%Y%m%d").to_i < 2016304 #or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210107
+
+        t=0
                    respond_to do |format|
                         flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
                         format.html { render :action => "aviso" }
                         format.xml  { render :xml => @crianca.errors, :status => :unprocessable_entity }
                     end
               else
+                t=0
                   # ALTERAR TAMBÈM AS DATAS NO ALETRACAOS_CONTROLER def alterar_classe e no def update
                     if current_user.present?
                        @crianca.unidade_id = current_user.unidade_id
@@ -423,9 +427,11 @@ end
                     end
                      @crianca.recadastrada = 1
                     hoje = Date.today.to_s
+                    limite ='2021-05-31'
                     final = '2012-07-01'
                     if (hoje > data)  and (data >= final)
-                       if  (data <= Date.today.to_s and data >= DATAB1)
+  #                     if  (data <= Date.today.to_s and data >= DATAB1)
+                       if  (data > limite and data >= DATAB1)
                        @crianca.grupo_id = 1
                         else if(data < DATAB1 and data >= DATAB2)
                            @crianca.grupo_id = 2
@@ -501,8 +507,8 @@ end
                                                   mes=@crianca.nascimento.strftime("%m")
                                                   ano=@crianca.nascimento.strftime("%Y")
                                                   teste = ano+'-'+mes   ### veja abaixo VVVVV
-                                                 if  teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06' or teste == '2015-04' or  teste == '2015-05' or teste == '2015-06'
-                                                    @crianca.regiao_id=999
+                                                 if  (teste == '2018-04' or  teste == '2018-05' or teste == '2018-06' or teste == '2017-04' or  teste == '2017-05' or teste == '2017-06' or teste == '2016-04' or  teste == '2016-05' or teste == '2016-06') and (session[:ficha_pre]==1)
+                                                     @crianca.regiao_id=999
                                                  end
 
                                                   if @crianca.opcao2== '1'
@@ -661,7 +667,7 @@ end
 
    
     hoje = Date.today.to_s
-    final = '2012-07-01'
+    final = '2016-03-31'
     data=@crianca.nascimento.strftime("%Y-%m-%d")
 if  (data <= Date.today.to_s and data >= DATAB1)
        @crianca.grupo_id = 1
@@ -1868,10 +1874,10 @@ end
                  @criancas_pre  = Crianca.find( :all,:conditions => ["recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at > '2021-09-09 00:00:00'"  ],:order => 'nome ASC, grupo_id ASC')
                  @criancas_pre2 = Crianca.find( :all,:conditions => ["recadastrada > 0 and ( grupo_id =6 OR grupo_id =7 OR (grupo_id =5 AND regiao_id = 999))and (status='NA_DEMANDA') and created_at < '2021-09-09 00:00:00'" ],:order => 'nome ASC, grupo_id ASC')
 
-                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='MATRICULADA')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
-                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='CANCELADA')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
-                 @criancas_pre_duplic = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='DUPLICIDADE')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
-                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='RECUSOU')" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
+                 @criancas_pre_mat = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='MATRICULADA') and created_at > '2021-09-08 00:00:00'  "  ,data_pre ],:order => 'nome ASC, grupo_id ASC')
+                 @criancas_pre_canc = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='CANCELADA') and created_at > '2021-09-08 00:00:00'" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
+                 @criancas_pre_duplic = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7 or (grupo_id = 5 and  regiao_id= 999 ) )and (status='DUPLICIDADE') and created_at > '2021-09-08 00:00:00'" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
+                 @criancas_pre_rec = Crianca.find( :all,:conditions => ["nascimento <= ?  and recadastrada > 0 and (grupo_id = 6 or grupo_id = 7  or (grupo_id = 5 and  regiao_id= 999 ))and (status='RECUSOU') and created_at > '2021-09-08 00:00:00'" ,data_pre ],:order => 'nome ASC, grupo_id ASC')
                  t=0
                   render :update do |page|
                       page.replace_html 'criancas', :partial => "criancas_pre"
