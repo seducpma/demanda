@@ -431,7 +431,8 @@ end
                     final = '2012-07-01'
                     if (hoje > data)  and (data >= final)
   #                     if  (data <= Date.today.to_s and data >= DATAB1)
-                       if  (data > limite and data >= DATAB1)
+#                       if  (data > limite and data >= DATAB1)
+                       if  (data <= limite and data >= DATAB1)
                        @crianca.grupo_id = 1
                         else if(data < DATAB1 and data >= DATAB2)
                            @crianca.grupo_id = 2
