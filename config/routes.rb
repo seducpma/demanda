@@ -84,16 +84,16 @@ ActionController::Routing::Routes.draw do |map|
   map.pre_criancas '/pre_criancas', :controller => 'criancas', :action => 'pre_criancas'
   map.criancas_pre '/criancas_pre', :controller => 'criancas', :action => 'criancas_pre'
         #comentar  VVVV
-  map.new_pre '/preescola1', :controller => 'criancas', :action => 'new_pre'
+  #map.new_pre '/preescola1', :controller => 'criancas', :action => 'new_pre'
       #descomentar VVVV
-  map.new_pre '/preescola', :controller => 'criancas', :action => 'new_pre'
+  #map.new_pre '/preescola', :controller => 'criancas', :action => 'new_pre'
        #comentar  VVVV
-  #map.preescola '/preescola', :controller => 'criancas', :action => 'fora_ar'
+  map.preescola '/preescola', :controller => 'criancas', :action => 'fora_ar'
 
   ####
 
   map.consultacrianca '/consultacrianca', :controller => 'criancas', :action => 'consultacrianca'
- map.consultacriancaedicao '/consultacriancaedicao', :controller => 'criancas', :action => 'consultacriancaedicao'
+  map.consultacriancaedicao '/consultacriancaedicao', :controller => 'criancas', :action => 'consultacriancaedicao'
   map.consultatransferencias '/consultatransferencias', :controller => 'criancas', :action => 'consultatransferencias'
   map.criancamat2pre '/consultacriancamat2pre', :controller => 'criancas', :action => 'criancamat2pre'
   
