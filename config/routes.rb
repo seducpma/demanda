@@ -85,6 +85,7 @@ ActionController::Routing::Routes.draw do |map|
   map.criancas_pre '/criancas_pre', :controller => 'criancas', :action => 'criancas_pre'
         #comentar  VVVV
   #map.new_pre '/preescola1', :controller => 'criancas', :action => 'new_pre'
+  map.new_pre '/preescola1', :controller => 'criancas', :action => 'fora_ar'
       #descomentar VVVV
   #map.new_pre '/preescola', :controller => 'criancas', :action => 'new_pre'
        #comentar  VVVV
