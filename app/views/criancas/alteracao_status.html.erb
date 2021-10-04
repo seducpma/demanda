@@ -113,7 +113,7 @@
             <tr>
               <td valign="top" align="left" width="10%"><b>Região:</b><br/><br/><b>Grupo:</b></td>
               <td valign="top" align="left" ><%if !@crianca.regiao_id.nil?%>
-                                                    <%if @crianca.regiao_id = 999%>
+                                                    <%if @crianca.regiao_id == 999%>
                                                          <font size="3" color="red"><b><u>ATENÇÃO:</u></b>  MATERNAL II </font><br/><br/>
                                                     <%else%>
                                                          <font size="3" color="red"> <%=h @crianca.regiao.nome%><br/><br/><%=h @crianca.grupo.nome%></font>
