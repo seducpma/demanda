@@ -203,7 +203,7 @@
 
         <!--
          <font color="blue"> TODAS as vezes que se editar esta ficha pe necessário refazer aopção de região de opção.</font></font>
-       &nbsp&nbsp <b>As opções originais desta ficha foram: <%if !@crianca.regiao_id.nil? %><%=h @crianca.regiao.nome %> / <%=h @crianca.unidade_ref%><%else%><b>NÃO SELECIONADO</b><%end%></b>
+       &nbsp&nbsp <b>As opções originais desta ficha foram: <%if !@crianca.regiao_id.nil?  and @crianca.regiao_id != 999%><%=h @crianca.regiao.nome %> / <%=h @crianca.unidade_ref%><%else%><b>NÃO SELECIONADO</b><%end%></b>
        -->
              <br/>
          <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>

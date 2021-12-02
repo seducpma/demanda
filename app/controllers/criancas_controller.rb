@@ -202,7 +202,7 @@ end
     @crianca1 = Crianca.find(:all, :conditions => ['id=?', session[:id_crianca]])
     w=session[:id_grupo]= @crianca.grupo_id
     w1=session[:grupo_nome]=@crianca.grupo.nome
-    if !@crianca.regiao_id.nil?
+    if !@crianca.regiao_id.nil? and @crianca.regiao_id != 999
         w2=session[:regiao_nome]=@crianca.regiao.nome
     end
     
