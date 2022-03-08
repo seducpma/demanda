@@ -401,10 +401,10 @@ end
 
       else
 
-    #inscrição permitida para crianças após outubro/2020
+    #inscrição permitida para crianças após outubro/2020   CRIANÇÂO QUE NÂO PODEM INSCRECER-SE  FORA DA DATA
 
 
-            if @crianca.nascimento.strftime("%Y%m%d").to_i < 20160401 or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210531
+            if @crianca.nascimento.strftime("%Y%m%d").to_i > 20210331 # or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210531
 
         t=0
                    respond_to do |format|
@@ -1754,8 +1754,11 @@ end
 
 
  def lista_bairros
-    @unidade_regiao = Unidade.find(:all, :conditions => ['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8)', params[:crianca_regiao_id]])
-     
+
+    #  ATENÇÂO FOI EXCLUIDO MAJOI  25     E LAR BATISTA    63      NO SQL  CONTROLLER
+
+    @unidade_regiao = Unidade.find(:all, :conditions => ['regiao_id=? AND ativo = 1 AND ( tipo = 1 or tipo = 3 or tipo = 7 or tipo = 8) and (id != 63 and id != 25)', params[:crianca_regiao_id]])
+    t=0
     render :partial => 'lista_unidade_regiao'
   end
 

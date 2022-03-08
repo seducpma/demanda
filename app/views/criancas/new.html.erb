@@ -207,9 +207,10 @@
          <% @bairros = Bairro.find(:all, :conditions=>['ativo = 1'],   :order => 'nome') %>
           <font size ="3" color="black"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Região:</b> &nbsp&nbsp</font>
          <a class="botaosalvar"><%= f.collection_select :regiao_id, @bairros, :regiao_id, :nome, :include_blank => 'OBRIGATÓRIO SELECIONAR UMA OPÇÃO' %></a>
+
              <%= observe_field 'crianca_regiao_id',
                    :update => "listagem",
-                   :url    => { :action => 'lista_bairros' },
+                   :url    => { :action => 'lista_bairros' },  
                    :with   => 'crianca_regiao_id' %> 
              <font color="red"><br/> <b id="pisca1" > 
                &nbsp
