@@ -321,6 +321,7 @@ end
   # POST /criancas.xml
   def create
     @crianca = Crianca.new(params[:crianca])
+    t=0
       if session[:nasc]==1
           session[:nasc]=0
           t=0
@@ -336,6 +337,7 @@ end
                      @crianca.recadastrada = 2
                     hoje = Date.today.to_s
                     final = '2012-07-01'
+                    t=0
                     if (hoje > data)  and (data >= final)
                        if  (data <= Date.today.to_s and data >= DATAB1)
                        @crianca.grupo_id = 1
@@ -404,8 +406,8 @@ end
     #inscrição permitida para crianças após outubro/2020   CRIANÇÂO QUE NÂO PODEM INSCRECER-SE  FORA DA DATA
 
 
-            if @crianca.nascimento.strftime("%Y%m%d").to_i > 20210330 # or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210531
-
+            if @crianca.nascimento.strftime("%Y%m%d").to_i > 20211130 # or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210531
+# acertar também linha  432   limite
         t=0
                    respond_to do |format|
                         flash[:notice] = 'INSCRIÇÃO NÃO PERMITIDA.'
@@ -427,8 +429,9 @@ end
                     end
                      @crianca.recadastrada = 1
                     hoje = Date.today.to_s
-                    limite ='2021-05-31'
+                    limite ='2021-11-31'
                     final = '2012-07-01'
+                    t=0
                     if (hoje > data)  and (data >= final)
   #                     if  (data <= Date.today.to_s and data >= DATAB1)
 #                       if  (data > limite and data >= DATAB1)
