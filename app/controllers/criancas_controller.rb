@@ -404,7 +404,7 @@ end
     #inscrição permitida para crianças após outubro/2020   CRIANÇÂO QUE NÂO PODEM INSCRECER-SE  FORA DA DATA
 
 
-            if @crianca.nascimento.strftime("%Y%m%d").to_i > 20210331 # or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210531
+            if @crianca.nascimento.strftime("%Y%m%d").to_i > 20210330 # or @crianca.nascimento.strftime("%Y%m%d").to_i > 20210531
 
         t=0
                    respond_to do |format|
